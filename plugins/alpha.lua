@@ -22,7 +22,7 @@ dashboard.section.header.val = {
     [[────────────────────────────]]   -- \u2500
 }
 dashboard.section.footer.val = os.date()
-require('alpha').setup(dashboard.opts)
+require('alpha').setup(dashboard.config)
 
 -- Helper functions
 function DashboardBrowse(dir)
