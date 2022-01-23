@@ -15,9 +15,9 @@ require('gitsigns').setup {
         changedelete = highlightTable(icon('delete'),  'Change')
     },
     watch_gitdir = {interval = 300, follow_files = true},
-    keymaps = {
-        noremap = true,
-        ['n ]c'] = {expr = true, [[&diff ? 'lc' : '<cmd>lua require("gitsigns.actions").next_hunk()<CR>']]},
-        ['n [c'] = {expr = true, [[&diff ? 'lc' : '<cmd>lua require("gitsigns.actions").prev_hunk()<CR>']]}
-    }
+    on_attach = function(bufnr)
+        local opts = {expr = true, buffer = bufnr}
+        vim.keymap.set('n', ']c', [[&diff ? 'lc' : '<cmd>lua require("gitsigns.actions").next_hunk()<CR>']], opts)
+        vim.keymap.set('n', '[c', [[&diff ? 'lc' : '<cmd>lua require("gitsigns.actions").prev_hunk()<CR>']], opts)
+    end
 }
