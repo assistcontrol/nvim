@@ -12,30 +12,34 @@ table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
 -- Load language servers
-lspconfig.gopls.setup {
-    on_attach = attach
-}
+if vim.fn.executable('gopls') == 1 then
+    lspconfig.gopls.setup {
+        on_attach = attach
+    }
+end
 
-lspconfig.sumneko_lua.setup {
-    on_attach = attach,
-    settings = {
-        Lua = {
-            runtime = {
-                version = 'LuaJIT',
-                path = runtime_path
-            },
-            diagnostics = {
-                -- Recognize the `vim` global
-                globals = {'vim'}
-            },
-            workspace = {
-                -- Recognize the nvim runtime
-                library = vim.api.nvim_get_runtime_file('', true)
-            },
-            telemetry = {
-                -- Don't send telemetry data
-                enable = false
+if vim.fn.executable('lua-language-server') == 1 then
+    lspconfig.sumneko_lua.setup {
+        on_attach = attach,
+        settings = {
+            Lua = {
+                runtime = {
+                    version = 'LuaJIT',
+                    path = runtime_path
+                },
+                diagnostics = {
+                    -- Recognize the `vim` global
+                    globals = {'vim'}
+                },
+                workspace = {
+                    -- Recognize the nvim runtime
+                    library = vim.api.nvim_get_runtime_file('', true)
+                },
+                telemetry = {
+                    -- Don't send telemetry data
+                    enable = false
+                }
             }
         }
     }
-}
+end
