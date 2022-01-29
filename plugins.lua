@@ -50,7 +50,7 @@ require('packer').startup({function(use)
     -- Go
     use {'ray-x/go.nvim',
         ft = {'go', 'gohtmltmpl', 'gomod'},
-        cmd = 'GoUpdateBinaries',
+        cmd = {'GoInstallBinaries', 'GoUpdateBinaries'},
         config = function()
             require('plugins/go')
         end
