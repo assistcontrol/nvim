@@ -1,21 +1,6 @@
-vim.g.go_fmt_command = 'goimports'
-vim.g.go_highlight_array_whitespace_error    = true
-vim.g.go_highlight_build_constraints         = true
-vim.g.go_highlight_chan_whitespace_error     = true
-vim.g.go_highlight_debug                     = true
-vim.g.go_highlight_diagnostic_errors         = true
-vim.g.go_highlight_diagnostic_warnings       = true
-vim.g.go_highlight_extra_types               = true
-vim.g.go_highlight_fields                    = true
-vim.g.go_highlight_format_strings            = true
-vim.g.go_highlight_function_calls            = true
-vim.g.go_highlight_function_parameters       = true
-vim.g.go_highlight_functions                 = true
-vim.g.go_highlight_generate_tags             = true
-vim.g.go_highlight_operators                 = true
-vim.g.go_highlight_space_tab_error           = true
-vim.g.go_highlight_string_spellchecs         = true
-vim.g.go_highlight_trailing_whitespace_error = true
-vim.g.go_highlight_types                     = true
-vim.g.go_highlight_variable_assignments      = true
-vim.g.go_highlight_variable_declarations     = true
+require('go').setup {
+    lsp_gofumpt = true
+}
+
+-- Run gofumpt + goimports on write
+vim.api.nvim_exec([[autocmd BufWritePre *.go :silent! lua require('go.format').goimport()]], false)

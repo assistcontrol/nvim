@@ -48,8 +48,8 @@ require('packer').startup({function(use)
     }
 
     -- Go
-    use {'fatih/vim-go',
-        ft = {'go', 'gohtmltmpl'},
+    use {'ray-x/go.nvim',
+        ft = {'go', 'gohtmltmpl', 'gomod'},
         cmd = 'GoUpdateBinaries',
         config = function()
             require('plugins/go')
