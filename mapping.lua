@@ -1,9 +1,5 @@
 -- Key mappings
-
-local map = function(mode, keys, cmd, opts)
-    opts = vim.tbl_deep_extend('force', {noremap = true, silent = true}, opts or {})
-    vim.api.nvim_set_keymap(mode, keys, cmd, opts)
-end
+local map = require('util').map
 
 -- Mash j and k, or jj/kk in place of ESC
 map('i', 'jk', '<Esc>')
