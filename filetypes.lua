@@ -18,9 +18,7 @@ autocmd('svn',  'spell')
 autocmd('text', 'textwidth=74')
 
 -- Expand tabs for system conf files and port Makefiles
-for _, path in ipairs({'*/ports/*', '/etc/*', '/usr/local/etc/*'}) do
-    vim.cmd('autocmd BufRead,BufNewFile ' .. path .. ' setlocal tabstop=8 shiftwidth=8')
-end
+vim.cmd([[autocmd BufRead,BufNewFile */ports/*,/etc/*,/usr/local/etc/* setlocal noexpandtab tabstop=8 shiftwidth=8]])
 
 -- Jump to position at last clone
 vim.cmd([[autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif]])
