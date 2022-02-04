@@ -1,22 +1,27 @@
--- Add new filetype detections
-vim.cmd('autocmd BufRead,BufNewFile /conf/nginx/* setlocal filetype = nginx')
-vim.cmd('autocmd BufRead,BufNewFile *.tt setlocal filetype = tt2html')
+local autocmd = {
+    -- Detect new filetypes
+    ['BufRead,BufNewFile *.tt'] = 'filetype=tt2html',
 
--- Four-space expansion
-vim.cmd('autocmd Filetype go,lua,perl setlocal shiftwidth=4 softtabstop=4 tabstop=4')
+    -- Four-space expansion
+    ['Filetype go,lua,perl'] = 'shiftwidth=4 softtabstop=4 tabstop=4',
 
--- Unique shiftwidths/other settings
-vim.cmd('autocmd Filetype make setlocal noexpandtab tabstop=8 shiftwidth=8')
-vim.cmd('autocmd Filetype text setlocal textwidth=74')
+    -- Unique widths
+    ['Filetype make'] = 'noexpandtab tabstop=8 shiftwidth=8',
+    ['Filetype text'] = 'textwidth=74',
 
--- Expand tabs for system conf files and port Makefiles
-vim.cmd([[autocmd BufRead,BufNewFile */ports/*,/etc/*,/usr/local/etc/* setlocal noexpandtab tabstop=8 shiftwidth=8]])
+    -- Expand tabs for system conf files and port Makefiles
+    ['BufRead,BufNewFile */ports/*,/etc/*,/usr/local/etc/*'] = 'noexpandtab tabstop=8 shiftwidth=8',
 
--- Jump to position at last clone
+    -- Spell-check git commits
+    ['BufRead COMMIT_EDITMSG'] = 'spell'
+}
+
+for target, action in pairs(autocmd) do
+    vim.cmd(string.format('autocmd %s setlocal %s', target, action))
+end
+
+-- Jump to position at last close
 vim.cmd([[autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif]])
-
--- Spell-check git commits
-vim.cmd('autocmd BufRead COMMIT_EDITMSG setlocal spell')
 
 -- Filetype-specific settings
 vim.g.is_bash = 1  -- BSD sh isn't pure POSIX
