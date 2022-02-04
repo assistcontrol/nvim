@@ -7,10 +7,7 @@ vim.cmd('autocmd BufRead,BufNewFile /conf/nginx/* set filetype = nginx')
 vim.cmd('autocmd BufRead,BufNewFile *.tt set filetype = tt2html')
 
 -- Four-space expansion
-fourSpace = {'go', 'lua', 'perl'}
-for _, ft in ipairs(fourSpace) do
-    autocmd(ft, 'expandtab shiftwidth=4 softtabstop=4 tabstop=4')
-end
+autocmd('go,lua,perl', 'expandtab shiftwidth=4 softtabstop=4 tabstop=4')
 
 -- Unique shiftwidths/other settings
 autocmd('make', 'noexpandtab tabstop=8 shiftwidth=8')
@@ -25,8 +22,6 @@ vim.cmd([[autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
 
 -- Spell-check git commits
 vim.cmd('autocmd BufRead COMMIT_EDITMSG setlocal spell')
-
-vim.o.suffixes = '.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc'
 
 -- Filetype-specific settings
 vim.g.is_bash = 1  -- BSD sh isn't pure POSIX
