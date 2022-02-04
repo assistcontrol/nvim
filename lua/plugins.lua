@@ -86,7 +86,9 @@ require('packer').startup({function(use)
     end}
 
     -- LSP
-    use {'neovim/nvim-lspconfig'}
+    use {'neovim/nvim-lspconfig', config = function()
+        require('plugins/lsp')
+    end}
 
     -- Parentheses colors
     use {'p00f/nvim-ts-rainbow'}
