@@ -13,6 +13,7 @@ local icons = {
     plus     = '',  -- uF44D
     recent   = 'ﮫ',  -- uFBAB
     vertbar  = '│',  -- u2502
+    vim      = '',  -- uE62B
     warning  = '',  -- u26A0
 }
 
