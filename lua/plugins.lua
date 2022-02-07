@@ -62,9 +62,6 @@ require('packer').startup({function(use)
         end
     }
 
-    -- HTML macros
-    use {'mattn/emmet-vim', ft = {'html', 'gohtmltmpl', 'ruby', 'eruby'}}
-
     -- Icons
     use {'kyazdani42/nvim-web-devicons', config = function()
         require('nvim-web-devicons').setup {default = true}
@@ -121,6 +118,7 @@ require('packer').startup({function(use)
         require('plugins/treesitter')
     end}
 end,
+
 -- Packer config
 config = {
     display = {
