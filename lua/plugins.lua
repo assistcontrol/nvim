@@ -87,6 +87,12 @@ require('packer').startup({function(use)
         require('plugins/lsp')
     end}
 
+    -- LSP messages in virtual lines
+    use {'https://git.sr.ht/~whynothugo/lsp_lines.nvim', config = function()
+        require('lsp_lines').register_lsp_virtual_lines()
+        vim.diagnostic.config({virtual_text = false})
+    end}
+
     -- Parentheses colors
     use {'p00f/nvim-ts-rainbow'}
 
