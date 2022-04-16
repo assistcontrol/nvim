@@ -29,10 +29,6 @@ return {
     map = function(mode, keys, cmd, opts)
         opts = vim.tbl_deep_extend('force', {noremap = true, silent = true}, opts or {})
 
-        if opts.buffer then
-            vim.api.nvim_buf_set_keymap(opts.buffer, mode, keys, cmd, opts)
-        else
-            vim.api.nvim_set_keymap(mode, keys, cmd, opts)
-        end
+        vim.keymap.set(mode, keys, cmd, opts)
     end
 }
