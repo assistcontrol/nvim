@@ -20,6 +20,9 @@ require('packer').startup({function(use)
         -- Comments (gc[c])
         require('mini.comment').setup()
 
+        -- Start screen
+        require('plugins/ministarter')
+
         -- Word highlighting
         require('mini.cursorword').setup()
     end}
@@ -95,11 +98,6 @@ require('packer').startup({function(use)
 
     -- Parentheses colors
     use {'p00f/nvim-ts-rainbow'}
-
-    -- Start screen
-    use {'goolord/alpha-nvim', config = function()
-        require('plugins/alpha')
-    end}
 
     -- Status line
     use {'ojroques/nvim-hardline', config = function()
