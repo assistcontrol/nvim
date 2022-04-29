@@ -1,17 +1,4 @@
 local parts = require('plugins/statuslineparts')
-local icon = require('util').icon
-
-local function lspError()
-    local e = #vim.diagnostic.get(nil, {severity = vim.diagnostic.severity.ERROR})
-    if e < 1 then return '' end
-    return icon('error', e)
-end
-
-local function lspWarning()
-    local w = #vim.diagnostic.get(nil, {severity = vim.diagnostic.severity.WARNING})
-    if w < 1 then return '' end
-    return icon('warning', w)
-end
 
 require('hardline').setup {
     sections = {
@@ -23,8 +10,8 @@ require('hardline').setup {
         '%<',
         {class = 'med',     item = '%='},
         {class = 'low',     item = require('hardline.parts.wordcount').get_item, hide = 100},
-        {class = 'error',   item = lspError},
-        {class = 'warning', item = lspWarning},
+        {class = 'error',   item = parts.diagError},
+        {class = 'warning', item = parts.diagWarning},
         {class = 'warning', item = require('hardline.parts.whitespace').get_item},
         {class = 'high',    item = parts.encoding},
         {class = 'high',    item = parts.format},
