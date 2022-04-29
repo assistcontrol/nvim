@@ -15,7 +15,9 @@ local M = {
     filesize = function()
         local size = vim.fn.getfsize(vim.fn.getreg('%'))
 
-        if size < 1024 then
+        if size < 0 then
+            return
+        elseif size < 1024 then
             return string.format('%dB', size)
         elseif size < 1048576 then
             return string.format('%.2fKB', size / 1024)
