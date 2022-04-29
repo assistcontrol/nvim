@@ -1,41 +1,10 @@
-local sl = require('mini.statusline')
-local get_devicon = require('nvim-web-devicons').get_icon
-local icon = require('util').icon
+local SL = require('mini.statusline')
+local P = require('plugins/statuslineparts')
 
 -- Local functions that serve as statusbar components
 local M = {
-    encoding = function()
-        if vim.bo.fileencoding ~= 'utf-8' then return vim.bo.fileencoding end
-    end,
-
-    filefmt  = function() return ({dos = 'CRLF', mac = 'CR'})[vim.bo.fileformat] end,
-
-    filename = function() return vim.fn.expand('%:~:.') end,
-
-    filesize = function()
-        local size = vim.fn.getfsize(vim.fn.getreg('%'))
-
-        if size < 0 then
-            return
-        elseif size < 1024 then
-            return string.format('%dB', size)
-        elseif size < 1048576 then
-            return string.format('%.2fKB', size / 1024)
-        else
-            return string.format('%.2fMB', size / 1048576)
-        end
-    end,
-
-    filetype = function()
-        local fticon = get_devicon(vim.fn.expand('%'))
-        local ftype  = vim.bo.filetype
-
-        if #ftype == 0 then return fticon end
-        return fticon .. ' ' .. ftype
-    end,
-
     location = function(args)
-        if sl.is_truncated(args.trunc_width) then
+        if SL.is_truncated(args.trunc_width) then
             return '%l│%2v'
         end
 
@@ -46,37 +15,33 @@ local M = {
     end,
 
     mode = function(args)
-        local mode, mode_hl = sl.section_mode(args)
+        local mode, mode_hl = SL.section_mode(args)
         return string.upper(mode), mode_hl
     end,
-
-    modified = function() if vim.bo.modified then return icon('plus') end end,
-
-    readonly = function() if vim.bo.readonly then return icon('lock') end end,
 }
 
 -- This function is called for every statusline refresh
 local function content_active()
-    local diagnostics = sl.section_diagnostics({ trunc_width = 60 })
-    local git = sl.section_git({ trunc_width = 60 })
+    local diagnostics = SL.section_diagnostics({ trunc_width = 60 })
+    local git = SL.section_git({ trunc_width = 60 })
     local location = M.location({ trunc_width = 50 })
     local mode, mode_hl = M.mode({trunc_width = 120 })
 
-    return sl.combine_groups({
+    return SL.combine_groups({
         {hl = mode_hl, strings = { mode }},
         {hl = 'MiniStatuslineDevinfo',  strings = { git }},
         '%<',  -- Things before this are left-justified
-        {hl = 'MiniStatuslineFilename', strings = { M.filename(), M.readonly(), M.modified() }},
+        {hl = 'MiniStatuslineFilename', strings = { P.filename(), P.readonly(), P.modified() }},
         '%=',  -- Things after this are right-justified
-        {hl = 'MiniStatuslineFilename', strings = { M.filesize() }},
+        {hl = 'MiniStatuslineFilename', strings = { P.filesize() }},
         {hl = 'MiniStatuslineDevinfo',  strings = { diagnostics }},
-        {hl = 'MiniStatuslineFileinfo', strings = { M.encoding(), M.filefmt(), M.filetype() }},
+        {hl = 'MiniStatuslineFileinfo', strings = { P.encoding(), P.filefmt(), P.filetype() }},
         {hl = mode_hl, strings = { location }}
     })
 end
 
 -- Instantiate the statusline
-sl.setup {
+SL.setup {
     content = {
         active = content_active
     }
