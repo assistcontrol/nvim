@@ -23,6 +23,9 @@ require('packer').startup({function(use)
         -- Start screen
         require('plugins/ministarter')
 
+        -- Status line
+        require('plugins/ministatusline')
+
         -- Word highlighting
         require('mini.cursorword').setup()
     end}
@@ -98,11 +101,6 @@ require('packer').startup({function(use)
 
     -- Parentheses colors
     use {'p00f/nvim-ts-rainbow'}
-
-    -- Status line
-    use {'ojroques/nvim-hardline', config = function()
-        require('plugins/hardline')
-    end}
 
     -- Surround text (quotes, brackets, etc.), eg: ysW"
     use {'tpope/vim-surround'}  -- Change surrounders
