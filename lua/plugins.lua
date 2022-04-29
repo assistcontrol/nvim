@@ -18,7 +18,7 @@ require('packer').startup({function(use)
         require('plugins/completion')
 
         -- Comments (gc[c])
-        require('mini.comment').setup()
+        require('mini.comment').setup {}
 
         -- Start screen
         require('plugins/ministarter')
@@ -27,7 +27,7 @@ require('packer').startup({function(use)
         require('plugins/ministatusline')
 
         -- Word highlighting
-        require('mini.cursorword').setup()
+        require('mini.cursorword').setup {}
     end}
 
     -- Colorscheme
@@ -42,8 +42,8 @@ require('packer').startup({function(use)
 
     -- Fold preview
     use{'anuvyklack/pretty-fold.nvim', config = function()
-        require('pretty-fold').setup()
-        require('pretty-fold.preview').setup()
+        require('pretty-fold').setup {}
+        require('pretty-fold.preview').setup {}
     end}
 
     -- Fuzzy Finder
