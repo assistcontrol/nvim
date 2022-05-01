@@ -40,12 +40,6 @@ require('packer').startup({function(use)
         vim.g.rsi_no_meta = true
     end}
 
-    -- Fold preview
-    use{'anuvyklack/pretty-fold.nvim', config = function()
-        require('pretty-fold').setup {}
-        require('pretty-fold.preview').setup {}
-    end}
-
     -- Fuzzy Finder
     use {'nvim-telescope/telescope.nvim',
         requires = {'nvim-lua/plenary.nvim'}
