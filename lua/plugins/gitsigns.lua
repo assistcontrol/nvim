@@ -18,7 +18,7 @@ require('gitsigns').setup {
     watch_gitdir = {interval = 300, follow_files = true},
     on_attach = function(bufnr)
         local opts = {buffer = bufnr, expr = true}
-        map('n', ']c', [[<cmd>lua require('gitsigns.actions').next_hunk()<CR>]])
-        map('n', ']c', [[<cmd>lua require('gitsigns.actions').prev_hunk()<CR>]])
+        map('n', ']c', [[<cmd>lua require('gitsigns.actions').next_hunk()<CR>]], opts)
+        map('n', ']c', [[<cmd>lua require('gitsigns.actions').prev_hunk()<CR>]], opts)
     end
 }
