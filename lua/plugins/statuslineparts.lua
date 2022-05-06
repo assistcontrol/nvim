@@ -46,15 +46,12 @@ return {
         local fticon = devicons.get_icon(vim.fn.expand('%'))
         local ftype  = vim.bo.filetype
 
-        if #ftype == 0 then return fticon end
-        return fticon .. ' ' .. ftype
+        return #ftype == 0 and fticon or string.format('%s %s', fticon, ftype)
     end,
 
-    lsp_status = function()
-        if lsp_enabled() then return icon('lsp') end
-    end,
+    lsp_status = function() return lsp_enabled() and icon('lsp') end,
 
-    modified = function() if vim.bo.modified then return icon('plus') end end,
+    modified = function() return vim.bo.modified and icon('plus') end,
 
-    readonly = function() if vim.bo.readonly then return icon('lock') end end,
+    readonly = function() return vim.bo.readonly and icon('lock') end,
 }

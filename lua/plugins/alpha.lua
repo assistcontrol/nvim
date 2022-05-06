@@ -11,7 +11,7 @@ dashboard.section.buttons.val = {
     dashboard.button('q', icon('close', 'Quit nvim'),       '<cmd>qa<CR>'),
     dashboard.button('U', icon('plug', 'Update plugins'),   '<cmd>PackerSync<CR>'),
     dashboard.button('G', icon('go', 'Update go binaries'), '<cmd>GoUpdateBinaries<CR>'),
-    dashboard.button('b', icon('folder', pwd),              '<cmd>lua DashboardBrowse("' .. pwd .. '")<CR>'),
+    dashboard.button('b', icon('folder', pwd),              string.format([[<cmd>lua DashboardBrowse('%s')<CR>]], pwd)),
     dashboard.button('r', icon('recent', 'Recent'),         '<cmd>Telescope oldfiles<CR>'),
     dashboard.button('m', icon('folder', 'med_apps'),       '<cmd>lua DashboardBrowse("~/build/med_apps")<CR>'),
     dashboard.button('d', icon('dotfiles', 'dotfiles'),     '<cmd>lua DashboardBrowse("~/build/dotfiles")<CR>'),

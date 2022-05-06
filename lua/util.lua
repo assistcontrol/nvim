@@ -20,11 +20,7 @@ local icons = {
 
 return {
     icon = function(ico, str)
-        if str then
-            return icons[ico] .. ' ' .. str
-        end
-
-        return icons[ico]
+        return str and string.format('%s %s', icons[ico], str) or icons[ico]
     end,
 
     map = function(mode, keys, cmd, opts)
