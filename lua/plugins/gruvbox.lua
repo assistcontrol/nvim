@@ -6,8 +6,10 @@ vim.o.background = 'dark'
 vim.cmd('colo gruvbox-material')
 
 -- Override some colors
-vim.cmd([[highlight clear      SignColumn]])
-vim.cmd([[highlight Folded     guibg=gray30]])
-vim.cmd([[highlight FoldColumn guibg=gray30 guifg=white]])
-vim.cmd([[highlight NonText    guifg=#4a4a59]])
-vim.cmd([[highlight SpecialKey guifg=#4a4a59]])
+vim.cmd([[
+    highlight clear      SignColumn
+    highlight Folded     guibg=gray30
+    highlight FoldColumn guibg=gray30 guifg=white
+    highlight NonText    guifg=#4a4a59
+    highlight SpecialKey guifg=#4a4a59
+]])
