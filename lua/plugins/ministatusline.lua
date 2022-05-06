@@ -62,38 +62,3 @@ vim.api.nvim_exec([[
     hi MiniStatuslineWarning     ctermfg=235 ctermbg=180 guifg=#282C34 guibg=#E5C07B
     hi link MiniStatuslineFileinfo MiniStatuslineDevinfo
 ]], false)
-
--- COLOURS FROM HARDLINE:
--- Hardline_med_active xxx ctermfg=180 ctermbg=236 guifg=#E5C07B guibg=#2C323C
--- Hardline_med_inactive xxx ctermfg=59 ctermbg=236 guifg=#5C6370 guibg=#2C323C
--- Hardline_mode_replace xxx ctermfg=235 ctermbg=38 guifg=#282C34 guibg=#56B6C2
--- Hardline_mode_insert xxx ctermfg=235 ctermbg=39 guifg=#282C34 guibg=#61AFEF
--- Hardline_mode_command xxx ctermfg=235 ctermbg=204 guifg=#282C34 guibg=#E06C75
--- Hardline_mode_inactive xxx ctermfg=59 ctermbg=236 guifg=#5C6370 guibg=#2C323C
--- Hardline_mode_visual xxx ctermfg=235 ctermbg=170 guifg=#282C34 guibg=#C678DD
--- Hardline_mode_normal xxx ctermfg=235 ctermbg=114 guifg=#282C34 guibg=#98C379
--- Hardline_low_active xxx ctermfg=145 ctermbg=236 guifg=#ABB2BF guibg=#2C323C
--- Hardline_low_inactive xxx ctermfg=59 ctermbg=236 guifg=#5C6370 guibg=#2C323C
--- Hardline_warning_active xxx ctermfg=235 ctermbg=180 guifg=#282C34 guibg=#E5C07B
--- Hardline_warning_inactive xxx ctermfg=59 ctermbg=236 guifg=#5C6370 guibg=#2C323C
--- Hardline_error_active xxx ctermfg=235 ctermbg=204 guifg=#282C34 guibg=#E06C75
--- Hardline_error_inactive xxx ctermfg=59 ctermbg=236 guifg=#5C6370 guibg=#2C323C
--- Hardline_high_active xxx ctermfg=145 ctermbg=237 guifg=#ABB2BF guibg=#3E4452
--- Hardline_high_inactive xxx ctermfg=59 ctermbg=236 guifg=#5C6370 guibg=#2C323C
--- Hardline_bufferline_current xxx ctermfg=235 ctermbg=114 guifg=#282C34 guibg=#98C379
--- Hardline_bufferline_separator xxx ctermfg=59 ctermbg=236 guifg=#5C6370 guibg=#2C323C
--- Hardline_bufferline_current_modified xxx ctermfg=235 ctermbg=39 guifg=#282C34 guibg=#61AFEF
--- Hardline_bufferline_background_modified xxx ctermfg=39 ctermbg=235 guifg=#61AFEF guibg=#282C34
--- Hardline_bufferline_background xxx ctermfg=114 ctermbg=235 guifg=#98C379 guibg=#282C34
-
--- DEFAULT MINI.STATUSLINE LINKS:
--- MiniStatuslineModeNormal xxx links to Cursor
--- MiniStatuslineModeInsert xxx links to DiffChange
--- MiniStatuslineModeVisual xxx links to DiffAdd
--- MiniStatuslineModeReplace xxx links to DiffDelete
--- MiniStatuslineModeCommand xxx links to DiffText
--- MiniStatuslineModeOther xxx links to IncSearch
--- MiniStatuslineDevinfo xxx links to StatusLine
--- MiniStatuslineFilename xxx links to StatusLineNC
--- MiniStatuslineFileinfo xxx links to StatusLine
--- MiniStatuslineInactive xxx links to StatusLineNC
