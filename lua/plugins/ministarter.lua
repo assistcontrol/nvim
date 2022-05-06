@@ -1,5 +1,5 @@
 local starter = require('mini.starter')
-local icon = require('util').icon
+local icon    = require('util').icon
 
 local pwd = vim.fn.fnamemodify(vim.fn.getcwd(), ':~:.')
 if pwd == '' then pwd = '~/' end
