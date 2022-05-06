@@ -12,4 +12,5 @@ vim.cmd([[
     highlight FoldColumn guibg=gray30 guifg=white
     highlight NonText    guifg=#4a4a59
     highlight SpecialKey guifg=#4a4a59
+    highlight Visual     ctermbg=yellow ctermfg=black guibg=yellow guifg=black
 ]])
