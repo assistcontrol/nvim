@@ -33,6 +33,7 @@ local function content_active()
         {hl = 'MiniStatuslineFilename', strings = { P.filename(), P.readonly(), P.modified() }},
         '%=',  -- Things after this are right-justified
         {hl = 'MiniStatuslineFilename', strings = { P.filesize() }},
+        {hl = 'MiniStatuslineFilename', strings = { P.lsp_status() }},
         {hl = 'MiniStatuslineError',    strings = { P.diagErrors() }},
         {hl = 'MiniStatuslineWarning',  strings = { P.diagWarnings() }},
         {hl = 'MiniStatuslineFileinfo', strings = { P.encoding(), P.filefmt(), P.filetype() }},
@@ -50,16 +51,16 @@ SL.setup {
 
 -- Set statusline colours
 vim.api.nvim_exec([[
-  hi MiniStatuslineModeNormal  ctermfg=235 ctermbg=114 guifg=#282C34 guibg=#98C379
-  hi MiniStatuslineModeInsert  ctermfg=235 ctermbg=39  guifg=#282C34 guibg=#61AFEF
-  hi MiniStatuslineModeVisual  ctermfg=235 ctermbg=170 guifg=#282C34 guibg=#C678DD
-  hi MiniStatuslineModeReplace ctermfg=235 ctermbg=38  guifg=#282C34 guibg=#56B6C2
-  hi MiniStatuslineModeCommand ctermfg=235 ctermbg=204 guifg=#282C34 guibg=#E06C75
-  hi MiniStatuslineDevinfo     ctermfg=145 ctermbg=237 guifg=#ABB2BF guibg=#3E4452
-  hi MiniStatuslineError       ctermfg=235 ctermbg=204 guifg=#282C34 guibg=#E06C75
-  hi MiniStatuslineFilename    ctermfg=180 ctermbg=236 guifg=#E5C07B guibg=#2C323C
-  hi MiniStatuslineWarning     ctermfg=235 ctermbg=180 guifg=#282C34 guibg=#E5C07B
-  hi link MiniStatuslineFileinfo MiniStatuslineDevinfo
+    hi MiniStatuslineModeNormal  ctermfg=235 ctermbg=114 guifg=#282C34 guibg=#98C379
+    hi MiniStatuslineModeInsert  ctermfg=235 ctermbg=39  guifg=#282C34 guibg=#61AFEF
+    hi MiniStatuslineModeVisual  ctermfg=235 ctermbg=170 guifg=#282C34 guibg=#C678DD
+    hi MiniStatuslineModeReplace ctermfg=235 ctermbg=38  guifg=#282C34 guibg=#56B6C2
+    hi MiniStatuslineModeCommand ctermfg=235 ctermbg=204 guifg=#282C34 guibg=#E06C75
+    hi MiniStatuslineDevinfo     ctermfg=145 ctermbg=237 guifg=#ABB2BF guibg=#3E4452
+    hi MiniStatuslineError       ctermfg=235 ctermbg=204 guifg=#282C34 guibg=#E06C75
+    hi MiniStatuslineFilename    ctermfg=180 ctermbg=236 guifg=#E5C07B guibg=#2C323C
+    hi MiniStatuslineWarning     ctermfg=235 ctermbg=180 guifg=#282C34 guibg=#E5C07B
+    hi link MiniStatuslineFileinfo MiniStatuslineDevinfo
 ]], false)
 
 -- COLOURS FROM HARDLINE:

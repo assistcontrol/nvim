@@ -1,12 +1,14 @@
 local devicons = require('nvim-web-devicons')
 local icon     = require('util').icon
 
-local function diagnose(severity, ico)
+local function lsp_enabled()
     local attached_client = next(vim.lsp.buf_get_clients()) ~= nil
     local normal_buffer   = vim.bo.buftype == ''
-    if not (attached_client and normal_buffer) then
-        return
-    end
+    return attached_client and normal_buffer
+end
+
+local function diagnose(severity, ico)
+    if not lsp_enabled() then return end
 
     local count = #vim.diagnostic.get(nil, {severity = severity})
     if count > 0 then return icon(ico, count) end
@@ -46,6 +48,10 @@ return {
 
         if #ftype == 0 then return fticon end
         return fticon .. ' ' .. ftype
+    end,
+
+    lsp_status = function()
+        if lsp_enabled() then return icon('lsp') end
     end,
 
     modified = function() if vim.bo.modified then return icon('plus') end end,

@@ -8,6 +8,7 @@ local icons = {
     go       = '',  -- uE626
     horizbar = '─',  -- u2500
     lock     = '',  -- uF023
+    lsp      = '',  -- uF04B
     new      = '',  -- uF15B
     plug     = '',  -- uF1E6
     plus     = '',  -- uF44D
