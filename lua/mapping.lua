@@ -35,3 +35,9 @@ map('n', '?', [[?\v]])
 -- Tab/S-Tab through completion list
 map('i', '<Tab>',   [[pumvisible() ? "\<C-n>" : "\<Tab>"]],   {expr = true})
 map('i', '<S-Tab>', [[pumvisible() ? "\<C-n>" : "\<S-Tab>"]], {expr = true})
+
+-- Alt+arrow navigates windows
+map('n', '<A-Up>',    ':wincmd k<CR>')
+map('n', '<A-Down>',  ':wincmd j<CR>')
+map('n', '<A-Left>',  ':wincmd h<CR>')
+map('n', '<A-Right>', ':wincmd l<CR>')
