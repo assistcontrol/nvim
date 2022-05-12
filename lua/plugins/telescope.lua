@@ -2,7 +2,8 @@ local map = require('util').map
 
 require('telescope').setup {
     defaults = {
-        layout_strategy = 'flex'
+        file_ignore_patterns = {'node_modules'},
+        layout_strategy = 'flex',
     }
 }
 
