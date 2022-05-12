@@ -42,7 +42,10 @@ require('packer').startup({function(use)
 
     -- Fuzzy Finder
     use {'nvim-telescope/telescope.nvim',
-        requires = {'nvim-lua/plenary.nvim'}
+        requires = {'nvim-lua/plenary.nvim'},
+        config = function()
+            require('plugins/telescope')
+        end
     }
 
     -- Git

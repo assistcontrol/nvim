@@ -1,4 +1,5 @@
 local starter = require('mini.starter')
+local browse  = require('plugins/telescope')  -- FileBrowser()
 local icon    = require('util').icon
 
 local pwd = vim.fn.fnamemodify(vim.fn.getcwd(), ':~:.')
@@ -6,11 +7,6 @@ if pwd == '' then pwd = '~/' end
 
 local item = function(key, ico, title)
     return string.format('%s  %s', key, icon(ico, title))
-end
-
-function DashboardBrowse(dir)
-    vim.cmd('lcd ' .. dir)
-    require('telescope.builtin').find_files()
 end
 
 starter.setup {
@@ -46,7 +42,7 @@ starter.setup {
         },
 
         { name = item('b', 'folder', pwd),
-          action = string.format([[lua DashboardBrowse("%s")]], pwd),
+          action = string.format([[lua FileBrowser("%s")]], pwd),
           section = 'Browse'
         },
         { name = item('r', 'recent', 'Recent'),
@@ -54,15 +50,15 @@ starter.setup {
           section = 'Browse'
         },
         { name = item('m', 'folder', 'med_apps'),
-          action = [[lua DashboardBrowse("~/build/med_apps")]],
+          action = [[lua FileBrowser("~/build/med_apps")]],
           section = 'Browse'
         },
         { name = item('d', 'dotfiles', 'dotfiles'),
-          action = [[lua DashboardBrowse("~/build/dotfiles")]],
+          action = [[lua FileBrowser("~/build/dotfiles")]],
           section = 'Browse'
         },
         { name = item('v', 'vim', 'vim'),
-          action = [[lua DashboardBrowse("~/build/vim/lua")]],
+          action = [[lua FileBrowser("~/build/vim/lua")]],
           section = 'Browse'
         }
     }

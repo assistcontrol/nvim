@@ -20,12 +20,6 @@ map('i', '<C-l>', [[<c-g>u<Esc>[s1z=`]a<c-g>u]])
 -- ^O opens file browser
 map('', '<C-o>', ':Explore<CR>')
 
--- ^P opens fuzzy finder
-map('', '<C-p>', [[:lua require('telescope.builtin').find_files()<CR>]])
-
--- ^T opens full telescope browser
-map('', '<C-t>', ':Telescope<CR>')
-
 -- ]t/[t jumps tabs
 map('n', '[t', ':tabprevious<CR>')
 map('n', ']t', ':tabnext<CR>')
