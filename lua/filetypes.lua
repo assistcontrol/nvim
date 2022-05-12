@@ -1,7 +1,15 @@
-local autocmd = {
-    -- Detect new filetypes
-    ['BufRead,BufNewFile *.tt'] = 'filetype=tt2html',
+-- Use filetype.lua instead of filetype.vim
+vim.g.do_filetype_lua    = 1
+vim.g.did_load_filetypes = 0
 
+vim.filetype.add {
+    extension = {
+        pm = 'perl',
+        tt = 'tt2html'
+    }
+}
+
+local autocmd = {
     -- Four-space expansion
     ['Filetype go,lua,perl'] = 'shiftwidth=4 softtabstop=4 tabstop=4',
 
