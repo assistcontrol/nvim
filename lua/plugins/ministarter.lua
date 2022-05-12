@@ -1,6 +1,6 @@
 local starter = require('mini.starter')
-local browse  = require('plugins/telescope')  -- FileBrowser()
 local icon    = require('util').icon
+require('plugins/telescope')  -- FileBrowser()
 
 local pwd = vim.fn.fnamemodify(vim.fn.getcwd(), ':~:.')
 if pwd == '' then pwd = '~/' end
