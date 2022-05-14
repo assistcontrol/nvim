@@ -2,6 +2,9 @@
 local map = require('util').map
 
 local function base()
+    -- Leader is space
+    vim.g.mapleader = ' '
+
     -- Mash j and k, or jj/kk in place of ESC
     map('i', 'jk', '<Esc>')
     map('i', 'kj', '<Esc>')
@@ -12,11 +15,6 @@ local function base()
     -- Move normally onto wrapped lines
     map('', 'j', 'gj')
     map('', 'k', 'gk')
-
-    -- ^L mutes search highlighting in normal mode
-    map('n', '<C-l>', ':<C-u>nohlsearch<CR><C-l>')
-    -- ^L corrects last misspelled word in insert mode
-    map('i', '<C-l>', [[<c-g>u<Esc>[s1z=`]a<c-g>u]])
 
     -- ^O opens file browser
     map('', '<C-o>', ':Explore<CR>')
@@ -37,16 +35,11 @@ local function base()
     map('i', '<Tab>',   [[pumvisible() ? "\<C-n>" : "\<Tab>"]],   {expr = true})
     map('i', '<S-Tab>', [[pumvisible() ? "\<C-n>" : "\<S-Tab>"]], {expr = true})
 
-    -- Alt+arrow navigates windows
-    map('n', '<A-Up>',    ':wincmd k<CR>')
-    map('n', '<A-Down>',  ':wincmd j<CR>')
-    map('n', '<A-Left>',  ':wincmd h<CR>')
-    map('n', '<A-Right>', ':wincmd l<CR>')
-    -- So does ^HJKL
-    map('n', '<C-K>', ':wincmd k<CR>')
-    map('n', '<C-J>', ':wincmd j<CR>')
-    map('n', '<C-H>', ':wincmd h<CR>')
-    map('n', '<C-L>', ':wincmd l<CR>')
+    -- <Leader>+HJKL navigates windows
+    map('n', '<Leader>k', ':wincmd k<CR>')
+    map('n', '<Leader>j', ':wincmd j<CR>')
+    map('n', '<Leader>h', ':wincmd h<CR>')
+    map('n', '<Leader>l', ':wincmd l<CR>')
 end
 
 local function gitsigns(bufnr)
