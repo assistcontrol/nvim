@@ -41,19 +41,19 @@ end
 
 local function gitsigns(bufnr)
     local opts = {buffer = bufnr}
-    map('n', '[c', [[:lua require('gitsigns').prev_hunk()<CR>]], opts)
-    map('n', ']c', [[:lua require('gitsigns').next_hunk()<CR>]], opts)
+    map('n', '[c', function() require('gitsigns').prev_hunk() end, opts)
+    map('n', ']c', function() require('gitsigns').next_hunk() end, opts)
 end
 
 local function telescope()
     --  ^\ opens buffer list
-    map('', '<C-\\>', [[:lua require('telescope.builtin').buffers()<CR>]])
+    map('', '<C-\\>', function() require('telescope.builtin').buffers() end)
 
     -- ^P opens fuzzy finder
-    map('', '<C-p>', [[:lua require('util').filebrowser()<CR>]])
+    map('', '<C-p>', function() require('util').filebrowser() end)
 
     -- ^T opens full telescope browser
-    map('', '<C-t>', [[:lua require('telescope.builtin').builtin()<CR>]])
+    map('', '<C-t>', function() require('telescope.builtin').builtin() end)
 end
 
 return {
