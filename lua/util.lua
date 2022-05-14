@@ -19,6 +19,11 @@ local icons = {
 }
 
 return {
+    filebrowser = function(dir)
+        if dir then vim.cmd('lcd ' .. dir) end
+        require('telescope.builtin').find_files()
+    end,
+
     icon = function(ico, str)
         return str and string.format('%s %s', icons[ico], str) or icons[ico]
     end,
@@ -27,5 +32,13 @@ return {
         opts = vim.tbl_deep_extend('force', {noremap = true, silent = true}, opts or {})
 
         vim.keymap.set(mode, keys, cmd, opts)
+    end,
+
+    -- Schedule vim cmds to be run after loading is done
+    -- In particular, this stops plugins from clobbering highlighting
+    on_load = function(cmd)
+        vim.api.nvim_create_autocmd('VimEnter', { callback = function()
+            vim.api.nvim_exec(cmd, false)
+        end })
     end
 }

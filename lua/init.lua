@@ -1,6 +1,7 @@
 vim.cmd('colo elflord')  -- Overridden later
 
+require('colors')
 require('plugins')
 require('general')
-require('mapping')
+require('mapping').base()
 require('filetypes')

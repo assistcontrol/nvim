@@ -28,15 +28,15 @@ local function content_active()
 
     return SL.combine_groups({
         {hl = mode_hl, strings = { mode }},
-        {hl = 'MiniStatuslineDevinfo',  strings = { git }},
+        {hl = 'CustomMedium',  strings = { git }},
         '%<',  -- Things before this are left-justified
-        {hl = 'MiniStatuslineFilename', strings = { P.filename(), P.readonly(), P.modified() }},
+        {hl = 'CustomSoft', strings = { P.filename(), P.readonly(), P.modified() }},
         '%=',  -- Things after this are right-justified
-        {hl = 'MiniStatuslineFilename', strings = { P.filesize() }},
-        {hl = 'MiniStatuslineFilename', strings = { P.lsp_status() }},
-        {hl = 'MiniStatuslineError',    strings = { P.diagErrors() }},
-        {hl = 'MiniStatuslineWarning',  strings = { P.diagWarnings() }},
-        {hl = 'MiniStatuslineFileinfo', strings = { P.encoding(), P.filefmt(), P.filetype() }},
+        {hl = 'CustomMedium', strings = { P.filesize() }},
+        {hl = 'CustomMedium', strings = { P.lsp_status() }},
+        {hl = 'CustomError',    strings = { P.diagErrors() }},
+        {hl = 'CustomWarning',  strings = { P.diagWarnings() }},
+        {hl = 'CustomMedium', strings = { P.encoding(), P.filefmt(), P.filetype() }},
         {hl = mode_hl, strings = { location }}
     })
 end
@@ -50,18 +50,10 @@ SL.setup {
 
 
 -- Set statusline colours
--- Set in a VimEnter callback so the plugin doesn't clobber them
-vim.api.nvim_create_autocmd('VimEnter', { callback = function()
-    vim.api.nvim_exec([[
-        hi MiniStatuslineModeNormal  ctermfg=235 ctermbg=114 guifg=#282C34 guibg=#98C379
-        hi MiniStatuslineModeInsert  ctermfg=235 ctermbg=39  guifg=#282C34 guibg=#61AFEF
-        hi MiniStatuslineModeVisual  ctermfg=235 ctermbg=170 guifg=#282C34 guibg=#C678DD
-        hi MiniStatuslineModeReplace ctermfg=235 ctermbg=38  guifg=#282C34 guibg=#56B6C2
-        hi MiniStatuslineModeCommand ctermfg=235 ctermbg=204 guifg=#282C34 guibg=#E06C75
-        hi MiniStatuslineDevinfo     ctermfg=145 ctermbg=237 guifg=#ABB2BF guibg=#3E4452
-        hi MiniStatuslineError       ctermfg=235 ctermbg=204 guifg=#282C34 guibg=#E06C75
-        hi MiniStatuslineFilename    ctermfg=180 ctermbg=236 guifg=#E5C07B guibg=#2C323C
-        hi MiniStatuslineWarning     ctermfg=235 ctermbg=180 guifg=#282C34 guibg=#E5C07B
-        hi link MiniStatuslineFileinfo MiniStatuslineDevinfo
-    ]], false)
-end })
+require('util').on_load [[
+    hi link MiniStatuslineModeNormal  CustomBright
+    hi link MiniStatuslineModeInsert  CustomModeInsert
+    hi link MiniStatuslineModeVisual  CustomModeVisual
+    hi link MiniStatuslineModeReplace CustomModeReplace
+    hi link MiniStatuslineModeCommand CustomModeCommand
+]]

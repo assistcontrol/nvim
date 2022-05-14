@@ -42,7 +42,7 @@ starter.setup {
         },
 
         { name = item('b', 'folder', pwd),
-          action = string.format([[lua FileBrowser("%s")]], pwd),
+          action = string.format([[lua require('util').filebrowser("%s")]], pwd),
           section = 'Browse'
         },
         { name = item('r', 'recent', 'Recent'),
@@ -50,15 +50,15 @@ starter.setup {
           section = 'Browse'
         },
         { name = item('m', 'folder', 'med_apps'),
-          action = [[lua FileBrowser("~/build/med_apps")]],
+          action = [[lua require('util').filebrowser("~/build/med_apps")]],
           section = 'Browse'
         },
         { name = item('d', 'dotfiles', 'dotfiles'),
-          action = [[lua FileBrowser("~/build/dotfiles")]],
+          action = [[lua require('util').filebrowser("~/build/dotfiles")]],
           section = 'Browse'
         },
         { name = item('v', 'vim', 'vim'),
-          action = [[lua FileBrowser("~/build/vim/lua")]],
+          action = [[lua require('util').filebrowser("~/build/vim/lua")]],
           section = 'Browse'
         }
     }

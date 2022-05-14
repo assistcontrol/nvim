@@ -26,6 +26,9 @@ require('packer').startup({function(use)
         -- Status line
         require('plugins/ministatusline')
 
+        -- Tab line
+        require('plugins/minitabline')
+
         -- Word highlighting
         require('mini.cursorword').setup {}
     end}

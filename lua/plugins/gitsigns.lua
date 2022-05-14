@@ -1,5 +1,4 @@
 local icon = require('util').icon
-local map  = require('util').map
 
 -- foo => hl=GitSignsFoo, numhl=GitSignsFooNr, linehl=GitSignsFooLn
 local function highlightTable(ico, class)
@@ -16,9 +15,5 @@ require('gitsigns').setup {
         changedelete = highlightTable(icon('delete'),  'Change')
     },
     watch_gitdir = {interval = 300, follow_files = true},
-    on_attach = function(bufnr)
-        local opts = {buffer = bufnr, expr = true}
-        map('n', ']c', [[<cmd>lua require('gitsigns.actions').next_hunk()<CR>]], opts)
-        map('n', ']c', [[<cmd>lua require('gitsigns.actions').prev_hunk()<CR>]], opts)
-    end
+    on_attach = require('mapping').gitsigns
 }
