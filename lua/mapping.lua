@@ -8,9 +8,6 @@ local function base()
     -- Mash j and k, or jj/kk in place of ESC
     map('i', 'jk', '<Esc>')
     map('i', 'kj', '<Esc>')
-    -- Sometimes those maps are interpreted as a double-tap
-    map('i', 'jj', '<Esc>')
-    map('i', 'kk', '<Esc>')
 
     -- Move normally onto wrapped lines
     map('', 'j', 'gj')
@@ -56,7 +53,7 @@ local function telescope()
     map('', '<C-p>', [[:lua require('util').filebrowser()<CR>]])
 
     -- ^T opens full telescope browser
-    map('', '<C-t>', ':Telescope<CR>')
+    map('', '<C-t>', [[:lua require('telescope.builtin').builtin()<CR>]])
 end
 
 return {
