@@ -10,18 +10,18 @@ local item = function(key, ico, title)
 end
 
 starter.setup {
+    content_hooks = {
+        starter.gen_hook.adding_bullet(''),
+        starter.gen_hook.aligning('center', 'top')
+    },
     evaluate_single = true,
     query_updaters = [[abcdefghijklmnopqrstuvwxyz0123456789_-.UG]],
+    footer = os.date(),
     header = table.concat({
         '', '',
         [[            NeoVim            ]],
         [[ ──────────────────────────── ]]  -- \u2500
     }, "\n"),
-    footer = os.date(),
-    content_hooks = {
-        starter.gen_hook.adding_bullet(''),
-        starter.gen_hook.aligning('center', 'top')
-    },
     items = {
         { name = item('i', 'new', 'New file'),
           action = 'enew',

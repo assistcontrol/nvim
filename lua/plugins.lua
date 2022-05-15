@@ -117,10 +117,15 @@ end,
 
 -- Packer config
 config = {
+    autoremove = true,  -- Auto-remove disabled/unused plugins
     display = {
         keybindings = {
             toggle_info = 'I',
             diff = '<CR>'
-        }
+        },
+        open_fn = function()
+            local border = require('colors').border
+            return require('packer.util').float({border = border})
+        end
     }
 }})

@@ -1,5 +1,7 @@
 require('telescope').setup {
     defaults = {
+        border = true,
+        borderchars = require('colors').borderchars,
         file_ignore_patterns = {'node_modules'},
         layout_strategy = 'flex',
         mappings = {
@@ -14,3 +16,8 @@ require('telescope').setup {
 }
 
 require('mapping').telescope()
+require('util').on_load [[
+    hi link TelescopeBorder    CustomMediumBright
+    hi link TelescopeNormal    CustomMediumBright
+    hi link TelescopeSelection CustomHighlight
+]]

@@ -1,5 +1,4 @@
 -- General vim configuration
-
 vim.g.c_comment_strings = true
 vim.g.vimsyn_embed = 'l'  -- Syntax highlight embedded lua
 
