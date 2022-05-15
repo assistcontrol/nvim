@@ -3,4 +3,4 @@ require('go').setup {
 }
 
 -- Run gofumpt + goimports on write
-vim.api.nvim_exec([[autocmd BufWritePre *.go :silent! lua require('go.format').goimport()]], false)
+vim.cmd([[autocmd BufWritePre *.go :silent! lua require('go.format').goimport()]])

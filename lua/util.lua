@@ -38,7 +38,7 @@ return {
     -- In particular, this stops plugins from clobbering highlighting
     on_load = function(cmd)
         vim.api.nvim_create_autocmd('VimEnter', { callback = function()
-            vim.api.nvim_exec(cmd, false)
+            vim.cmd(cmd)
         end })
     end
 }
