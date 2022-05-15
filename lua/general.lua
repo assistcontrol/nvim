@@ -24,7 +24,7 @@ vim.opt.visualbell  = true     -- Do not *beep*ing beep
 vim.opt.grepprg    = 'grep --line-number --with-filename $*'
 vim.opt.ignorecase = true   -- Ignore case in search patterns
 vim.opt.smartcase  = true   -- Override 'ignorecase' when pattern has upper-case characters
-vim.opt.wildignore = vim.opt.wildignore + {'*/node_modules/*', '*/.git/*'}
+vim.opt.wildignore:append({'*/node_modules/*', '*/.git/*'})
 
 -- Tabbing/indenting (overridden prn in filetypes.lua)
 vim.opt.expandtab   = true
