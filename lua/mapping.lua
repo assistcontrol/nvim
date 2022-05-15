@@ -8,6 +8,9 @@ local function base()
     -- Mash j and k, or jj/kk in place of ESC
     map('i', 'jk', '<Esc>')
     map('i', 'kj', '<Esc>')
+    -- Sometimes it comes out as jj or kk
+    map('i', 'jj', '<Esc>')
+    map('i', 'kk', '<Esc>')
 
     -- Move normally onto wrapped lines
     map('', 'j', 'gj')
