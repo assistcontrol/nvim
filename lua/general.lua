@@ -58,6 +58,6 @@ vim.g.netrw_list_hide = [[\(^\|\s\s\)\zs\.\S\+]]  -- Hide dotfiles by default
 vim.g.netrw_liststyle = 3      -- Tree-style listing
 
 -- Performance
-vim.opt.timeoutlen  = 250      -- Wait time for map sequences
+vim.opt.timeoutlen  = 500      -- Wait time for map sequences
 vim.opt.ttimeoutlen = 10       -- Wait time for keycode sequences
 vim.opt.updatetime  = 100      -- Low is good for async
