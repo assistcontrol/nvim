@@ -8,10 +8,10 @@ vim.cmd('colo gruvbox-material')
 
 -- Override some colors
 require('util').on_load([[
-    highlight clear      SignColumn
-    highlight Folded     guibg=gray30
-    highlight FoldColumn guibg=gray30 guifg=white
-    highlight NonText    guifg=#4a4a59
-    highlight SpecialKey guifg=#4a4a59
-    highlight Visual     ctermbg=yellow ctermfg=black guibg=yellow guifg=black
+    hi clear      SignColumn
+    hi Folded     guibg=gray30
+    hi FoldColumn guibg=gray30 guifg=white
+    hi NonText    guifg=#4a4a59
+    hi SpecialKey guifg=#4a4a59
+    hi Visual     ctermfg=235 ctermbg=114 guifg=#282C34 guibg=#98C379
 ]])
