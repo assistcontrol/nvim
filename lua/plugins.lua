@@ -109,6 +109,12 @@ require('packer').startup({function(use)
             }
         end
     }
+
+    -- Terminal
+    use {'akinsho/toggleterm.nvim', config = function()
+        require('plugins/toggleterm')
+    end}
+
     -- Tree-sitter
     use {'nvim-treesitter/nvim-treesitter', config = function()
         require('plugins/treesitter')

@@ -60,7 +60,7 @@ local function telescope()
 end
 
 return {
-    gitsigns = gitsigns,
-    setup = base,
+    setup     = base,
+    gitsigns  = gitsigns,
     telescope = telescope
 }
