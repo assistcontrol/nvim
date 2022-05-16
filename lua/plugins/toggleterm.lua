@@ -1,5 +1,5 @@
 require('toggleterm').setup {
-    open_mapping     = [[<C-r>]],
+    open_mapping     = [[<C-x>]],
     insert_mapping   = false, -- Only fire in normal mode
     terminal_mapping = true,  -- Link to open_mapping
 

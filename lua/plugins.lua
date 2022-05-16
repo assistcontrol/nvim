@@ -99,6 +99,9 @@ require('packer').startup({function(use)
     -- Parentheses colors
     use {'p00f/nvim-ts-rainbow'}
 
+    -- Surrounds - Change surround contents
+    use {'wellle/targets.vim'}
+
     -- Tab out
     use {'abecodes/tabout.nvim',
         requires = {'nvim-treesitter/nvim-treesitter'},
