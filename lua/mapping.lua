@@ -48,6 +48,11 @@ local function gitsigns(bufnr)
     map('n', ']c', function() require('gitsigns').next_hunk() end, opts)
 end
 
+local function surround()
+    -- S surrounds visual region
+    map('x', 'S', [[:lua MiniSurround.add('visual')<CR>]])
+end
+
 local function telescope()
     --  ^\ opens buffer list
     map('', '<C-\\>', function() require('telescope.builtin').buffers() end)
@@ -62,5 +67,6 @@ end
 return {
     setup     = base,
     gitsigns  = gitsigns,
+    surround  = surround,
     telescope = telescope
 }

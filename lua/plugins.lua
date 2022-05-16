@@ -26,6 +26,9 @@ require('packer').startup({function(use)
         -- Status line
         require('plugins/ministatusline')
 
+        -- Surrounders (cs, ysW, etc.)
+        require('plugins/minisurround')
+
         -- Tab line
         require('plugins/minitabline')
 
@@ -95,10 +98,6 @@ require('packer').startup({function(use)
 
     -- Parentheses colors
     use {'p00f/nvim-ts-rainbow'}
-
-    -- Surround text (quotes, brackets, etc.), eg: ysW"
-    use {'tpope/vim-surround'}  -- Change surrounders
-    use {'wellle/targets.vim'}  -- Change within surrounders
 
     -- Tab out
     use {'abecodes/tabout.nvim',
