@@ -15,7 +15,7 @@ starter.setup {
         starter.gen_hook.aligning('center', 'top')
     },
     evaluate_single = true,
-    query_updaters = [[abcdefghijklmnopqrstuvwxyz0123456789_-.UG]],
+    query_updaters = [[abcdefghijklmnopqrstuvwxyz0123456789_-.ABCDEFGHIJKLMNOPQRSTUVWXYZ]],
     footer = os.date(),
     header = table.concat({
         '', '',
@@ -38,6 +38,10 @@ starter.setup {
         },
         { name = item('G', 'go', 'Update go binaries'),
           action = 'GoUpdateBinaries',
+          section = 'Update'
+        },
+        { name = item('C', 'reload', 'Compile plugins'),
+          action = 'PackerCompile',
           section = 'Update'
         },
 
