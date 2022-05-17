@@ -16,7 +16,6 @@ require('packer').startup({function(use)
     use {'echasnovski/mini.nvim', config = function()
         -- Buffer deletion
         require('mini.bufremove').setup {}
-        require('mapping').bufremove()
 
         -- Completion
         require('plugins/completion')
@@ -77,7 +76,7 @@ require('packer').startup({function(use)
 
     -- Help
     use {'folke/which-key.nvim', config = function()
-        require('which-key').setup {}
+        require('plugins/whichkey')
     end}
 
     -- Icons

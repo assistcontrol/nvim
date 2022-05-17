@@ -27,12 +27,6 @@ local function base()
     map('n', '[b', ':bprevious<CR>')
     map('n', ']b', ':bnext<CR>')
 
-    -- Leader-b{b/n/p} alternates buffers
-    map('n', '<Leader>bb', ':b#<CR>')
-    map('n', '<Leader>bn', ':bnext<CR>')
-    map('n', '<Leader>bp', ':bprevious<CR>')
-    map('n', '<Leader>b',  ':b#<CR>')
-
     -- Search using proper regexes by default
     map('n', '/', [[/\v]])
     map('n', '?', [[?\v]])
@@ -41,21 +35,35 @@ local function base()
     map('i', '<Tab>',   [[pumvisible() ? "\<C-n>" : "\<Tab>"]],   {expr = true})
     map('i', '<S-Tab>', [[pumvisible() ? "\<C-n>" : "\<S-Tab>"]], {expr = true})
 
-    -- <Leader>+HJKL navigates windows
-    map('n', '<Leader>k', ':wincmd k<CR>')
-    map('n', '<Leader>j', ':wincmd j<CR>')
-    map('n', '<Leader>h', ':wincmd h<CR>')
-    map('n', '<Leader>l', ':wincmd l<CR>')
 end
 
 local function bufremove()
-    map('n', '<Leader>bd', '[[:lua MiniBufremove.delete()<CR>]]')
 end
 
 local function gitsigns(bufnr)
     local opts = {buffer = bufnr}
     map('n', '[c', function() require('gitsigns').prev_hunk() end, opts)
     map('n', ']c', function() require('gitsigns').next_hunk() end, opts)
+end
+
+local function leader()
+    -- In which-key.nvim format
+    return {
+        k = {':wincmd k<CR>', 'window up'},
+        j = {':wincmd j<CR>', 'window down'},
+        h = {':wincmd h<CR>', 'window left'},
+        l = {':wincmd l<CR>', 'window right'},
+
+        n  = {':b#<CR>', 'alternate'},
+
+        b = {
+            name = '+buffer',
+            b = {':b#<CR>',                             'alternate'},
+            d = {'[[:lua MiniBufremove.delete()<CR>]]', 'delete'},
+            n = {':bnext<CR>',                          'next'},
+            p = {':bprevious<CR>',                      'previous'},
+        }
+    }
 end
 
 local function surround()
@@ -78,6 +86,7 @@ return {
     setup     = base,
     bufremove = bufremove,
     gitsigns  = gitsigns,
+    leader    = leader,
     surround  = surround,
     telescope = telescope
 }
