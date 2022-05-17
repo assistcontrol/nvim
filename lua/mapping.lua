@@ -27,6 +27,12 @@ local function base()
     map('n', '[b', ':bprevious<CR>')
     map('n', ']b', ':bnext<CR>')
 
+    -- Leader-b{b/n/p} alternates buffers
+    map('n', '<Leader>bb', ':b#<CR>')
+    map('n', '<Leader>bn', ':bnext<CR>')
+    map('n', '<Leader>bp', ':bprevious<CR>')
+    map('n', '<Leader>b',  ':b#<CR>')
+
     -- Search using proper regexes by default
     map('n', '/', [[/\v]])
     map('n', '?', [[?\v]])
@@ -40,6 +46,10 @@ local function base()
     map('n', '<Leader>j', ':wincmd j<CR>')
     map('n', '<Leader>h', ':wincmd h<CR>')
     map('n', '<Leader>l', ':wincmd l<CR>')
+end
+
+local function bufremove()
+    map('n', '<Leader>bd', '[[:lua MiniBufremove.delete()<CR>]]')
 end
 
 local function gitsigns(bufnr)
@@ -66,6 +76,7 @@ end
 
 return {
     setup     = base,
+    bufremove = bufremove,
     gitsigns  = gitsigns,
     surround  = surround,
     telescope = telescope

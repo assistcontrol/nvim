@@ -14,6 +14,10 @@ require('packer').startup({function(use)
 
     -- mini.nvim package
     use {'echasnovski/mini.nvim', config = function()
+        -- Buffer deletion
+        require('mini.bufremove').setup {}
+        require('mapping').bufremove()
+
         -- Completion
         require('plugins/completion')
 
@@ -71,6 +75,11 @@ require('packer').startup({function(use)
         end
     }
 
+    -- Help
+    use {'folke/which-key.nvim', config = function()
+        require('which-key').setup {}
+    end}
+
     -- Icons
     use {'kyazdani42/nvim-web-devicons', config = function()
         require('nvim-web-devicons').setup {default = true}
@@ -86,7 +95,7 @@ require('packer').startup({function(use)
         }
     end}
 
-    -- Loop closure (automatic brace/braket closure)
+    -- Loop closure (automatic brace/bracket closure)
     use {'windwp/nvim-autopairs', config = function()
         require('plugins/autopairs')
     end}
