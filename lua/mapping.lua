@@ -16,9 +16,6 @@ local function base()
     map('', 'j', 'gj')
     map('', 'k', 'gk')
 
-    -- ^O opens file browser
-    map('', '<C-o>', ':Explore<CR>')
-
     -- ]t/[t jumps tabs
     map('n', '[t', ':tabprevious<CR>')
     map('n', ']t', ':tabnext<CR>')
@@ -37,9 +34,6 @@ local function base()
 
 end
 
-local function bufremove()
-end
-
 local function gitsigns(bufnr)
     local opts = {buffer = bufnr}
     map('n', '[c', function() require('gitsigns').prev_hunk() end, opts)
@@ -54,14 +48,37 @@ local function leader()
         h = {':wincmd h<CR>', 'window left'},
         l = {':wincmd l<CR>', 'window right'},
 
-        n  = {':b#<CR>', 'alternate'},
+        ['<leader>']  = {':b#<CR>', 'alternate'},
+        z = {[[:lua require('mini.misc').zoom()<CR>]], 'zoom'},
 
         b = {
             name = '+buffer',
-            b = {':b#<CR>',                             'alternate'},
-            d = {'[[:lua MiniBufremove.delete()<CR>]]', 'delete'},
-            n = {':bnext<CR>',                          'next'},
-            p = {':bprevious<CR>',                      'previous'},
+            b = {[[:Telescope buffers<CR>]],          'list'},
+            d = {[[:lua MiniBufremove.delete()<CR>]], 'delete'},
+            n = {':bnext<CR>',                        'next'},
+            p = {':bprevious<CR>',                    'previous'},
+        },
+
+        d = {
+            name = '+code diagnostics',
+            n = {[[:lua vim.diagnostic.goto_next()<CR>]], 'next'},
+            p = {[[:lua vim.diagnostic.goto_prev()<CR>]], 'previous'},
+        },
+
+        f = {
+            name = '+find',
+            b = {[[:Telescope buffers<CR>]],     'buffers'},
+            d = {[[:Telescope diagnostics<CR>]], 'diagnostics'},
+            e = {':Explore<CR>',                 'explorer'},
+            t = {[[:Telescope<CR>]],             'telescope'},
+            f = {[[:lua require('util').filebrowser()<CR>]], 'files'}
+        },
+
+        m = {
+            -- alias mm='make -j$(sysctl -n hw.ncpu)'
+            name = '+make',
+            m = {[[:TermExec cmd="mm"<CR>]],      'all'},
+            t = {[[:TermExec cmd="mm test"<CR>]], 'test'}
         }
     }
 end
@@ -71,22 +88,9 @@ local function surround()
     map('x', 'S', [[:lua MiniSurround.add('visual')<CR>]])
 end
 
-local function telescope()
-    --  ^\ opens buffer list
-    map('', '<C-\\>', function() require('telescope.builtin').buffers() end)
-
-    -- ^P opens fuzzy finder
-    map('', '<C-p>', function() require('util').filebrowser() end)
-
-    -- ^T opens full telescope browser
-    map('', '<C-t>', function() require('telescope.builtin').builtin() end)
-end
-
 return {
     setup     = base,
-    bufremove = bufremove,
     gitsigns  = gitsigns,
     leader    = leader,
-    surround  = surround,
-    telescope = telescope
+    surround  = surround
 }
