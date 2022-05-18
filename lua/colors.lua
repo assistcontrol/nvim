@@ -18,19 +18,20 @@ local colors = {
     }
 }
 
-local function highlight(color_table)
+function AW.highlight(color_table, other_commands)
     local hi = ''
     for group, colordef in pairs(color_table) do
-        hi = hi .. string.format("hi %s %s %s\n", group, colors.fg[colordef[1]], colors.bg[colordef[2]])
+        hi = hi .. string.format("hi %s %s %s\n", group, colors.fg[colordef[1]] or '', colors.bg[colordef[2]] or '')
     end
-    return hi
+    hi = hi .. (other_commands or '')
+    AW.on_load(hi)
 end
 
 return {
     border = 'solid',
     borderchars = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
     setup = function()
-        require('util').on_load(highlight {
+        AW.highlight({
             CustomBright       = {'darkgray',  'green'},
             CustomMediumBright = {'beige',     'mediumgray'},
             CustomMedium       = {'lightgray', 'mediumgray'},
@@ -45,8 +46,8 @@ return {
             CustomWarning      = {'darkgray',  'yellow'},
             CustomBrightError  = {'red',       'green'},
             CustomMediumError  = {'red',       'mediumgray'},
-
-            CustomHighlight    = {'darkgray',  'green'}
-        })
+        }, [[
+            hi link CustomHighlight CustomBright
+        ]])
     end
 }

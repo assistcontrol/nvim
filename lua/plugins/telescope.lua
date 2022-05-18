@@ -24,7 +24,7 @@ require('telescope').setup {
     }
 }
 
-require('util').on_load [[
+AW.on_load [[
     hi link TelescopeBorder    CustomMediumBright
     hi link TelescopeNormal    CustomMediumBright
     hi link TelescopeSelection CustomHighlight

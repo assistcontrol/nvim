@@ -1,5 +1,5 @@
 -- Key mappings
-local map = require('util').map
+local map = AW.map
 
 local function base()
     -- Leader is space
@@ -57,6 +57,7 @@ local function leader()
             d = {[[:lua MiniBufremove.delete()<CR>]], 'delete'},
             n = {':bnext<CR>',                        'next'},
             p = {':bprevious<CR>',                    'previous'},
+            ['<leader>'] = {':bnext<CR>',             'next'},
         },
 
         d = {
@@ -71,7 +72,7 @@ local function leader()
             d = {[[:Telescope diagnostics<CR>]], 'diagnostics'},
             e = {':Explore<CR>',                 'explorer'},
             t = {[[:Telescope<CR>]],             'telescope'},
-            f = {[[:lua require('util').filebrowser()<CR>]], 'files'}
+            f = {[[:lua AW.filebrowser()<CR>]], 'files'}
         },
 
         m = {

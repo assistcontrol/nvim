@@ -7,11 +7,9 @@ vim.o.background = 'dark'
 vim.cmd('colo gruvbox-material')
 
 -- Override some colors
-require('util').on_load([[
-    hi clear      SignColumn
-    hi Folded     guibg=gray30
-    hi FoldColumn guibg=gray30 guifg=white
-    hi NonText    guifg=#4a4a59
-    hi SpecialKey guifg=#4a4a59
-    hi Visual     ctermfg=235 ctermbg=114 guifg=#282C34 guibg=#98C379
+AW.on_load([[
+    hi clear SignColumn   " Make it the same background colour
+    hi! link Folded     CustomMedium
+    hi! link FoldColumn CustomMedium
+    hi! link Visual     CustomHighlight
 ]])

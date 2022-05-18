@@ -19,27 +19,25 @@ local icons = {
     warning  = '',  -- u26A0
 }
 
-return {
-    filebrowser = function(dir)
-        if dir then vim.cmd('lcd ' .. dir) end
-        require('telescope.builtin').find_files()
-    end,
+function AW.filebrowser(dir)
+    if dir then vim.cmd('lcd ' .. dir) end
+    require('telescope.builtin').find_files()
+end
 
-    icon = function(ico, str)
-        return str and string.format('%s %s', icons[ico], str) or icons[ico]
-    end,
+function AW.icon(ico, str)
+    return str and string.format('%s %s', icons[ico], str) or icons[ico]
+end
 
-    map = function(mode, keys, cmd, opts)
-        opts = vim.tbl_deep_extend('force', {noremap = true, silent = true}, opts or {})
+function AW.map(mode, keys, cmd, opts)
+    opts = vim.tbl_deep_extend('force', {noremap = true, silent = true}, opts or {})
 
-        vim.keymap.set(mode, keys, cmd, opts)
-    end,
+    vim.keymap.set(mode, keys, cmd, opts)
+end
 
-    -- Schedule vim cmds to be run after loading is done
-    -- In particular, this stops plugins from clobbering highlighting
-    on_load = function(cmd)
-        vim.api.nvim_create_autocmd('VimEnter', { callback = function()
-            vim.cmd(cmd)
-        end })
-    end
-}
+-- Schedule vim cmds to be run after loading is done
+-- In particular, this stops plugins from clobbering highlighting
+function AW.on_load(cmd)
+    vim.api.nvim_create_autocmd('VimEnter', { callback = function()
+        vim.cmd(cmd)
+    end })
+end
