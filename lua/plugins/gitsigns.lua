@@ -13,5 +13,5 @@ require('gitsigns').setup {
         changedelete = highlightTable(AW.icon('delete'),  'Change')
     },
     watch_gitdir = {interval = 300, follow_files = true},
-    on_attach = require('mapping').gitsigns
+    on_attach = AW.maps.gitsigns
 }

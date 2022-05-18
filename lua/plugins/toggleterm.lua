@@ -5,7 +5,7 @@ require('toggleterm').setup {
 
     direction  = 'float',
     float_opts = {
-        border = require('colors').border,
+        border = AW.ui.border,
         winblend = 0
     },
     highlights = {

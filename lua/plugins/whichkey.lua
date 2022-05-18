@@ -4,4 +4,4 @@ wk.setup {
     show_help = false
 }
 
-wk.register(require('mapping').leader(), {mode = 'n', prefix = '<leader>'})
+wk.register(AW.maps.leader, {mode = 'n', prefix = '<leader>'})

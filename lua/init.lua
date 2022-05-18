@@ -3,8 +3,8 @@ vim.cmd('colo elflord')  -- Overridden later
 AW = {}
 
 require('util')
-require('colors').setup()
+require('colors')
 require('plugins')
 require('general')
-require('mapping').setup()
+require('mapping')
 require('filetypes')

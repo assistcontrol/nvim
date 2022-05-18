@@ -3,7 +3,7 @@ local actions = require('telescope.actions')
 require('telescope').setup {
     defaults = {
         border = true,
-        borderchars = require('colors').borderchars,
+        borderchars = AW.ui.borderchars,
         file_ignore_patterns = {'node_modules'},
         layout_strategy = 'flex',
         mappings = {

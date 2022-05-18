@@ -1,3 +1,8 @@
+AW.ui = {
+    border = 'solid',
+    borderchars = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}
+}
+
 local colors = {
     fg = {
         beige     = [[ctermfg=223 guifg=#D4BE98]],
@@ -18,7 +23,7 @@ local colors = {
     }
 }
 
-function AW.highlight(color_table, other_commands)
+function AW.ui.highlight(color_table, other_commands)
     local hi = ''
     for group, colordef in pairs(color_table) do
         hi = hi .. string.format("hi %s %s %s\n", group, colors.fg[colordef[1]] or '', colors.bg[colordef[2]] or '')
@@ -27,27 +32,22 @@ function AW.highlight(color_table, other_commands)
     AW.on_load(hi)
 end
 
-return {
-    border = 'solid',
-    borderchars = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-    setup = function()
-        AW.highlight({
-            CustomBright       = {'darkgray',  'green'},
-            CustomMediumBright = {'beige',     'mediumgray'},
-            CustomMedium       = {'lightgray', 'mediumgray'},
-            CustomSoft         = {'yellow',    'darkgray'},
+-- Set up highlighting groups that end groups can link to
+AW.ui.highlight({
+    CustomBright       = {'darkgray',  'green'},
+    CustomMediumBright = {'beige',     'mediumgray'},
+    CustomMedium       = {'lightgray', 'mediumgray'},
+    CustomSoft         = {'yellow',    'darkgray'},
 
-            CustomModeInsert   = {'darkgray',  'paleblue'},
-            CustomModeVisual   = {'darkgray',  'purple'},
-            CustomModeReplace  = {'darkgray',  'palegreen'},
-            CustomModeCommand  = {'darkgray',  'red'},
+    CustomModeInsert   = {'darkgray',  'paleblue'},
+    CustomModeVisual   = {'darkgray',  'purple'},
+    CustomModeReplace  = {'darkgray',  'palegreen'},
+    CustomModeCommand  = {'darkgray',  'red'},
 
-            CustomError        = {'darkgray',  'red'},
-            CustomWarning      = {'darkgray',  'yellow'},
-            CustomBrightError  = {'red',       'green'},
-            CustomMediumError  = {'red',       'mediumgray'},
-        }, [[
-            hi link CustomHighlight CustomBright
-        ]])
-    end
-}
+    CustomError        = {'darkgray',  'red'},
+    CustomWarning      = {'darkgray',  'yellow'},
+    CustomBrightError  = {'red',       'green'},
+    CustomMediumError  = {'red',       'mediumgray'},
+}, [[
+    hi link CustomHighlight CustomBright
+]])
