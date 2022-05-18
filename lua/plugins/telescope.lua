@@ -1,3 +1,5 @@
+local actions = require('telescope.actions')
+
 require('telescope').setup {
     defaults = {
         border = true,
@@ -6,7 +8,14 @@ require('telescope').setup {
         layout_strategy = 'flex',
         mappings = {
             i = {
-                ['<C-u>'] = false
+                ['<Tab>']   = actions.move_selection_worse,
+                ['<S-Tab>'] = actions.move_selection_better,
+                ['<Esc>']   = actions.close,
+                ['<C-u>']   = false,  -- Normal ^U behaviour
+                ['<C-h>']   = require('telescope.actions.generate').which_key {
+                    normal_hl = 'TelescopeNormal',
+                    border_hl = 'TelescopeBorder'
+                }
             }
         },
         path_display = function(_, path)  -- remove leading ./
@@ -15,7 +24,6 @@ require('telescope').setup {
     }
 }
 
-require('mapping').telescope()
 require('util').on_load [[
     hi link TelescopeBorder    CustomMediumBright
     hi link TelescopeNormal    CustomMediumBright
