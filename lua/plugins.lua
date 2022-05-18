@@ -140,8 +140,7 @@ config = {
             diff = '<CR>'
         },
         open_fn = function()
-            local border = require('colors').border
-            return require('packer.util').float({border = border})
+            return require('packer.util').float({border = AW.ui.border})
         end
     }
 }})
