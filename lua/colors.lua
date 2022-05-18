@@ -1,25 +1,52 @@
+local colors = {
+    fg = {
+        beige     = [[ctermfg=223 guifg=#D4BE98]],
+        darkgray  = [[ctermfg=235 guifg=#282C34]],
+        lightgray = [[ctermfg=145 guifg=#ABB2BF]],
+        red       = [[ctermfg=204 guifg=#E06C75]],
+        yellow    = [[ctermfg=180 guifg=#E5C07B]]
+    },
+    bg = {
+        darkgray   = [[ctermbg=236 guibg=#2C323C]],
+        green      = [[ctermbg=114 guibg=#98C379]],
+        mediumgray = [[ctermbg=237 guibg=#3E4452]],
+        paleblue   = [[ctermbg=39  guibg=#61AFEF]],
+        palegreen  = [[ctermbg=38  guibg=#56B6C2]],
+        purple     = [[ctermbg=170 guibg=#C678DD]],
+        red        = [[ctermbg=204 guibg=#E06C75]],
+        yellow     = [[ctermbg=180 guibg=#E5C07B]],
+    }
+}
+
+local function highlight(color_table)
+    local hi = ''
+    for group, colordef in pairs(color_table) do
+        hi = hi .. string.format("hi %s %s %s\n", group, colors.fg[colordef[1]], colors.bg[colordef[2]])
+    end
+    return hi
+end
+
 return {
     border = 'solid',
     borderchars = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
     setup = function()
-        -- Define some colour groups that plugins can link to
-        require('util').on_load [[
-            hi CustomBright       ctermfg=235 ctermbg=114 guifg=#282C34 guibg=#98C379
-            hi CustomMediumBright ctermfg=223 ctermbg=237 guifg=#D4BE98 guibg=#3E4452
-            hi CustomMedium       ctermfg=145 ctermbg=237 guifg=#ABB2BF guibg=#3E4452
-            hi CustomSoft         ctermfg=180 ctermbg=236 guifg=#E5C07B guibg=#2C323C
+        require('util').on_load(highlight {
+            CustomBright       = {'darkgray',  'green'},
+            CustomMediumBright = {'beige',     'mediumgray'},
+            CustomMedium       = {'lightgray', 'mediumgray'},
+            CustomSoft         = {'yellow',    'darkgray'},
 
-            hi CustomModeInsert   ctermfg=235 ctermbg=39  guifg=#282C34 guibg=#61AFEF
-            hi CustomModeVisual   ctermfg=235 ctermbg=170 guifg=#282C34 guibg=#C678DD
-            hi CustomModeReplace  ctermfg=235 ctermbg=38  guifg=#282C34 guibg=#56B6C2
-            hi CustomModeCommand  ctermfg=235 ctermbg=204 guifg=#282C34 guibg=#E06C75
+            CustomModeInsert   = {'darkgray',  'paleblue'},
+            CustomModeVisual   = {'darkgray',  'purple'},
+            CustomModeReplace  = {'darkgray',  'palegreen'},
+            CustomModeCommand  = {'darkgray',  'red'},
 
-            hi CustomError        ctermfg=235 ctermbg=204 guifg=#282C34 guibg=#E06C75
-            hi CustomWarning      ctermfg=235 ctermbg=180 guifg=#282C34 guibg=#E5C07B
-            hi CustomBrightError  ctermfg=204 ctermbg=114 guifg=#E06C75 guibg=#98C379
-            hi CustomMediumError  ctermfg=204 ctermbg=237 guifg=#E06C75 guibg=#3E4452
+            CustomError        = {'darkgray',  'red'},
+            CustomWarning      = {'darkgray',  'yellow'},
+            CustomBrightError  = {'red',       'green'},
+            CustomMediumError  = {'red',       'mediumgray'},
 
-            hi link CustomHighlight CustomBright
-        ]]
+            CustomHighlight    = {'darkgray',  'green'}
+        })
     end
 }
