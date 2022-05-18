@@ -33,7 +33,7 @@ starter.setup {
         },
 
         { name = item('U', 'plug', 'Update plugins'),
-          action = 'PackerSync',
+          action = 'TSUpdate | PackerSync',
           section = 'Update'
         },
         { name = item('G', 'go', 'Update go binaries'),
