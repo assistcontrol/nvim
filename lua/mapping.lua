@@ -52,7 +52,7 @@ local function leader()
         z = {[[:lua require('mini.misc').zoom()<CR>]], 'zoom'},
 
         b = {
-            name = '+buffer',
+            name = 'buffer',
             b = {[[:Telescope buffers<CR>]],          'list'},
             d = {[[:lua MiniBufremove.delete()<CR>]], 'delete'},
             n = {':bnext<CR>',                        'next'},
@@ -60,13 +60,13 @@ local function leader()
         },
 
         d = {
-            name = '+code diagnostics',
+            name = 'code dx',
             n = {[[:lua vim.diagnostic.goto_next()<CR>]], 'next'},
             p = {[[:lua vim.diagnostic.goto_prev()<CR>]], 'previous'},
         },
 
         f = {
-            name = '+find',
+            name = 'find',
             b = {[[:Telescope buffers<CR>]],     'buffers'},
             d = {[[:Telescope diagnostics<CR>]], 'diagnostics'},
             e = {':Explore<CR>',                 'explorer'},
@@ -76,7 +76,7 @@ local function leader()
 
         m = {
             -- alias mm='make -j$(sysctl -n hw.ncpu)'
-            name = '+make',
+            name = 'make',
             m = {[[:TermExec cmd="mm"<CR>]],      'all'},
             t = {[[:TermExec cmd="mm test"<CR>]], 'test'}
         }
