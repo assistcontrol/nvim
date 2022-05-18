@@ -1,6 +1,6 @@
 vim.cmd('colo elflord')  -- Overridden later
 
-AW = {}
+_G.AW = {}
 
 require('util')
 require('colors')
