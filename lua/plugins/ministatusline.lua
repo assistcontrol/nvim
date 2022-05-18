@@ -50,7 +50,7 @@ SL.setup {
 
 
 -- Set statusline colours
-AW.on_load [[
+AW.defer [[
     hi link MiniStatuslineModeNormal  CustomBright
     hi link MiniStatuslineModeInsert  CustomModeInsert
     hi link MiniStatuslineModeVisual  CustomModeVisual

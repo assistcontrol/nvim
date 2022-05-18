@@ -36,7 +36,7 @@ end
 
 -- Schedule vim cmds to be run after loading is done
 -- In particular, this stops plugins from clobbering highlighting
-function AW.on_load(cmd)
+function AW.defer(cmd)
     vim.api.nvim_create_autocmd('VimEnter', { callback = function()
         vim.cmd(cmd)
     end })

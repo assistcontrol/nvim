@@ -29,7 +29,7 @@ function AW.ui.highlight(color_table, other_commands)
         hi = hi .. string.format("hi %s %s %s\n", group, colors.fg[colordef[1]] or '', colors.bg[colordef[2]] or '')
     end
     hi = hi .. (other_commands or '')
-    AW.on_load(hi)
+    AW.defer(hi)
 end
 
 -- Set up highlighting groups that end groups can link to
