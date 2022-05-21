@@ -19,6 +19,14 @@ local icons = {
     warning  = '',  -- u26A0
 }
 
+-- Schedule vim cmds to be run after loading is done
+-- In particular, this stops plugins from clobbering highlighting
+function AW.defer(cmd)
+    vim.api.nvim_create_autocmd('VimEnter', { callback = function()
+        vim.cmd(cmd)
+    end })
+end
+
 function AW.filebrowser(dir)
     if dir then vim.cmd('lcd ' .. dir) end
     require('telescope.builtin').find_files()
@@ -34,10 +42,5 @@ function AW.map(mode, keys, cmd, opts)
     vim.keymap.set(mode, keys, cmd, opts)
 end
 
--- Schedule vim cmds to be run after loading is done
--- In particular, this stops plugins from clobbering highlighting
-function AW.defer(cmd)
-    vim.api.nvim_create_autocmd('VimEnter', { callback = function()
-        vim.cmd(cmd)
-    end })
+function AW.update_plugins()
 end
