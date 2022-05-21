@@ -17,21 +17,21 @@ map('i', 'kk', '<Esc>')
 map('', 'j', 'gj')
 map('', 'k', 'gk')
 
--- ]t/[t jumps tabs
-map('n', '[t', ':tabprevious<CR>')
-map('n', ']t', ':tabnext<CR>')
+-- Alt-J/K jumps tabs
+map('n', '<A-j>', ':tabprevious<CR>')
+map('n', '<A-k>', ':tabnext<CR>')
 
--- ]b/[b jumps buffers
-map('n', '[b', ':bprevious<CR>')
-map('n', ']b', ':bnext<CR>')
+-- ^J/^K jumps buffers
+map('n', '<C-j>', ':bnext<CR>')
+map('n', '<C-k>', ':bprevious<CR>')
 
 -- Search using proper regexes by default
 map('n', '/', [[/\v]])
 map('n', '?', [[?\v]])
 
 -- Tab/S-Tab through completion list
-map('i', '<Tab>',   [[pumvisible() ? "\<C-n>" : "\<Tab>"]],   {expr = true})
-map('i', '<S-Tab>', [[pumvisible() ? "\<C-n>" : "\<S-Tab>"]], {expr = true})
+map('i', '<Tab>',   [[pumvisible() ? '<C-n>' : '<Tab>']],   {expr = true})
+map('i', '<S-Tab>', [[pumvisible() ? '<C-n>' : '<S-Tab>']], {expr = true})
 
 -- S surrounds visual region
 map('x', 'S', [[:lua MiniSurround.add('visual')<CR>]])
