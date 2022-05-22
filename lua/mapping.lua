@@ -36,6 +36,14 @@ map('i', '<S-Tab>', [[pumvisible() ? '<C-n>' : '<S-Tab>']], {expr = true})
 -- S surrounds visual region
 map('x', 'S', [[:lua MiniSurround.add('visual')<CR>]])
 
+local has_readline, readline = pcall(require, 'readline')
+if has_readline then
+    map('!', '<C-a>', readline.beginning_of_line)
+    map('!', '<C-e>', readline.end_of_line)
+    map('!', '<C-w>', readline.backward_kill_word)
+    map('!', '<C-k>', readline.kill_line)
+    map('!', '<C-u>', function() readline.end_of_line(); readline.backward_kill_line() end)
+end
 
 AW.maps.leader = {
     -- In which-key.nvim format

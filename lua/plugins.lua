@@ -45,9 +45,7 @@ require('packer').startup({function(use)
     end}
 
     -- Emacs bindings
-    use {'tpope/vim-rsi', config = function()
-        vim.g.rsi_no_meta = true
-    end}
+    use {'linty-org/readline.nvim'}
 
     -- Fuzzy Finder
     use {'nvim-telescope/telescope.nvim',
