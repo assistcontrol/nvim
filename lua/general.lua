@@ -27,6 +27,7 @@ vim.opt.wildignore:append({'*/node_modules/*', '*/.git/*'})
 
 -- Tabbing/indenting (overridden prn in filetypes.lua)
 vim.opt.expandtab   = true
+vim.opt.shiftround  = true     -- Indent to multiple of shiftwidth
 vim.opt.shiftwidth  = 2
 vim.opt.softtabstop = 2
 vim.opt.tabstop     = 2
