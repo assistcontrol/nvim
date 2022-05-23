@@ -11,7 +11,7 @@ end
 starter.setup {
     content_hooks = {
         starter.gen_hook.adding_bullet(''),
-        starter.gen_hook.aligning('center', 'top')
+        starter.gen_hook.aligning('center', 'center')
     },
     evaluate_single = true,
     query_updaters = [[abcdefghijklmnopqrstuvwxyz0123456789_-.ABCDEFGHIJKLMNOPQRSTUVWXYZ]],
@@ -32,7 +32,7 @@ starter.setup {
         },
 
         { name = item('U', 'plug', 'Update plugins'),
-          action = 'TSUpdate | PackerSync',
+          action = 'lua AW.update_plugins()',
           section = 'Update'
         },
         { name = item('G', 'go', 'Update go binaries'),

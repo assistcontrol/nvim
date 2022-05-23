@@ -43,4 +43,6 @@ function AW.map(mode, keys, cmd, opts)
 end
 
 function AW.update_plugins()
+    vim.cmd(':TSUpdate')
+    vim.cmd(':PackerUpdate')
 end
