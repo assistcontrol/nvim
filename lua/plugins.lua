@@ -18,7 +18,7 @@ require('packer').startup({function(use)
         require('mini.bufremove').setup {}
 
         -- Completion
-        require('plugins/completion')
+        require('mini.completion').setup {}
 
         -- Comments (gc[c])
         require('mini.comment').setup {}
