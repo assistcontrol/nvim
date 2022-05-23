@@ -87,9 +87,7 @@ require('packer').startup({function(use)
 
     -- Indent guides
     use {'lukas-reineke/indent-blankline.nvim', config = function()
-        require('indent_blankline').setup {
-            filetype_exclude = {'alpha', 'dashboard', 'startify'}
-        }
+        require('plugins/indentblankline')
     end}
 
     -- Loop closure (automatic brace/bracket closure)
