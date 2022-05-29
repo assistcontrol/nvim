@@ -3,6 +3,7 @@ vim.g.c_comment_strings = true
 vim.g.vimsyn_embed = 'l'  -- Syntax highlight embedded lua
 
 vim.opt.cursorline  = true     -- Highlight current line
+vim.opt.guifont     = 'FiraCode Nerd Font Mono:h12'
 vim.opt.inccommand  = 'split'  -- Show substitutions live in a split
 vim.opt.infercase   = true     -- 'smartcase' for keyword completion
 vim.opt.lazyredraw  = true     -- Don't redraw screen for outputless commands
