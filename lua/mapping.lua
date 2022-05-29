@@ -14,8 +14,8 @@ map('i', 'jj', '<Esc>')
 map('i', 'kk', '<Esc>')
 
 -- Move normally onto wrapped lines
-map('', 'j', 'gj')
-map('', 'k', 'gk')
+map('n', 'j', 'gj')
+map('n', 'k', 'gk')
 
 -- Alt-J/K jumps tabs
 map('n', '<A-j>', ':tabprevious<CR>')
@@ -36,6 +36,10 @@ map('i', '<S-Tab>', [[pumvisible() ? '<C-n>' : '<S-Tab>']], {expr = true})
 -- S surrounds visual region
 map('x', 'S', [[:lua MiniSurround.add('visual')<CR>]])
 
+-- ^\ saves
+map({'i', 'n'}, '<C-\\>', '<cmd>write<CR>')
+
+-- Readline-esque keys for insert and command modes
 local has_readline, readline = pcall(require, 'readline')
 if has_readline then
     map('!', '<C-a>', readline.beginning_of_line)
