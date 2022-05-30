@@ -1,14 +1,14 @@
 local starter = require('mini.starter')
-require('plugins/telescope')  -- FileBrowser()
 
-local pwd = vim.fn.fnamemodify(vim.fn.getcwd(), ':~:.')
-if pwd == '' then pwd = '~/' end
+local H = {}
+H.pwd = vim.fn.fnamemodify(vim.fn.getcwd(), ':~:.')
+if H.pwd == '' then H.pwd = '~/' end
 
-local browse = function(dir)
+H.browse = function(dir)
     return string.format([[lua AW.filebrowser("%s")]], dir)
 end
 
-local item = function(section, key, ico, title, action)
+H.item = function(section, key, ico, title, action)
     return {
         action  = action,
         section = section,
@@ -30,17 +30,17 @@ starter.setup {
         [[ ──────────────────────────── ]]  -- \u2500
     }, "\n"),
     items = {
-        item('Common', 'i', 'new',   'New file',  'enew'),
-        item('Common', 'q', 'close', 'Quit nvim', 'qall'),
+        H.item('Common', 'i', 'new',   'New file',  'enew'),
+        H.item('Common', 'q', 'close', 'Quit nvim', 'qall'),
 
-        item('Update', 'U', 'plug',   'Update plugins',     'lua AW.update_plugins()'),
-        item('Update', 'G', 'go',     'Update go binaries', 'GoUpdateBinaries'),
-        item('Update', 'C', 'reload', 'Compile plugins',    'PackerCompile'),
+        H.item('Update', 'U', 'plug',   'Update plugins',     'lua AW.update_plugins()'),
+        H.item('Update', 'G', 'go',     'Update go binaries', 'GoUpdateBinaries'),
+        H.item('Update', 'C', 'reload', 'Compile plugins',    'PackerCompile'),
 
-        item('Browse', 'b', 'folder',   pwd,        browse(pwd)),
-        item('Browse', 'r', 'recent',   'Recent',   'Telescope oldfiles'),
-        item('Browse', 'm', 'folder',   'med_apps', browse("~/build/med_apps")),
-        item('Browse', 'd', 'dotfiles', 'dotfiles', browse("~/build/dotfiles")),
-        item('Browse', 'v', 'vim',      'vim',      browse("~/build/vim/lua"))
+        H.item('Browse', 'b', 'folder',   H.pwd,      H.browse(H.pwd)),
+        H.item('Browse', 'r', 'recent',   'Recent',   'Telescope oldfiles'),
+        H.item('Browse', 'm', 'folder',   'med_apps', H.browse("~/build/med_apps")),
+        H.item('Browse', 'd', 'dotfiles', 'dotfiles', H.browse("~/build/dotfiles")),
+        H.item('Browse', 'v', 'vim',      'vim',      H.browse("~/build/vim/lua"))
     }
 }

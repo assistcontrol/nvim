@@ -1,26 +1,28 @@
 local devicons = require('nvim-web-devicons')
 
-local function lsp_enabled()
+local M = {}  -- Statusbar functions
+local H = {}  -- Helper functions
+
+H.lsp_enabled = function()
     local attached_client = next(vim.lsp.buf_get_clients()) ~= nil
     local normal_buffer   = vim.bo.buftype == ''
     return attached_client and normal_buffer
 end
 
-local function diagnose(severity, ico)
-    if not lsp_enabled() then return end
+H.diagnose = function(severity, ico)
+    if not H.lsp_enabled() then return end
 
     local count = #vim.diagnostic.get(nil, {severity = severity})
     if count > 0 then return AW.icon(ico, count) end
 end
 
 -- Functions that serve as statusbar components
-local M = {}
 M.diagErrors = function()
-    return diagnose(vim.diagnostic.severity.ERROR, 'error')
+    return H.diagnose(vim.diagnostic.severity.ERROR, 'error')
 end
 
 M.diagWarnings = function()
-    return diagnose(vim.diagnostic.severity.WARNING, 'warning')
+    return H.diagnose(vim.diagnostic.severity.WARNING, 'warning')
 end
 
 M.encoding = function()
@@ -62,7 +64,7 @@ M.filetype = function()
 end
 
 M.lsp_status = function()
-    return lsp_enabled() and AW.icon('lsp')
+    return H.lsp_enabled() and AW.icon('lsp')
 end
 
 M.modified = function()
