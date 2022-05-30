@@ -15,17 +15,26 @@ end
 
 -- Functions that serve as statusbar components
 return {
-    diagErrors = function() return diagnose(vim.diagnostic.severity.ERROR, 'error') end,
+    diagErrors = function()
+        return diagnose(vim.diagnostic.severity.ERROR, 'error')
+    end,
 
-    diagWarnings = function() return diagnose(vim.diagnostic.severity.WARNING, 'warning') end,
+    diagWarnings = function()
+        return diagnose(vim.diagnostic.severity.WARNING, 'warning')
+    end,
 
     encoding = function()
         if vim.bo.fileencoding ~= 'utf-8' then return vim.bo.fileencoding end
     end,
 
-    filefmt  = function() return ({dos = 'CRLF', mac = 'CR'})[vim.bo.fileformat] end,
+    filefmt  = function()
+        -- Return nothing for proper unix formatting
+        return ({dos = 'CRLF', mac = 'CR'})[vim.bo.fileformat]
+    end,
 
-    filename = function() return vim.fn.expand('%:~:.') end,
+    filename = function()
+        return vim.fn.expand('%:~:.')
+    end,
 
     filesize = function()
         local size = vim.fn.getfsize(vim.fn.getreg('%'))
@@ -34,10 +43,14 @@ return {
             return
         elseif size < 1024 then
             return string.format('%dB', size)
-        elseif size < 1048576 then
+        elseif size < 10 * 1024 then
             return string.format('%.2fKB', size / 1024)
+        elseif size < 100 * 1024 then
+            return string.format('%.1fKB', size / 1024)
+        elseif size < 1024 * 1024 then
+            return string.format('%iKB', size / 1024)
         else
-            return string.format('%.2fMB', size / 1048576)
+            return string.format('%.2fMB', size / (1024 * 1024))
         end
     end,
 
@@ -48,9 +61,15 @@ return {
         return #ftype == 0 and fticon or string.format('%s %s', fticon, ftype)
     end,
 
-    lsp_status = function() return lsp_enabled() and AW.icon('lsp') end,
+    lsp_status = function()
+        return lsp_enabled() and AW.icon('lsp')
+    end,
 
-    modified = function() return vim.bo.modified and AW.icon('plus') end,
+    modified = function()
+        return vim.bo.modified and AW.icon('plus')
+    end,
 
-    readonly = function() return vim.bo.readonly and AW.icon('lock') end,
+    readonly = function()
+        return vim.bo.readonly and AW.icon('lock')
+    end,
 }
