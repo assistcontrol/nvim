@@ -4,8 +4,16 @@ require('plugins/telescope')  -- FileBrowser()
 local pwd = vim.fn.fnamemodify(vim.fn.getcwd(), ':~:.')
 if pwd == '' then pwd = '~/' end
 
-local item = function(key, ico, title)
-    return string.format('%s  %s', key, AW.icon(ico, title))
+local browse = function(dir)
+    return string.format([[lua AW.filebrowser("%s")]], dir)
+end
+
+local item = function(section, key, ico, title, action)
+    return {
+        action  = action,
+        section = section,
+        name    = string.format('%s  %s', key, AW.icon(ico, title))
+    }
 end
 
 starter.setup {
@@ -22,47 +30,17 @@ starter.setup {
         [[ ──────────────────────────── ]]  -- \u2500
     }, "\n"),
     items = {
-        { name = item('i', 'new', 'New file'),
-          action = 'enew',
-          section = 'Common'
-        },
-        { name = item('q', 'close', 'Quit nvim'),
-          action = 'qall',
-          section = 'Common'
-        },
+        item('Common', 'i', 'new',   'New file',  'enew'),
+        item('Common', 'q', 'close', 'Quit nvim', 'qall'),
 
-        { name = item('U', 'plug', 'Update plugins'),
-          action = 'lua AW.update_plugins()',
-          section = 'Update'
-        },
-        { name = item('G', 'go', 'Update go binaries'),
-          action = 'GoUpdateBinaries',
-          section = 'Update'
-        },
-        { name = item('C', 'reload', 'Compile plugins'),
-          action = 'PackerCompile',
-          section = 'Update'
-        },
+        item('Update', 'U', 'plug',   'Update plugins',     'lua AW.update_plugins()'),
+        item('Update', 'G', 'go',     'Update go binaries', 'GoUpdateBinaries'),
+        item('Update', 'C', 'reload', 'Compile plugins',    'PackerCompile'),
 
-        { name = item('b', 'folder', pwd),
-          action = string.format([[lua AW.filebrowser("%s")]], pwd),
-          section = 'Browse'
-        },
-        { name = item('r', 'recent', 'Recent'),
-          action = 'Telescope oldfiles',
-          section = 'Browse'
-        },
-        { name = item('m', 'folder', 'med_apps'),
-          action = [[lua AW.filebrowser("~/build/med_apps")]],
-          section = 'Browse'
-        },
-        { name = item('d', 'dotfiles', 'dotfiles'),
-          action = [[lua AW.filebrowser("~/build/dotfiles")]],
-          section = 'Browse'
-        },
-        { name = item('v', 'vim', 'vim'),
-          action = [[lua AW.filebrowser("~/build/vim/lua")]],
-          section = 'Browse'
-        }
+        item('Browse', 'b', 'folder',   pwd,        browse(pwd)),
+        item('Browse', 'r', 'recent',   'Recent',   'Telescope oldfiles'),
+        item('Browse', 'm', 'folder',   'med_apps', browse("~/build/med_apps")),
+        item('Browse', 'd', 'dotfiles', 'dotfiles', browse("~/build/dotfiles")),
+        item('Browse', 'v', 'vim',      'vim',      browse("~/build/vim/lua"))
     }
 }
