@@ -74,6 +74,8 @@ AW.maps.leader = {
         p = {[[:lua vim.diagnostic.goto_prev({float = true})<CR>]], 'previous'},
     },
 
+    e = {[[:lua AW.filebrowser()<CR>]], 'browse'},
+
     f = {
         name = 'find',
         b = {[[:Telescope buffers<CR>]],     'buffers'},
