@@ -4,7 +4,9 @@ _G.AW = {}
 
 require('functions')
 require('colors')
-require('plugins')
 require('general')
-require('mapping')
+require('plugins')
+
 require('filetypes')
+require('mapping')
+require('window')
