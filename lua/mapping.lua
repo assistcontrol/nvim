@@ -70,8 +70,8 @@ AW.maps.leader = {
 
     d = {
         name = 'code dx',
-        n = {[[:lua vim.diagnostic.goto_next()<CR>]], 'next'},
-        p = {[[:lua vim.diagnostic.goto_prev()<CR>]], 'previous'},
+        n = {[[:lua vim.diagnostic.goto_next({float = true})<CR>]], 'next'},
+        p = {[[:lua vim.diagnostic.goto_prev({float = true})<CR>]], 'previous'},
     },
 
     f = {

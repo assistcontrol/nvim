@@ -13,6 +13,7 @@ P.location = function(args)
     return '%l/%L│%2v/%-2{virtcol("$") - 1}│' .. percentString
 end
 
+-- This just uppercases the mode
 P.mode = function(args)
     local mode, mode_hl = SL.section_mode(args or {})
     return string.upper(mode), mode_hl
