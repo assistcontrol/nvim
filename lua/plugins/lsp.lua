@@ -31,14 +31,19 @@ vim.api.nvim_create_autocmd({'CursorHold', 'CursorHoldI'}, {
     end
 })
 
--- Highlight line numbers with LSP messages instead of gutter symbols
-AW.defer [[
-    sign define DiagnosticSignError text= texthl=DiagnosticSignError numhl=CustomError
-    sign define DiagnosticSignWarn  text= texthl=DiagnosticSignWarn  numhl=CustomWarning
-    sign define DiagnosticSignInfo  text= texthl=DiagnosticSignInfo  numhl=CustomMedium
-    sign define DiagnosticSignHint  text= texthl=DiagnosticSignHint  numhl=CustomMedium
-]]
-
+-- Highlight line numbers with LSP messages and set gutter symbols
+vim.fn.sign_define('DiagnosticSignError', {
+    text = AW.icon('errorSm'), texthl = 'DiagnosticSignError', numhl = 'CustomError'
+})
+vim.fn.sign_define('DiagnosticSignWarn', {
+    text = AW.icon('warning'), texthl = 'DiagnosticSignWarn', numhl = 'CustomWarning'
+})
+vim.fn.sign_define('DiagnosticSignInfo', {
+    text = AW.icon('hint'), texthl = 'DiagnosticSignInfo', numhl = 'CustomMedium'
+})
+vim.fn.sign_define('DiagnosticSignHint', {
+    text = AW.icon('hint'), texthl = 'DiagnosticSignHint', numhl = 'CustomMedium'
+})
 
 -- Language servers
 -- Go
