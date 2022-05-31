@@ -19,6 +19,7 @@ vim.opt.splitbelow  = true     -- Open horizontal splits below
 vim.opt.splitright  = true     -- Open vertical splits to the right
 vim.opt.virtualedit = 'block'  -- Able to select nonexistent chars in v-block mode
 vim.opt.visualbell  = true     -- Do not *beep*ing beep
+vim.opt.fillchars:append({eob = ' ', vert = ' '})
 
 -- Searching
 vim.opt.grepprg    = 'grep --line-number --with-filename $*'
