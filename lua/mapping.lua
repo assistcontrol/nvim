@@ -56,9 +56,10 @@ AW.maps.leader = {
     h = {':wincmd h<CR>', 'window left'},
     l = {':wincmd l<CR>', 'window right'},
 
-    ['<leader>']  = {':b#<CR>', 'alternate'},
+    ['<leader>'] = {':b#<CR>',          'alternate'},
     e = {[[:lua AW.filebrowser()<CR>]], 'browse'},
-    w = {':wincmd w<CR>', 'next window'},
+    w = {':wincmd w<CR>',               'next window'},
+    x = {':ToggleTerm<CR>',             'terminal'},
     z = {[[:lua require('mini.misc').zoom()<CR>]], 'zoom'},
 
     b = {
