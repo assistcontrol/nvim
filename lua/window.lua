@@ -1,17 +1,19 @@
 local H = {}
 
-H.DimConfig = {
-    dimmable_buftypes = {'', 'help'},
-    highlight = {
-        active   = 'Normal:CustomActiveWindow',
-        inactive = 'NormalNC:CustomInactiveWindow,EndOfBuffer:CustomInactiveEOB'
-    }
-}
+H.Config = {
+    dim = {
+        dimmable_buftypes = {'', 'help'},  -- '' is for normal buffers
+        highlight = {
+            active   = 'Normal:CustomActiveWindow',
+            inactive = 'NormalNC:CustomInactiveWindow,EndOfBuffer:CustomInactiveEOB'
+        }
+    },
 
-H.ResizeConfig = {
-    ignored_buftypes = {'quickfix', 'terminal'},
-    -- Only activate if at least this big
-    min_size         = {height = 50, width = 12 }
+    resize = {
+        ignored_buftypes = {'quickfix', 'terminal'},
+        min_height = 50,  -- Only activate if at least this big
+        min_width  = 120
+    }
 }
 
 
@@ -19,7 +21,7 @@ H.ResizeConfig = {
 H.is_dimmable = function()
     local cur_buftype = vim.api.nvim_buf_get_option(0, 'buftype')
 
-    for _, buftype in ipairs(H.DimConfig.dimmable_buftypes) do
+    for _, buftype in ipairs(H.Config.dim.dimmable_buftypes) do
         if cur_buftype == buftype then return true end
     end
 end
@@ -35,7 +37,7 @@ H.activate_window = function()
 
     if H.is_dimmable() then
         vim.opt_local.cursorline   = true
-        vim.opt_local.winhighlight = H.DimConfig.highlight.active
+        vim.opt_local.winhighlight = H.Config.dim.highlight.active
     end
 end
 
@@ -44,7 +46,7 @@ H.inactivate_window = function()
         vim.opt_local.cursorline   = false
         vim.opt_local.number       = false
         vim.opt_local.signcolumn   = 'no'
-        vim.opt_local.winhighlight = H.DimConfig.highlight.inactive
+        vim.opt_local.winhighlight = H.Config.dim.highlight.inactive
     end
 end
 
@@ -59,11 +61,11 @@ H.resize_window = function()
     -- Only resize in large windows
     local root_width = vim.api.nvim_get_option('columns')
     local root_height = vim.api.nvim_get_option('lines')
-    if root_width < H.ResizeConfig.min_size.width or root_height < H.ResizeConfig.min_size.height then return end
+    if root_width < H.Config.resize.min_width or root_height < H.Config.resize.min_height then return end
 
     -- Don't resize floating and special windows
     if is_floating_window then return end
-    for _, buf in ipairs(H.ResizeConfig.ignored_buftypes) do
+    for _, buf in ipairs(H.Config.resize.ignored_buftypes) do
         if buftype == buf then return end
     end
 
