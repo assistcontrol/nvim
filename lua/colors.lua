@@ -1,16 +1,18 @@
 AW.ui = {
     border = 'solid',
-    borderchars = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}
+    borderchars = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+    winblend = 6
 }
 
 local colors = {
     fg = {
-        beige     = [[ctermfg=223 guifg=#D4BE98]],
-        darkgray  = [[ctermfg=235 guifg=#282C34]],
-        lightgray = [[ctermfg=145 guifg=#ABB2BF]],
-        red       = [[ctermfg=204 guifg=#E06C75]],
-        softgray  = [[ctermfg=236 guifg=#32302F]],
-        yellow    = [[ctermfg=180 guifg=#E5C07B]]
+        beige      = [[ctermfg=223 guifg=#D4BE98]],
+        darkgray   = [[ctermfg=235 guifg=#282C34]],
+        lightgray  = [[ctermfg=145 guifg=#ABB2BF]],
+        mediumgray = [[ctermfg=237 guifg=#3E4452]],
+        red        = [[ctermfg=204 guifg=#E06C75]],
+        softgray   = [[ctermfg=237 guifg=#3C3836]],
+        yellow     = [[ctermfg=180 guifg=#E5C07B]]
     },
     bg = {
         darkgray   = [[ctermbg=236 guibg=#2C323C]],
@@ -21,7 +23,7 @@ local colors = {
         palegreen  = [[ctermbg=38  guibg=#56B6C2]],
         purple     = [[ctermbg=170 guibg=#C678DD]],
         red        = [[ctermbg=204 guibg=#E06C75]],
-        softgray   = [[ctermbg=236 guibg=#32302F]],
+        softgray   = [[ctermbg=237 guibg=#3C3836]],
         yellow     = [[ctermbg=180 guibg=#E5C07B]],
     }
 }
@@ -52,9 +54,11 @@ AW.ui.highlight({
     CustomBrightError  = {'red',       'green'},
     CustomMediumError  = {'red',       'mediumgray'},
 
-    CustomActiveWindow   = {'',         'normal'},
-    CustomInactiveWindow = {'',         'softgray'},
-    CustomInactiveBlank  = {'softgray', 'softgray'}
+    CustomActiveWindow   = {'',        'normal'},
+    CustomInactiveWindow = {'',        'softgray'},
+
+    CustomMediumBrightBlank = {'mediumgray', 'mediumgray'},
+    CustomInactiveBlank     = {'softgray',   'softgray'}
 }, [[
     hi link CustomHighlight CustomBright
 ]])

@@ -4,7 +4,7 @@ local H = {}
 
 H.Config = {
     dim = {
-        dimmable_buftypes = {'', 'help'},  -- '' is for normal buffers
+        cursor_buftypes = {'', 'help', 'quickfix'},  -- Show cursor in these. '' is for normal buffers
         highlight = {
             active   = 'Normal:CustomActiveWindow',
             inactive = 'NormalNC:CustomInactiveWindow,EndOfBuffer:CustomInactiveBlank'
@@ -35,35 +35,27 @@ vim.api.nvim_create_autocmd('WinLeave', {
 
 
 -- Dim inactive windows
-H.is_dimmable = function()
+H.show_cursor = function()
     local cur_buftype = vim.api.nvim_buf_get_option(0, 'buftype')
 
-    for _, buftype in ipairs(H.Config.dim.dimmable_buftypes) do
+    for _, buftype in ipairs(H.Config.dim.cursor_buftypes) do
         if cur_buftype == buftype then return true end
     end
 end
 
 H.activate_window = function()
-    local cur_buftype = vim.api.nvim_buf_get_option(0, 'buftype')
+    vim.opt_local.winhighlight = H.Config.dim.highlight.active
 
-    -- Only monkey with numbers in normal buffers
-    if cur_buftype == '' then
-        vim.opt_local.number       = true
-        vim.opt_local.signcolumn   = 'auto'
-    end
-
-    if H.is_dimmable() then
+    if H.show_cursor() then
         vim.opt_local.cursorline   = true
-        vim.opt_local.winhighlight = H.Config.dim.highlight.active
     end
 end
 
 H.inactivate_window = function()
-    if H.is_dimmable() then
+    vim.opt_local.winhighlight = H.Config.dim.highlight.inactive
+
+    if H.show_cursor() then
         vim.opt_local.cursorline   = false
-        vim.opt_local.number       = false
-        vim.opt_local.signcolumn   = 'no'
-        vim.opt_local.winhighlight = H.Config.dim.highlight.inactive
     end
 end
 

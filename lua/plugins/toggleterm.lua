@@ -6,14 +6,14 @@ require('toggleterm').setup {
     direction  = 'float',
     float_opts = {
         border = AW.ui.border,
-        winblend = 0
+        winblend = AW.ui.winblend
     },
     highlights = {
         FloatBorder = {
-            link = 'CustomMediumBright'
+            -- link = 'CustomMediumBright'
         },
         NormalFloat = {
-            link = 'CustomMediumBright'
+            -- link = 'CustomMediumBright'
         }
     }
 }

@@ -13,19 +13,18 @@ require('telescope').setup {
                 ['<Esc>']   = actions.close,
                 ['<C-u>']   = false,  -- Normal ^U behaviour
                 ['<C-h>']   = require('telescope.actions.generate').which_key {
-                    normal_hl = 'TelescopeNormal',
-                    border_hl = 'TelescopeBorder'
+                    normal_hl = 'CustomMediumBright',
+                    border_hl = 'CustomMediumBrightBlank'
                 }
             }
         },
         path_display = function(_, path)  -- remove leading ./
             return path:gsub('^./', '')
         end,
+        winblend = AW.ui.winblend
     }
 }
 
 AW.defer [[
-    hi link TelescopeBorder    CustomMediumBright
-    hi link TelescopeNormal    CustomMediumBright
     hi link TelescopeSelection CustomHighlight
 ]]
