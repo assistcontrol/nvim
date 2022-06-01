@@ -9,7 +9,7 @@ local colors = {
         darkgray  = [[ctermfg=235 guifg=#282C34]],
         lightgray = [[ctermfg=145 guifg=#ABB2BF]],
         red       = [[ctermfg=204 guifg=#E06C75]],
-        softgray  = [[ctermfg=240 guifg=#504945]],
+        softgray  = [[ctermfg=236 guifg=#32302F]],
         yellow    = [[ctermfg=180 guifg=#E5C07B]]
     },
     bg = {
@@ -21,7 +21,7 @@ local colors = {
         palegreen  = [[ctermbg=38  guibg=#56B6C2]],
         purple     = [[ctermbg=170 guibg=#C678DD]],
         red        = [[ctermbg=204 guibg=#E06C75]],
-        softgray   = [[ctermbg=240 guibg=#504945]],
+        softgray   = [[ctermbg=236 guibg=#32302F]],
         yellow     = [[ctermbg=180 guibg=#E5C07B]],
     }
 }
@@ -54,7 +54,7 @@ AW.ui.highlight({
 
     CustomActiveWindow   = {'',         'normal'},
     CustomInactiveWindow = {'',         'softgray'},
-    CustomInactiveEOB    = {'softgray', 'softgray'}
+    CustomInactiveBlank  = {'softgray', 'softgray'}
 }, [[
     hi link CustomHighlight CustomBright
 ]])

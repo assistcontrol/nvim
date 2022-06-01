@@ -1,3 +1,5 @@
+-- Automatically resize the active window by the golden ratio
+-- Dim inactive windows
 local H = {}
 
 H.Config = {
@@ -5,7 +7,7 @@ H.Config = {
         dimmable_buftypes = {'', 'help'},  -- '' is for normal buffers
         highlight = {
             active   = 'Normal:CustomActiveWindow',
-            inactive = 'NormalNC:CustomInactiveWindow,EndOfBuffer:CustomInactiveEOB'
+            inactive = 'NormalNC:CustomInactiveWindow,EndOfBuffer:CustomInactiveBlank'
         }
     },
 
@@ -15,6 +17,21 @@ H.Config = {
         min_width  = 120
     }
 }
+
+
+-- Window autocommands
+vim.api.nvim_create_autocmd('WinEnter', {
+    callback = function()
+        H.activate_window()
+        H.resize_window()
+    end
+})
+
+vim.api.nvim_create_autocmd('WinLeave', {
+    callback = function()
+        H.inactivate_window()
+    end
+})
 
 
 -- Dim inactive windows
@@ -83,18 +100,3 @@ H.resize_window = function()
         vim.api.nvim_win_set_height(0, golden_height)
     end
 end
-
-
--- Set up autocommands
-vim.api.nvim_create_autocmd('WinEnter', {
-    callback = function()
-        H.activate_window()
-        H.resize_window()
-    end
-})
-
-vim.api.nvim_create_autocmd('WinLeave', {
-    callback = function()
-        H.inactivate_window()
-    end
-})
