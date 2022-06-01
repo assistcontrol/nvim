@@ -57,6 +57,8 @@ AW.maps.leader = {
     l = {':wincmd l<CR>', 'window right'},
 
     ['<leader>']  = {':b#<CR>', 'alternate'},
+    e = {[[:lua AW.filebrowser()<CR>]], 'browse'},
+    w = {':wincmd w<CR>', 'next window'},
     z = {[[:lua require('mini.misc').zoom()<CR>]], 'zoom'},
 
     b = {
@@ -73,8 +75,6 @@ AW.maps.leader = {
         n = {[[:lua vim.diagnostic.goto_next({float = true})<CR>]], 'next'},
         p = {[[:lua vim.diagnostic.goto_prev({float = true})<CR>]], 'previous'},
     },
-
-    e = {[[:lua AW.filebrowser()<CR>]], 'browse'},
 
     f = {
         name = 'find',
