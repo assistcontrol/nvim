@@ -82,6 +82,7 @@ AW.maps.leader = {
         b = {[[:Telescope buffers<CR>]],     'buffers'},
         d = {[[:Telescope diagnostics<CR>]], 'diagnostics'},
         e = {':Explore<CR>',                 'explorer'},
+        g = {[[:Telescope live_grep<CR>]],   'grep'},
         t = {[[:Telescope<CR>]],             'telescope'},
         f = {[[:lua AW.filebrowser()<CR>]], 'files'}
     },
