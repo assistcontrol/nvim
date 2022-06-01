@@ -48,3 +48,14 @@ function AW.update_plugins()
     vim.cmd(':TSUpdate')
     vim.cmd(':PackerUpdate')
 end
+
+-- Flash yanked lines
+vim.api.nvim_create_autocmd('TextYankPost', {
+    callback = function()
+        vim.highlight.on_yank {
+            higroup   = 'IncSearch',
+            on_visual = false,
+            timeout   = 150
+        }
+    end
+})
