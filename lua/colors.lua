@@ -1,7 +1,7 @@
 AW.ui = {
     border = 'solid',
     borderchars = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-    winblend = 6
+    winblend = vim.fn.has('gui_running') > 0 and 8 or 0
 }
 
 local colors = {
@@ -60,5 +60,7 @@ AW.ui.highlight({
     CustomMediumBrightBlank = {'mediumgray', 'mediumgray'},
     CustomInactiveBlank     = {'softgray',   'softgray'}
 }, [[
-    hi link CustomHighlight CustomBright
+    hi  link CustomHighlight CustomBright
+    hi! link NormalFloat Normal
+    hi! link FloatBorder Normal
 ]])
