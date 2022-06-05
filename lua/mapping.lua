@@ -92,6 +92,15 @@ AW.maps.leader = {
         name = 'make',
         m = {[[:TermExec cmd="mm"<CR>]],      'all'},
         t = {[[:TermExec cmd="mm test"<CR>]], 'test'}
+    },
+
+    o = {
+        name = 'fold',
+        c = {'zc', 'close'},
+        C = {'zM', 'close all'},
+        o = {'zo', 'open'},
+        O = {'zR', 'open all'},
+        ['<leader>'] = {'za', 'toggle'}
     }
 }
 
