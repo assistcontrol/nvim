@@ -125,6 +125,9 @@ require('packer').startup({function(use)
     use {'nvim-treesitter/nvim-treesitter', config = function()
         require('plugins/treesitter')
     end}
+    use {'nvim-treesitter/nvim-treesitter-textobjects',
+        requires = {'nvim-treesitter/nvim-treesitter'}
+    }
 end,
 
 -- Packer config
