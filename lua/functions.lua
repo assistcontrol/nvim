@@ -8,7 +8,6 @@ local icons = {
     folder   = '',  -- uF74A
     go       = '',  -- uE626
     hint     = '',  -- uF835
-    horizbar = '─',  -- u2500
     lock     = '',  -- uF023
     lsp      = '',  -- uF04B
     new      = '',  -- uF15B
@@ -16,9 +15,15 @@ local icons = {
     plus     = '',  -- uF44D
     recent   = 'ﮫ',  -- uFBAB
     reload   = '',  -- uF0E2
-    vertbar  = '│',  -- u2502
     vim      = '',  -- uE62B
     warning  = '',  -- u26A0
+
+    -- Box-drawing
+    horizlow  = '▁',  -- u2581
+    horizmid  = '─',  -- u2500
+    horizhigh = '▔',  -- u2594
+    thickvert = '▌',  -- u258C
+    vertbar   = '│',  -- u2502
 }
 
 -- Schedule vim cmds to be run after loading is done
