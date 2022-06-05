@@ -4,61 +4,61 @@ AW.ui = {
     winblend = vim.fn.has('gui_running') > 0 and 8 or 0
 }
 
-local colors = {
-    fg = {
-        beige      = [[ctermfg=223 guifg=#D4BE98]],
-        darkgray   = [[ctermfg=235 guifg=#282C34]],
-        lightgray  = [[ctermfg=145 guifg=#ABB2BF]],
-        mediumgray = [[ctermfg=237 guifg=#3E4452]],
-        red        = [[ctermfg=204 guifg=#E06C75]],
-        softgray   = [[ctermfg=237 guifg=#3C3836]],
-        yellow     = [[ctermfg=180 guifg=#E5C07B]]
-    },
-    bg = {
-        darkgray   = [[ctermbg=236 guibg=#2C323C]],
-        green      = [[ctermbg=114 guibg=#98C379]],
-        mediumgray = [[ctermbg=237 guibg=#3E4452]],
-        normal     = [[ctermbg=235 guibg=#282828]],
-        paleblue   = [[ctermbg=39  guibg=#61AFEF]],
-        palegreen  = [[ctermbg=38  guibg=#56B6C2]],
-        purple     = [[ctermbg=170 guibg=#C678DD]],
-        red        = [[ctermbg=204 guibg=#E06C75]],
-        softgray   = [[ctermbg=237 guibg=#3C3836]],
-        yellow     = [[ctermbg=180 guibg=#E5C07B]],
-    }
+local C = {
+        beige      = {223, '#D4BE98'},
+        darkergray = {235, '#282C34'},
+        darkgray   = {236, '#2C323C'},
+        green      = {114, '#98C379'},
+        lightgray  = {145, '#ABB2BF'},
+        mediumgray = {237, '#3E4452'},
+        normalback = {235, '#282828'},
+        paleblue   = {39,  '#61AFEF'},
+        palegreen  = {38,  '#56B6C2'},
+        purple     = {170, '#C678DD'},
+        red        = {204, '#E06C75'},
+        softgray   = {237, '#3C3836'},
+        yellow     = {180, '#E5C07B'},
 }
 
-function AW.ui.highlight(color_table, other_commands)
+local function bg(color)
+    return string.format('ctermbg=%s guibg=%s', color[1], color[2])
+end
+
+local function fg(color)
+    return string.format('ctermfg=%s guifg=%s', color[1], color[2])
+end
+
+local function highlight(color_table, other_commands)
     local hi = ''
-    for group, colordef in pairs(color_table) do
-        hi = hi .. string.format("hi %s %s %s\n", group, colors.fg[colordef[1]] or '', colors.bg[colordef[2]] or '')
+    for group, colors in pairs(color_table) do
+        hi = hi .. string.format("hi %s %s %s\n", group, colors[1] or '', colors[2] or '')
     end
     hi = hi .. (other_commands or '')
     AW.defer(hi)
 end
 
 -- Set up highlighting groups that end groups can link to
-AW.ui.highlight({
-    CustomBright       = {'darkgray',  'green'},
-    CustomMediumBright = {'beige',     'mediumgray'},
-    CustomMedium       = {'lightgray', 'mediumgray'},
-    CustomSoft         = {'yellow',    'darkgray'},
+highlight({
+    CustomBright       = {fg(C.darkergray),  bg(C.green)},
+    CustomMediumBright = {fg(C.beige),       bg(C.mediumgray)},
+    CustomMedium       = {fg(C.lightgray),   bg(C.mediumgray)},
+    CustomSoft         = {fg(C.yellow),      bg(C.darkgray)},
 
-    CustomModeInsert   = {'darkgray',  'paleblue'},
-    CustomModeVisual   = {'darkgray',  'purple'},
-    CustomModeReplace  = {'darkgray',  'palegreen'},
-    CustomModeCommand  = {'darkgray',  'red'},
+    CustomModeInsert   = {fg(C.darkergray),  bg(C.paleblue)},
+    CustomModeVisual   = {fg(C.darkergray),  bg(C.purple)},
+    CustomModeReplace  = {fg(C.darkergray),  bg(C.palegreen)},
+    CustomModeCommand  = {fg(C.darkergray),  bg(C.red)},
 
-    CustomError        = {'darkgray',  'red'},
-    CustomWarning      = {'darkgray',  'yellow'},
-    CustomBrightError  = {'red',       'green'},
-    CustomMediumError  = {'red',       'mediumgray'},
+    CustomError        = {fg(C.darkergray),  bg(C.red)},
+    CustomWarning      = {fg(C.darkergray),  bg(C.yellow)},
+    CustomBrightError  = {fg(C.red),         bg(C.green)},
+    CustomMediumError  = {fg(C.red),         bg(C.mediumgray)},
 
-    CustomActiveWindow   = {'',        'normal'},
-    CustomInactiveWindow = {'',        'softgray'},
+    CustomActiveWindow      = {'',               bg(C.normalback)},
+    CustomInactiveWindow    = {'',               bg(C.softgray)},
 
-    CustomMediumBrightBlank = {'mediumgray', 'mediumgray'},
-    CustomInactiveBlank     = {'softgray',   'softgray'}
+    CustomMediumBrightBlank = {fg(C.mediumgray), bg(C.mediumgray)},
+    CustomInactiveBlank     = {fg(C.softgray),   bg(C.softgray)}
 }, [[
     hi  link CustomHighlight CustomBright
     hi! link NormalFloat Normal
