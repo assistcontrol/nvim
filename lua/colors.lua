@@ -21,17 +21,17 @@ local C = {
 }
 
 local function bg(color)
-    return string.format('ctermbg=%s guibg=%s', color[1], color[2])
+    return string.format('ctermbg=%s guibg=%s', color[1] or '', color[2] or '')
 end
 
 local function fg(color)
-    return string.format('ctermfg=%s guifg=%s', color[1], color[2])
+    return string.format('ctermfg=%s guifg=%s', color[1] or '', color[2] or '')
 end
 
 local function highlight(color_table, other_commands)
     local hi = ''
     for group, colors in pairs(color_table) do
-        hi = hi .. string.format("hi %s %s %s\n", group, colors[1] or '', colors[2] or '')
+        hi = hi .. string.format("hi %s %s %s\n", group, colors[1], colors[2])
     end
     hi = hi .. (other_commands or '')
     AW.defer(hi)
@@ -58,7 +58,7 @@ highlight({
     CustomInactiveWindow    = {'',               bg(C.softgray)},
 
     CustomMediumBrightBlank = {fg(C.mediumgray), bg(C.mediumgray)},
-    CustomInactiveBlank     = {fg(C.softgray),   bg(C.softgray)}
+    CustomInactiveBlank     = {fg(C.softgray),   bg(C.softgray)},
 }, [[
     hi  link CustomHighlight CustomBright
     hi! link NormalFloat Normal
