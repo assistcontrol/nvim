@@ -1,16 +1,18 @@
 local SL = require('mini.statusline')
 local P  = require('plugins/statuslineparts')
 
+local H = {}
+
 -- More statusbar components
 P.location = function(args)
     if SL.is_truncated(args.trunc_width) then
-        return '%l│%2v'
+        return '%l %v'
     end
 
     local percent = math.floor(vim.fn.line('.') * 100 / vim.fn.line('$'))
     local percentString = string.format('%d%%%%', percent)
 
-    return '%l/%L│%2v/%-2{virtcol("$") - 1}│' .. percentString
+    return '%l/%L %v/%-2{virtcol("$") - 1} ' .. percentString
 end
 
 -- This just uppercases the mode
@@ -20,7 +22,7 @@ P.mode = function(args)
 end
 
 -- This function is called for every statusline refresh
-local function content_active()
+H.active = function()
     local mode, mode_hl = P.mode({trunc_width = 50 })
 
     return SL.combine_groups({
@@ -38,10 +40,19 @@ local function content_active()
     })
 end
 
+H.inactive = function()
+    return SL.combine_groups({
+        {hl = 'MiniStatuslineInactive', strings = {
+            P.fileicon(), '%F', P.readonly(),
+        }}
+    })
+end
+
 -- Instantiate the statusline
 SL.setup {
     content = {
-        active = content_active
+        active   = H.active,
+        inactive = H.inactive,
     }
 }
 

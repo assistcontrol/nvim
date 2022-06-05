@@ -34,6 +34,10 @@ M.filefmt  = function()
     return ({dos = 'CRLF', mac = 'CR'})[vim.bo.fileformat]
 end
 
+M.fileicon = function()
+    return devicons.get_icon(vim.fn.expand('%'))
+end
+
 M.filename = function()
     return vim.fn.expand('%:~:.')
 end
@@ -57,7 +61,7 @@ M.filesize = function()
 end
 
 M.filetype = function()
-    local fticon = devicons.get_icon(vim.fn.expand('%'))
+    local fticon = M.fileicon()
     local ftype  = vim.bo.filetype
 
     return #ftype == 0 and fticon or string.format('%s %s', fticon, ftype)
