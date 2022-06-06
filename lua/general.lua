@@ -10,6 +10,7 @@ vim.opt.lazyredraw  = true     -- Don't redraw screen for outputless commands
 vim.opt.joinspaces  = false    -- Don't insert 2 spaces after '.' on join
 vim.opt.modeline    = true     -- First line:  # vim: ft=[...]
 vim.opt.number      = true     -- Show line numbers
+vim.opt.pumblend    = AW.ui.winblend
 vim.opt.report      = 0        -- Report all file changes
 vim.opt.scrolljump  = 2        -- Min # of lines to scroll past screen
 vim.opt.scrolloff   = 2        -- Show this many lines around cursor
