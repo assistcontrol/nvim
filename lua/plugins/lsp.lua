@@ -1,8 +1,7 @@
 local lspconfig = require('lspconfig')
-local has_minicomp, _ = pcall(require, 'mini.completion')
 
 local attach = function() end    -- Stub
-if has_minicomp then
+if AW.has('mini.completion') then
     attach = function(_, bufnr)  -- (client, bufnr)
         vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.MiniCompletion.completefunc_lsp')
     end

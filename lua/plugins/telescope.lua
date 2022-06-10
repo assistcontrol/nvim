@@ -25,6 +25,6 @@ require('telescope').setup {
     }
 }
 
-AW.defer [[
+AW.colorcmd [[
     hi link TelescopeSelection CustomHighlight
 ]]
