@@ -4,6 +4,8 @@ AW.ui = {
     winblend = vim.fn.has('gui_running') > 0 and 8 or 0
 }
 
+-- Colors set in the C table are composed below into highlight
+-- strings
 local C = {
         beige      = {223, '#D4BE98'},
         darkergray = {235, '#282C34'},
