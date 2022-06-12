@@ -71,12 +71,10 @@ function AW.update_plugins()
 end
 
 -- Flash yanked lines
-vim.api.nvim_create_autocmd('TextYankPost', {
-    callback = function()
-        vim.highlight.on_yank {
-            higroup   = 'IncSearch',
-            on_visual = false,
-            timeout   = 150
-        }
-    end
-})
+vim.api.nvim_create_autocmd('TextYankPost', { callback = function()
+    vim.highlight.on_yank {
+        higroup   = 'IncSearch',
+        on_visual = false,
+        timeout   = 150
+    }
+end })
