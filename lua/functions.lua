@@ -26,13 +26,8 @@ local icons = {
     vertbar   = '│',  -- u2502
 }
 
--- Schedule highlighting to be run after a colorscheme is loaded
--- In particular, this stops plugins from clobbering highlighting
-function AW.colorcmd(cmd)
-    AW.defer(cmd, 'ColorScheme')
-end
-
 -- Schedule vim cmds to be run after loading is done
+-- In particular, this stops plugins from clobbering highlighting
 function AW.defer(cmd, event)
     vim.api.nvim_create_autocmd(event or 'VimEnter', { callback = function()
         vim.cmd(cmd)

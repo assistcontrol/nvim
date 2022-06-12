@@ -1,6 +1,6 @@
 require('mini.tabline').setup {}
 
-AW.colorcmd [[
+AW.defer [[
     hi link MiniTablineCurrent         CustomBright
     hi link MiniTablineVisible         CustomMedium
     hi link MiniTablineHidden          CustomSoft
