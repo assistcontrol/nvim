@@ -59,6 +59,15 @@ function AW.map(mode, keys, cmd, opts)
     vim.keymap.set(mode, keys, cmd, opts)
 end
 
+-- Jump to best next pane. Window preferred over buffer.
+function AW.next_pane()
+    if #vim.api.nvim_tabpage_list_wins(0) > 1 then
+        vim.cmd [[wincmd w]]
+    else
+        vim.cmd [[bnext]]
+    end
+end
+
 -- Update plugins
 function AW.update_plugins()
     vim.cmd(':TSUpdate')

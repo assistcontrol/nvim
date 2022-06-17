@@ -56,12 +56,12 @@ AW.maps.leader = {
     h = {':wincmd h<CR>', 'window left'},
     l = {':wincmd l<CR>', 'window right'},
 
-    ['<leader>'] = {':b#<CR>',          'alternate'},
-    ['<cr>']     = {':wincmd w<CR>',    'next window'},
-    e = {[[:lua AW.filebrowser()<CR>]], 'browse'},
+    ['<leader>'] = {':b#<CR>',                       'alternate'},
+    ['<cr>']     = {':lua AW.next_pane()<CR>',       'next window'},
+    e = {[[:lua AW.filebrowser()<CR>]],              'browse'},
     w = {[[:lua require('nvim-window').pick()<CR>]], 'pick window'},
-    x = {':ToggleTerm<CR>',             'terminal'},
-    z = {[[:lua require('mini.misc').zoom()<CR>]], 'zoom'},
+    x = {':ToggleTerm<CR>',                          'terminal'},
+    z = {[[:lua require('mini.misc').zoom()<CR>]],   'zoom'},
 
     b = {
         name = 'buffer',
