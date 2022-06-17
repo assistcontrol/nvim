@@ -128,6 +128,14 @@ require('packer').startup({function(use)
     use {'nvim-treesitter/nvim-treesitter-textobjects',
         requires = {'nvim-treesitter/nvim-treesitter'}
     }
+
+    -- Window management
+    use {'https://gitlab.com/yorickpeterse/nvim-window', config = function()
+        require('nvim-window').setup {
+            border    = 'none',
+            normal_hl = 'CustomBright'
+        }
+    end}
 end,
 
 -- Packer config
