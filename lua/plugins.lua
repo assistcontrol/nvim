@@ -34,9 +34,6 @@ require('packer').startup({function(use)
 
         -- Tab line
         require('plugins/minitabline')
-
-        -- Word highlighting
-        require('mini.cursorword').setup {}
     end}
 
     -- Colorscheme
