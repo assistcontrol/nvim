@@ -71,7 +71,7 @@ end
 -- Update plugins
 function AW.update_plugins()
     vim.cmd(':TSUpdate')
-    vim.cmd(':PackerUpdate')
+    vim.cmd(':PackerSync')
 end
 
 -- Flash yanked lines
