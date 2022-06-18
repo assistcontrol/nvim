@@ -59,6 +59,7 @@ AW.maps.leader = {
     ['<leader>'] = {':b#<CR>',                       'alternate'},
     ['<cr>']     = {':lua AW.next_pane()<CR>',       'next window'},
     e = {[[:lua AW.filebrowser()<CR>]],              'browse'},
+    s = {':FocusSplitNicely<CR>]]',                  'split'},
     w = {[[:lua require('nvim-window').pick()<CR>]], 'pick window'},
     x = {':ToggleTerm<CR>',                          'terminal'},
     z = {[[:lua require('mini.misc').zoom()<CR>]],   'zoom'},

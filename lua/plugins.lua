@@ -127,6 +127,10 @@ require('packer').startup({function(use)
     }
 
     -- Window management
+    use {'beauwilliams/focus.nvim', config = function()
+        require('focus').setup {}
+    end}
+
     use {'https://gitlab.com/yorickpeterse/nvim-window', config = function()
         require('nvim-window').setup {
             border    = 'none',
