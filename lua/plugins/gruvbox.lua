@@ -11,6 +11,7 @@ AW.defer [[
     hi clear SignColumn    " Make it the same background colour
     hi! link Folded        CustomMedium
     hi! link FoldColumn    CustomMedium
+    hi! link MatchParen    CustomError
     hi! link Visual        CustomHighlight
     hi! link WinSeparator  CustomInactiveWindow
 ]]
