@@ -25,9 +25,17 @@ map('n', '<A-k>', ':tabnext<CR>')
 map('n', '<C-j>', ':bnext<CR>')
 map('n', '<C-k>', ':bprevious<CR>')
 
+-- J/K moves selected lines
+map('v', 'J', ":move '>+1<CR>gv=gv")
+map('v', 'K', ":move '<-2<CR>gv=gv")
+
 -- Search using proper regexes by default
 map('n', '/', [[/\v]])
 map('n', '?', [[?\v]])
+
+-- // and ?? clear search results
+map('n', '//', ':nohlsearch<CR>')
+map('n', '??', ':nohlsearch<CR>')
 
 -- Tab/S-Tab through completion list
 map('i', '<Tab>',   [[pumvisible() ? '<C-n>' : '<Tab>']],   {expr = true})
@@ -61,6 +69,7 @@ AW.maps.leader = {
     e = {[[:lua AW.filebrowser()<CR>]],              'browse'},
     s = {':FocusSplitNicely<CR>]]',                  'split'},
     w = {[[:lua require('nvim-window').pick()<CR>]], 'pick window'},
+    q = {[[:lua MiniBufremove.delete()<CR>]],        'close buffer'},
     x = {':ToggleTerm<CR>',                          'terminal'},
     z = {[[:lua require('mini.misc').zoom()<CR>]],   'zoom'},
 
