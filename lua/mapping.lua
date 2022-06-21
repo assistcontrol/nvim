@@ -47,6 +47,9 @@ map('x', 'S', [[:lua MiniSurround.add('visual')<CR>]])
 -- ^\ saves
 map({'i', 'n'}, '<C-\\>', '<cmd>write<CR>')
 
+-- \\ opens Telescope
+map('n', '\\\\', ':Telescope<CR>')
+
 -- Readline-esque keys for insert and command modes
 local has_readline, readline = pcall(require, 'readline')
 if has_readline then
@@ -67,10 +70,10 @@ AW.maps.leader = {
     ['<leader>'] = {':b#<CR>',                       'alternate'},
     ['<cr>']     = {':lua AW.next_pane()<CR>',       'next window'},
     e = {[[:lua AW.filebrowser()<CR>]],              'browse'},
-    s = {':FocusSplitNicely<CR>]]',                  'split'},
+    s = {[[:FocusSplitNicely<CR>]],                  'split'},
     w = {[[:lua require('nvim-window').pick()<CR>]], 'pick window'},
     q = {[[:lua MiniBufremove.delete()<CR>]],        'close buffer'},
-    x = {':ToggleTerm<CR>',                          'terminal'},
+    x = {[[:ToggleTerm<CR>]],                        'terminal'},
     z = {[[:lua require('mini.misc').zoom()<CR>]],   'zoom'},
 
     b = {
