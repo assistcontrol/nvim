@@ -20,7 +20,8 @@ vim.opt.splitbelow  = true     -- Open horizontal splits below
 vim.opt.splitright  = true     -- Open vertical splits to the right
 vim.opt.virtualedit = 'block'  -- Able to select nonexistent chars in v-block mode
 vim.opt.visualbell  = true     -- Do not *beep*ing beep
-vim.opt.fillchars:append({eob = ' ', vert = ' '})
+vim.opt.fillchars:append({eob = ' ', vert = ' '})
+vim.opt.formatoptions:remove({'o', 'r'})  -- Don't auto-comment new lines
 
 -- Searching
 vim.opt.grepprg    = 'grep --line-number --with-filename $*'
@@ -41,7 +42,7 @@ vim.opt.showbreak = '+'        -- Gutter string before wrapped lines
 vim.opt.whichwrap = 'b,s,h,l'  -- Keys allowed to move across lines
 
 -- Status line
-vim.opt.cmdheight   = 2                    -- One line for status bar, one for messages
+vim.opt.cmdheight   = 1                    -- Status bar is not included here
 vim.opt.showmode    = false                -- Unnecessary with status line plugins
 vim.opt.wildmode    = 'longest:full,full'  -- Tab through menus
 vim.opt.statusline  = '%F%m%r%h%w %y [%p%%/%L] [%04v @ %04l]%a'
