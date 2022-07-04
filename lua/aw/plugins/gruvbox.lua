@@ -2,7 +2,7 @@ vim.g.gruvbox_material_better_performance = 1
 vim.g.gruvbox_material_enable_bold   = 1
 vim.g.gruvbox_material_enable_italic = 1
 vim.g.gruvbox_material_show_eob = 0
-vim.o.background = 'dark'
+vim.opt.background = 'dark'
 
 vim.cmd('colo gruvbox-material')
 
