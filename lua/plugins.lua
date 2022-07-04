@@ -80,7 +80,7 @@ require('packer').startup({function(use)
     end}
 
     -- Indentation
-    use {'tpope/vim-sleuth'}
+    use {'Darazaki/indent-o-matic'}
 
     -- Indent guides
     use {'lukas-reineke/indent-blankline.nvim', config = function()
