@@ -24,21 +24,21 @@ require('packer').startup({function(use)
         require('mini.comment').setup {}
 
         -- Start screen
-        require('plugins/ministarter')
+        require('aw/plugins/ministarter')
 
         -- Status line
-        require('plugins/ministatusline')
+        require('aw/plugins/ministatusline')
 
         -- Surrounders (cs, ysW, etc.)
-        require('plugins/minisurround')
+        require('aw/plugins/minisurround')
 
         -- Tab line
-        require('plugins/minitabline')
+        require('aw/plugins/minitabline')
     end}
 
     -- Colorscheme
     use {'sainnhe/gruvbox-material', config = function()
-        require('plugins/gruvbox')
+        require('aw/plugins/gruvbox')
     end}
 
     -- Emacs bindings
@@ -48,7 +48,7 @@ require('packer').startup({function(use)
     use {'nvim-telescope/telescope.nvim',
         requires = {'nvim-lua/plenary.nvim'},
         config = function()
-            require('plugins/telescope')
+            require('aw/plugins/telescope')
         end
     }
 
@@ -56,7 +56,7 @@ require('packer').startup({function(use)
     use {'lewis6991/gitsigns.nvim',
         requires = {'nvim-lua/plenary.nvim'},
         config = function()
-            require('plugins/gitsigns')
+            require('aw/plugins/gitsigns')
         end
     }
 
@@ -65,13 +65,13 @@ require('packer').startup({function(use)
         ft = {'go', 'gohtmltmpl', 'gomod'},
         cmd = {'GoInstallBinaries', 'GoUpdateBinaries'},
         config = function()
-            require('plugins/go')
+            require('aw/plugins/go')
         end
     }
 
     -- Help
     use {'folke/which-key.nvim', config = function()
-        require('plugins/whichkey')
+        require('aw/plugins/whichkey')
     end}
 
     -- Icons
@@ -84,17 +84,17 @@ require('packer').startup({function(use)
 
     -- Indent guides
     use {'lukas-reineke/indent-blankline.nvim', config = function()
-        require('plugins/indentblankline')
+        require('aw/plugins/indentblankline')
     end}
 
     -- Loop closure (automatic brace/bracket closure)
     use {'windwp/nvim-autopairs', config = function()
-        require('plugins/autopairs')
+        require('aw/plugins/autopairs')
     end}
 
     -- LSP
     use {'neovim/nvim-lspconfig', config = function()
-        require('plugins/lsp')
+        require('aw/plugins/lsp')
     end}
 
     -- Parentheses colors
@@ -115,12 +115,12 @@ require('packer').startup({function(use)
 
     -- Terminal
     use {'akinsho/toggleterm.nvim', config = function()
-        require('plugins/toggleterm')
+        require('aw/plugins/toggleterm')
     end}
 
     -- Tree-sitter
     use {'nvim-treesitter/nvim-treesitter', config = function()
-        require('plugins/treesitter')
+        require('aw/plugins/treesitter')
     end}
     use {'nvim-treesitter/nvim-treesitter-textobjects',
         requires = {'nvim-treesitter/nvim-treesitter'}

@@ -7,13 +7,5 @@ require('toggleterm').setup {
     float_opts = {
         border = AW.ui.border,
         winblend = AW.ui.winblend
-    },
-    highlights = {
-        FloatBorder = {
-            -- link = 'CustomMediumBright'
-        },
-        NormalFloat = {
-            -- link = 'CustomMediumBright'
-        }
     }
 }

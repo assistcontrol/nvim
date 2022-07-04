@@ -1,4 +1,4 @@
-local parts = require('plugins/statuslineparts')
+local parts = require('aw/plugins/statuslineparts')
 
 require('hardline').setup {
     sections = {

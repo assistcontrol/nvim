@@ -44,6 +44,6 @@ starter.setup {
         H.item('Browse', 'r', 'recent',   'Recent',   'Telescope oldfiles'),
         H.item('Browse', 'm', 'folder',   'med_apps', H.browse("~/build/med_apps")),
         H.item('Browse', 'd', 'dotfiles', 'dotfiles', H.browse("~/build/dotfiles")),
-        H.item('Browse', 'v', 'vim',      'vim',      H.browse("~/build/vim/lua"))
+        H.item('Browse', 'v', 'vim',      'vim',      H.browse("~/build/vim/lua/aw"))
     }
 }

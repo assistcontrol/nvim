@@ -1,5 +1,5 @@
 local SL = require('mini.statusline')
-local P  = require('plugins/statuslineparts')
+local P  = require('aw/plugins/statuslineparts')
 
 local H = {}
 
