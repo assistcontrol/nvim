@@ -5,6 +5,7 @@ vim.g.did_load_filetypes = 0
 vim.filetype.add {
     extension = {
         pm = 'perl',
+        t  = 'perl',
         tt = 'tt2html'
     }
 }
