@@ -7,7 +7,7 @@ vim.opt.background = 'dark'
 vim.cmd('colo gruvbox-material')
 
 -- Override some colors
-AW.defer [[
+AW.colorcmd.register [[
     hi clear SignColumn    " Make it the same background colour
     hi! link Folded        CustomMedium
     hi! link FoldColumn    CustomMedium

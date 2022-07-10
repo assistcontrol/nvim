@@ -27,7 +27,6 @@ local icons = {
 }
 
 -- Schedule vim cmds to be run after loading is done
--- In particular, this stops plugins from clobbering highlighting
 function AW.defer(cmd, event)
     vim.api.nvim_create_autocmd(event or 'VimEnter', { callback = function()
         vim.cmd(cmd)

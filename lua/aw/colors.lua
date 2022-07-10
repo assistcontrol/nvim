@@ -4,6 +4,19 @@ AW.ui = {
     winblend = vim.fn.has('gui_running') > 0 and 8 or 0
 }
 
+-- AW.colorcmd stores highlight commands for deferred execution
+AW.colorcmd = {
+    commands = '',
+    register = function(cmds)
+        AW.colorcmd.commands = string.format('%s\n%s', AW.colorcmd.commands, cmds)
+    end,
+    load = function() vim.cmd(AW.colorcmd.commands) end
+}
+-- Load colors once at startup
+AW.defer('lua AW.colorcmd.load()')
+-- :ReloadColors will forcibly reload the color scheme
+vim.api.nvim_create_user_command('ReloadColors', 'lua AW.colorcmd.load()', {})
+
 -- Colors set in the C table are composed below into highlight
 -- strings
 local C = {
@@ -30,17 +43,8 @@ local function fg(color)
     return string.format('ctermfg=%s guifg=%s', color[1] or '', color[2] or '')
 end
 
-local function highlight(color_table, other_commands)
-    local hi = ''
-    for group, colors in pairs(color_table) do
-        hi = hi .. string.format("hi %s %s %s\n", group, colors[1], colors[2])
-    end
-    hi = hi .. (other_commands or '')
-    AW.defer(hi)
-end
-
 -- Set up highlighting groups that end groups can link to
-highlight({
+local highlights = {
     CustomBright       = {fg(C.darkergray),  bg(C.green)},
     CustomMediumBright = {fg(C.beige),       bg(C.mediumgray)},
     CustomMedium       = {fg(C.lightgray),   bg(C.mediumgray)},
@@ -61,8 +65,15 @@ highlight({
 
     CustomMediumBrightBlank = {fg(C.mediumgray), bg(C.mediumgray)},
     CustomInactiveBlank     = {fg(C.softgray),   bg(C.softgray)},
-}, [[
+}
+
+for group, colors in pairs(highlights) do
+    local cmd = string.format('hi %s %s %s', group, colors[1], colors[2])
+    AW.colorcmd.register(cmd)
+end
+
+AW.colorcmd.register [[
     hi  link CustomHighlight CustomBright
     hi! link NormalFloat Normal
     hi! link FloatBorder Normal
-]])
+]]

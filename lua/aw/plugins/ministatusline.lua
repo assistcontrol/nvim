@@ -58,10 +58,10 @@ SL.setup {
 
 
 -- Set statusline colours
-AW.defer [[
-    hi link MiniStatuslineModeNormal  CustomBright
-    hi link MiniStatuslineModeInsert  CustomModeInsert
-    hi link MiniStatuslineModeVisual  CustomModeVisual
-    hi link MiniStatuslineModeReplace CustomModeReplace
-    hi link MiniStatuslineModeCommand CustomModeCommand
+AW.colorcmd.register [[
+    hi! link MiniStatuslineModeNormal  CustomBright
+    hi! link MiniStatuslineModeInsert  CustomModeInsert
+    hi! link MiniStatuslineModeVisual  CustomModeVisual
+    hi! link MiniStatuslineModeReplace CustomModeReplace
+    hi! link MiniStatuslineModeCommand CustomModeCommand
 ]]
