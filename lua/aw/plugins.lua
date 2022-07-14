@@ -34,6 +34,9 @@ require('packer').startup({function(use)
 
         -- Tab line
         require('aw/plugins/minitabline')
+
+        -- Whitespace at EOL
+        require('mini.trailspace').setup {}
     end}
 
     -- Colorscheme

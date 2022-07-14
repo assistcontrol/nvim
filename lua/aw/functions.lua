@@ -67,6 +67,14 @@ function AW.next_pane()
     end
 end
 
+
+-- Trim all trailing whitespace
+function AW.purge_whitespace()
+    require('mini.trailspace').trim()
+    require('mini.trailspace').trim_last_lines()
+end
+vim.api.nvim_create_user_command('WhitespaceTrim', AW.purge_whitespace, {})
+
 -- Update plugins
 function AW.update_plugins()
     vim.cmd(':TSUpdate')
