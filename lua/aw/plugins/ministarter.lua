@@ -25,7 +25,6 @@ starter.setup {
     query_updaters = [[abcdefghijklmnopqrstuvwxyz0123456789_-.ABCDEFGHIJKLMNOPQRSTUVWXYZ]],
     footer = os.date(),
     header = table.concat({
-        '', '',
         [[  /\ \▔\___  ___/\   /(●)_ __ ___  ]],
         [[ /  \/ / _ \/ _ \ \ / / | '_ ` _ \ ]],
         [[/ /\  /  __/ (_) \ V /| | | | | | |]],
@@ -40,10 +39,11 @@ starter.setup {
         H.item('Update', 'G', 'go',     'Update go binaries', 'GoUpdateBinaries'),
         H.item('Update', 'C', 'reload', 'Compile plugins',    'PackerCompile'),
 
-        H.item('Browse', 'b', 'folder',   H.pwd,      H.browse(H.pwd)),
-        H.item('Browse', 'r', 'recent',   'Recent',   'Telescope oldfiles'),
-        H.item('Browse', 'm', 'folder',   'med_apps', H.browse("~/build/med_apps")),
-        H.item('Browse', 'd', 'dotfiles', 'dotfiles', H.browse("~/build/dotfiles")),
-        H.item('Browse', 'v', 'vim',      'vim',      H.browse("~/build/vim/lua/aw"))
+        H.item('Browse', 'b', 'folder',   H.pwd,       H.browse(H.pwd)),
+        H.item('Browse', 'r', 'recent',   'Recent',    'Telescope oldfiles'),
+        H.item('Browse', 'l', 'search',   'Live grep', 'Telescope live_grep'),
+        H.item('Browse', 'm', 'folder',   'med_apps',  H.browse("~/build/med_apps")),
+        H.item('Browse', 'd', 'dotfiles', 'dotfiles',  H.browse("~/build/dotfiles")),
+        H.item('Browse', 'v', 'vim',      'vim',       H.browse("~/build/vim/lua/aw"))
     }
 }
