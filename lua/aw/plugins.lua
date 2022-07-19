@@ -77,6 +77,15 @@ require('packer').startup({function(use)
         require('aw/plugins/whichkey')
     end}
 
+    -- HTML
+    use {'mattn/emmet-vim',
+        ft = {'html', 'tt2html'},
+        config = function()
+            vim.g.user_emmet_settings = {
+                html = {block_all_childless = true}  -- New line for all tags
+            }
+        end
+    }
     -- Icons
     use {'kyazdani42/nvim-web-devicons', config = function()
         require('nvim-web-devicons').setup {default = true}
