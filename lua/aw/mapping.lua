@@ -48,7 +48,7 @@ map('x', 'S', [[:lua MiniSurround.add('visual')<CR>]])
 map({'i', 'n'}, '<C-\\>', '<cmd>write<CR>')
 
 -- \\ opens Telescope
-map('n', '\\\\', ':Telescope<CR>')
+map('n', '\\\\', ':Telescope<CR>', {desc = 'Telescope picker'})
 
 -- Readline-esque keys for insert and command modes
 local has_readline, readline = pcall(require, 'readline')
@@ -120,8 +120,7 @@ AW.maps.leader = {
 
 -- Gitsigns sets keymaps via a callback
 function AW.maps.gitsigns(bufnr)
-    local opts = {buffer = bufnr}
-    map('n', '[c', function() require('gitsigns').prev_hunk() end, opts)
-    map('n', ']c', function() require('gitsigns').next_hunk() end, opts)
+    map('n', '[c', function() require('gitsigns').prev_hunk() end, {buffer = bufnr, desc = 'previous git hunk'})
+    map('n', ']c', function() require('gitsigns').next_hunk() end, {buffer = bufnr, desc = 'next git hunk'})
 end
 
