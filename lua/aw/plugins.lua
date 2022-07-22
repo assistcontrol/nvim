@@ -103,6 +103,9 @@ require('packer').startup({function(use)
     use {'windwp/nvim-autopairs', config = function()
         require('aw/plugins/autopairs')
     end}
+    use {'rrethy/nvim-treesitter-endwise',
+        requires = 'nvim-treesitter/nvim-treesitter'
+    }
 
     -- LSP
     use {'neovim/nvim-lspconfig', config = function()
