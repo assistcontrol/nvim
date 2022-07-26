@@ -13,5 +13,4 @@ AW.colorcmd.register [[
     hi! link FoldColumn    CustomMedium
     hi! link MatchParen    CustomError
     hi! link Visual        CustomHighlight
-    hi! link WinSeparator  CustomInactiveWindow
 ]]

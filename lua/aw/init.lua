@@ -9,4 +9,3 @@ require('aw/plugins')
 
 require('aw/filetypes')
 require('aw/mapping')
-require('aw/window')

@@ -47,6 +47,11 @@ require('packer').startup({function(use)
     -- Emacs bindings
     use {'linty-org/readline.nvim'}
 
+    -- Explorer
+    use {'kyazdani42/nvim-tree.lua', config = function()
+        require('aw/plugins/nvimtree')
+    end}
+
     -- Fuzzy Finder
     use {'nvim-telescope/telescope.nvim',
         requires = {'nvim-lua/plenary.nvim'},
@@ -143,7 +148,7 @@ require('packer').startup({function(use)
 
     -- Window management
     use {'beauwilliams/focus.nvim', config = function()
-        require('focus').setup {}
+        require('aw/plugins/focus')
     end}
 
     use {'https://gitlab.com/yorickpeterse/nvim-window', config = function()

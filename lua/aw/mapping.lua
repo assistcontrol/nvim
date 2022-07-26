@@ -47,8 +47,8 @@ map('x', 'S', [[:lua MiniSurround.add('visual')<CR>]])
 -- ^\ saves
 map({'i', 'n'}, '<C-\\>', '<cmd>write<CR>')
 
--- \\ opens Telescope
-map('n', '\\\\', ':Telescope<CR>', {desc = 'Telescope picker'})
+-- \\ shows buffers
+map('n', '\\\\', ':Telescope buffers<CR>', {desc = 'buffers'})
 
 -- Readline-esque keys for insert and command modes
 local has_readline, readline = pcall(require, 'readline')
@@ -73,7 +73,8 @@ AW.maps.leader = {
     s = {[[:FocusSplitNicely<CR>]],                  'split'},
     w = {[[:lua require('nvim-window').pick()<CR>]], 'pick window'},
     q = {[[:lua MiniBufremove.delete()<CR>]],        'close buffer'},
-    x = {[[:ToggleTerm<CR>]],                        'terminal'},
+    x = {[[:NvimTreeFocus<CR>]],                     'explorer'},
+    X = {[[:NvimTreeClose<CR>]],                     'unexplorer'},
     z = {[[:lua require('mini.misc').zoom()<CR>]],   'zoom'},
 
     b = {
