@@ -39,6 +39,11 @@ require('packer').startup({function(use)
         require('mini.trailspace').setup {}
     end}
 
+    -- Color highlighting
+    use {'brenoprata10/nvim-highlight-colors', config = function()
+        require('nvim-highlight-colors').setup()
+    end}
+
     -- Colorscheme
     use {'sainnhe/gruvbox-material', config = function()
         require('aw/plugins/gruvbox')

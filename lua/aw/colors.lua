@@ -17,22 +17,22 @@ AW.defer('lua AW.colorcmd.load()')
 -- :ReloadColors will forcibly reload the color scheme
 vim.api.nvim_create_user_command('ReloadColors', 'lua AW.colorcmd.load()', {})
 
--- Colors set in the C table are composed below into highlight
--- strings
+-- Colors set in the C table are composed below into highlight strings
+-- Each value is {termcolor, rgbcolor}
 local C = {
-        beige      = {223, '#D4BE98'},
-        darkergray = {235, '#282C34'},
-        darkgray   = {236, '#32302F'},
-        green      = {114, '#98C379'},
-        lightgray  = {145, '#ABB2BF'},
-        mediumgray = {237, '#3E4452'},
-        normalback = {235, '#282828'},
-        paleblue   = {39,  '#61AFEF'},
-        palegreen  = {38,  '#56B6C2'},
-        purple     = {170, '#C678DD'},
-        red        = {204, '#E06C75'},
-        softgray   = {237, '#3C3836'},
-        yellow     = {180, '#E5C07B'},
+    beige      = {223, '#D4BE98'},
+    darkergray = {235, '#282C34'},
+    darkgray   = {236, '#32302F'},
+    green      = {114, '#98C379'},
+    lightgray  = {145, '#ABB2BF'},
+    mediumgray = {237, '#3E4452'},
+    normalback = {235, '#282828'},
+    paleblue   = {39,  '#61AFEF'},
+    palegreen  = {38,  '#56B6C2'},
+    purple     = {170, '#C678DD'},
+    red        = {204, '#E06C75'},
+    softgray   = {237, '#3C3836'},
+    yellow     = {180, '#E5C07B'},
 }
 
 local function bg(color)
