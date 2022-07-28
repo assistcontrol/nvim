@@ -14,6 +14,9 @@ require('packer').startup({function(use)
 
     -- mini.nvim package
     use {'echasnovski/mini.nvim', config = function()
+        -- a/i surrounders (a", i[, etc.)
+        require('mini.ai').setup {}
+
         -- Buffer deletion
         require('mini.bufremove').setup {}
 
@@ -124,9 +127,6 @@ require('packer').startup({function(use)
 
     -- Parentheses colors
     use {'p00f/nvim-ts-rainbow'}
-
-    -- Surrounds - Change surround contents
-    use {'wellle/targets.vim'}
 
     -- Tab out
     use {'abecodes/tabout.nvim',
