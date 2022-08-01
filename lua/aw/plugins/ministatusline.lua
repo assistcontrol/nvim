@@ -3,6 +3,14 @@ local P  = require('aw/plugins/statuslineparts')
 
 local H = {}
 
+-- Show just the filename on smaller-width windows
+-- is_truncated() refers to the active window, so we have to assume that
+-- a narrower active window means a smaller inactive window (practically
+-- guaranteed by focus.nvim)
+P.inactiveFilename = function(args)
+    return SL.is_truncated(args.trunc_width) and vim.fn.expand('%:t') or '%F'
+end
+
 -- More statusbar components
 P.location = function(args)
     if SL.is_truncated(args.trunc_width) then
@@ -43,7 +51,7 @@ end
 H.inactive = function()
     return SL.combine_groups({
         {hl = 'MiniStatuslineInactive', strings = {
-            P.fileicon(), '%F', P.readonly(),
+            P.fileicon(), P.inactiveFilename({trunc_width = 80}), P.readonly(),
         }}
     })
 end
