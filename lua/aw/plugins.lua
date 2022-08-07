@@ -42,6 +42,13 @@ require('packer').startup({function(use)
         require('mini.trailspace').setup {}
     end}
 
+    -- Color highlighting
+    use {'nvchad/nvim-colorizer.lua',
+        cond   = vim.o.termguicolors,  -- requires termguicolors
+        config = function()
+            require('colorizer').setup()
+        end
+    }
     -- Colorscheme
     use {'sainnhe/gruvbox-material', config = function()
         require('aw/plugins/gruvbox')

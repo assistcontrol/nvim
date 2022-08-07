@@ -23,6 +23,12 @@ vim.opt.visualbell  = true     -- Do not *beep*ing beep
 vim.opt.fillchars:append({eob = ' '})
 vim.opt.formatoptions:remove({'o', 'r'})  -- Don't auto-comment new lines
 
+-- Mosh < 1.4 mangles truecolor to the point that termguicolors is unusable.
+-- I only use mosh to connect to FreeBSD systems, so it suffices for me simply
+-- to check the OS. This can be removed if mosh 1.4 comes out, which might
+-- never actually happen at this point.
+vim.opt.termguicolors = vim.loop.os_uname().sysname ~= 'FreeBSD'
+
 -- Searching
 vim.opt.grepprg    = 'grep --line-number --with-filename $*'
 vim.opt.ignorecase = true   -- Ignore case in search patterns
