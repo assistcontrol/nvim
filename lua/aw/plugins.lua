@@ -15,7 +15,7 @@ require('packer').startup({function(use)
     -- mini.nvim package
     use {'echasnovski/mini.nvim', config = function()
         -- a/i surrounders (a", i[, etc.)
-        require('mini.ai').setup {}
+        require('aw/plugins/miniai')
 
         -- Buffer deletion
         require('mini.bufremove').setup {}
