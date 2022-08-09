@@ -1,3 +1,7 @@
+-- Load impatient immediately so that it can cache as much as posible.
+-- It's loaded in a pcall to avoid erroring if it doesn't exist yet.
+pcall(require, 'impatient')
+
 vim.cmd('colo elflord')  -- Overridden later
 
 _G.AW = {}

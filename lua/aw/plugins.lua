@@ -130,6 +130,9 @@ require('packer').startup({function(use)
     -- Parentheses colors
     use {'p00f/nvim-ts-rainbow'}
 
+    -- Startup hacking
+    use {'lewis6991/impatient.nvim'}
+
     -- Tab out
     use {'abecodes/tabout.nvim',
         requires = {'nvim-treesitter/nvim-treesitter'},
