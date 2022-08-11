@@ -53,8 +53,9 @@ function AW.icon(ico, str)
 end
 
 -- Add a keymap
+local map_defaults = {noremap = true, silent = true}
 function AW.map(mode, keys, cmd, opts)
-    opts = vim.tbl_deep_extend('force', {noremap = true, silent = true}, opts or {})
+    opts = opts and vim.tbl_deep_extend('force', map_defaults, opts) or map_defaults
 
     vim.keymap.set(mode, keys, cmd, opts)
 end
