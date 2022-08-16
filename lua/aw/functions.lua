@@ -63,12 +63,20 @@ end
 -- Jump to best next pane. Window preferred over buffer.
 function AW.next_pane()
     if #vim.api.nvim_tabpage_list_wins(0) > 1 then
-        vim.cmd [[wincmd w]]
+        AW.next_window()
     else
         vim.cmd [[bnext]]
     end
 end
 
+-- Jump to best next window. Bypasses nvim-tree.
+function AW.next_window()
+    vim.cmd [[wincmd w]]
+    -- Only do this once to avoid an endless loop
+    if vim.bo.filetype == 'NvimTree' then
+        vim.cmd [[wincmd w]]
+    end
+end
 
 -- Trim all trailing whitespace
 function AW.purge_whitespace()

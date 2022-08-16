@@ -29,6 +29,9 @@ map('n', '<A-k>', cmd[[tabnext]])
 map('n', '<C-j>', cmd[[bnext]])
 map('n', '<C-k>', cmd[[bprevious]])
 
+-- Override ^W^W to skip nvim-tree
+map('n', '<C-w><C-w>', AW.next_window)
+
 -- J/K moves selected lines
 map('v', 'J', "<Cmd>move '>+1<CR>gv=gv")
 map('v', 'K', "<Cmd>move '<-2<CR>gv=gv")
