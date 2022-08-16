@@ -16,6 +16,7 @@ local icons = {
     recent   = 'ﮫ',  -- uFBAB
     reload   = '',  -- uF0E2
     search   = '',  -- uF422
+    tree     = 'פּ',  -- uFB44
     vim      = '',  -- uE62B
     warning  = '',  -- u26A0
 
