@@ -161,10 +161,9 @@ require('packer').startup({function(use)
         require('aw/plugins/focus')
     end}
 
-    use {'https://gitlab.com/yorickpeterse/nvim-window', config = function()
-        require('nvim-window').setup {
-            border    = 'none',
-            normal_hl = 'CustomBright'
+    use {'gbrlsnchs/winpick.nvim', config = function()
+        require('winpick').setup {
+            border = AW.ui.border
         }
     end}
 end,

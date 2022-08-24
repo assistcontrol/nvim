@@ -4,6 +4,9 @@ vim.g.mapleader = ' '
 -- Key mappings
 AW.maps = {}
 
+-- Helper functions
+local H = {}
+
 local cmd = function(command)
     return table.concat({'<Cmd>', command, '<CR>'})
 end
@@ -56,6 +59,8 @@ map({'i', 'n'}, '<C-\\>', cmd[[write]])
 
 -- \\ shows buffers
 map('n', '\\\\', cmd[[Telescope buffers]], {desc = 'buffers'})
+-- \] opens telescope
+map('n', '\\]',  cmd[[Telescope]], {desc = 'Telescope'})
 
 -- Readline-esque keys for insert and command modes
 local has_readline, readline = pcall(require, 'readline')
@@ -67,6 +72,14 @@ if has_readline then
     map('!', '<C-u>', function() readline.end_of_line(); readline.dwim_backward_kill_line() end)
 end
 
+H.pick_window = function()
+    local winid = require('winpick').select()
+
+    if winid then
+        vim.api.nvim_set_current_win(winid)
+    end
+end
+
 AW.maps.leader = {
     -- In which-key.nvim format
     k = {cmd[[wincmd k]], 'window up'},
@@ -74,16 +87,16 @@ AW.maps.leader = {
     h = {cmd[[wincmd h]], 'window left'},
     l = {cmd[[wincmd l]], 'window right'},
 
-    ['<leader>'] = {cmd[[b#]],                     'alternate'},
-    ['<cr>']     = {cmd[[lua AW.next_pane()]],     'next window'},
-    e = {cmd[[lua AW.filebrowser()]],              'browse'},
-    q = {cmd[[lua MiniBufremove.delete()]],        'close buffer'},
-    s = {cmd[[FocusSplitNicely]],                  'split'},
-    w = {cmd[[lua require('nvim-window').pick()]], 'pick window'},
-    W = {cmd[[FocusToggle]],                       'toggle split resizing'},
-    x = {cmd[[NvimTreeFocus]],                     'explorer'},
-    X = {cmd[[NvimTreeClose]],                     'unexplorer'},
-    z = {cmd[[lua require('mini.misc').zoom()]],   'zoom'},
+    ['<leader>'] = {cmd[[b#]],                   'alternate'},
+    ['<cr>']     = {cmd[[lua AW.next_pane()]],   'next window'},
+    e = {cmd[[lua AW.filebrowser()]],            'browse'},
+    q = {cmd[[lua MiniBufremove.delete()]],      'close buffer'},
+    s = {cmd[[FocusSplitNicely]],                'split'},
+    w = {H.pick_window,                          'pick window'},
+    W = {cmd[[FocusToggle]],                     'toggle split resizing'},
+    x = {cmd[[NvimTreeFocus]],                   'explorer'},
+    X = {cmd[[NvimTreeClose]],                   'unexplorer'},
+    z = {cmd[[lua require('mini.misc').zoom()]], 'zoom'},
 
     b = {
         name = 'buffer',
@@ -106,6 +119,7 @@ AW.maps.leader = {
         d = {cmd[[Telescope diagnostics]], 'diagnostics'},
         e = {cmd[[Explore]],               'explorer'},
         g = {cmd[[Telescope live_grep]],   'grep'},
+        h = {cmd[[Telescope help_tags]],   'help'},
         t = {cmd[[Telescope]],             'telescope'},
         f = {cmd[[lua AW.filebrowser()]],  'files'}
     },
@@ -129,6 +143,6 @@ AW.maps.leader = {
 
 -- Gitsigns sets keymaps via a callback
 function AW.maps.gitsigns(bufnr)
-    map('n', '[c', function() require('gitsigns').prev_hunk() end, {buffer = bufnr, desc = 'previous git hunk'})
-    map('n', ']c', function() require('gitsigns').next_hunk() end, {buffer = bufnr, desc = 'next git hunk'})
+    map('n', '[c', require('gitsigns').prev_hunk, {buffer = bufnr, desc = 'previous git hunk'})
+    map('n', ']c', require('gitsigns').next_hunk, {buffer = bufnr, desc = 'next git hunk'})
 end
