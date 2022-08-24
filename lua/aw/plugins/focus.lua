@@ -1,6 +1,7 @@
 require('focus').setup {
     excluded_filetypes = {'NvimTree', 'starter'},
 
+    autoresize = false,
     cursorline = true,
     number     = true,
     signcolumn = false
