@@ -72,10 +72,9 @@ end
 
 -- Jump to best next window. Bypasses nvim-tree.
 function AW.next_window()
-    vim.cmd [[wincmd w]]
-    -- Only do this once to avoid an endless loop
-    if vim.bo.filetype == 'NvimTree' then
+    for _ = 1,4 do
         vim.cmd [[wincmd w]]
+        if vim.bo.filetype ~= 'NvimTree' then break end
     end
 end
 
