@@ -1,7 +1,7 @@
 require('mini.surround').setup {
     custom_surroundings = {
         s = {
-            input  = {find = '%[%[.-%]%]', extract = '^(..).*(..)$'},
+            input  = {'%[%[().-()%]%]'},
             output = {left = '[[', right = ']]'}
         }
     },
