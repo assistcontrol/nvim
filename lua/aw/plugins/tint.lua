@@ -1,3 +1,5 @@
+if not AW.has('tint') then return end
+
 require('tint').setup {
     ignorefunc = function(winid)
         -- Should we ignore? Return false: tint, true: do not tint
