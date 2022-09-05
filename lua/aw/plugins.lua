@@ -46,13 +46,19 @@ require('packer').startup({function(use)
     use {'nvchad/nvim-colorizer.lua',
         cond   = vim.o.termguicolors,  -- requires termguicolors
         config = function()
-            require('colorizer').setup()
+            require('colorizer').setup {}
         end
     }
     -- Colorscheme
     use {'sainnhe/gruvbox-material', config = function()
         require('aw/plugins/gruvbox')
     end}
+
+    -- Uncomment for 0.8
+    -- Dim inactive windows
+    -- use {'levouh/tint.nvim', config = function()
+    --     require('aw/plugins/tint')
+    -- end}
 
     -- Emacs bindings
     use {'linty-org/readline.nvim'}
