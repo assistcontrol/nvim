@@ -9,6 +9,11 @@ vim.cmd('packadd packer.nvim')
 vim.cmd('autocmd BufWritePost plugins.lua PackerCompile')
 
 require('packer').startup({function(use)
+    local deps = {
+        plenary    = 'nvim-lua/plenary.nvim',
+        treesitter = 'nvim-treesitter/nvim-treesitter'
+    }
+
     -- Let packer manage itself
     use {'wbthomason/packer.nvim', opt = true}
 
@@ -61,7 +66,7 @@ require('packer').startup({function(use)
     -- end}
 
     -- Emacs bindings
-    use {'linty-org/readline.nvim'}
+    use 'linty-org/readline.nvim'
 
     -- Explorer
     use {'kyazdani42/nvim-tree.lua', config = function()
@@ -70,7 +75,7 @@ require('packer').startup({function(use)
 
     -- Fuzzy Finder
     use {'nvim-telescope/telescope.nvim',
-        requires = {'nvim-lua/plenary.nvim'},
+        requires = deps.plenary,
         config = function()
             require('aw/plugins/telescope')
         end
@@ -78,7 +83,7 @@ require('packer').startup({function(use)
 
     -- Git
     use {'lewis6991/gitsigns.nvim',
-        requires = {'nvim-lua/plenary.nvim'},
+        requires = deps.plenary,
         config = function()
             require('aw/plugins/gitsigns')
         end
@@ -113,7 +118,7 @@ require('packer').startup({function(use)
     end}
 
     -- Indentation
-    use {'Darazaki/indent-o-matic'}
+    use 'Darazaki/indent-o-matic'
 
     -- Indent guides
     use {'lukas-reineke/indent-blankline.nvim', config = function()
@@ -125,7 +130,7 @@ require('packer').startup({function(use)
         require('aw/plugins/autopairs')
     end}
     use {'rrethy/nvim-treesitter-endwise',
-        requires = 'nvim-treesitter/nvim-treesitter'
+        requires = deps.treesitter
     }
 
     -- LSP
@@ -134,14 +139,14 @@ require('packer').startup({function(use)
     end}
 
     -- Parentheses colors
-    use {'p00f/nvim-ts-rainbow'}
+    use 'p00f/nvim-ts-rainbow'
 
     -- Startup hacking
-    use {'lewis6991/impatient.nvim'}
+    use 'lewis6991/impatient.nvim'
 
     -- Tab out
     use {'abecodes/tabout.nvim',
-        requires = {'nvim-treesitter/nvim-treesitter'},
+        requires = deps.treesitter,
         config = function()
             require('tabout').setup {
                 act_as_shift_tab = true
@@ -159,7 +164,7 @@ require('packer').startup({function(use)
         require('aw/plugins/treesitter')
     end}
     use {'nvim-treesitter/nvim-treesitter-textobjects',
-        requires = {'nvim-treesitter/nvim-treesitter'}
+        requires = deps.treesitter
     }
 
     -- Window management
