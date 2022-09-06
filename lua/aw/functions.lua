@@ -28,6 +28,24 @@ local icons = {
     vertbar   = '│',  -- u2502
 }
 
+-- Create autocommands
+-- Pass either a function or a table of setlocal options
+local AUGROUP = vim.api.nvim_create_augroup('AW', {})
+
+function AW.autocmd(event, pattern, cmds)
+    local callback = type(cmds) == 'function' and cmds or function()
+        for opt, val in pairs(cmds) do
+            vim.opt_local[opt] = val
+        end
+    end
+
+    vim.api.nvim_create_autocmd(event, {
+        callback = callback,
+        group    = AUGROUP,
+        pattern  = pattern
+    })
+end
+
 -- Schedule vim cmds to be run after loading is done
 function AW.defer(cmd, event)
     vim.api.nvim_create_autocmd(event or 'VimEnter', { callback = function()

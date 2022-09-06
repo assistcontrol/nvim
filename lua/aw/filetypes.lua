@@ -1,3 +1,5 @@
+local autocmd = AW.autocmd
+
 -- Use filetype.lua instead of filetype.vim
 vim.g.do_filetype_lua    = 1
 vim.g.did_load_filetypes = 0
@@ -10,22 +12,38 @@ vim.filetype.add {
     }
 }
 
-
 -- Four-space expansion
-vim.cmd [[autocmd Filetype go,lua,perl setlocal shiftwidth=4 softtabstop=4 tabstop=4]]
+autocmd('Filetype', {'go', 'lua', 'perl'}, {shiftwidth=4, softtabstop=4, tabstop=4})
 
 -- Unique widths
-vim.cmd [[autocmd Filetype make setlocal noexpandtab tabstop=8 shiftwidth=8]]
-vim.cmd [[autocmd Filetype text setlocal textwidth=74]]
+autocmd('Filetype', 'make', {expandtab=false, tabstop=8, shiftwidth=8})
+autocmd('Filetype', 'text', {textwidth=74})
 
 -- Expand tabs for system conf files and port Makefiles
-vim.cmd [[autocmd BufRead,BufNewFile */ports/*,/etc/*,/usr/local/etc/* setlocal noexpandtab tabstop=8 shiftwidth=8]]
+autocmd({'BufRead', 'BufNewFile'}, {'*/ports/*', '/etc/*', '/usr/local/etc/*'},
+    {expandtab=false, tabstop=8, shiftwidth=8}
+)
 
--- Spell-check git commits
-vim.cmd [[autocmd BufRead COMMIT_EDITMSG setlocal spell]]
+-- Git
+autocmd('BufRead', 'COMMIT_EDITMSG', {spell=true})
 
--- Jump to position at last close
-vim.cmd([[autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif]])
+-- NvimTree: Simplify status line
+autocmd('Filetype', 'NvimTree', function()
+    vim.b.ministatusline_config = {content = {active = function() return 'NvimTree' end}}
+end)
+
+-- Jump to position of last close
+autocmd('BufReadPost', '*', function()
+    -- Always start git commits at the beginning
+    if vim.bo.filetype == 'gitcommit' then return end
+
+    local lastline, lastcol = unpack(vim.api.nvim_buf_get_mark(0, '"'))
+    local eof = vim.api.nvim_buf_line_count(0)
+
+    if lastline > 0 and lastline <= eof then
+        vim.api.nvim_win_set_cursor(0, {lastline, lastcol})
+    end
+end)
 
 -- Filetype-specific settings
 vim.g.is_bash = 1  -- BSD sh isn't pure POSIX
