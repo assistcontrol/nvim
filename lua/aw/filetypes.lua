@@ -35,7 +35,7 @@ end)
 -- Jump to position of last close
 autocmd('BufReadPost', '*', function()
     -- Always start git commits at the beginning
-    if vim.bo.filetype == 'gitcommit' then return end
+    if vim.fn.expand('%:t') == 'COMMIT_EDITMSG' then return end
 
     local lastline, lastcol = unpack(vim.api.nvim_buf_get_mark(0, '"'))
     local eof = vim.api.nvim_buf_line_count(0)
