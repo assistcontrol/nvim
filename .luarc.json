@@ -1,0 +1,9 @@
+{
+    "diagnostics": {
+        "globals": ["vim", "lfs"]
+    },
+    "workspace": {
+        "checkThirdParty": false,
+        "ignoreDir": ["undodir"]
+    }
+}
