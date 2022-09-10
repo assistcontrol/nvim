@@ -35,7 +35,7 @@ M.filefmt  = function()
 end
 
 M.fileicon = function()
-    return devicons.get_icon(vim.fn.expand('%'))
+    return devicons.get_icon(vim.fn.expand('%')) or AW.icon('generic')
 end
 
 M.filename = function()

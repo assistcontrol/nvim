@@ -6,6 +6,7 @@ local icons = {
     error    = '⨂',  -- u2A02
     errorSm  = '',  -- uF659
     folder   = '',  -- uF74A
+    generic  = '࿶',  --uF0F6
     go       = '',  -- uE626
     hint     = '',  -- uF835
     lock     = '',  -- uF023
