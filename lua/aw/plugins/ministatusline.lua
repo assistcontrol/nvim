@@ -7,8 +7,9 @@ local H = {}
 -- is_truncated() refers to the active window, so we have to assume that
 -- a narrower active window means a smaller inactive window (practically
 -- guaranteed by focus.nvim)
-P.inactiveFilename = function(args)
-    return SL.is_truncated(args.trunc_width) and vim.fn.expand('%:t') or '%F'
+P.inactiveFilename = function()
+    local shortname = P.filename_simplify()
+    return shortname and shortname or '%f'
 end
 
 -- More statusbar components
@@ -51,7 +52,7 @@ end
 H.inactive = function()
     return SL.combine_groups({
         {hl = 'MiniStatuslineInactive', strings = {
-            P.fileicon(), P.inactiveFilename({trunc_width = 80}), P.readonly(),
+            P.fileicon(), P.inactiveFilename(), P.readonly(),
         }}
     })
 end

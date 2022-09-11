@@ -39,7 +39,14 @@ M.fileicon = function()
 end
 
 M.filename = function()
-    return vim.fn.expand('%:~:.')
+    local shortname = M.filename_simplify()
+    return shortname and shortname or vim.fn.expand('%:~:.')
+end
+
+M.filename_simplify = function()
+    local filename = vim.fn.expand('%f')
+    if string.find(filename, 'neo.tree', 1) then return 'Neo-Tree' end
+    if string.find(filename, 'NvimTree', 1) then return 'NvimTree' end
 end
 
 M.filesize = function()

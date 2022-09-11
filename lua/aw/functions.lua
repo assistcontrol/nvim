@@ -6,7 +6,7 @@ local icons = {
     error    = '⨂',  -- u2A02
     errorSm  = '',  -- uF659
     folder   = '',  -- uF74A
-    generic  = '࿶',  --uF0F6
+    generic  = '',  -- uF0F6
     go       = '',  -- uE626
     hint     = '',  -- uF835
     lock     = '',  -- uF023
@@ -89,11 +89,13 @@ function AW.next_pane()
     end
 end
 
--- Jump to best next window. Bypasses nvim-tree.
+-- Jump to best next window. Bypasses explorer windows
 function AW.next_window()
+    local skip = {['neo-tree'] = true, NvimTree = true}
+
     for _ = 1,4 do
         vim.cmd [[wincmd w]]
-        if vim.bo.filetype ~= 'NvimTree' then break end
+        if not skip[vim.bo.filetype] then break end
     end
 end
 

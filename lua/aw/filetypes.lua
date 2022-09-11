@@ -27,11 +27,6 @@ autocmd({'BufRead', 'BufNewFile'}, {'*/ports/*', '/etc/*', '/usr/local/etc/*'},
 -- Git
 autocmd('BufRead', 'COMMIT_EDITMSG', {spell=true})
 
--- NvimTree: Simplify status line
-autocmd('Filetype', 'NvimTree', function()
-    vim.b.ministatusline_config = {content = {active = function() return 'NvimTree' end}}
-end)
-
 -- Jump to position of last close
 autocmd('BufReadPost', '*', function()
     -- Always start git commits at the beginning

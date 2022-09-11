@@ -40,7 +40,7 @@ starter.setup {
         H.item('Update', 'C', 'reload', 'Compile plugins',    'PackerCompile'),
 
         H.item('Browse', 'b', 'folder',   H.pwd,       H.browse(H.pwd)),
-        H.item('Browse', 'x', 'tree',     'tree',      'NvimTreeFocus'),
+        H.item('Browse', 'x', 'tree',     'tree',      'Neotree'),
         H.item('Browse', 'r', 'recent',   'Recent',    'Telescope oldfiles'),
         H.item('Browse', 'l', 'search',   'Live grep', 'Telescope live_grep'),
         H.item('Browse', 'm', 'folder',   'med_apps',  H.browse("~/build/med_apps")),

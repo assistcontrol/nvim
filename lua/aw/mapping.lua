@@ -58,9 +58,11 @@ map('x', 'S', cmd[[lua MiniSurround.add('visual')]])
 map({'i', 'n'}, '<C-\\>', cmd[[write]])
 
 -- \\ shows buffers
-map('n', '\\\\', cmd[[Telescope buffers]], {desc = 'buffers'})
--- \] opens telescope
-map('n', '\\]',  cmd[[Telescope]], {desc = 'Telescope'})
+map('n', '\\\\', cmd[[Neotree buffers]], {desc = 'buffers'})
+-- \] shows buffers in Telescope
+map('n', '\\]',  cmd[[Telescope buffers]], {desc = 'Telescope buffers'})
+-- \[ opens Telescope
+map('n', '\\[',  cmd[[Telescope]], {desc = 'Telescope'})
 
 -- Readline-esque keys for insert and command modes
 local has_readline, readline = pcall(require, 'readline')
@@ -73,11 +75,8 @@ if has_readline then
 end
 
 H.pick_window = function()
-    local winid = require('winpick').select()
-
-    if winid then
-        vim.api.nvim_set_current_win(winid)
-    end
+    local winid = require('window-picker').pick_window() or vim.api.nvim_get_current_win()
+    vim.api.nvim_set_current_win(winid)
 end
 
 AW.maps.leader = {
@@ -94,8 +93,8 @@ AW.maps.leader = {
     s = {cmd[[FocusSplitNicely]],                'split'},
     w = {H.pick_window,                          'pick window'},
     W = {cmd[[FocusToggle]],                     'toggle split resizing'},
-    x = {cmd[[NvimTreeFocus]],                   'explorer'},
-    X = {cmd[[NvimTreeClose]],                   'unexplorer'},
+    x = {cmd[[Neotree]],                         'explorer'},
+    X = {cmd[[Neotree close]],                   'unexplorer'},
     z = {cmd[[lua require('mini.misc').zoom()]], 'zoom'},
 
     b = {

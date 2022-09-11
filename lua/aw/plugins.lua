@@ -10,6 +10,8 @@ vim.cmd('autocmd BufWritePost plugins.lua PackerCompile')
 
 require('packer').startup({function(use)
     local deps = {
+        devicons   = 'kyazdani42/nvim-web-devicons',
+        nui        = 'muniftanjim/nui.nvim',
         plenary    = 'nvim-lua/plenary.nvim',
         treesitter = 'nvim-treesitter/nvim-treesitter'
     }
@@ -72,6 +74,13 @@ require('packer').startup({function(use)
     use {'kyazdani42/nvim-tree.lua', config = function()
         require('aw/plugins/nvimtree')
     end}
+    use {'nvim-neo-tree/neo-tree.nvim',
+        branch = 'v2.x',
+        requires = {deps.devicons, deps.nui, deps.plenary},
+        config = function()
+            require('aw/plugins/neo-tree')
+        end
+    }
 
     -- Fuzzy Finder
     use {'nvim-telescope/telescope.nvim',
@@ -172,10 +181,8 @@ require('packer').startup({function(use)
         require('aw/plugins/focus')
     end}
 
-    use {'gbrlsnchs/winpick.nvim', config = function()
-        require('winpick').setup {
-            border = AW.ui.border
-        }
+    use {'s1n7ax/nvim-window-picker', config = function()
+        require('aw/plugins/window-picker')
     end}
 end,
 
