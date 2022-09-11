@@ -1,3 +1,5 @@
+if not AW.has('mini.ai') then return end
+
 local treesitter_gen = require('mini.ai').gen_spec.treesitter
 
 require('mini.ai').setup {

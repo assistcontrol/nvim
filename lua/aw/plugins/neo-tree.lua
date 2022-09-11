@@ -1,3 +1,5 @@
+if not AW.has('neo-tree') then return end
+
 vim.g.neo_tree_remove_legacy_commands = true
 
 vim.fn.sign_define('DiagnosticSignError', {text = AW.icon('error')})

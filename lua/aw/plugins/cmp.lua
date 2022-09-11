@@ -1,3 +1,5 @@
+if not AW.has('cmp') then return end
+
 local cmp       = require('cmp')
 local luasnip   = require('luasnip')
 local lspconfig = require('lspconfig')

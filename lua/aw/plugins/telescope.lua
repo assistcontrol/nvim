@@ -1,3 +1,5 @@
+if not AW.has('telescope') then return end
+
 local actions = require('telescope.actions')
 
 require('telescope').setup {

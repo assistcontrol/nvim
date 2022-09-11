@@ -1,3 +1,5 @@
+if not AW.has('focus') then return end
+
 require('focus').setup {
     excluded_filetypes = {'NvimTree', 'starter'},
 

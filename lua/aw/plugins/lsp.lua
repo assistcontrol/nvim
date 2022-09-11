@@ -1,4 +1,5 @@
-local lspconfig = require('lspconfig')
+local has_lspconfig, lspconfig = pcall(require, 'lspconfig')
+if not has_lspconfig then return end
 
 local attach = function() end    -- Stub
 if AW.has('mini.completion') then

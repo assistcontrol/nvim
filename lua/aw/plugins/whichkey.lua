@@ -1,4 +1,5 @@
-local wk = require('which-key')
+local has_wk, wk = pcall(require, 'which-key')
+if not has_wk then return end
 
 wk.setup {
     show_help = false,

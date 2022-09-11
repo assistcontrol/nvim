@@ -1,4 +1,6 @@
-local dashboard = require('alpha.themes.dashboard')
+local has_dashboard, dashboard = pcall(require, 'alpha.themes.dashboard')
+if not has_dashboard then return end
+
 local icon = require('aw/util').icon
 
 local pwd = vim.fn.fnamemodify(vim.fn.getcwd(), ':~:.')

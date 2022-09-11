@@ -1,3 +1,5 @@
+if not AW.has('nvim-autopairs') then return end
+
 local pairs = require('nvim-autopairs')
 local rule  = require('nvim-autopairs.rule')
 local cond  = require('nvim-autopairs.conds')

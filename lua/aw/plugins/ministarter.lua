@@ -1,3 +1,5 @@
+if not AW.has('mini.starter') then return end
+
 local starter = require('mini.starter')
 
 local H = {}

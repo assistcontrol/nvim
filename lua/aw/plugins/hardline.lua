@@ -1,3 +1,5 @@
+if not AW.has('hardline') then return end
+
 local parts = require('aw/plugins/statuslineparts')
 
 require('hardline').setup {

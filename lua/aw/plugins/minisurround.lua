@@ -1,3 +1,5 @@
+if not AW.has('mini.surround') then return end
+
 require('mini.surround').setup {
     custom_surroundings = {
         s = {

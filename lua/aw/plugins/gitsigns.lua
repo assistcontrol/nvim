@@ -1,3 +1,5 @@
+if not AW.has('gitsigns') then return end
+
 require('gitsigns').setup {
     signs = {
         add          = {text = AW.icon('thickvert')},
