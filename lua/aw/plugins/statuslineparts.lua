@@ -29,6 +29,11 @@ M.encoding = function()
     if vim.bo.fileencoding ~= 'utf-8' then return vim.bo.fileencoding end
 end
 
+M.is_utility_window = function()
+    local skipFiletypes = {['neo-tree'] = true, NvimTree = true}
+    return skipFiletypes[vim.bo.filetype]
+end
+
 M.filefmt  = function()
     -- Return nothing for proper unix formatting
     return ({dos = 'CRLF', mac = 'CR'})[vim.bo.fileformat]
@@ -39,8 +44,11 @@ M.fileicon = function()
 end
 
 M.filename = function()
-    local shortname = M.filename_simplify()
-    return shortname and shortname or vim.fn.expand('%:~:.')
+    if M.is_utility_window() then
+        local shortname = M.filename_simplify()
+        if shortname then return shortname end
+    end
+    return vim.fn.expand('%:~:.')
 end
 
 M.filename_simplify = function()
@@ -68,6 +76,8 @@ M.filesize = function()
 end
 
 M.filetype = function()
+    if M.is_utility_window() then return end
+
     local fticon = M.fileicon()
     local ftype  = vim.bo.filetype
 

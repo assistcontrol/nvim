@@ -8,12 +8,13 @@ local H = {}
 -- a narrower active window means a smaller inactive window (practically
 -- guaranteed by focus.nvim)
 P.inactiveFilename = function()
-    local shortname = P.filename_simplify()
-    return shortname and shortname or '%f'
+    return '%f'
 end
 
 -- More statusbar components
 P.location = function(args)
+    if P.is_utility_window() then return end
+
     if SL.is_truncated(args.trunc_width) then
         return '%l %v'
     end
