@@ -57,10 +57,10 @@ map('x', 'S', cmd[[lua MiniSurround.add('visual')]])
 -- ^\ saves
 map({'i', 'n'}, '<C-\\>', cmd[[write]])
 
--- \\ shows buffers
-map('n', '\\\\', cmd[[Neotree buffers]], {desc = 'buffers'})
--- \] shows buffers in Telescope
-map('n', '\\]',  cmd[[Telescope buffers]], {desc = 'Telescope buffers'})
+-- \\ shows buffers in Telescope
+map('n', '\\\\',  cmd[[Telescope buffers]], {desc = 'buffers (Telescope)'})
+-- \] shows buffers in Neotree
+map('n', '\\]', cmd[[Neotree buffers]], {desc = 'buffers'})
 -- \[ opens Telescope
 map('n', '\\[',  cmd[[Telescope]], {desc = 'Telescope'})
 
