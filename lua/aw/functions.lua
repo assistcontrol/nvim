@@ -3,12 +3,9 @@ local icons = {
     close    = '✘',  -- u2718
     delete   = '',  -- uF00D
     dotfiles = '⚆',  -- u2686
-    error    = '⨂',  -- u2A02
-    errorSm  = '',  -- uF659
     folder   = '',  -- uF74A
     generic  = '',  -- uF0F6
     go       = '',  -- uE626
-    hint     = '',  -- uF835
     lock     = '',  -- uF023
     lsp      = '',  -- uF04B
     new      = '',  -- uF15B
@@ -19,6 +16,11 @@ local icons = {
     search   = '',  -- uF422
     tree     = 'פּ',  -- uFB44
     vim      = '',  -- uE62B
+
+    -- Diagnostics
+    error    = '⨂',  -- u2A02
+    errorSm  = '',  -- uF46E
+    hint     = '',  -- uF835
     warning  = '',  -- u26A0
 
     -- Box-drawing
