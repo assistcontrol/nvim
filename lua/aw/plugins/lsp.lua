@@ -47,14 +47,14 @@ vim.fn.sign_define('DiagnosticSignHint', {
 
 -- Language servers
 -- Go
-if vim.fn.executable('gopls') == 1 then
+if vim.fn.executable('gopls') > 0 then
     lspconfig.gopls.setup {
         on_attach = attach
     }
 end
 
 -- Lua
-if vim.fn.executable('lua-language-server') == 1 then
+if vim.fn.executable('lua-language-server') > 0 then
     lspconfig.sumneko_lua.setup {
         on_attach = attach,
         settings = {
@@ -78,4 +78,11 @@ if vim.fn.executable('lua-language-server') == 1 then
             }
         }
     }
+end
+
+-- Rust
+if vim.fn.executable('rust-analyzer') > 0 then
+    lspconfig.rust_analyzer.setup({
+        on_attach = attach
+    })
 end
