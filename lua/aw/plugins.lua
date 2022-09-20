@@ -71,9 +71,6 @@ require('packer').startup({function(use)
     use 'linty-org/readline.nvim'
 
     -- Explorer
-    use {'kyazdani42/nvim-tree.lua', config = function()
-        require('aw/plugins/nvimtree')
-    end}
     use {'nvim-neo-tree/neo-tree.nvim',
         branch = 'v2.x',
         requires = {deps.devicons, deps.nui, deps.plenary},
