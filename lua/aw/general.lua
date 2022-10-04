@@ -20,7 +20,8 @@ vim.opt.splitbelow  = true     -- Open horizontal splits below
 vim.opt.splitright  = true     -- Open vertical splits to the right
 vim.opt.virtualedit = 'block'  -- Able to select nonexistent chars in v-block mode
 vim.opt.visualbell  = true     -- Do not *beep*ing beep
-vim.opt.fillchars:append({eob = ' '})
+vim.opt.fillchars:append({eob = ' ',
+    horiz = ' ', horizup = ' ', horizdown = ' ', vert = ' ', vertleft = ' ', vertright = ' ', verthoriz = ' '})
 vim.opt.formatoptions:remove({'o', 'r'})  -- Don't auto-comment new lines
 
 -- Mosh < 1.4 mangles truecolor to the point that termguicolors is unusable.
@@ -52,6 +53,15 @@ vim.opt.cmdheight   = 1                    -- Status bar is not included here
 vim.opt.showmode    = false                -- Unnecessary with status line plugins
 vim.opt.wildmode    = 'longest:full,full'  -- Tab through menus
 vim.opt.statusline  = '%F%m%r%h%w %y [%p%%/%L] [%04v @ %04l]%a'
+
+-- Winbar
+if vim.fn.has('nvim-0.8') then
+    vim.opt.laststatus = 3
+    -- Have to wait until VimR realizes that Neovim got an update
+    -- vim.opt.winbar = '%t'
+else
+    vim.opt.laststatus = 2
+end
 
 -- Spellchecking
 vim.cmd('syntax spell toplevel')  -- Only check non-syntax text

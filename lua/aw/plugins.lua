@@ -61,11 +61,13 @@ require('packer').startup({function(use)
         require('aw/plugins/gruvbox')
     end}
 
-    -- Uncomment for 0.8
     -- Dim inactive windows
-    -- use {'levouh/tint.nvim', config = function()
-    --     require('aw/plugins/tint')
-    -- end}
+    use {'levouh/tint.nvim',
+        cond = vim.fn.has('nvim-0.8'),
+        config = function()
+            require('aw/plugins/tint')
+        end
+    }
 
     -- Emacs bindings
     use 'linty-org/readline.nvim'

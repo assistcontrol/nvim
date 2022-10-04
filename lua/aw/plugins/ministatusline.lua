@@ -62,6 +62,7 @@ end
 
 -- Instantiate the statusline
 SL.setup {
+    set_vim_settings = false,  -- Don't override laststatus
     content = {
         active   = H.active,
         inactive = H.inactive,

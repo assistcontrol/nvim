@@ -61,12 +61,6 @@ local highlights = {
     CustomMediumError  = {fg(C.red),         bg(C.mediumgray)},
 
     CustomMediumBrightBlank = {fg(C.mediumgray), bg(C.mediumgray)},
-
-    -- These are used for inactive window highlighting in window.lua
-    -- CustomActiveWindow      = {'',               bg(C.normalback)},
-    -- CustomInactiveWindow    = {'',               bg(C.softgray)},
-    -- CustomInactiveBlank     = {fg(C.softgray),   bg(C.softgray)},
-
 }
 
 for group, colors in pairs(highlights) do
@@ -78,4 +72,6 @@ AW.colorcmd.register [[
     hi  link CustomHighlight CustomBright
     hi! link NormalFloat CustomMedium
     hi! link FloatBorder CustomMedium
+    hi WinBar   ctermfg=white guifg=white cterm=bold gui=bold
+    hi WinBarNC ctermfg=white guifg=white
 ]]
