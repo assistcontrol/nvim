@@ -56,7 +56,7 @@ vim.opt.statusline  = '%F%m%r%h%w %y [%p%%/%L] [%04v @ %04l]%a'
 
 -- Winbar
 -- Hopefully VimR realizes soon that Neovim got an update
-pcall(vim.api.nvim_set_option, 'winbar', '%t')
+pcall(vim.api.nvim_set_option, 'winbar', '%t %M')
 if vim.fn.has('nvim-0.8') then
     vim.opt.laststatus = 3
 else
