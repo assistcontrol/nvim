@@ -55,10 +55,10 @@ vim.opt.wildmode    = 'longest:full,full'  -- Tab through menus
 vim.opt.statusline  = '%F%m%r%h%w %y [%p%%/%L] [%04v @ %04l]%a'
 
 -- Winbar
+-- Hopefully VimR realizes soon that Neovim got an update
+pcall(vim.api.nvim_set_option, 'winbar', '%t')
 if vim.fn.has('nvim-0.8') then
     vim.opt.laststatus = 3
-    -- Have to wait until VimR realizes that Neovim got an update
-    -- vim.opt.winbar = '%t'
 else
     vim.opt.laststatus = 2
 end
