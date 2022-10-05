@@ -63,7 +63,7 @@ require('packer').startup({function(use)
 
     -- Dim inactive windows
     use {'levouh/tint.nvim',
-        cond = vim.fn.has('nvim-0.8'),
+        cond = vim.fn.has('nvim-0.8') and vim.o.termguicolors,
         config = function()
             require('aw/plugins/tint')
         end
