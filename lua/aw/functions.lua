@@ -93,11 +93,11 @@ end
 
 -- Jump to best next window. Bypasses explorer windows
 function AW.next_window()
-    local skip = {['neo-tree'] = true, NvimTree = true}
+    local skip = {'neo-tree', 'NvimTree'}
 
     for _ = 1,4 do
         vim.cmd [[wincmd w]]
-        if not skip[vim.bo.filetype] then break end
+        if not vim.tbl_contains(skip, vim.bo.filetype) then break end
     end
 end
 

@@ -30,8 +30,8 @@ M.encoding = function()
 end
 
 M.is_utility_window = function()
-    local skipFiletypes = {['neo-tree'] = true, NvimTree = true}
-    return skipFiletypes[vim.bo.filetype]
+    local skipFiletypes = {'neo-tree', 'NvimTree'}
+    return vim.tbl_contains(skipFiletypes, vim.bo.filetype)
 end
 
 M.filefmt  = function()
