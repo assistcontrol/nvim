@@ -3,8 +3,6 @@ if not AW.has('mini.starter') then return end
 local starter = require('mini.starter')
 
 local H = {}
-H.pwd = vim.fn.fnamemodify(vim.fn.getcwd(), ':~:.')
-if H.pwd == '' then H.pwd = '~/' end
 
 H.browse = function(dir)
     return string.format([[lua AW.filebrowser("%s")]], dir)
@@ -41,7 +39,7 @@ starter.setup {
         H.item('Update', 'G', 'go',     'Update go binaries', 'GoUpdateBinaries'),
         H.item('Update', 'C', 'reload', 'Compile plugins',    'PackerCompile'),
 
-        H.item('Browse', 'b', 'folder',   H.pwd,       H.browse(H.pwd)),
+        H.item('Browse', 'b', 'folder',   AW.pwd(),    H.browse(AW.pwd())),
         H.item('Browse', 'x', 'tree',     'tree',      'Neotree'),
         H.item('Browse', 'r', 'recent',   'Recent',    'Telescope oldfiles'),
         H.item('Browse', 'l', 'search',   'Live grep', 'Telescope live_grep'),

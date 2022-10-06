@@ -3,7 +3,7 @@ vim.g.c_comment_strings = true
 vim.g.vimsyn_embed = 'l'  -- Syntax highlight embedded lua
 
 vim.opt.cursorline  = true     -- Highlight current line
-vim.opt.guifont     = 'FiraCode Nerd Font Mono:h12'
+vim.opt.guifont     = 'JetBrains Mono SemiBold Nerd Font Complete:h12'
 vim.opt.inccommand  = 'split'  -- Show substitutions live in a split
 vim.opt.infercase   = true     -- 'smartcase' for keyword completion
 vim.opt.lazyredraw  = true     -- Don't redraw screen for outputless commands
@@ -56,8 +56,9 @@ vim.opt.statusline  = '%F%m%r%h%w %y [%p%%/%L] [%04v @ %04l]%a'
 
 -- Winbar
 if vim.fn.has('nvim-0.8') > 0 then
+    require('aw/winbar')
     -- Hopefully VimR realizes soon that Neovim got an update
-    vim.opt.winbar = '%t %M'
+    -- vim.opt.winbar = '%t %M'
     vim.opt.laststatus = 3
 else
     vim.opt.laststatus = 2

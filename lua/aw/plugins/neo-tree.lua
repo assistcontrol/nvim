@@ -20,7 +20,7 @@ require('neo-tree').setup {
     },
 
     default_component_configs = {
-        modified = {symbol = AW.icon('plus')}
+        modified = {symbol = AW.icon('modified')}
     },
 
     event_handlers = {

@@ -8,9 +8,9 @@ local icons = {
     go       = '',  -- uE626
     lock     = '',  -- uF023
     lsp      = '',  -- uF04B
+    modified = '',  -- uEA71
     new      = '',  -- uF15B
     plug     = '',  -- uF1E6
-    plus     = '',  -- uF44D
     recent   = 'ﮫ',  -- uFBAB
     reload   = '',  -- uF0E2
     search   = '',  -- uF422
@@ -99,6 +99,12 @@ function AW.next_window()
         vim.cmd [[wincmd w]]
         if not vim.tbl_contains(skip, vim.bo.filetype) then break end
     end
+end
+
+-- Shortened $PWD
+function AW.pwd()
+    local pwd = vim.fn.fnamemodify(vim.fn.getcwd(), ':~:.')
+    return (pwd == '' or pwd == '~') and '~/' or pwd
 end
 
 -- Trim all trailing whitespace

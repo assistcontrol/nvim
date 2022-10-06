@@ -89,7 +89,7 @@ M.lsp_status = function()
 end
 
 M.modified = function()
-    return vim.bo.modified and AW.icon('plus')
+    return vim.bo.modified and AW.icon('modified')
 end
 
 M.readonly = function()
