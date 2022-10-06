@@ -55,10 +55,9 @@ vim.opt.wildmode    = 'longest:full,full'  -- Tab through menus
 vim.opt.statusline  = '%F%m%r%h%w %y [%p%%/%L] [%04v @ %04l]%a'
 
 -- Winbar
+-- Hopefully VimR realizes soon that Neovim got an update
 if vim.fn.has('nvim-0.8') > 0 then
     require('aw/winbar')
-    -- Hopefully VimR realizes soon that Neovim got an update
-    -- vim.opt.winbar = '%t %M'
     vim.opt.laststatus = 3
 else
     vim.opt.laststatus = 2
