@@ -146,6 +146,12 @@ require('packer').startup({function(use)
         require('aw/plugins/lsp')
     end}
 
+    use {'j-hui/fidget.nvim', config = function()
+        require('fidget').setup {
+            text = {spinner = 'dots_negative'}
+        }
+    end}
+
     -- Parentheses colors
     use 'p00f/nvim-ts-rainbow'
 
