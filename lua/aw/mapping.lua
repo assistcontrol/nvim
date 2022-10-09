@@ -49,7 +49,7 @@ map('n', '??', cmd[[nohlsearch]])
 
 -- Tab/S-Tab through completion list
 map('i', '<Tab>',   [[pumvisible() ? '<C-n>' : '<Tab>']],   {expr = true})
-map('i', '<S-Tab>', [[pumvisible() ? '<C-n>' : '<S-Tab>']], {expr = true})
+map('i', '<S-Tab>', [[pumvisible() ? '<C-p>' : '<S-Tab>']], {expr = true})
 
 -- S surrounds visual region
 map('x', 'S', cmd[[lua MiniSurround.add('visual')]])
