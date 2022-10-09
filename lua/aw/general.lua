@@ -3,7 +3,6 @@ vim.g.c_comment_strings = true
 vim.g.vimsyn_embed = 'l'  -- Syntax highlight embedded lua
 
 vim.opt.cursorline  = true     -- Highlight current line
-vim.opt.guifont     = 'JetBrains Mono SemiBold Nerd Font Complete:h12'
 vim.opt.inccommand  = 'split'  -- Show substitutions live in a split
 vim.opt.infercase   = true     -- 'smartcase' for keyword completion
 vim.opt.lazyredraw  = true     -- Don't redraw screen for outputless commands
@@ -20,6 +19,7 @@ vim.opt.splitbelow  = true     -- Open horizontal splits below
 vim.opt.splitright  = true     -- Open vertical splits to the right
 vim.opt.virtualedit = 'block'  -- Able to select nonexistent chars in v-block mode
 vim.opt.visualbell  = true     -- Do not *beep*ing beep
+vim.opt.winblend    = AW.ui.winblend
 vim.opt.fillchars:append({eob = ' ',
     horiz = ' ', horizup = ' ', horizdown = ' ', vert = ' ', vertleft = ' ', vertright = ' ', verthoriz = ' '})
 vim.opt.formatoptions:remove({'o', 'r'})  -- Don't auto-comment new lines
@@ -81,3 +81,11 @@ vim.g.netrw_liststyle = 3      -- Tree-style listing
 vim.opt.timeoutlen  = 500      -- Wait time for map sequences
 vim.opt.ttimeoutlen = 10       -- Wait time for keycode sequences
 vim.opt.updatetime  = 100      -- Low is good for async
+
+-- Neovide
+if vim.g.neovide then
+    vim.opt.guifont = 'JetBrainsMono Nerd Font:sb:h12'
+    vim.g.neovide_cursor_animation_length = 0.02
+    vim.g.neovide_cursor_vfx_mode         = 'pixiedust'
+    vim.g.neovide_cursor_vfx_particle_density = 25.0
+end
