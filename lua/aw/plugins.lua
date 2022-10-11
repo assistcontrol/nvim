@@ -27,6 +27,9 @@ require('packer').startup({function(use)
         -- Buffer deletion
         require('mini.bufremove').setup {}
 
+        -- Buffer overview
+        require('aw/plugins/minimap')
+
         -- Completion
         require('mini.completion').setup {}
 
@@ -137,6 +140,7 @@ require('packer').startup({function(use)
     use {'windwp/nvim-autopairs', config = function()
         require('aw/plugins/autopairs')
     end}
+
     use {'rrethy/nvim-treesitter-endwise',
         requires = deps.treesitter
     }

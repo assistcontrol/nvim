@@ -123,11 +123,18 @@ AW.maps.leader = {
         f = {cmd[[lua AW.filebrowser()]],  'files'}
     },
 
-    m = {
+    K = {
         -- alias mm='make -j$(sysctl -n hw.ncpu)'
         name = 'make',
         m = {cmd[[TermExec cmd="mm"]],      'all'},
         t = {cmd[[TermExec cmd="mm test"]], 'test'}
+    },
+
+    m = {
+        name = 'map',
+        f = {require('mini.map').toggle_focus, 'focus'},
+        r = {require('mini.map').refresh,      'refresh'},
+        t = {require('mini.map').toggle,       'toggle'}
     },
 
     o = {

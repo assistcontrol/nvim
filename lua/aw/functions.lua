@@ -93,7 +93,7 @@ end
 
 -- Jump to best next window. Bypasses explorer windows
 function AW.next_window()
-    local skip = {'neo-tree', 'NvimTree'}
+    local skip = {'minimap', 'neo-tree', 'NvimTree'}
 
     for _ = 1,4 do
         vim.cmd [[wincmd w]]
