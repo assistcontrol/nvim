@@ -21,7 +21,8 @@ vim.opt.virtualedit = 'block'  -- Able to select nonexistent chars in v-block mo
 vim.opt.visualbell  = true     -- Do not *beep*ing beep
 vim.opt.winblend    = AW.ui.winblend
 vim.opt.fillchars:append({eob = ' ',
-    horiz = ' ', horizup = ' ', horizdown = ' ', vert = ' ', vertleft = ' ', vertright = ' ', verthoriz = ' '})
+    horiz = ' ', horizup = ' ', horizdown = ' ',
+    vert = ' ', vertleft = ' ', vertright = ' ', verthoriz = ' '})
 vim.opt.formatoptions:remove({'o', 'r'})  -- Don't auto-comment new lines
 
 -- Mosh < 1.4 mangles truecolor to the point that termguicolors is unusable.
@@ -31,10 +32,15 @@ vim.opt.formatoptions:remove({'o', 'r'})  -- Don't auto-comment new lines
 vim.opt.termguicolors = vim.loop.os_uname().sysname ~= 'FreeBSD'
 
 -- Searching
-vim.opt.grepprg    = 'grep --line-number --with-filename $*'
 vim.opt.ignorecase = true   -- Ignore case in search patterns
 vim.opt.smartcase  = true   -- Override 'ignorecase' when pattern has upper-case characters
 vim.opt.wildignore:append({'*/node_modules/*', '*/.git/*'})
+if vim.fn.executable('rg') > 0 then
+    vim.opt.grepprg = 'rg --vimgrep --smart-case'
+    vim.opt.grepformat = '%f:%l:%c:%m,%f:%l:%m'
+else
+    vim.opt.grepprg=[[grep --line-number --with-filename -R --exclude '*.git/*' --exclude '*.svg/*']]
+end
 
 -- Tabbing/indenting (overridden prn in filetypes.lua)
 vim.opt.expandtab   = true
