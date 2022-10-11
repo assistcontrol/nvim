@@ -1,37 +1,4 @@
-local icons = {
-    add      = '▷',  -- u25B7
-    close    = '✘',  -- u2718
-    delete   = '',  -- uF00D
-    dotfiles = '⚆',  -- u2686
-    folder   = '',  -- uF74A
-    generic  = '',  -- uF0F6
-    go       = '',  -- uE626
-    lock     = '',  -- uF023
-    lsp      = '',  -- uF04B
-    modified = '',  -- uEA71
-    new      = '',  -- uF15B
-    plug     = '',  -- uF1E6
-    recent   = 'ﮫ',  -- uFBAB
-    reload   = '',  -- uF0E2
-    search   = '',  -- uF422
-    tree     = 'פּ',  -- uFB44
-    vim      = '',  -- uE62B
-
-    -- Diagnostics
-    error    = '⨂',  -- u2A02
-    errorSm  = '',  -- uF46E
-    hint     = '',  -- uF835
-    warning  = '',  -- u26A0
-
-    -- Box-drawing
-    horizlow  = '▁',  -- u2581
-    horizmid  = '─',  -- u2500
-    horizhigh = '▔',  -- u2594
-    thickvert = '▌',  -- u258C
-    vertbar   = '│',  -- u2502
-}
-
--- Create autocommands
+-- AW.autocmd creates autocmmands
 -- Pass either a function or a table of setlocal options
 local AUGROUP = vim.api.nvim_create_augroup('AW', {})
 
@@ -49,32 +16,27 @@ function AW.autocmd(event, pattern, cmds)
     })
 end
 
--- Schedule vim cmds to be run after loading is done
+-- AW.defer schedules vim cmds to be run after loading is done
 function AW.defer(cmd, event)
     vim.api.nvim_create_autocmd(event or 'VimEnter', { callback = function()
         vim.cmd(cmd)
     end })
 end
 
--- Spawn a file finder, and change to a specified dir
+-- AW.filebrowser spawns a file finder, and changes to a specified dir
 -- for future searches
 function AW.filebrowser(dir)
     if dir then vim.cmd('lcd ' .. dir) end
     require('telescope.builtin').find_files()
 end
 
--- Test whether a certain plugin is installed
+-- AW.has tests whether a certain plugin is installed
 function AW.has(mod)
     local exists, _ = pcall(require, mod)
     return exists
 end
 
--- Get an icon, with optional text attached
-function AW.icon(ico, str)
-    return str and string.format('%s %s', icons[ico], str) or icons[ico]
-end
-
--- Add a keymap
+-- AW.map adds a keymap
 local map_defaults = {noremap = true, silent = true}
 function AW.map(mode, keys, cmd, opts)
     opts = opts and vim.tbl_deep_extend('force', map_defaults, opts) or map_defaults
@@ -82,7 +44,7 @@ function AW.map(mode, keys, cmd, opts)
     vim.keymap.set(mode, keys, cmd, opts)
 end
 
--- Jump to best next pane. Window preferred over buffer.
+-- AW.next_pane jumps to best next pane. Window preferred over buffer.
 function AW.next_pane()
     if #vim.api.nvim_tabpage_list_wins(0) > 1 then
         AW.next_window()
@@ -91,7 +53,7 @@ function AW.next_pane()
     end
 end
 
--- Jump to best next window. Bypasses explorer windows
+-- AW.next_window jumps to best next window. Bypasses explorer windows.
 function AW.next_window()
     local skip = {'minimap', 'neo-tree', 'NvimTree'}
 
@@ -101,26 +63,29 @@ function AW.next_window()
     end
 end
 
--- Shortened $PWD
+-- AW.pwd returns a shortened $PWD
 function AW.pwd()
     local pwd = vim.fn.fnamemodify(vim.fn.getcwd(), ':~:.')
     return (pwd == '' or pwd == '~') and '~/' or pwd
 end
 
--- Trim all trailing whitespace
+-- AW.purge_whitespace trims all trailing whitespace
 function AW.purge_whitespace()
     require('mini.trailspace').trim()
     require('mini.trailspace').trim_last_lines()
 end
 vim.api.nvim_create_user_command('WhitespaceTrim', AW.purge_whitespace, {})
 
--- Update plugins
+-- AW.update_plugins updates all the things
+-- Handles plugins and treesitter parsers.
 function AW.update_plugins()
     vim.cmd(':TSUpdate')
     vim.cmd(':PackerSync')
 end
 
 -- Flash yanked lines
+-- This doesn't belong in this file, but it belongs even less in
+-- any other file.
 vim.api.nvim_create_autocmd('TextYankPost', { callback = function()
     vim.highlight.on_yank {
         higroup   = 'IncSearch',

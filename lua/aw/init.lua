@@ -2,6 +2,7 @@ pcall(require, 'impatient')   -- Keep this at the very top
 
 _G.AW = {}
 
+require('aw/icons')
 require('aw/functions')
 require('aw/colors')
 require('aw/general')
