@@ -24,7 +24,7 @@ P.location = function(args)
     local percent = math.floor(vim.fn.line('.') * 100 / vim.fn.line('$'))
     local percentString = string.format('%d%%%%', percent)
 
-    return '%l/%L %v/%-2{virtcol("$") - 1} ' .. percentString
+    return '%l┆%L %v┅%-2{virtcol("$") - 1} ' .. percentString
 end
 
 -- This just uppercases the mode

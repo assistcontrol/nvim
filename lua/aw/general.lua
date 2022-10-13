@@ -39,7 +39,7 @@ if vim.fn.executable('rg') > 0 then
     vim.opt.grepprg = 'rg --vimgrep --smart-case'
     vim.opt.grepformat = '%f:%l:%c:%m,%f:%l:%m'
 else
-    vim.opt.grepprg=[[grep --line-number --with-filename -R --exclude '*.git/*' --exclude '*.svg/*']]
+    vim.opt.grepprg=[[grep --line-number --with-filename --recursive --exclude '*.git/*' --exclude '*.svg/*']]
 end
 
 -- Tabbing/indenting (overridden prn in filetypes.lua)
