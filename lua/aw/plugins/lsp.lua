@@ -49,7 +49,12 @@ vim.fn.sign_define('DiagnosticSignHint', {
 -- Go
 if vim.fn.executable('gopls') > 0 then
     lspconfig.gopls.setup {
-        on_attach = attach
+        on_attach = attach,
+        settings = {
+            gopls = {
+                gofumpt = true
+            }
+        }
     }
 end
 
