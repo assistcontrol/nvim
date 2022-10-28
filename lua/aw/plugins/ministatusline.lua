@@ -68,13 +68,3 @@ SL.setup {
         inactive = H.inactive,
     }
 }
-
-
--- Set statusline colours
-AW.colorcmd.register [[
-    hi! link MiniStatuslineModeNormal  CustomBright
-    hi! link MiniStatuslineModeInsert  CustomModeInsert
-    hi! link MiniStatuslineModeVisual  CustomModeVisual
-    hi! link MiniStatuslineModeReplace CustomModeReplace
-    hi! link MiniStatuslineModeCommand CustomModeCommand
-]]

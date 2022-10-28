@@ -26,11 +26,3 @@ require('telescope').setup {
         winblend = AW.ui.winblend
     }
 }
-
-AW.colorcmd.register [[
-    hi! link TelescopeBorder NormalFloat
-    hi! link TelescopeNormal NormalFloat
-    hi! link TelescopePromptPrefix NormalFloat
-    hi! link TelescopePromptCounter  NormalFloat
-    hi! link TelescopeSelection CustomHighlight
-]]

@@ -1,3 +1,4 @@
+-- vim: ts=4 sw=4
 -- Auto-install packer.nvim
 local packer_git = vim.fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
 if vim.fn.empty(vim.fn.glob(packer_git)) > 0 and vim.fn.input('Download packer? [Y/n]: ') ~= 'n' then
@@ -58,9 +59,12 @@ require('packer').startup({function(use)
     end}
 
     -- Colorscheme
-    use {'sainnhe/gruvbox-material', config = function()
-        require('aw/plugins/gruvbox')
-    end}
+    use {'sainnhe/gruvbox-material',
+        cond = true,
+        config = function()
+            require('aw/plugins/gruvboxmaterial')
+        end
+    }
 
     -- Dim inactive windows
     use {'levouh/tint.nvim',

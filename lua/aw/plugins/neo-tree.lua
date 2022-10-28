@@ -32,8 +32,3 @@ require('neo-tree').setup {
         },
     }
 }
-
-AW.colorcmd.register [[
-    hi! link NeoTreeFloatBorder Normal
-    hi! link NeoTreeFloatTitle  CustomBright
-]]

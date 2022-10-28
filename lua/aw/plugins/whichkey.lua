@@ -14,7 +14,3 @@ wk.setup {
 }
 
 wk.register(AW.maps.leader, {mode = 'n', prefix = '<leader>'})
-
-AW.colorcmd.register [[
-    hi! link WhichKeyFloat CustomMedium
-]]
