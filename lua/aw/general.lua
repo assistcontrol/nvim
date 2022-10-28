@@ -2,34 +2,29 @@
 vim.g.c_comment_strings = true
 vim.g.vimsyn_embed = 'l'  -- Syntax highlight embedded lua
 
-vim.opt.cursorline  = true     -- Highlight current line
-vim.opt.inccommand  = 'split'  -- Show substitutions live in a split
-vim.opt.infercase   = true     -- 'smartcase' for keyword completion
-vim.opt.lazyredraw  = true     -- Don't redraw screen for outputless commands
-vim.opt.joinspaces  = false    -- Don't insert 2 spaces after '.' on join
-vim.opt.modeline    = true     -- First line:  # vim: ft=[...]
-vim.opt.number      = true     -- Show line numbers
-vim.opt.pumblend    = AW.ui.winblend
-vim.opt.report      = 0        -- Report all file changes
-vim.opt.scrolljump  = 2        -- Min # of lines to scroll past screen
-vim.opt.scrolloff   = 2        -- Show this many lines around cursor
-vim.opt.showmatch   = true     -- Briefly flash matching bracket
-vim.opt.sidescroll  = 2        -- Min # of columns to scroll horizontally
-vim.opt.splitbelow  = true     -- Open horizontal splits below
-vim.opt.splitright  = true     -- Open vertical splits to the right
-vim.opt.virtualedit = 'block'  -- Able to select nonexistent chars in v-block mode
-vim.opt.visualbell  = true     -- Do not *beep*ing beep
-vim.opt.winblend    = AW.ui.winblend
+vim.opt.cursorline    = true     -- Highlight current line
+vim.opt.inccommand    = 'split'  -- Show substitutions live in a split
+vim.opt.infercase     = true     -- 'smartcase' for keyword completion
+vim.opt.lazyredraw    = true     -- Don't redraw screen for outputless commands
+vim.opt.joinspaces    = false    -- Don't insert 2 spaces after '.' on join
+vim.opt.modeline      = true     -- First line:  # vim: ft=[...]
+vim.opt.number        = true     -- Show line numbers
+vim.opt.pumblend      = AW.ui.winblend
+vim.opt.report        = 0        -- Report all file changes
+vim.opt.scrolljump    = 2        -- Min # of lines to scroll past screen
+vim.opt.scrolloff     = 2        -- Show this many lines around cursor
+vim.opt.showmatch     = true     -- Briefly flash matching bracket
+vim.opt.sidescroll    = 2        -- Min # of columns to scroll horizontally
+vim.opt.splitbelow    = true     -- Open horizontal splits below
+vim.opt.splitright    = true     -- Open vertical splits to the right
+vim.opt.termguicolors = true     -- Truecolor in terminal
+vim.opt.virtualedit   = 'block'  -- Able to select nonexistent chars in v-block mode
+vim.opt.visualbell    = true     -- Do not *beep*ing beep
+vim.opt.winblend      = AW.ui.winblend
 vim.opt.fillchars:append({eob = ' ',
     horiz = ' ', horizup = ' ', horizdown = ' ',
     vert = ' ', vertleft = ' ', vertright = ' ', verthoriz = ' '})
 vim.opt.formatoptions:remove({'o', 'r'})  -- Don't auto-comment new lines
-
--- Mosh < 1.4 mangles truecolor to the point that termguicolors is unusable.
--- I only use mosh to connect to FreeBSD systems, so it suffices for me simply
--- to check the OS. This can be removed if mosh 1.4 comes out, which might
--- never actually happen at this point.
-vim.opt.termguicolors = vim.loop.os_uname().sysname ~= 'FreeBSD'
 
 -- Searching
 vim.opt.ignorecase = true   -- Ignore case in search patterns

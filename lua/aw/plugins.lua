@@ -53,12 +53,10 @@ require('packer').startup({function(use)
     end}
 
     -- Color highlighting
-    use {'nvchad/nvim-colorizer.lua',
-        cond   = vim.o.termguicolors,  -- requires termguicolors
-        config = function()
-            require('colorizer').setup {}
-        end
-    }
+    use {'nvchad/nvim-colorizer.lua', config = function()
+        require('colorizer').setup {}
+    end}
+
     -- Colorscheme
     use {'sainnhe/gruvbox-material', config = function()
         require('aw/plugins/gruvbox')
@@ -66,7 +64,7 @@ require('packer').startup({function(use)
 
     -- Dim inactive windows
     use {'levouh/tint.nvim',
-        cond = vim.fn.has('nvim-0.8') > 0 and vim.o.termguicolors,
+        cond = vim.fn.has('nvim-0.8') > 0,
         config = function()
             require('aw/plugins/tint')
         end
