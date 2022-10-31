@@ -59,20 +59,14 @@ require('packer').startup({function(use)
     end}
 
     -- Colorscheme
-    use {'sainnhe/gruvbox-material',
-        cond = true,
-        config = function()
-            require('aw/plugins/gruvboxmaterial')
-        end
-    }
+    use {'sainnhe/gruvbox-material', config = function()
+        require('aw/plugins/gruvboxmaterial')
+    end}
 
     -- Dim inactive windows
-    use {'levouh/tint.nvim',
-        cond = vim.fn.has('nvim-0.8') > 0,
-        config = function()
-            require('aw/plugins/tint')
-        end
-    }
+    use {'levouh/tint.nvim', config = function()
+        require('aw/plugins/tint')
+    end}
 
     -- Emacs bindings
     use 'linty-org/readline.nvim'

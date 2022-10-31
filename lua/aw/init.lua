@@ -6,6 +6,7 @@ require('aw/icons')
 require('aw/functions')
 require('aw/colors')
 require('aw/general')
+require('aw/winbar')
 require('aw/plugins')
 
 if not vim.g.colors_name then
