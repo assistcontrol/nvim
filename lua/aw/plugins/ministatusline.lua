@@ -39,12 +39,12 @@ H.active = function()
 
     return SL.combine_groups({
         {hl = mode_hl,          strings = { mode }},
-        {hl = 'CustomMedium',   strings = { SL.section_git({ trunc_width = 60 }) }},
+        {hl = 'MiniStatuslineDevinfo',   strings = { SL.section_git({ trunc_width = 60 }) }},
         '%<',  -- Things before this are left-justified
-        {hl = 'CustomSoft',     strings = { P.filename(), P.readonly(), P.modified() }},
+        {hl = 'MiniStatuslineFilename',     strings = { P.filename(), P.readonly(), P.modified() }},
         '%=',  -- Things after this are right-justified
-        {hl = 'CustomMedium',   strings = { P.filesize() }},
-        {hl = 'CustomMedium',   strings = { P.lsp_status() }},
+        {hl = 'MiniStatuslineFileinfo',   strings = { P.filesize() }},
+        {hl = 'MiniStatuslineFileinfo',   strings = { P.lsp_status() }},
         {hl = 'CustomError',    strings = { P.diagErrors() }},
         {hl = 'CustomWarning',  strings = { P.diagWarnings() }},
         {hl = 'CustomMedium',   strings = { P.encoding(), P.filefmt(), P.filetype() }},
