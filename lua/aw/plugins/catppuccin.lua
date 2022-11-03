@@ -22,6 +22,13 @@ require('catppuccin').setup {
         treesitter = true,
         ts_rainbow = true,
         which_key = true,
+
+        indent_blankline = {
+            enabled = true
+        },
+        native_lsp = {
+            enabled = true
+        }
     }
 }
 
