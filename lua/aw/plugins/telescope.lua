@@ -14,10 +14,7 @@ require('telescope').setup {
                 ['<S-Tab>'] = actions.move_selection_better,
                 ['<Esc>']   = actions.close,
                 ['<C-u>']   = false,  -- Normal ^U behaviour
-                ['<C-h>']   = require('telescope.actions.generate').which_key {
-                    normal_hl = 'CustomMediumBright',
-                    border_hl = 'CustomMediumBrightBlank'
-                }
+                ['<C-h>']   = require('telescope.actions.generate').which_key {}
             }
         },
         path_display = function(_, path)  -- remove leading ./

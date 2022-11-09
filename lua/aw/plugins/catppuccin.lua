@@ -37,7 +37,13 @@ require('catppuccin').setup {
             TelescopeBorder = {bg=colors.crust},
             TelescopeNormal = {bg=colors.crust},
             TelescopePromptPrefix  = {bg=colors.crust},
-            TelescopePromptCounter = {bg=colors.crust}
+            TelescopePromptCounter = {bg=colors.crust},
+
+            WinBar   = {fg='white', style={'bold'}},
+            WinBarNC = {fg='white'},
+
+            CustomError   = {fg=colors.mantle, bg=colors.red},
+            CustomWarning = {fg=colors.mantle, bg=colors.yellow},
         }
     end
 }

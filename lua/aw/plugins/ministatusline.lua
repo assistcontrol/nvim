@@ -47,7 +47,7 @@ H.active = function()
         {hl = 'MiniStatuslineFileinfo',   strings = { P.lsp_status() }},
         {hl = 'CustomError',    strings = { P.diagErrors() }},
         {hl = 'CustomWarning',  strings = { P.diagWarnings() }},
-        {hl = 'CustomMedium',   strings = { P.encoding(), P.filefmt(), P.filetype() }},
+        {hl = 'MiniStatuslineFileInfo',   strings = { P.encoding(), P.filefmt(), P.filetype() }},
         {hl = mode_hl,          strings = { P.location({ trunc_width = 50 }) }}
     })
 end
