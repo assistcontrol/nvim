@@ -44,6 +44,7 @@ require('catppuccin').setup {
 
             CustomError   = {fg=colors.mantle, bg=colors.red},
             CustomWarning = {fg=colors.mantle, bg=colors.yellow},
+            CustomBlank   = {fg=colors.mantle,   bg=colors.mantle},
         }
     end
 }
