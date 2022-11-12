@@ -44,7 +44,7 @@ require('catppuccin').setup {
 
             CustomError   = {fg=colors.mantle, bg=colors.red},
             CustomWarning = {fg=colors.mantle, bg=colors.yellow},
-            CustomBlank   = {fg=colors.mantle,   bg=colors.mantle},
+            CustomBlank   = {fg=colors.mantle, bg=colors.mantle},
         }
     end
 }
@@ -57,7 +57,7 @@ vim.cmd('colorscheme catppuccin')
 -- 	rosewater: "#F5E0DC", peach:  "#FAB387", pink:  "#F5C2E7",
 -- 	sapphire:  "#74C7EC", red:    "#F38BA8", sky:   "#89DCEB",
 -- 	yellow:    "#F9E2AF", teal:   "#94E2D5",
--- 	text: "#CDD6F4", subtext1: "#BAC2DE", subtext0: "#A6ADC8",
+-- 	text: "#CDD6F4",     subtext1: "#BAC2DE", subtext0: "#A6ADC8",
 -- 	overlay2: "#9399B2", overlay1: "#7F849C", overlay0: "#6C7086",
 -- 	surface2: "#585B70", surface1: "#45475A", surface0: "#313244",
--- 	base: "#1E1E2E", mantle: "#181825", crust: "#11111B",
+-- 	base: "#1E1E2E",     mantle:   "#181825", crust:    "#11111B",
