@@ -59,14 +59,8 @@ require('packer').startup({function(use)
     end}
 
     -- Colorscheme
-    use {'sainnhe/gruvbox-material',
-        cond = false,
-        config = function()
-            require('aw/plugins/gruvboxmaterial')
-        end
-    }
-    use {'catppuccin/nvim', as = 'catppuccin',
-        cond = true,
+    use {'catppuccin/nvim',
+        as = 'catppuccin',
         config = function()
             require('aw/plugins/catppuccin')
         end
@@ -149,7 +143,6 @@ require('packer').startup({function(use)
     use {'neovim/nvim-lspconfig', config = function()
         require('aw/plugins/lsp')
     end}
-
     use {'j-hui/fidget.nvim', config = function()
         require('fidget').setup {
             text = {spinner = 'dots_negative'}
