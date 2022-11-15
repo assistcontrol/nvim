@@ -52,12 +52,31 @@ require('catppuccin').setup {
 vim.cmd('colorscheme catppuccin')
 
 -- Palette:
--- 	flamingo:  "#F2CDCD", blue:   "#89B4FA", green: "#A6E3A1",
--- 	lavender:  "#B4BEFE", maroon: "#EBA0AC", mauve: "#CBA6F7",
--- 	rosewater: "#F5E0DC", peach:  "#FAB387", pink:  "#F5C2E7",
--- 	sapphire:  "#74C7EC", red:    "#F38BA8", sky:   "#89DCEB",
--- 	yellow:    "#F9E2AF", teal:   "#94E2D5",
--- 	text: "#CDD6F4",     subtext1: "#BAC2DE", subtext0: "#A6ADC8",
--- 	overlay2: "#9399B2", overlay1: "#7F849C", overlay0: "#6C7086",
--- 	surface2: "#585B70", surface1: "#45475A", surface0: "#313244",
--- 	base: "#1E1E2E",     mantle:   "#181825", crust:    "#11111B",
+-- | Name      |  Mocha     | Usage           |
+-- | --------- |  --------- | --------------- |
+-- | rosewater |  `#F5E0DC` | Winbar          |
+-- | flamingo  |  `#F2CDCD` | Target word     |
+-- | pink      |  `#F5C2E7` | Just pink       |
+-- | mauve     |  `#CBA6F7` | Tag             |
+-- | red       |  `#F38BA8` | Error           |
+-- | maroon    |  `#EBA0AC` | Lighter red     |
+-- | peach     |  `#FAB387` | Number          |
+-- | yellow    |  `#F9E2AF` | Warning         |
+-- | green     |  `#A6E3A1` | Diff add        |
+-- | teal      |  `#94E2D5` | Hint            |
+-- | sky       |  `#89DCEB` | Operator        |
+-- | sapphire  |  `#74C7EC` | Constructor     |
+-- | blue      |  `#89B4FA` | Diff changed    |
+-- | lavender  |  `#B4BEFE` | CursorLine Nr   |
+-- | text      |  `#CDD6F4` | Default fg      |
+-- | subtext1  |  `#BAC2DE` | Indicator       |
+-- | subtext0  |  `#A6ADC8` | Float title     |
+-- | overlay2  |  `#9399B2` | Popup fg        |
+-- | overlay1  |  `#7F849C` | Conceal color   |
+-- | overlay0  |  `#6C7086` | Fold color      |
+-- | surface2  |  `#585B70` | Default comment |
+-- | surface1  |  `#45475A` | Darker comment  |
+-- | surface0  |  `#313244` | Darkest comment |
+-- | base      |  `#1E1E2E` | Default bg      |
+-- | mantle    |  `#181825` | Darker bg       |
+-- | crust     |  `#11111B` | Darkest bg      |
