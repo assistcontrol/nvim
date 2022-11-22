@@ -132,9 +132,9 @@ AW.maps.leader = {
 
     m = {
         name = 'map',
-        f = {require('mini.map').toggle_focus, 'focus'},
-        r = {require('mini.map').refresh,      'refresh'},
-        t = {require('mini.map').toggle,       'toggle'}
+        f = {cmd[[lua require('mini.map').toggle_focus]], 'focus'},
+        r = {cmd[[lua require('mini.map').refresh]],      'refresh'},
+        t = {cmd[[lua require('mini.map').toggle]],       'toggle'}
     },
 
     o = {
@@ -149,6 +149,6 @@ AW.maps.leader = {
 
 -- Gitsigns sets keymaps via a callback
 function AW.maps.gitsigns(bufnr)
-    map('n', '[c', require('gitsigns').prev_hunk, {buffer = bufnr, desc = 'previous git hunk'})
-    map('n', ']c', require('gitsigns').next_hunk, {buffer = bufnr, desc = 'next git hunk'})
+    map('n', '[c', cmd[[lua require('gitsigns').prev_hunk]], {buffer = bufnr, desc = 'previous git hunk'})
+    map('n', ']c', cmd[[lua require('gitsigns').next_hunk]], {buffer = bufnr, desc = 'next git hunk'})
 end
