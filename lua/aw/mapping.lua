@@ -130,13 +130,6 @@ AW.maps.leader = {
         t = {cmd[[TermExec cmd="mm test"]], 'test'}
     },
 
-    m = {
-        name = 'map',
-        f = {cmd[[lua require('mini.map').toggle_focus]], 'focus'},
-        r = {cmd[[lua require('mini.map').refresh]],      'refresh'},
-        t = {cmd[[lua require('mini.map').toggle]],       'toggle'}
-    },
-
     o = {
         name = 'fold',
         c = {'zc', 'close'},

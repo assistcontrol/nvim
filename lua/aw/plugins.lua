@@ -28,9 +28,6 @@ require('packer').startup({function(use)
         -- Buffer deletion
         require('mini.bufremove').setup {}
 
-        -- Buffer overview
-        require('aw/plugins/minimap')
-
         -- Completion
         require('mini.completion').setup {}
 
