@@ -36,14 +36,6 @@ function AW.has(mod)
     return exists
 end
 
--- AW.map adds a keymap
-local map_defaults = {noremap = true, silent = true}
-function AW.map(mode, keys, cmd, opts)
-    opts = opts and vim.tbl_deep_extend('force', map_defaults, opts) or map_defaults
-
-    vim.keymap.set(mode, keys, cmd, opts)
-end
-
 -- AW.next_pane jumps to best next pane. Window preferred over buffer.
 function AW.next_pane()
     if #vim.api.nvim_tabpage_list_wins(0) > 1 then

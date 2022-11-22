@@ -11,7 +11,7 @@ local cmd = function(command)
     return table.concat({'<Cmd>', command, '<CR>'})
 end
 
-local map = AW.map
+local map = vim.keymap.set
 
 -- Mash j and k, or jj/kk in place of ESC
 map('i', 'jk', '<Esc>')
