@@ -34,6 +34,7 @@ require('catppuccin').setup {
         return {
             MatchParen = {fg=colors.mantle, bg=colors.red},
 
+            MiniStatuslineFilename = {fg=colors.text, bg=colors.base},
             TelescopeBorder = {bg=colors.crust},
             TelescopeNormal = {bg=colors.crust},
             TelescopePromptPrefix  = {bg=colors.crust},
