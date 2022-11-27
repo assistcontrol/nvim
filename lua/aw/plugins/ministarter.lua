@@ -18,18 +18,15 @@ end
 
 starter.setup {
     content_hooks = {
-        starter.gen_hook.adding_bullet(''),
+        starter.gen_hook.adding_bullet('', true),
         starter.gen_hook.aligning('center', 'center')
     },
     evaluate_single = true,
     query_updaters = [[abcdefghijklmnopqrstuvwxyz0123456789_-.ABCDEFGHIJKLMNOPQRSTUVWXYZ]],
     footer = os.date(),
     header = table.concat({
-        [[  /\ \▔\___  ___/\   /(●)_ __ ___  ]],
-        [[ /  \/ / _ \/ _ \ \ / / | '_ ` _ \ ]],
-        [[/ /\  /  __/ (_) \ V /| | | | | | |]],
-        [[\_\ \/ \___|\___/ \_/ |_|_| |_| |_|]],
-        [[───────────────────────────────────]]
+        '              Neovim',
+        '───────────────────────────────────'
     }, "\n"),
     items = {
         H.item('Common', 'i', 'new',   'New file',  'enew'),
