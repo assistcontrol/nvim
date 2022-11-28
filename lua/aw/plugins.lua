@@ -17,6 +17,9 @@ require('packer').startup({function(use)
         treesitter = 'nvim-treesitter/nvim-treesitter'
     }
 
+    -- Are we running as root?
+    local root = AW.is_root()
+
     -- Let packer manage itself
     use {'wbthomason/packer.nvim', opt = true}
 
@@ -51,9 +54,12 @@ require('packer').startup({function(use)
     end}
 
     -- Color highlighting
-    use {'nvchad/nvim-colorizer.lua', config = function()
-        require('colorizer').setup {}
-    end}
+    use {'nvchad/nvim-colorizer.lua',
+        cond = not root,
+        config = function()
+            require('colorizer').setup {}
+        end
+    }
 
     -- Colorscheme
     use {'catppuccin/nvim',
@@ -86,6 +92,7 @@ require('packer').startup({function(use)
     -- Git
     use {'lewis6991/gitsigns.nvim',
         requires = deps.plenary,
+        cond = not root,
         config = function()
             require('aw/plugins/gitsigns')
         end
@@ -95,6 +102,7 @@ require('packer').startup({function(use)
     use {'ray-x/go.nvim',
         ft = {'go', 'gohtmltmpl', 'gomod'},
         cmd = {'GoInstallBinaries', 'GoUpdateBinaries'},
+        cond = not root,
         config = function()
             require('aw/plugins/go')
         end
@@ -108,6 +116,7 @@ require('packer').startup({function(use)
     -- HTML
     use {'mattn/emmet-vim',
         ft = {'html', 'tt2html'},
+        cond = not root,
         config = function()
             vim.g.user_emmet_settings = {
                 html = {block_all_childless = true}  -- New line for all tags

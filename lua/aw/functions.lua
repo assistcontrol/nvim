@@ -36,6 +36,11 @@ function AW.has(mod)
     return exists
 end
 
+-- AW.is_root returns true if this user is root
+function AW.is_root()
+    return os.getenv('USER') == 'root'
+end
+
 -- AW.next_pane jumps to best next pane. Window preferred over buffer.
 function AW.next_pane()
     if #vim.api.nvim_tabpage_list_wins(0) > 1 then
