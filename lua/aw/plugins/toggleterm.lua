@@ -1,7 +1,7 @@
 if not AW.has('toggleterm') then return end
 
 require('toggleterm').setup {
-    open_mapping     = [[<C-=>]],
+    open_mapping     = [[<C-t>]],
     insert_mapping   = false, -- Only fire in normal mode
     terminal_mapping = true,  -- Link to open_mapping
 
