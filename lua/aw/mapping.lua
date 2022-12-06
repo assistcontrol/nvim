@@ -35,9 +35,13 @@ map('n', '<C-k>', cmd[[bprevious]])
 -- Override ^W^W to skip nvim-tree
 map('n', '<C-w><C-w>', AW.next_window)
 
--- J/K moves selected lines
-map('v', 'J', "<Cmd>move '>+1<CR>gv=gv")
-map('v', 'K', "<Cmd>move '<-2<CR>gv=gv")
+-- Vertical bubbling
+map('v', 'J', 'xp`[V`]')
+map('v', 'K', 'xkP`[V`]')
+
+-- Horizontal bubbling
+map('v', '<', '<gv')
+map('v', '>', '>gv')
 
 -- Search using proper regexes by default
 map('n', '/', [[/\v]])
