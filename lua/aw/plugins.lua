@@ -11,7 +11,7 @@ vim.cmd('autocmd BufWritePost plugins.lua PackerCompile')
 
 require('packer').startup({function(use)
     local deps = {
-        devicons   = 'kyazdani42/nvim-web-devicons',
+        devicons   = 'nvim-tree/nvim-web-devicons',
         nui        = 'muniftanjim/nui.nvim',
         plenary    = 'nvim-lua/plenary.nvim',
         treesitter = 'nvim-treesitter/nvim-treesitter'
@@ -124,7 +124,7 @@ require('packer').startup({function(use)
         end
     }
     -- Icons
-    use {'kyazdani42/nvim-web-devicons', config = function()
+    use {deps.devicons, config = function()
         require('nvim-web-devicons').setup {default = true}
     end}
 
