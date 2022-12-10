@@ -146,6 +146,6 @@ AW.maps.leader = {
 
 -- Gitsigns sets keymaps via a callback
 function AW.maps.gitsigns(bufnr)
-    map('n', '[c', cmd[[lua require('gitsigns').prev_hunk]], {buffer = bufnr, desc = 'previous git hunk'})
-    map('n', ']c', cmd[[lua require('gitsigns').next_hunk]], {buffer = bufnr, desc = 'next git hunk'})
+    map('n', '[c', cmd[[lua require('gitsigns').prev_hunk()]], {buffer = bufnr, desc = 'previous git hunk'})
+    map('n', ']c', cmd[[lua require('gitsigns').next_hunk()]], {buffer = bufnr, desc = 'next git hunk'})
 end
