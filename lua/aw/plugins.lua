@@ -28,6 +28,9 @@ require('packer').startup({function(use)
         -- a/i surrounders (a", i[, etc.)
         require('aw/plugins/miniai')
 
+        -- animation
+        require('mini.animate').setup {}
+
         -- Buffer deletion
         require('mini.bufremove').setup {}
 
