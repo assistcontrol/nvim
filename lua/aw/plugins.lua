@@ -29,7 +29,7 @@ require('packer').startup({function(use)
         require('aw/plugins/miniai')
 
         -- animation
-        require('mini.animate').setup {}
+        -- require('mini.animate').setup {}
 
         -- Buffer deletion
         require('mini.bufremove').setup {}
