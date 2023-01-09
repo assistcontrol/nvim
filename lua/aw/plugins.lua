@@ -163,7 +163,7 @@ require('packer').startup({function(use)
     end}
 
     -- Parentheses colors
-    use 'p00f/nvim-ts-rainbow'
+    use 'mrjones2014/nvim-ts-rainbow'
 
     -- Startup hacking
     use 'lewis6991/impatient.nvim'
