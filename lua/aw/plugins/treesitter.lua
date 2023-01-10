@@ -1,6 +1,9 @@
 if not AW.has('nvim-treesitter.configs') then return end
 
-parsers = {'bash', 'go', 'html', 'javascript', 'json', 'lua', 'perl', 'regex', 'ruby', 'rust', 'scss', 'yaml'}
+parsers = {
+    'c', 'help', 'lua', 'vim',  -- These MUST be listed, see treesitter/README.md
+    'bash', 'go', 'html', 'javascript', 'json', 'perl', 'regex', 'ruby', 'rust', 'scss', 'yaml'
+}
 
 require('nvim-treesitter.configs').setup {
     ensure_installed = AW.is_root() and {} or parsers,
