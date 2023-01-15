@@ -40,6 +40,9 @@ require('packer').startup({function(use)
         -- Comments (gc[c])
         require('mini.comment').setup {}
 
+        -- Bubble blocks
+        require('aw/plugins/minimove')
+
         -- Start screen
         require('aw/plugins/ministarter')
 

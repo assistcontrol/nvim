@@ -24,24 +24,12 @@ map('i', 'kk', '<Esc>')
 map('n', 'j', 'gj')
 map('n', 'k', 'gk')
 
--- Alt-J/K jumps tabs
-map('n', '<A-j>', cmd[[tabprevious]])
-map('n', '<A-k>', cmd[[tabnext]])
-
 -- ^J/^K jumps buffers
 map('n', '<C-j>', cmd[[bnext]])
 map('n', '<C-k>', cmd[[bprevious]])
 
 -- Override ^W^W to skip nvim-tree
 map('n', '<C-w><C-w>', AW.next_window)
-
--- Vertical bubbling
-map('v', 'J', 'xp`[V`]')
-map('v', 'K', 'xkP`[V`]')
-
--- Horizontal bubbling
-map('v', '<', '<gv')
-map('v', '>', '>gv')
 
 -- Search using proper regexes by default
 map('n', '/', [[/\v]])
