@@ -92,6 +92,10 @@ M.modified = function()
     return vim.bo.modified and AW.icon('modified')
 end
 
+M.recording = function()
+    return vim.fn.reg_recording() ~= '' and AW.icon('record')
+end
+
 M.readonly = function()
     return vim.bo.readonly and AW.icon('lock')
 end

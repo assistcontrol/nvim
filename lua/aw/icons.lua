@@ -12,6 +12,7 @@ local icons = {
     new      = '',  -- uF15B
     plug     = '',  -- uF1E6
     recent   = 'ﮫ',  -- uFBAB
+    record   = '',  -- uF8E3
     reload   = '',  -- uF0E2
     search   = '',  -- uF422
     tree     = 'פּ',  -- uFB44

@@ -45,6 +45,7 @@ H.active = function()
         '%=',  -- Things after this are right-justified
         {hl = 'MiniStatuslineFileinfo',   strings = { P.filesize() }},
         {hl = 'MiniStatuslineFileinfo',   strings = { P.lsp_status() }},
+        {hl = 'CustomError',    strings = { P.recording() }},
         {hl = 'CustomError',    strings = { P.diagErrors() }},
         {hl = 'CustomWarning',  strings = { P.diagWarnings() }},
         {hl = 'MiniStatuslineFileInfo',   strings = { P.encoding(), P.filefmt(), P.filetype() }},
