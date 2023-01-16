@@ -86,6 +86,8 @@ require('packer').startup({function(use)
     use {'nvim-neo-tree/neo-tree.nvim',
         branch = 'v2.x',
         requires = {deps.devicons, deps.nui, deps.plenary},
+        cmd = {'Neotree', 'Neotree buffers'},
+        keys = '<leader>x',
         config = function()
             require('aw/plugins/neo-tree')
         end
@@ -182,9 +184,12 @@ require('packer').startup({function(use)
     }
 
     -- Terminal
-    use {'akinsho/toggleterm.nvim', config = function()
-        require('aw/plugins/toggleterm')
-    end}
+    use {'akinsho/toggleterm.nvim', 
+        keys = '<C-t>',
+        config = function()
+            require('aw/plugins/toggleterm')
+        end
+    }
 
     -- Tree-sitter
     use {'nvim-treesitter/nvim-treesitter', config = function()
@@ -195,10 +200,6 @@ require('packer').startup({function(use)
     }
 
     -- Window management
-    use {'beauwilliams/focus.nvim', config = function()
-        require('aw/plugins/focus')
-    end}
-
     use {'s1n7ax/nvim-window-picker', config = function()
         require('aw/plugins/window-picker')
     end}
