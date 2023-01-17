@@ -1,5 +1,3 @@
-pcall(require, 'impatient')   -- Keep this at the very top
-
 _G.AW = {}
 
 require('aw/icons')
@@ -7,11 +5,10 @@ require('aw/functions')
 require('aw/colors')
 require('aw/general')
 require('aw/winbar')
-require('aw/plugins')
+require('aw/mapping')
+require('aw/lazy')
+require('aw/filetypes')
 
 if not vim.g.colors_name then
     vim.cmd('colorscheme elflord')
 end
-
-require('aw/filetypes')
-require('aw/mapping')

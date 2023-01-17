@@ -1,9 +1,12 @@
-if not AW.has('window-picker') then return end
+-- Window picker
+return {
+    's1n7ax/nvim-window-picker',
+    opts = {
+        fg_color = 'black',
+        include_current_win = true,
+        selection_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        selection_display = function(char) return char .. ': %f' end,
+        use_winbar = 'always'
+    }
 
-require('window-picker').setup {
-    fg_color = 'black',
-    include_current_win = true,
-    selection_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-    selection_display = function(char) return char .. ': %f' end,
-    use_winbar = 'always'
 }

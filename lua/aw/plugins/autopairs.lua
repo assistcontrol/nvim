@@ -1,16 +1,20 @@
-if not AW.has('nvim-autopairs') then return end
+-- Loop closure (named end etc. blocks)
+return {
+    'windwp/nvim-autopairs',
+    config = function()
+        local pairs = require('nvim-autopairs')
+        local rule  = require('nvim-autopairs.rule')
+        local cond  = require('nvim-autopairs.conds')
 
-local pairs = require('nvim-autopairs')
-local rule  = require('nvim-autopairs.rule')
-local cond  = require('nvim-autopairs.conds')
+        pairs.setup {
+            check_ts = true
+        }
 
-pairs.setup {
-    check_ts = true
+        pairs.add_rules(require('nvim-autopairs.rules.endwise-lua'))
+        pairs.add_rules(require('nvim-autopairs.rules.endwise-ruby'))
+
+        pairs.add_rules({
+            rule('%', '%', 'tt2html'):with_pair(cond.before_text('['), 1)
+        })
+    end
 }
-
-pairs.add_rules(require('nvim-autopairs.rules.endwise-lua'))
-pairs.add_rules(require('nvim-autopairs.rules.endwise-ruby'))
-
-pairs.add_rules({
-    rule('%', '%', 'tt2html'):with_pair(cond.before_text('['), 1)
-})

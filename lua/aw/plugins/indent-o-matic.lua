@@ -1,0 +1,4 @@
+-- Indentation guessing
+return {
+    'darazaki/indent-o-matic'
+}

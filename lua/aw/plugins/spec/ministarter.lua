@@ -34,7 +34,6 @@ starter.setup {
 
         H.item('Update', 'U', 'plug',   'Update plugins',     'lua AW.update_plugins()'),
         H.item('Update', 'G', 'go',     'Update go binaries', 'GoUpdateBinaries'),
-        H.item('Update', 'C', 'reload', 'Compile plugins',    'PackerCompile'),
 
         H.item('Browse', 'b', 'folder',   AW.pwd(),    H.browse(AW.pwd())),
         H.item('Browse', 'x', 'tree',     'tree',      'Neotree'),

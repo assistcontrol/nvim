@@ -1,7 +1,7 @@
 if not AW.has('mini.statusline') then return end
 
 local SL = require('mini.statusline')
-local P  = require('aw/plugins/statuslineparts')
+local P  = require('aw/plugins/spec/statuslineparts')
 
 local H = {}
 

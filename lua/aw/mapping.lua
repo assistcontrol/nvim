@@ -1,6 +1,3 @@
--- Leader is space
-vim.g.mapleader = ' '
-
 -- Key mappings
 AW.maps = {}
 
@@ -55,16 +52,6 @@ map('n', '\\\\',  cmd[[Telescope buffers]], {desc = 'buffers (Telescope)'})
 map('n', '\\]', cmd[[Neotree buffers]], {desc = 'buffers'})
 -- \[ opens Telescope
 map('n', '\\[',  cmd[[Telescope]], {desc = 'Telescope'})
-
--- Readline-esque keys for insert and command modes
-local has_readline, readline = pcall(require, 'readline')
-if has_readline then
-    map('!', '<C-a>', readline.dwim_beginning_of_line)
-    map('!', '<C-e>', readline.end_of_line)
-    map('!', '<C-w>', readline.backward_kill_word)
-    map('!', '<C-k>', readline.kill_line)
-    map('!', '<C-u>', function() readline.end_of_line(); readline.dwim_backward_kill_line() end)
-end
 
 H.pick_window = function()
     local winid = require('window-picker').pick_window() or vim.api.nvim_get_current_win()

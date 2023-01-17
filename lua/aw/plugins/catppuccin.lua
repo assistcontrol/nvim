@@ -1,56 +1,61 @@
-if not AW.has('catppuccin') then return end
+return {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
+    config = function()
+        require('catppuccin').setup {
+            flavour = 'mocha',
+            dim_inactive = {
+                enabled = true
+            },
+            styles = {
+                conditionals = {'bold'},
+                loops = {'bold'},
+                functions = {'bold'},
+                keywords = {'bold'},
+                variables = {'bold'},
+                booleans = {'bold'},
+            },
+            integrations = {
+                fidget = true,
+                gitsigns = true,
+                mini = true,
+                neotree = true,
+                telescope = true,
+                treesitter = true,
+                ts_rainbow = true,
+                which_key = true,
 
-require('catppuccin').setup {
-    flavour = 'mocha',
-    dim_inactive = {
-        enabled = true
-    },
-    styles = {
-        conditionals = {'bold'},
-        loops = {'bold'},
-        functions = {'bold'},
-        keywords = {'bold'},
-        variables = {'bold'},
-        booleans = {'bold'},
-    },
-    integrations = {
-        fidget = true,
-        gitsigns = true,
-        mini = true,
-        neotree = true,
-        telescope = true,
-        treesitter = true,
-        ts_rainbow = true,
-        which_key = true,
+                indent_blankline = {
+                    enabled = true
+                },
+                native_lsp = {
+                    enabled = true
+                }
+            },
+            custom_highlights = function(colors)
+                return {
+                    MatchParen = {fg=colors.mantle, bg=colors.red},
 
-        indent_blankline = {
-            enabled = true
-        },
-        native_lsp = {
-            enabled = true
+                    MiniStatuslineFilename = {fg=colors.text, bg=colors.base},
+                    TelescopeBorder = {bg=colors.crust},
+                    TelescopeNormal = {bg=colors.crust},
+                    TelescopePromptPrefix  = {bg=colors.crust},
+                    TelescopePromptCounter = {bg=colors.crust},
+
+                    WinBar   = {fg='white', style={'bold'}},
+                    WinBarNC = {fg='white'},
+
+                    CustomError   = {fg=colors.mantle, bg=colors.red},
+                    CustomWarning = {fg=colors.mantle, bg=colors.yellow},
+                    CustomBlank   = {fg=colors.mantle, bg=colors.mantle},
+                }
+            end
         }
-    },
-    custom_highlights = function(colors)
-        return {
-            MatchParen = {fg=colors.mantle, bg=colors.red},
 
-            MiniStatuslineFilename = {fg=colors.text, bg=colors.base},
-            TelescopeBorder = {bg=colors.crust},
-            TelescopeNormal = {bg=colors.crust},
-            TelescopePromptPrefix  = {bg=colors.crust},
-            TelescopePromptCounter = {bg=colors.crust},
-
-            WinBar   = {fg='white', style={'bold'}},
-            WinBarNC = {fg='white'},
-
-            CustomError   = {fg=colors.mantle, bg=colors.red},
-            CustomWarning = {fg=colors.mantle, bg=colors.yellow},
-            CustomBlank   = {fg=colors.mantle, bg=colors.mantle},
-        }
+        vim.cmd('colorscheme catppuccin')
     end
 }
-
-vim.cmd('colorscheme catppuccin')
 
 -- Palette:
 -- | Name      |  Mocha     | Usage           |
