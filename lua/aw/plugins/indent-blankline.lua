@@ -1,6 +1,7 @@
 -- Indent guides
 return  {
     'lukas-reineke/indent-blankline.nvim',
+    event = 'BufReadPre',
     opts = {
         buftype_exclude  = {'help', 'nofile'},
         filetype_exclude = {'alpha', 'dashboard', 'help', 'packer', 'starter', 'startify'},

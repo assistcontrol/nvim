@@ -3,6 +3,7 @@ return {
     'lewis6991/gitsigns.nvim',
     dependencies = AW.deps.plenary,
     enabled = not AW.is_root(),
+    event = 'BufReadPre',
     opts = {
         signs = {
             add          = {text = AW.icon('thickvert')},

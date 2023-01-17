@@ -1,4 +1,5 @@
 -- Indentation guessing
 return {
-    'darazaki/indent-o-matic'
+    'darazaki/indent-o-matic',
+    event = 'BufReadPre'
 }

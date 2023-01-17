@@ -1,6 +1,7 @@
 -- Loop closure (named end etc. blocks)
 return {
     'windwp/nvim-autopairs',
+    event = 'InsertEnter',
     config = function()
         local pairs = require('nvim-autopairs')
         local rule  = require('nvim-autopairs.rule')

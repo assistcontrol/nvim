@@ -1,6 +1,7 @@
 -- Emacs bindings
 return {
     'linty-org/readline.nvim',
+    event = 'InsertEnter',
     config = function()
         local map = vim.keymap.set
         local readline = require('readline')

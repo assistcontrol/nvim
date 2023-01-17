@@ -1,8 +1,10 @@
+-- vim: sw=4
 -- Fuzzy finder
 
 return {
     'nvim-telescope/telescope.nvim',
     dependencies = AW.deps.plenary,
+    event = 'BufReadPre',
     config = function()
         local actions = require('telescope.actions')
 
