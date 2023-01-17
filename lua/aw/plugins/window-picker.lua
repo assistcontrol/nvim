@@ -1,6 +1,7 @@
 -- Window picker
 return {
     's1n7ax/nvim-window-picker',
+    lazy = true,
     opts = {
         fg_color = 'black',
         include_current_win = true,

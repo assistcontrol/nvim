@@ -1,6 +1,7 @@
 -- Keybinding window
 return {
     'folke/which-key.nvim',
+    lazy = true,
     config = function()
         local wk = require('which-key')
         wk.setup {
