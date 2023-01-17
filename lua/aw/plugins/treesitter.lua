@@ -1,3 +1,4 @@
+-- vim: sw=4
 -- Tree-sitter
 local parsers = {
     'c', 'help', 'lua', 'vim',  -- These MUST be listed, see treesitter/README.md
