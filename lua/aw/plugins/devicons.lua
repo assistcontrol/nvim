@@ -1,6 +1,6 @@
 -- Fancy nerdfont icons
 return {
-    AW.deps.devicons,
+    'nvim-tree/nvim-web-devicons',
     opts = {
         default = true
     }
