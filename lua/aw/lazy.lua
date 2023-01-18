@@ -1,17 +1,8 @@
 local lazy = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
-local need_lazy = function()
-    if vim.loop.fs_stat(lazy) then return false end
-    if vim.fn.input('Download lazy? [Y/n]: ') == 'n' then return false end
-
-    return true
-end
-
-if need_lazy() then
-    vim.fn.system({
-        'git', 'clone', '--filter=blob:none',
-        'https://github.com/folke/lazy.nvim.git', '--branch=stable',
-        lazy
+if (not vim.loop.fs_stat(lazy)) and vim.fn.input('Download lazy? [Y/n]: ') ~= 'n' then
+    vim.fn.system({ 'git', 'clone', '--filter=blob:none', '--branch=stable',
+        'https://github.com/folke/lazy.nvim.git', lazy
     })
 end
 vim.opt.rtp:prepend(lazy)
