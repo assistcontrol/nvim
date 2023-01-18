@@ -77,7 +77,7 @@ vim.api.nvim_create_user_command('WhitespaceTrim', AW.purge_whitespace, {})
 -- Handles plugins and treesitter parsers.
 function AW.update_plugins()
     vim.cmd(':TSUpdate')
-    vim.cmd(':Lazy update')
+    vim.cmd(':Lazy sync')
 end
 
 -- Flash yanked lines
