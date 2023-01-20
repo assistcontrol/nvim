@@ -16,8 +16,13 @@ AW.deps = {
 }
 
 require('lazy').setup('aw.plugins', {
+    colorscheme = 'catppuccin',
     performance = {
         rtp = {
+            disabled_plugins = {
+                'netrwPlugin',
+                'tutor'
+            },
             paths = {AW_MODULE_PATH}
         }
     }
