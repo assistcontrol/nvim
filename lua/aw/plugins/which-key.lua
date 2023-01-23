@@ -17,6 +17,7 @@ return {
             }
         }
 
-        wk.register(AW.maps.leader, {mode = 'n', prefix = '<leader>'})
+        wk.register(AW.maps.leader.n, {mode = 'n', prefix = '<leader>'})
+        wk.register(AW.maps.leader.v, {mode = 'v', prefix = '<leader>'})
     end
 }

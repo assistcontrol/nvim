@@ -58,62 +58,86 @@ H.pick_window = function()
     vim.api.nvim_set_current_win(winid)
 end
 
+H.refactor = function(cmd)
+    return string.format([[<Esc><Cmd>lua require('refactoring').refactor('%s')<CR>]], cmd), string.lower(cmd), {silent = true, expr = false}
+end
+
 AW.maps.leader = {
-    -- In which-key.nvim format
-    k = {cmd[[wincmd k]], 'window up'},
-    j = {cmd[[wincmd j]], 'window down'},
-    h = {cmd[[wincmd h]], 'window left'},
-    l = {cmd[[wincmd l]], 'window right'},
+    n = {
+        -- In which-key.nvim format
+        k = {cmd[[wincmd k]], 'window up'},
+        j = {cmd[[wincmd j]], 'window down'},
+        h = {cmd[[wincmd h]], 'window left'},
+        l = {cmd[[wincmd l]], 'window right'},
 
-    ['<leader>'] = {cmd[[b#]],                   'alternate'},
-    ['<cr>']     = {cmd[[lua AW.next_pane()]],   'next window'},
-    e = {cmd[[lua AW.filebrowser()]],            'browse'},
-    q = {cmd[[lua MiniBufremove.delete()]],      'close buffer'},
-    w = {H.pick_window,                          'pick window'},
-    x = {cmd[[Neotree]],                         'explorer'},
-    X = {cmd[[Neotree close]],                   'unexplorer'},
-    z = {cmd[[lua require('mini.misc').zoom()]], 'zoom'},
+        ['<leader>'] = {cmd[[b#]],                   'alternate'},
+        ['<cr>']     = {cmd[[lua AW.next_pane()]],   'next window'},
+        e = {cmd[[lua AW.filebrowser()]],            'browse'},
+        q = {cmd[[lua MiniBufremove.delete()]],      'close buffer'},
+        w = {H.pick_window,                          'pick window'},
+        x = {cmd[[Neotree]],                         'explorer'},
+        X = {cmd[[Neotree close]],                   'unexplorer'},
+        z = {cmd[[lua require('mini.misc').zoom()]], 'zoom'},
 
-    b = {
-        name = 'buffer',
-        b = {cmd[[Telescope buffers]],          'list'},
-        d = {cmd[[lua MiniBufremove.delete()]], 'delete'},
-        n = {cmd[[bnext]],                      'next'},
-        p = {cmd[[bprevious]],                  'previous'},
-        ['<leader>'] = {cmd[[bnext]],           'next'},
+        b = {
+            name = 'buffer',
+            b = {cmd[[Telescope buffers]],          'list'},
+            d = {cmd[[lua MiniBufremove.delete()]], 'delete'},
+            n = {cmd[[bnext]],                      'next'},
+            p = {cmd[[bprevious]],                  'previous'},
+['<leader>'] = {cmd[[bnext]],           'next'},
+},
+
+d = {
+            name = 'code dx',
+            n = {cmd[[lua vim.diagnostic.goto_next({float = true})]], 'next'},
+            p = {cmd[[lua vim.diagnostic.goto_prev({float = true})]], 'previous'},
+        },
+
+        f = {
+            name = 'find',
+            b = {cmd[[Telescope buffers]],     'buffers'},
+            d = {cmd[[Telescope diagnostics]], 'diagnostics'},
+            e = {cmd[[Explore]],               'explorer'},
+            g = {cmd[[Telescope live_grep]],   'grep'},
+            h = {cmd[[Telescope help_tags]],   'help'},
+            t = {cmd[[Telescope]],             'telescope'},
+            f = {cmd[[lua AW.filebrowser()]],  'files'}
+        },
+
+        K = {
+            -- alias mm='make -j$(sysctl -n hw.ncpu)'
+            name = 'make',
+            m = {cmd[[TermExec cmd="mm"]],      'all'},
+            t = {cmd[[TermExec cmd="mm test"]], 'test'}
+        },
+
+        o = {
+            name = 'fold',
+            c = {'zc', 'close'},
+            C = {'zM', 'close all'},
+            o = {'zo', 'open'},
+            O = {'zR', 'open all'},
+            ['<leader>'] = {'za', 'toggle'}
+        },
+
+        r = {
+            name = 'refactor',
+            b = {H.refactor('Extract Block')},
+            f = {H.refactor('Extract Block To File')},
+            i = {H.refactor('Inline Variable')}
+        }
     },
 
-    d = {
-        name = 'code dx',
-        n = {cmd[[lua vim.diagnostic.goto_next({float = true})]], 'next'},
-        p = {cmd[[lua vim.diagnostic.goto_prev({float = true})]], 'previous'},
-    },
-
-    f = {
-        name = 'find',
-        b = {cmd[[Telescope buffers]],     'buffers'},
-        d = {cmd[[Telescope diagnostics]], 'diagnostics'},
-        e = {cmd[[Explore]],               'explorer'},
-        g = {cmd[[Telescope live_grep]],   'grep'},
-        h = {cmd[[Telescope help_tags]],   'help'},
-        t = {cmd[[Telescope]],             'telescope'},
-        f = {cmd[[lua AW.filebrowser()]],  'files'}
-    },
-
-    K = {
-        -- alias mm='make -j$(sysctl -n hw.ncpu)'
-        name = 'make',
-        m = {cmd[[TermExec cmd="mm"]],      'all'},
-        t = {cmd[[TermExec cmd="mm test"]], 'test'}
-    },
-
-    o = {
-        name = 'fold',
-        c = {'zc', 'close'},
-        C = {'zM', 'close all'},
-        o = {'zo', 'open'},
-        O = {'zR', 'open all'},
-        ['<leader>'] = {'za', 'toggle'}
+    v = {
+        r = {
+            name = 'refactor',
+            e = {H.refactor('Extract Function')},
+            f = {H.refactor('Extract Function To File')},
+            v = {H.refactor('Extract Variable')},
+            i = {H.refactor('Inline Variable')},
+            r = {[[<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>]], 'refactors'}
+        }
     }
 }
 
