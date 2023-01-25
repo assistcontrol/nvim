@@ -1,8 +1,15 @@
 -- AW.autocmd creates autocmmands
 -- Pass either a function or a table of setlocal options
+-- Can also be called as AW.autocmd(event, cmds)
 local AUGROUP = vim.api.nvim_create_augroup('AW', {})
 
 function AW.autocmd(event, pattern, cmds)
+    -- If two args, then drop pattern
+    if cmds == nil then
+        cmds = pattern
+        pattern = nil
+    end
+
     local callback = type(cmds) == 'function' and cmds or function()
         for opt, val in pairs(cmds) do
             vim.opt_local[opt] = val
@@ -83,10 +90,10 @@ end
 -- Flash yanked lines
 -- This doesn't belong in this file, but it belongs even less in
 -- any other file.
-vim.api.nvim_create_autocmd('TextYankPost', { callback = function()
+AW.autocmd('TextYankPost', function()
     vim.highlight.on_yank {
         higroup   = 'IncSearch',
         on_visual = false,
         timeout   = 150
     }
-end })
+end)

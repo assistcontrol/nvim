@@ -11,10 +11,7 @@ if not vim.g.colors_name then
     vim.cmd('colorscheme elflord')
 end
 
-vim.api.nvim_create_autocmd('User', {
-    pattern = 'VeryLazy',
-    callback = function()
-        require('aw/winbar')
-        require('aw/filetypes')
-    end
-})
+AW.autocmd('User', 'VeryLazy', function()
+    require('aw/winbar')
+    require('aw/filetypes')
+end)

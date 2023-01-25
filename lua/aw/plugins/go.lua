@@ -10,6 +10,8 @@ return {
         }
 
         -- Run gofumpt + goimports on write
-        vim.cmd([[autocmd BufWritePre *.go :silent! lua require('go.format').goimport()]])
+        AW.autocmd('BufWritePre', '*.go', function()
+            require('go.format').goimport()
+        end)
     end
 }

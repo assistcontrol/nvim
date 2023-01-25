@@ -18,10 +18,8 @@ local bare_filetypes = {
     'starter'
 }
 
-vim.api.nvim_create_autocmd({'BufEnter', 'BufWinEnter'}, {
-    callback = function()
-        if vim.tbl_contains(bare_filetypes, vim.o.filetype) then
-            vim.opt_local.number = false
-        end
+AW.autocmd({'BufEnter', 'BufWinEnter'}, function()
+    if vim.tbl_contains(bare_filetypes, vim.o.filetype) then
+        vim.opt_local.number = false
     end
-})
+end)

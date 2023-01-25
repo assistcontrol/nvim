@@ -54,6 +54,4 @@ H.set = function()
     vim.wo.winbar = table.concat(parts, ' ')
 end
 
-vim.api.nvim_create_autocmd({'BufWinEnter', 'BufWritePost', 'VimEnter', 'TextChanged', 'TextChangedI'}, {
-    callback = H.set
-})
+AW.autocmd({'BufWinEnter', 'BufWritePost', 'VimEnter', 'TextChanged', 'TextChangedI'}, H.set)

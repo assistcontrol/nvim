@@ -30,11 +30,9 @@ return {
             }
         }
         -- Show diagnostic window automatically on relevant lines
-        vim.api.nvim_create_autocmd({'CursorHold'}, {
-            callback = function()
-                vim.diagnostic.open_float()
-            end
-        })
+        AW.autocmd('CursorHold', function()
+            vim.diagnostic.open_float()
+        end)
 
         -- Highlight line numbers with LSP messages and set gutter symbols
         vim.fn.sign_define('DiagnosticSignError', {

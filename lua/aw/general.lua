@@ -26,6 +26,7 @@ vim.opt.winblend      = AW.ui.winblend
 vim.opt.fillchars:append({eob = ' ',
     horiz = ' ', horizup = ' ', horizdown = ' ',
     vert = ' ', vertleft = ' ', vertright = ' ', verthoriz = ' '})
+vim.opt.formatoptions:append({1})         -- Don't break after 1-char words
 vim.opt.formatoptions:remove({'o', 'r'})  -- Don't auto-comment new lines
 
 -- Searching
