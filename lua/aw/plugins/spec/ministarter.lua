@@ -36,7 +36,7 @@ starter.setup {
         H.item('Update', 'G', 'go',     'Update go binaries', 'GoUpdateBinaries'),
 
         H.item('Browse', 'b', 'folder',   AW.pwd(),    H.browse(AW.pwd())),
-        H.item('Browse', 'x', 'tree',     'tree',      'Neotree'),
+        H.item('Browse', 'x', 'tree',     'tree',      'NvimTreeFocus'),
         H.item('Browse', 'r', 'recent',   'Recent',    'Telescope oldfiles'),
         H.item('Browse', 'l', 'search',   'Live grep', 'Telescope live_grep'),
         H.item('Browse', 'm', 'folder',   'med_apps',  H.browse("~/build/med_apps")),

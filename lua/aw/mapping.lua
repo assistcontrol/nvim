@@ -48,8 +48,6 @@ map({'i', 'n'}, '<C-\\>', cmd[[write]])
 
 -- \\ shows buffers in Telescope
 map('n', '\\\\',  cmd[[Telescope buffers]], {desc = 'buffers (Telescope)'})
--- \] shows buffers in Neotree
-map('n', '\\]', cmd[[Neotree buffers]], {desc = 'buffers'})
 -- \[ opens Telescope
 map('n', '\\[',  cmd[[Telescope]], {desc = 'Telescope'})
 
@@ -75,8 +73,8 @@ AW.maps.leader = {
         e = {cmd[[lua AW.filebrowser()]],            'browse'},
         q = {cmd[[lua MiniBufremove.delete()]],      'close buffer'},
         w = {H.pick_window,                          'pick window'},
-        x = {cmd[[Neotree]],                         'explorer'},
-        X = {cmd[[Neotree close]],                   'unexplorer'},
+        x = {cmd[[NvimTreeFocus]],                   'explorer'},
+        X = {cmd[[NvimTreeClose]],                   'unexplorer'},
         z = {cmd[[lua require('mini.misc').zoom()]], 'zoom'},
 
         b = {
