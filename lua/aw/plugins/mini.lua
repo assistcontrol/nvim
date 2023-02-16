@@ -36,9 +36,6 @@ return {
         -- Whitespace at EOL
         require('mini.trailspace').setup {}
 
-        -- ch to appropriate dir
-        require('mini.misc').setup {}
-        MiniMisc.setup_auto_root {'.git', 'Makefile', '.root'}
-        MiniMisc.setup_restore_cursor {}
+        require('aw/plugins/spec/minimisc')
     end
 }
