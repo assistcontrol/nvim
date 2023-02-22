@@ -9,6 +9,9 @@ return {
         -- animation
         -- require('mini.animate').setup {}
 
+        -- ] / [ movement
+        require('mini.bracketed').setup {}
+
         -- Buffer deletion
         require('mini.bufremove').setup {}
 
