@@ -80,6 +80,17 @@ function AW.purge_whitespace()
 end
 vim.api.nvim_create_user_command('WhitespaceTrim', AW.purge_whitespace, {})
 
+-- AW.toggle_quickfix toggles the quickfix window
+function AW.toggle_quickfix()
+    local qf_windows = vim.tbl_filter(
+        function(winid) return vim.fn.getwininfo(winid)[1].quickfix == 1 end,
+        vim.api.nvim_tabpage_list_wins(0)
+    )
+
+    local cmd = #qf_windows == 0 and 'copen' or 'cclose'
+    vim.cmd(cmd)
+end
+
 -- AW.update_plugins updates all the things
 -- Handles plugins and treesitter parsers.
 function AW.update_plugins()
