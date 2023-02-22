@@ -39,7 +39,7 @@ starter.setup {
         H.item('Browse', 'x', 'tree',     'tree',      'NvimTreeFocus'),
         H.item('Browse', 'r', 'recent',   'Recent',    'Telescope oldfiles'),
         H.item('Browse', 'l', 'search',   'Live grep', 'Telescope live_grep'),
-        H.item('Browse', 'm', 'folder',   'med_apps',  H.browse("~/build/med_apps")),
+        H.item('Browse', 'n', 'folder',   'ninja',     H.browse("~/build/ninja")),
         H.item('Browse', 'd', 'dotfiles', 'dotfiles',  H.browse("~/build/dotfiles")),
         H.item('Browse', 'v', 'vim',      'vim',       H.browse("~/build/vim/lua/aw"))
     }
