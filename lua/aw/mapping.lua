@@ -83,10 +83,10 @@ AW.maps.leader = {
             d = {cmd[[lua MiniBufremove.delete()]], 'delete'},
             n = {cmd[[bnext]],                      'next'},
             p = {cmd[[bprevious]],                  'previous'},
-['<leader>'] = {cmd[[bnext]],           'next'},
-},
+            ['<leader>'] = {cmd[[bnext]],           'next'},
+        },
 
-d = {
+        d = {
             name = 'code dx',
             n = {cmd[[lua vim.diagnostic.goto_next({float = true})]], 'next'},
             p = {cmd[[lua vim.diagnostic.goto_prev({float = true})]], 'previous'},
