@@ -2,6 +2,7 @@
 return {
     'neovim/nvim-lspconfig',
     dependencies = AW.deps.mini,
+    event = {'BufReadPre', 'BufNewFile'},
 
     config = function()
         local lspconfig = require('lspconfig')

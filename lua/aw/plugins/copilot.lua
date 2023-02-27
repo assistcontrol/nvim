@@ -1,7 +1,7 @@
 return {
   'zbirenbaum/copilot.lua',
   enabled = not AW.is_root(),
-  event = 'BufEnter',
+  event = {'BufReadPre', 'BufNewFile'},
   opts = {
     suggestion = {
       auto_trigger = true,
