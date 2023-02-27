@@ -8,6 +8,7 @@ local parsers = {
 return {
     'nvim-treesitter/nvim-treesitter',
     dependencies = 'mrjones2014/nvim-ts-rainbow',
+    event = {'BufReadPost', 'BufNewFile'},
     config = function()
         require('nvim-treesitter.configs').setup {
             ensure_installed = AW.is_root() and {} or parsers,
