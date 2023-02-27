@@ -44,10 +44,12 @@ local config = {
 
 starter.setup(config)
 
-AW.autocmd('User', 'VeryLazy', function()
-    local ms = math.floor(require('lazy').stats().startuptime + 0.5)
+AW.autocmd('User', 'MiniStarterOpened', function()
+    AW.autocmd('User', 'VeryLazy', function()
+        local ms = math.floor(require('lazy').stats().startuptime + 0.5)
 
-    config.footer = '⚡' .. ms .. ' ms'
-    starter.setup(config)
-    starter.refresh()
+        config.footer = '⚡' .. ms .. ' ms'
+        starter.setup(config)
+        starter.refresh()
+    end)
 end)
