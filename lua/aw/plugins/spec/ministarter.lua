@@ -16,18 +16,15 @@ H.item = function(section, key, ico, title, action)
     }
 end
 
-starter.setup {
+local config = {
     content_hooks = {
         starter.gen_hook.adding_bullet('', true),
         starter.gen_hook.aligning('center', 'center')
     },
     evaluate_single = true,
     query_updaters = [[abcdefghijklmnopqrstuvwxyz0123456789_-.ABCDEFGHIJKLMNOPQRSTUVWXYZ]],
-    footer = os.date(),
-    header = table.concat({
-        '              Neovim',
-        '───────────────────────────────────'
-    }, "\n"),
+    footer = '',
+    header = os.date(),
     items = {
         H.item('Common', 'i', 'new',   'New file',  'enew'),
         H.item('Common', 'q', 'close', 'Quit nvim', 'qall'),
@@ -44,3 +41,13 @@ starter.setup {
         H.item('Browse', 'v', 'vim',      'vim',       H.browse("~/build/vim/lua/aw"))
     }
 }
+
+starter.setup(config)
+
+AW.autocmd('User', 'VeryLazy', function()
+    local ms = math.floor(require('lazy').stats().startuptime + 0.5)
+
+    config.footer = '⚡' .. ms .. ' ms'
+    starter.setup(config)
+    starter.refresh()
+end)
