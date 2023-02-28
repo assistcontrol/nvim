@@ -28,18 +28,6 @@ map('n', '<C-k>', cmd[[bprevious]])
 -- Override ^W^W to skip nvim-tree
 map('n', '<C-w><C-w>', AW.next_window)
 
--- Search using proper regexes by default
-map('n', '/', [[/\v]])
-map('n', '?', [[?\v]])
-
--- // and ?? clear search results
-map('n', '//', cmd[[nohlsearch]])
-map('n', '??', cmd[[nohlsearch]])
-
--- Tab/S-Tab through completion list
-map('i', '<Tab>',   [[pumvisible() ? '<C-n>' : '<Tab>']],   {expr = true})
-map('i', '<S-Tab>', [[pumvisible() ? '<C-p>' : '<S-Tab>']], {expr = true})
-
 -- S surrounds visual region
 map('x', 'S', cmd[[lua MiniSurround.add('visual')]])
 
@@ -70,6 +58,7 @@ AW.maps.leader = {
 
         ['<leader>'] = {cmd[[b#]],                   'alternate'},
         ['<cr>']     = {cmd[[lua AW.next_pane()]],   'next window'},
+        A = {'ggVG',                                 'select all'},
         e = {cmd[[lua AW.filebrowser()]],            'browse'},
         q = {cmd[[lua AW.toggle_quickfix()]],        'toggle quickfix'},
         Q = {cmd[[lua MiniBufremove.delete()]],      'close buffer'},

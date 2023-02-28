@@ -16,7 +16,7 @@ return {
         require('mini.bufremove').setup {}
 
         -- Completion
-        require('mini.completion').setup {}
+        -- require('mini.completion').setup {}
 
         -- Comments (gc[c])
         require('mini.comment').setup {}

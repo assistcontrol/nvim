@@ -30,9 +30,48 @@ local icons = {
     horizhigh = '▔',  -- u2594
     thickvert = '▌',  -- u258C
     vertbar   = '│',  -- u2502
+
+    -- cmp item kinds
+    Array = " ",
+    Boolean = " ",
+    Class = " ",
+    Color = " ",
+    Constant = " ",
+    Constructor = " ",
+    Copilot = " ",
+    Enum = " ",
+    EnumMember = " ",
+    Event = " ",
+    Field = " ",
+    File = " ",
+    Folder = " ",
+    Function = " ",
+    Interface = " ",
+    Key = " ",
+    Keyword = " ",
+    Method = " ",
+    Module = " ",
+    Namespace = " ",
+    Null = "ﳠ ",
+    Number = " ",
+    Object = " ",
+    Operator = " ",
+    Package = " ",
+    Property = " ",
+    Reference = " ",
+    Snippet = " ",
+    String = " ",
+    Struct = " ",
+    Text = " ",
+    TypeParameter = " ",
+    Unit = " ",
+    Value = " ",
+    Variable = " ",
 }
 
 -- AW.icon gets an icon, with optional text attached
 function AW.icon(ico, str)
-    return str and string.format('%s %s', icons[ico], str) or icons[ico]
+    local icon = icons[ico] and icons[ico] .. ' ' or ''
+    local s    = str and str or ''
+    return icon .. s
 end

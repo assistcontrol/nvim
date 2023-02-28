@@ -7,16 +7,16 @@ return {
     config = function()
         local lspconfig = require('lspconfig')
 
-        local attach = function() end    -- Stub
+        -- conf is passed to each language server
+        local conf = {}
         if AW.has('mini.completion') then
-            attach = function(_, bufnr)  -- (client, bufnr)
+            conf.attach = function(_, bufnr)  -- (client, bufnr)
                 vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.MiniCompletion.completefunc_lsp')
             end
         end
-
-        local runtime_path = vim.split(package.path, ';')
-        table.insert(runtime_path, 'lua/?.lua')
-        table.insert(runtime_path, 'lua/?/init.lua')
+        if AW.has('cmp_nvim_lsp') then
+            conf.capabilities = require('cmp_nvim_lsp').default_capabilities()
+        end
 
         -- General setup
         vim.diagnostic.config {
@@ -40,20 +40,20 @@ return {
             text = AW.icon('errorSm'), texthl = 'DiagnosticSignError', numhl = 'CustomError'
         })
         vim.fn.sign_define('DiagnosticSignWarn', {
-            text = AW.icon('warning'), texthl = 'DiagnosticSignWarn', numhl = 'CustomWarning'
+            text = AW.icon('warning'), texthl = 'DiagnosticSignWarn',  numhl = 'CustomWarning'
         })
         vim.fn.sign_define('DiagnosticSignInfo', {
-            text = AW.icon('hint'), texthl = 'DiagnosticSignInfo', numhl = 'CustomMedium'
+            text = AW.icon('hint'),    texthl = 'DiagnosticSignInfo',  numhl = 'CustomMedium'
         })
         vim.fn.sign_define('DiagnosticSignHint', {
-            text = AW.icon('hint'), texthl = 'DiagnosticSignHint', numhl = 'CustomMedium'
+            text = AW.icon('hint'),    texthl = 'DiagnosticSignHint',  numhl = 'CustomMedium'
         })
 
         -- Language servers
         -- Go
         if vim.fn.executable('gopls') > 0 then
             lspconfig.gopls.setup {
-                on_attach = attach,
+                conf,
                 settings = {
                     gopls = {
                         gofumpt = true
@@ -64,8 +64,12 @@ return {
 
         -- Lua
         if vim.fn.executable('lua-language-server') > 0 then
+            local runtime_path = vim.split(package.path, ';')
+            table.insert(runtime_path, 'lua/?.lua')
+            table.insert(runtime_path, 'lua/?/init.lua')
+
             lspconfig.lua_ls.setup {
-                on_attach = attach,
+                conf,
                 settings = {
                     Lua = {
                         runtime = {
@@ -92,7 +96,7 @@ return {
         -- Rust
         if vim.fn.executable('rust-analyzer') > 0 then
             lspconfig.rust_analyzer.setup({
-                on_attach = attach
+                conf
             })
         end
     end
