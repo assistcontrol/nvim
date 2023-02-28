@@ -8,6 +8,7 @@ local parsers = {
 return {
     'nvim-treesitter/nvim-treesitter',
     dependencies = 'mrjones2014/nvim-ts-rainbow',
+    cmd   = {'TSInstall', 'TSInstallInfo', 'TSUpdate', 'TSUninstall'},
     event = {'BufReadPost', 'BufNewFile'},
     config = function()
         require('nvim-treesitter.configs').setup {
