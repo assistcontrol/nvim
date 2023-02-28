@@ -38,7 +38,7 @@ local config = {
         H.item('Browse', 'l', 'search',   'Live grep', 'Telescope live_grep'),
         H.item('Browse', 'n', 'folder',   'ninja',     H.browse("~/build/ninja")),
         H.item('Browse', 'd', 'dotfiles', 'dotfiles',  H.browse("~/build/dotfiles")),
-        H.item('Browse', 'v', 'vim',      'vim',       H.browse("~/build/vim/lua/aw"))
+        H.item('Browse', 'v', 'vim',      'vim',       H.browse("~/build/nvim/lua/aw"))
     }
 }
 

@@ -17,7 +17,7 @@ dashboard.section.buttons.val = {
     dashboard.button('r', icon('recent', 'Recent'),         '<cmd>Telescope oldfiles<CR>'),
     dashboard.button('m', icon('folder', 'ninja'),          '<cmd>lua DashboardBrowse("~/build/ninja")<CR>'),
     dashboard.button('d', icon('dotfiles', 'dotfiles'),     '<cmd>lua DashboardBrowse("~/build/dotfiles")<CR>'),
-    dashboard.button('v', icon('vim', 'vim'),               '<cmd>lua DashboardBrowse("~/build/vim/lua")<CR>'),
+    dashboard.button('v', icon('vim', 'vim'),               '<cmd>lua DashboardBrowse("~/build/nvim/lua")<CR>'),
 }
 
 dashboard.section.header.val = {

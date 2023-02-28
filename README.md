@@ -5,6 +5,6 @@ One True Config for the One True Editor
 and then load its `init.lua`:
 
 ```lua
-vim.opt.runtimepath:prepend('~/build/vim')
+vim.opt.runtimepath:prepend('~/build/nvim')
 require('aw')
 ```
