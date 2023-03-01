@@ -7,8 +7,7 @@ return {
             auto_trigger = true,
             keymap = {
                 accept  = '<C-y>',
-                next    = '<C-]>',
-                prev    = '<C-[>',
+                next    = '<C-_>',
                 dismiss = false
             }
         },
