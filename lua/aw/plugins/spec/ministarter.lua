@@ -46,6 +46,8 @@ starter.setup(config)
 
 AW.autocmd('User', 'MiniStarterOpened', function()
     AW.autocmd('User', 'VeryLazy', function()
+        if vim.bo.filetype ~= 'starter' then return end
+
         local ms = math.floor(require('lazy').stats().startuptime + 0.5)
 
         config.footer = '⚡' .. ms .. ' ms'
