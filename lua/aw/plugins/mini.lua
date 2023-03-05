@@ -3,26 +3,7 @@ return {
     'echasnovski/mini.nvim',
 
     config = function()
-        -- a/i surrounders (a", i[, etc.)
-        require('aw/plugins/spec/miniai')
-
-        -- animation
-        -- require('mini.animate').setup {}
-
-        -- ] / [ movement
-        require('mini.bracketed').setup {}
-
-        -- Buffer deletion
-        require('mini.bufremove').setup {}
-
-        -- Completion
-        require('mini.completion').setup {}
-
-        -- Comments (gc[c])
-        require('mini.comment').setup {}
-
-        -- Bubble blocks
-        require('aw/plugins/spec/minimove')
+        -- Load this stuff right away; needed for startup.
 
         -- Start screen
         require('aw/plugins/spec/ministarter')
@@ -30,15 +11,41 @@ return {
         -- Status line
         require('aw/plugins/spec/ministatusline')
 
-        -- Surrounders (cs, ysW, etc.)
-        require('aw/plugins/spec/minisurround')
-
-        -- Tab line
-        require('aw/plugins/spec/minitabline')
-
-        -- Whitespace at EOL
-        require('mini.trailspace').setup {}
-
+        -- Cool stuff like auto-root, cursor restore, etc.
         require('aw/plugins/spec/minimisc')
+
+        -- Not needed until later
+        AW.autocmd('User', 'VeryLazy', function()
+            -- Animation
+            -- NOTE: Try this again once 0.9 is released
+            -- require('mini.animate').setup {}
+
+            -- a/i surrounders (a", i[, etc.)
+            require('aw/plugins/spec/miniai')
+
+            -- Buffer deletion
+            require('mini.bufremove').setup {}
+
+            -- ] / [ movement
+            require('mini.bracketed').setup {}
+
+            -- Comments (gc[c])
+            require('mini.comment').setup {}
+
+            -- Completion
+            require('mini.completion').setup {}
+
+            -- Bubble blocks
+            require('aw/plugins/spec/minimove')
+
+            -- Surrounders (cs, ysW, etc.)
+            require('aw/plugins/spec/minisurround')
+
+            -- Tab line
+            require('aw/plugins/spec/minitabline')
+
+            -- Whitespace at EOL
+            require('mini.trailspace').setup {}
+        end)
     end
 }
