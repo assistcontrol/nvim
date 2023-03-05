@@ -23,6 +23,25 @@ function AW.autocmd(event, pattern, cmds)
     })
 end
 
+-- AW.cr_action is a helper function for <CR> mappings.
+-- Copied from :h mini.completion
+local keys = {
+    ['cr']        = vim.api.nvim_replace_termcodes('<CR>', true, true, true),
+    ['ctrl-y']    = vim.api.nvim_replace_termcodes('<C-y>', true, true, true),
+    ['ctrl-y_cr'] = vim.api.nvim_replace_termcodes('<C-y><CR>', true, true, true),
+}
+function AW.cr_action()
+    if vim.fn.pumvisible() ~= 0 then
+        -- If something is selected, <CR> confirms it
+        -- If nothing is selected, close the popup and send a newline
+        local item_selected = vim.fn.complete_info().selected ~= -1
+        return item_selected and keys['ctrl-y'] or keys['ctrl-y_cr']
+    else
+        -- If popup is not visible, use plain '<CR>'
+        return keys['cr']
+    end
+end
+
 -- AW.defer schedules vim cmds to be run after loading is done
 function AW.defer(cmd, event)
     vim.api.nvim_create_autocmd(event or 'VimEnter', { callback = function()

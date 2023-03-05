@@ -39,6 +39,11 @@ map('n', '\\\\',  cmd[[Telescope buffers]], {desc = 'buffers (Telescope)'})
 -- \[ opens Telescope
 map('n', '\\[',  cmd[[Telescope]], {desc = 'Telescope'})
 
+-- mini.completion
+map('i', '<Tab>',   [[pumvisible() ? '<C-n>' : '<Tab>']],   {expr = true})
+map('i', '<S-Tab>', [[pumvisible() ? '<C-p>' : '<S-Tab>']], {expr = true})
+map('i', '<CR>',    [[v:lua.AW.cr_action()]],               {expr = true})
+
 H.pick_window = function()
     local winid = require('window-picker').pick_window() or vim.api.nvim_get_current_win()
     vim.api.nvim_set_current_win(winid)
