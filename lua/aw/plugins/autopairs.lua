@@ -8,7 +8,8 @@ return {
         local cond  = require('nvim-autopairs.conds')
 
         pairs.setup {
-            check_ts = true
+            check_ts = true,
+            map_cr   = false
         }
 
         pairs.add_rules(require('nvim-autopairs.rules.endwise-lua'))

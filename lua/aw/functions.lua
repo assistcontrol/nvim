@@ -34,11 +34,14 @@ function AW.cr_action()
     if vim.fn.pumvisible() ~= 0 then
         -- If something is selected, <CR> confirms it
         -- If nothing is selected, close the popup and send a newline
-        local item_selected = vim.fn.complete_info().selected ~= -1
-        return item_selected and keys['ctrl-y'] or keys['ctrl-y_cr']
+        if vim.fn.complete_info().selected ~= -1 then
+            return keys['ctrl-y']
+        else
+            return keys['ctrl-y'] .. require('nvim-autopairs').autopairs_cr()
+        end
     else
         -- If popup is not visible, use plain '<CR>'
-        return keys['cr']
+        return require('nvim-autopairs').autopairs_cr()
     end
 end
 
