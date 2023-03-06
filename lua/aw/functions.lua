@@ -37,11 +37,11 @@ function AW.cr_action()
         if vim.fn.complete_info().selected ~= -1 then
             return keys['ctrl-y']
         else
-            return keys['ctrl-y'] .. require('nvim-autopairs').autopairs_cr()
+            return keys['ctrl-y_cr']
         end
     else
         -- If popup is not visible, use plain '<CR>'
-        return require('nvim-autopairs').autopairs_cr()
+        return keys['cr']
     end
 end
 
