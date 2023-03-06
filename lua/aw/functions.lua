@@ -41,7 +41,7 @@ function AW.cr_action()
         end
     else
         -- If popup is not visible, use plain '<CR>'
-        return keys['cr']
+        return require('mini.pairs').cr()
     end
 end
 
