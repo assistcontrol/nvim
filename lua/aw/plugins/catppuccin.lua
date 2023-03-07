@@ -36,7 +36,7 @@ return {
             },
             custom_highlights = function(colors)
                 return {
-                    MatchParen = {fg=colors.mantle, bg=colors.red},
+                    MatchParen = {fg=colors.mantle, bg=colors.blue},
 
                     MiniStatuslineFilename = {fg=colors.text, bg=colors.base},
                     TelescopeBorder = {bg=colors.crust},
