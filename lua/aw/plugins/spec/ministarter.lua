@@ -16,6 +16,14 @@ H.item = function(section, key, ico, title, action)
     }
 end
 
+H.version = function()
+    local version = vim.version()
+    return string.format('nvim v%d.%d.%d │ %s',
+        version.major, version.minor, version.patch,
+        os.date('%a %Y/%m/%d %H:%M')
+    )
+end
+
 local config = {
     content_hooks = {
         starter.gen_hook.adding_bullet('', true),
@@ -24,7 +32,7 @@ local config = {
     evaluate_single = true,
     query_updaters = [[abcdefghijklmnopqrstuvwxyz0123456789_-.ABCDEFGHIJKLMNOPQRSTUVWXYZ]],
     footer = '',
-    header = os.date(),
+    header = H.version(),
     items = {
         H.item('Common', 'i', 'new',   'New file',  'enew'),
         H.item('Common', 'q', 'close', 'Quit nvim', 'qall'),
