@@ -38,9 +38,6 @@ return {
             -- Bubble blocks
             require('aw/plugins/spec/minimove')
 
-            -- Bracket pairs
-            require('mini.pairs').setup {}
-
             -- Surrounders (cs, ysW, etc.)
             require('aw/plugins/spec/minisurround')
 

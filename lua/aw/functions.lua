@@ -41,7 +41,7 @@ function AW.cr_action()
         end
     else
         -- If popup is not visible, use plain '<CR>'
-        return require('mini.pairs').cr()
+        return require('nvim-autopairs').autopairs_cr()
     end
 end
 
