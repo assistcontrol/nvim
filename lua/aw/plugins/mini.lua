@@ -38,6 +38,9 @@ return {
             -- Bubble blocks
             require('aw/plugins/spec/minimove')
 
+            -- Split/join vectors
+            require('mini.splitjoin').setup {}
+
             -- Surrounders (cs, ysW, etc.)
             require('aw/plugins/spec/minisurround')
 

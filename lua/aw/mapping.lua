@@ -39,6 +39,9 @@ map('n', '\\\\',  cmd[[Telescope buffers]], {desc = 'buffers (Telescope)'})
 -- \[ opens Telescope
 map('n', '\\[',  cmd[[Telescope]], {desc = 'Telescope'})
 
+-- gS toggles vectors (mini.splitjoin)
+map('n', 'gS', cmd[[lua MiniSplitjoin.toggle()]], {desc = 'split/join'})
+
 -- mini.completion
 map('i', '<Tab>',   [[pumvisible() ? '<C-n>' : '<Tab>']],   {expr = true})
 map('i', '<S-Tab>', [[pumvisible() ? '<C-p>' : '<S-Tab>']], {expr = true})
