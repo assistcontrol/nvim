@@ -23,6 +23,9 @@ return {
             -- a/i surrounders (a", i[, etc.)
             require('aw/plugins/spec/miniai')
 
+            -- Align all the things
+            require('mini.align').setup {}
+
             -- Buffer deletion
             require('mini.bufremove').setup {}
 
