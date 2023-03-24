@@ -31,6 +31,7 @@ local config = {
     },
     evaluate_single = true,
     query_updaters = [[abcdefghijklmnopqrstuvwxyz0123456789_-.ABCDEFGHIJKLMNOPQRSTUVWXYZ]],
+    silent = true,
     footer = '',
     header = H.version(),
     items = {
@@ -50,6 +51,7 @@ local config = {
     }
 }
 
+vim.g.ministarter_silence = true
 starter.setup(config)
 
 AW.autocmd('User', 'MiniStarterOpened', function()
