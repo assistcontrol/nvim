@@ -51,7 +51,6 @@ local config = {
     }
 }
 
-vim.g.ministarter_silence = true
 starter.setup(config)
 
 AW.autocmd('User', 'MiniStarterOpened', function()
