@@ -65,6 +65,7 @@ AW.maps.leader = {
         ['<cr>']     = {cmd[[lua AW.next_pane()]],   'next window'},
         A = {'ggVG',                                 'select all'},
         e = {cmd[[lua AW.filebrowser()]],            'browse'},
+        n = {cmd[[Navbuddy]],                        'symbol browser'},
         q = {cmd[[lua AW.toggle_quickfix()]],        'toggle quickfix'},
         Q = {cmd[[lua MiniBufremove.delete()]],      'close buffer'},
         w = {H.pick_window,                          'pick window'},
