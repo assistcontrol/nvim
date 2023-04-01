@@ -33,7 +33,7 @@ return {
             require('mini.bracketed').setup {}
 
             -- Comments (gc[c])
-            require('mini.comment').setup {}
+            require('aw/plugins/spec/minicomment')
 
             -- Completion
             require('mini.completion').setup {}
@@ -48,7 +48,7 @@ return {
             require('aw/plugins/spec/minisurround')
 
             -- Tab line
-            require('aw/plugins/spec/minitabline')
+            require('mini.tabline').setup {}
 
             -- Whitespace at EOL
             require('mini.trailspace').setup {}
