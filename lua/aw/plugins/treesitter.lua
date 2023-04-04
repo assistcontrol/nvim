@@ -1,5 +1,5 @@
 -- Tree-sitter
-local parsers = {'c', 'help', 'lua', 'query', 'vim'} -- These MUST be listed, see treesitter/README.md
+local parsers = {'c', 'lua', 'query', 'vim', 'vimdoc'} -- These MUST be listed, see treesitter/README.md
 if not AW.is_root() then
     vim.list_extend(parsers, {
         'bash',
