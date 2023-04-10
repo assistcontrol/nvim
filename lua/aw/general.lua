@@ -10,6 +10,7 @@ vim.opt.infercase     = true     -- 'smartcase' for keyword completion
 vim.opt.lazyredraw    = true     -- Don't redraw screen for outputless commands
 vim.opt.joinspaces    = false    -- Don't insert 2 spaces after '.' on join
 vim.opt.modeline      = true     -- First line:  # vim: ft=[...]
+vim.opt.mouse         = ''       -- Disable mouse entirely
 vim.opt.number        = true     -- Show line numbers
 vim.opt.pumblend      = AW.ui.winblend
 vim.opt.report        = 0        -- Report all file changes
