@@ -3,7 +3,7 @@ local icons = {
     close    = '✘',  -- u2718
     delete   = '',  -- uF00D
     dotfiles = '⚆',  -- u2686
-    folder   = '',  -- uF74A
+    folder   = '',  -- uF07B
     generic  = '',  -- uF0F6
     go       = '',  -- uE626
     lock     = '',  -- uF023
@@ -11,17 +11,17 @@ local icons = {
     modified = '',  -- uF10C
     new      = '',  -- uF15B
     plug     = '',  -- uF1E6
-    recent   = 'ﮫ',  -- uFBAB
-    record   = '',  -- uF8E3
+    recent   = '󰚭',  -- UF06AD
+    record   = '󰏤',  -- UF03E4
     reload   = '',  -- uF0E2
     search   = '',  -- uF422
-    tree     = 'פּ',  -- uFB44
+    tree     = '󰙅',  -- UF0645
     vim      = '',  -- uE62B
 
     -- Diagnostics
     error    = '⨂',  -- u2A02
     errorSm  = '',  -- uF46E
-    hint     = '',  -- uF835
+    hint     = '󰌶',  -- UF0336
     warning  = '',  -- u26A0
 
     -- Box-drawing
@@ -30,43 +30,6 @@ local icons = {
     horizhigh = '▔',  -- u2594
     thickvert = '▌',  -- u258C
     vertbar   = '│',  -- u2502
-
-    -- cmp item kinds
-    Array = " ",
-    Boolean = " ",
-    Class = " ",
-    Color = " ",
-    Constant = " ",
-    Constructor = " ",
-    Copilot = " ",
-    Enum = " ",
-    EnumMember = " ",
-    Event = " ",
-    Field = " ",
-    File = " ",
-    Folder = " ",
-    Function = " ",
-    Interface = " ",
-    Key = " ",
-    Keyword = " ",
-    Method = " ",
-    Module = " ",
-    Namespace = " ",
-    Null = "ﳠ ",
-    Number = " ",
-    Object = " ",
-    Operator = " ",
-    Package = " ",
-    Property = " ",
-    Reference = " ",
-    Snippet = " ",
-    String = " ",
-    Struct = " ",
-    Text = " ",
-    TypeParameter = " ",
-    Unit = " ",
-    Value = " ",
-    Variable = " ",
 }
 
 -- AW.icon gets an icon, with optional text attached
