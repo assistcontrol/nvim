@@ -49,10 +49,6 @@ H.pick_window = function()
     vim.api.nvim_set_current_win(winid)
 end
 
-H.refactor = function(cmd)
-    return string.format([[<Esc><Cmd>lua require('refactoring').refactor('%s')<CR>]], cmd), string.lower(cmd), {silent = true, expr = false}
-end
-
 AW.maps.leader = {
     n = {
         -- In which-key.nvim format
@@ -115,24 +111,9 @@ AW.maps.leader = {
             ['<leader>'] = {'za', 'toggle'}
         },
 
-        r = {
-            name = 'refactor',
-            b = {H.refactor('Extract Block')},
-            f = {H.refactor('Extract Block To File')},
-            i = {H.refactor('Inline Variable')}
-        }
     },
 
-    v = {
-        r = {
-            name = 'refactor',
-            e = {H.refactor('Extract Function')},
-            f = {H.refactor('Extract Function To File')},
-            v = {H.refactor('Extract Variable')},
-            i = {H.refactor('Inline Variable')},
-            r = {[[<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>]], 'refactors'}
-        }
-    }
+    v = {}
 }
 
 -- Gitsigns sets keymaps via a callback
