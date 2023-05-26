@@ -1,10 +1,17 @@
 if not AW.has('mini.hipatterns') then return end
 
+-- Matches FOO: at the beginning of a word and highights the
+-- rest of the line.
+-- FOO --> %f[%w]()FOO:.*
+local gen_pattern = function(pattern)
+    return '%f[%w]()' .. pattern .. ':.*'
+end
+
 require('mini.hipatterns').setup {
     highlighters = {
-        note     = { pattern = 'NOTE', group = 'MiniHipatternsNote' },
-        todo     = { pattern = 'TODO', group = 'MiniHipatternsTodo' },
-        xxx      = { pattern = 'XXX',  group = 'MiniHipatternsFixme' },
+        note     = { pattern = gen_pattern('NOTE'), group = 'MiniHipatternsNote' },
+        todo     = { pattern = gen_pattern('TODO'), group = 'MiniHipatternsTodo' },
+        xxx      = { pattern = gen_pattern('XXX'),  group = 'MiniHipatternsFixme' },
         hexcolor = require('mini.hipatterns').gen_highlighter.hex_color()
     }
 }
