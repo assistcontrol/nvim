@@ -38,6 +38,9 @@ return {
             -- Completion
             require('mini.completion').setup {}
 
+            -- String highlighting
+            require('aw/plugins/spec/minihipatterns')
+
             -- Bubble blocks
             require('aw/plugins/spec/minimove')
 
