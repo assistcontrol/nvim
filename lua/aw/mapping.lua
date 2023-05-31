@@ -45,7 +45,8 @@ map('i', '<S-Tab>', [[pumvisible() ? '<C-p>' : '<S-Tab>']], {expr = true})
 map('i', '<CR>',    [[v:lua.AW.cr_action()]],               {expr = true})
 
 H.pick_window = function()
-    local winid = require('window-picker').pick_window() or vim.api.nvim_get_current_win()
+    -- XXX: Remove pick_window arg once nvim-window-picker is fixed upstream
+    local winid = require('window-picker').pick_window(AW.window_picker_config) or vim.api.nvim_get_current_win()
     vim.api.nvim_set_current_win(winid)
 end
 
