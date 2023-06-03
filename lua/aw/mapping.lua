@@ -25,6 +25,9 @@ map('n', 'k', 'gk')
 map('n', '<C-j>', cmd[[bnext]])
 map('n', '<C-k>', cmd[[bprevious]])
 
+-- CR selects current word
+map('n', '<CR>', 'viw')
+
 -- Override ^W^W to skip nvim-tree
 map('n', '<C-w><C-w>', AW.next_window)
 
