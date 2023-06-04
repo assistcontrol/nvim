@@ -26,6 +26,7 @@ map('n', '<C-j>', cmd[[bnext]])
 map('n', '<C-k>', cmd[[bprevious]])
 
 -- CR selects current word
+-- This is a fallback. CR does node_incremental in treesitter.
 map('n', '<CR>', 'viw')
 
 -- Override ^W^W to skip nvim-tree
