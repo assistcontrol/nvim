@@ -22,7 +22,6 @@ return {
                 gitsigns = true,
                 mini = true,
                 neotree = true,
-                telescope = true,
                 treesitter = true,
                 ts_rainbow = true,
                 which_key = true,
@@ -32,6 +31,10 @@ return {
                 },
                 native_lsp = {
                     enabled = true
+                },
+                telescope = {
+                    enabled = true,
+                    style = 'classic'
                 }
             },
             custom_highlights = function(colors)
