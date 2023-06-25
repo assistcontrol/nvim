@@ -36,3 +36,12 @@ vim.api.nvim_create_autocmd('User', {
         vim.keymap.set('n', 'gw', pick_win, {buffer = buf_id, desc = 'Pick target'})
     end
 })
+
+-- Customize the float window
+vim.api.nvim_create_autocmd('User', {
+    pattern = 'MiniFilesWindowOpen',
+    callback = function(args)
+        local winid = args.data.win_id
+        vim.api.nvim_win_set_config(winid, {border = 'rounded'})
+    end
+})
