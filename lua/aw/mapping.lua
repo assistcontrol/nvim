@@ -69,8 +69,7 @@ AW.maps.leader = {
         q = {cmd[[lua AW.toggle_quickfix()]],        'toggle quickfix'},
         Q = {cmd[[lua MiniBufremove.delete()]],      'close buffer'},
         w = {H.pick_window,                          'pick window'},
-        x = {cmd[[NvimTreeFocus]],                   'explorer'},
-        X = {cmd[[NvimTreeClose]],                   'unexplorer'},
+        x = {cmd[[lua MiniFiles.open()]],            'explorer'},
         z = {cmd[[lua require('mini.misc').zoom()]], 'zoom'},
 
         b = {

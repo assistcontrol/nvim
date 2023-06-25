@@ -14,6 +14,8 @@ return {
         -- Cool stuff like auto-root, cursor restore, etc.
         require('aw/plugins/spec/minimisc')
 
+        require('aw/plugins/spec/minifiles')
+
         -- Not needed until later
         AW.autocmd('User', 'VeryLazy', function()
             -- Animation

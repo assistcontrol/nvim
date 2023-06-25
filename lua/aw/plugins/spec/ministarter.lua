@@ -42,9 +42,9 @@ local config = {
         H.item('Update', 'G', 'go',     'Update go binaries', 'GoUpdateBinaries'),
 
         H.item('Browse', 'b', 'folder',   AW.pwd(),    H.browse(AW.pwd())),
-        H.item('Browse', 'x', 'tree',     'tree',      'NvimTreeFocus'),
-        H.item('Browse', 'r', 'recent',   'Recent',    'Telescope oldfiles'),
-        H.item('Browse', 'l', 'search',   'Live grep', 'Telescope live_grep'),
+        H.item('Browse', 'x', 'tree',     'tree',      'lua MiniFiles.open()'),
+        H.item('Browse', 'r', 'recent',   'Recent',    [[lua require('telescope.builtin').oldfiles()]]),
+        H.item('Browse', 'l', 'search',   'Live grep', [[lua require('telescope.builtin').live_grep()]]),
         H.item('Browse', 'n', 'folder',   'ninja',     H.browse("~/build/ninja")),
         H.item('Browse', 'd', 'dotfiles', 'dotfiles',  H.browse("~/build/dotfiles")),
         H.item('Browse', 'v', 'vim',      'vim',       H.browse("~/build/nvim/lua/aw"))
