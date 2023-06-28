@@ -1,6 +1,12 @@
 if not AW.has('mini.files') then return end
 
-require('mini.files').setup {}
+require('mini.files').setup {
+    windows = {
+        preview = true,
+        width_focus = 30,
+        width_preview = 40
+    }
+}
 
 -- Create a split and open the selected file in it
 local map_split = function(buf_id, lhs, direction)
