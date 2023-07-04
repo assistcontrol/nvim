@@ -19,7 +19,6 @@ end
 
 return {
     'nvim-treesitter/nvim-treesitter',
-    dependencies = 'hiphish/nvim-ts-rainbow2',
     cmd   = {'TSInstall', 'TSInstallInfo', 'TSUpdate', 'TSUninstall'},
     event = {'BufReadPost', 'BufNewFile'},
     config = function()
@@ -46,11 +45,6 @@ return {
             indent = {
                 enable = true
             },
-
-            rainbow = {
-                enable = true,
-                strategy = require('ts-rainbow.strategy.local')
-            }
         }
     end
 }
