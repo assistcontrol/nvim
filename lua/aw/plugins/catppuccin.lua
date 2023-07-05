@@ -21,9 +21,8 @@ return {
                 fidget = true,
                 gitsigns = true,
                 mini = true,
-                neotree = true,
+                rainbow_delimiters = true,
                 treesitter = true,
-                ts_rainbow = true,
                 which_key = true,
 
                 indent_blankline = {
