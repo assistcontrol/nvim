@@ -1,7 +1,7 @@
 -- LSP
 return {
     'neovim/nvim-lspconfig',
-    dependencies = {AW.deps.mini, AW.deps.navbuddy},
+    dependencies = {AW.deps.mini},
     enabled = not AW.is_root(),
     event = {'BufReadPre', 'BufNewFile'},
 

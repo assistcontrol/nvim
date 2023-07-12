@@ -11,7 +11,6 @@ AW.deps = {
     devicons   = 'nvim-tree/nvim-web-devicons',
     lspconfig  = 'neovim/nvim-lspconfig',
     mini       = 'echasnovski/mini.nvim',
-    navbuddy   = 'smiteshp/nvim-navbuddy',
     nui        = 'muniftanjim/nui.nvim',
     plenary    = 'nvim-lua/plenary.nvim',
     treesitter = 'nvim-treesitter/nvim-treesitter'
