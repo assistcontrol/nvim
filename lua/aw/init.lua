@@ -5,6 +5,7 @@ require('aw/functions')
 require('aw/colors')
 require('aw/general')
 require('aw/mapping')
+require('aw/filetypes')
 require('aw/lazy')
 
 if not vim.g.colors_name then
@@ -13,5 +14,4 @@ end
 
 AW.autocmd('User', 'VeryLazy', function()
     require('aw/winbar')
-    require('aw/filetypes')
 end)
