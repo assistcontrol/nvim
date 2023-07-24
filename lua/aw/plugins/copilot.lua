@@ -3,6 +3,9 @@ return {
     enabled = not AW.is_root(),
     event = {'BufReadPre', 'BufNewFile'},
     opts = {
+        filetypes = {
+            ['*'] = true,
+        },
         suggestion = {
             auto_trigger = true,
             keymap = {
