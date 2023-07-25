@@ -74,11 +74,11 @@ AW.maps.leader = {
 
         b = {
             name = 'buffer',
-            b = {cmd[[Telescope buffers]],          'list'},
-            d = {cmd[[lua MiniBufremove.delete()]], 'delete'},
-            n = {cmd[[bnext]],                      'next'},
-            p = {cmd[[bprevious]],                  'previous'},
-            ['<leader>'] = {cmd[[bnext]],           'next'},
+            b = {cmd[[Telescope buffers]],           'list'},
+            d = {cmd[[lua MiniBufremove.wipeout()]], 'delete'},
+            n = {cmd[[bnext]],                       'next'},
+            p = {cmd[[bprevious]],                   'previous'},
+            ['<leader>'] = {cmd[[bnext]],            'next'},
         },
 
         d = {
