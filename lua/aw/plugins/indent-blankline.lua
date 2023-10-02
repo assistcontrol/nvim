@@ -2,10 +2,11 @@
 return  {
     'lukas-reineke/indent-blankline.nvim',
     event = 'BufReadPre',
+    main = 'ibl',
     opts = {
-        buftype_exclude  = {'help', 'nofile'},
-        filetype_exclude = {'alpha', 'dashboard', 'help', 'packer', 'starter', 'startify'},
-        show_current_context = true,
-        use_treesitter       = true
+        exclude = {
+            buftypes  = {'help', 'nofile'},
+            filetypes = {'alpha', 'dashboard', 'help', 'packer', 'starter', 'startify'}
+        }
     }
 }
