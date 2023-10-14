@@ -1,7 +1,7 @@
 if not AW.has('mini.pick') then return end
 
 local window = function()
-    local size = 0.55
+    local size = 0.618
 
     local height = math.floor(size * vim.o.lines)
     local width  = math.floor(size * vim.o.columns)
