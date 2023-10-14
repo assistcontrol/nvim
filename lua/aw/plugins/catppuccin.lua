@@ -31,20 +31,15 @@ return {
                 native_lsp = {
                     enabled = true
                 },
-                telescope = {
-                    enabled = true,
-                    style = 'classic'
-                }
             },
             custom_highlights = function(colors)
                 return {
                     MatchParen = {fg=colors.mantle, bg=colors.blue},
 
                     MiniStatuslineFilename = {fg=colors.text, bg=colors.base},
-                    TelescopeBorder = {bg=colors.crust},
-                    TelescopeNormal = {bg=colors.crust},
-                    TelescopePromptPrefix  = {bg=colors.crust},
-                    TelescopePromptCounter = {bg=colors.crust},
+                    MiniPickBorder = {bg=colors.crust},
+                    MiniPickNormal = {bg=colors.crust},
+                    MiniPickPrompt = {bg=colors.crust},
 
                     WinBar   = {fg='white', style={'bold'}},
                     WinBarNC = {fg='white'},

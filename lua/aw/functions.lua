@@ -56,7 +56,7 @@ end
 -- for future searches
 function AW.filebrowser(dir)
     if dir then vim.cmd('lcd ' .. dir) end
-    require('telescope.builtin').find_files()
+    require('mini.pick').builtin.files()
 end
 
 -- AW.has tests whether a certain plugin is installed

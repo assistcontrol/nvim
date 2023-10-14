@@ -46,6 +46,9 @@ return {
             -- Bubble blocks
             require('aw/plugins/spec/minimove')
 
+            -- Picker
+            require('aw/plugins/spec/minipick')
+
             -- Split/join vectors
             require('mini.splitjoin').setup {}
 
