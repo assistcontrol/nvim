@@ -1,5 +1,7 @@
 if not AW.has('mini.pick') then return end
 
+local pick = require('mini.pick')
+
 local window = function()
     local size = 0.618
 
@@ -16,7 +18,7 @@ local window = function()
     }
 end
 
-require('mini.pick').setup {
+pick.setup {
     options = {
         -- content_from_bottom = true,
         use_cache = true,
@@ -25,3 +27,13 @@ require('mini.pick').setup {
         config = window
     },
 }
+
+-- :Pick files cwd='...'
+pick.registry.files = function(local_opts)
+    local opts = { source = { cwd = local_opts.cwd }}
+    local_opts.cwd = nil
+    return pick.builtin.files(local_opts, opts)
+end
+
+-- Override ui_select
+vim.ui.select = pick.ui_select
