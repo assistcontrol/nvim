@@ -43,7 +43,7 @@ local config = {
 
         H.item('Browse', 'b', 'folder',   AW.pwd(),    H.browse(AW.pwd())),
         H.item('Browse', 'x', 'tree',     'tree',      'lua MiniFiles.open()'),
-        H.item('Browse', 'l', 'search',   'Live grep', [[lua require('mini.pick').builtin.grep_live()]]),
+        H.item('Browse', 'l', 'search',   'Live grep', [[Pick grep_live]]),
         H.item('Browse', 'n', 'folder',   'ninja',     H.browse("~/build/ninja")),
         H.item('Browse', 'd', 'dotfiles', 'dotfiles',  H.browse("~/build/dotfiles")),
         H.item('Browse', 'v', 'vim',      'vim',       H.browse("~/build/nvim/lua/aw"))

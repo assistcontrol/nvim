@@ -39,9 +39,9 @@ map('x', 'S', cmd[[lua MiniSurround.add('visual')]])
 map({'i', 'n'}, '<C-\\>', cmd[[write]])
 
 -- \\ shows buffers in picker
-map('n', '\\\\',  cmd[[lua MiniPick.builtin.buffers()]], {desc = 'buffers (Picker)'})
+map('n', '\\\\',  cmd[[Pick buffers]], {desc = 'buffers (Picker)'})
 -- \[ opens picker
-map('n', '\\[',  cmd[[lua MiniPick.builtin.files()]], {desc = 'Picker'})
+map('n', '\\[',  cmd[[Pick files]], {desc = 'Picker'})
 
 -- mini.completion
 map('i', '<Tab>',   [[pumvisible() ? '<C-n>' : '<Tab>']],   {expr = true})
@@ -74,11 +74,11 @@ AW.maps.leader = {
 
         b = {
             name = 'buffer',
-            b = {cmd[[lua MiniPick.builtin.buffers()]], 'list'},
-            d = {cmd[[lua MiniBufremove.wipeout()]],    'delete'},
-            n = {cmd[[bnext]],                          'next'},
-            p = {cmd[[bprevious]],                      'previous'},
-            ['<leader>'] = {cmd[[bnext]],               'next'},
+            b = {cmd[[Pick buffers]],                'list'},
+            d = {cmd[[lua MiniBufremove.wipeout()]], 'delete'},
+            n = {cmd[[bnext]],                       'next'},
+            p = {cmd[[bprevious]],                   'previous'},
+            ['<leader>'] = {cmd[[bnext]],            'next'},
         },
 
         d = {
@@ -89,10 +89,10 @@ AW.maps.leader = {
 
         f = {
             name = 'find',
-            b = {cmd[[lua MiniPick.builtin.buffers()]],   'buffers'},
-            g = {cmd[[lua MiniPick.builtin.grep_live()]], 'grep'},
-            h = {cmd[[lua MiniPick.builtin.help()]],      'help'},
-            f = {cmd[[lua AW.filebrowser()]],             'files'}
+            b = {cmd[[Pick buffers]],         'buffers'},
+            g = {cmd[[Pick grep_live]],       'grep'},
+            h = {cmd[[Pick help]],            'help'},
+            f = {cmd[[lua AW.filebrowser()]], 'files'}
         },
 
         K = {
