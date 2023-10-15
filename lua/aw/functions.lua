@@ -55,8 +55,8 @@ end
 -- AW.filebrowser spawns a file finder, and changes to a specified dir
 -- for future searches
 function AW.filebrowser(dir)
-    if dir then vim.cmd('lcd ' .. dir) end
-    require('mini.pick').builtin.files()
+    dir = dir or '.'
+    require('mini.pick').builtin.files(nil, {source = {cwd = dir}})
 end
 
 -- AW.has tests whether a certain plugin is installed
