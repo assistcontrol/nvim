@@ -26,10 +26,12 @@ map('n', '<C-j>', cmd[[bnext]])
 map('n', '<C-k>', cmd[[bprevious]])
 
 -- Emacs-style bindings
-map('!', '<C-a>', '<C-o>I')
-map('!', '<C-e>', '<C-o>A')
-map('!', '<C-w>', '<C-o>dB')
-map('!', '<C-k>', '<C-o>C')
+map('i', '<C-a>', '<C-o>^')
+map('i', '<C-e>', '<C-o>$')
+map('i', '<C-k>', '<C-o>C')
+-- Command mode
+map('c', '<C-a>', '<Home>')
+map('c', '<C-e>', '<End>')
 
 -- CR selects current word
 -- This is a fallback. CR does node_incremental in treesitter.
