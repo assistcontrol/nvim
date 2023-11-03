@@ -97,10 +97,21 @@ AW.maps.leader = {
 
         f = {
             name = 'find',
-            b = {cmd[[Pick buffers]],         'buffers'},
-            g = {cmd[[Pick grep_live]],       'grep'},
-            h = {cmd[[Pick help]],            'help'},
-            f = {cmd[[lua AW.filebrowser()]], 'files'}
+            G = {
+                name = 'git',
+                b = {cmd[[Pick git_branches]], 'branches'},
+                c = {cmd[[Pick git_commits]],  'commits'},
+                f = {cmd[[Pick git_files]],    'files'},
+            },
+            b = {cmd[[Pick buffers]],                   'buffers'},
+            c = {cmd[[Pick commands]],                  'commands'},
+            d = {cmd[[Pick diagnostic]],                'diagnostic'},
+            e = {cmd[[Pick explorer]],                  'explorer'},
+            g = {cmd[[Pick grep_live]],                 'grep'},
+            h = {cmd[[Pick help]],                      'help'},
+            f = {cmd[[lua AW.filebrowser()]],           'files'},
+            l = {cmd[[Pick buf_lines scope="current"]], 'local buffer'},
+            x = {cmd[[Pick history]],                   'history'},
         },
 
         K = {

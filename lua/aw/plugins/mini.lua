@@ -40,6 +40,9 @@ return {
             -- Completion
             require('mini.completion').setup {}
 
+            -- Load extra pickers, etc.
+            require('mini.extra').setup {}
+
             -- String highlighting
             require('aw/plugins/spec/minihipatterns')
 
