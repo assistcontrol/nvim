@@ -109,8 +109,13 @@ AW.maps.leader = {
             e = {cmd[[Pick explorer]],                  'explorer'},
             g = {cmd[[Pick grep_live]],                 'grep'},
             h = {cmd[[Pick help]],                      'help'},
+            k = {cmd[[Pick keymaps]],                   'keymaps'},
             f = {cmd[[lua AW.filebrowser()]],           'files'},
             l = {cmd[[Pick buf_lines scope="current"]], 'local buffer'},
+            m = {cmd[[Pick marks]],                     'marks'},
+            o = {cmd[[Pick options]],                   'options'},
+            s = {cmd[[Pick spellsuggest]],              'spelling'},
+            r = {cmd[[Pick registers]],                 'registers'},
             x = {cmd[[Pick history]],                   'history'},
         },
 
