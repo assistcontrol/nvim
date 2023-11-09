@@ -13,6 +13,7 @@ if not AW.is_root() then
         'ruby',
         'rust',
         'scss',
+        'v',
         'yaml'
     })
 end
