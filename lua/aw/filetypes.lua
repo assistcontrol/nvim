@@ -4,7 +4,8 @@ vim.filetype.add {
     extension = {
         pm = 'perl',
         t  = 'perl',
-        tt = 'tt2html'
+        tt = 'tt2html',
+        v  = 'v',
     }
 }
 
