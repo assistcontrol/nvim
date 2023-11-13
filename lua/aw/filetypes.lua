@@ -10,7 +10,7 @@ vim.filetype.add {
 }
 
 -- Four-space expansion
-autocmd('Filetype', {'go', 'lua', 'perl'}, {shiftwidth=4, softtabstop=4, tabstop=4})
+autocmd('Filetype', {'go', 'lua', 'perl', 'v'}, {shiftwidth=4, softtabstop=4, tabstop=4})
 
 -- Unique widths
 autocmd('Filetype', 'make', {expandtab=false, tabstop=8, shiftwidth=8})
