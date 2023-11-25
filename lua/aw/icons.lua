@@ -9,6 +9,7 @@ local icons = {
     lock     = '',  -- uF023
     lsp      = '',  -- uF04B
     modified = '',  -- uF10C
+    more     = '',  -- uF141
     new      = '',  -- uF15B
     plug     = '',  -- uF1E6
     recent   = '󰚭',  -- UF06AD

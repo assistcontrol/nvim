@@ -100,4 +100,18 @@ M.readonly = function()
     return vim.bo.readonly and AW.icon('lock')
 end
 
+M.search_count = function()
+    if vim.v.hlsearch == 0 then return end
+
+    local ok, match = pcall(vim.fn.searchcount, {recompute = true})
+    if not ok or match == nil or match.toal == 0 then return '' end
+
+    if match.incomplete == 1 then return '' end
+
+    local many  = AW.icon('more')
+    local cur   = match.current > match.maxcount and many or match.current
+    local total = match.total   > match.maxcount and many or match.total
+    return ('%s/%s'):format(cur, total)
+end
+
 return M

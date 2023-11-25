@@ -36,6 +36,7 @@ end
 -- This function is called for every statusline refresh
 H.active = function()
     local mode, mode_hl = P.mode({trunc_width = 50 })
+    local search        = P.search_count()
 
     return SL.combine_groups({
         {hl = mode_hl,          strings = { mode }},
@@ -49,6 +50,7 @@ H.active = function()
         {hl = 'CustomError',    strings = { P.diagErrors() }},
         {hl = 'CustomWarning',  strings = { P.diagWarnings() }},
         {hl = 'MiniStatuslineFileInfo',   strings = { P.encoding(), P.filefmt(), P.filetype() }},
+        {hl = 'CustomWarning',  strings = { search }},
         {hl = mode_hl,          strings = { P.location({ trunc_width = 50 }) }}
     })
 end
