@@ -19,7 +19,6 @@ return {
         -- Not needed until later
         AW.autocmd('User', 'VeryLazy', function()
             -- Animation
-            -- NOTE: Try this again once 0.9 is released
             -- require('mini.animate').setup {}
 
             -- a/i surrounders (a", i[, etc.)
