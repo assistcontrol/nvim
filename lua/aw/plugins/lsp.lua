@@ -65,32 +65,29 @@ return {
 
         -- Lua
         if vim.fn.executable('lua-language-server') > 0 then
-            local runtime_path = vim.split(package.path, ';')
-            table.insert(runtime_path, 'lua/?.lua')
-            table.insert(runtime_path, 'lua/?/init.lua')
-
             lspconfig.lua_ls.setup {
                 conf,
-                settings = {
-                    Lua = {
-                        runtime = {
-                            version = 'LuaJIT',
-                            path = runtime_path
-                        },
-                        diagnostics = {
-                            -- Recognize the `vim` global
-                            globals = {'vim'}
-                        },
-                        workspace = {
-                            -- Recognize the nvim runtime
-                            library = vim.api.nvim_get_runtime_file('', true)
-                        },
-                        telemetry = {
-                            -- Don't send telemetry data
-                            enable = false
+                on_init = function(client)
+                    client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
+                        Lua = {
+                            runtime = {
+                                version = 'LuaJit',
+                            },
+                            diagnostics = {
+                                globals = {'vim'},
+                            },
+                            workspace = {
+                                checkThirdParty = false,
+                                library = {
+                                    vim.env.VIMRUNTIME,
+                                },
+                            },
                         }
-                    }
-                }
+                    })
+
+                    client.notify('workspace/didChangeConfiguration', {settings = client.config.settings})
+                    return true
+                end
             }
         end
 
