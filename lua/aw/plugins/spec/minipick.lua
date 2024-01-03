@@ -24,7 +24,8 @@ pick.setup {
         use_cache = true,
     },
     window = {
-        config = window
+        config = window,
+        prompt_prefix = AW.icon('prompt'),
     },
 }
 

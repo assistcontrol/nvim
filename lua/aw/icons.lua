@@ -12,6 +12,7 @@ local icons = {
     more     = '',  -- uF141
     new      = '',  -- uF15B
     plug     = '',  -- uF1E6
+    prompt   = '',  -- f054
     recent   = '󰚭',  -- UF06AD
     record   = '󰏤',  -- UF03E4
     reload   = '',  -- uF0E2
