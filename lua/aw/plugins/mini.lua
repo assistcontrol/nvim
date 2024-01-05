@@ -48,6 +48,9 @@ return {
             -- Bubble blocks
             require('aw/plugins/spec/minimove')
 
+            -- Notifications
+            require('aw/plugins/spec/mininotify')
+
             -- Picker
             require('aw/plugins/spec/minipick')
 

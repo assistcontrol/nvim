@@ -18,7 +18,6 @@ return {
                 booleans = {'bold'},
             },
             integrations = {
-                fidget = true,
                 gitsigns = true,
                 mini = true,
                 rainbow_delimiters = true,
@@ -37,6 +36,9 @@ return {
                     MatchParen = {fg=colors.mantle, bg=colors.blue},
 
                     MiniStatuslineFilename = {fg=colors.text, bg=colors.base},
+                    MiniNotifyBorder = {fg=colors.text,  bg=colors.surface0},
+                    MiniNotifyNormal = {fg=colors.text,  bg=colors.surface0},
+                    MiniNotifyTitle  = {fg=colors.mauve, bg=colors.surface0},
                     MiniPickBorder = {bg=colors.crust},
                     MiniPickNormal = {bg=colors.crust},
                     MiniPickPrompt = {bg=colors.crust},
