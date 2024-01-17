@@ -1,22 +1,18 @@
 -- Tree-sitter
-local parsers = {'c', 'lua', 'query', 'vim', 'vimdoc'} -- These MUST be listed, see treesitter/README.md
-if not AW.is_root() then
-    vim.list_extend(parsers, {
-        'bash',
-        'go',
-        'html',
-        'javascript',
-        'json',
-        'luap',
-        'perl',
-        'regex',
-        'ruby',
-        'rust',
-        'scss',
-        'v',
-        'yaml'
-    })
-end
+local parsers = AW.is_root() and {} or {
+    'go',
+    'html',
+    'javascript',
+    'json',
+    'luap',
+    'perl',
+    'regex',
+    'ruby',
+    'rust',
+    'scss',
+    'v',
+    'yaml'
+}
 
 return {
     'nvim-treesitter/nvim-treesitter',
