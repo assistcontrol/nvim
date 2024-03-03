@@ -40,12 +40,13 @@ local config = {
 
         H.item('Update', 'U', 'plug',   'Update plugins',     'lua AW.update_plugins()'),
         H.item('Update', 'G', 'go',     'Update go binaries', 'GoUpdateBinaries'),
+        H.item('Update', 'T', 'tree',   'Update parsers',     'TSUpdate'),
 
         H.item('Browse', 'b', 'folder',   AW.pwd(),    H.browse(AW.pwd())),
-        H.item('Browse', 'x', 'tree',     'tree',      'lua MiniFiles.open()'),
+        H.item('Browse', 'x', 'filetree', 'tree',      'lua MiniFiles.open()'),
         H.item('Browse', 'l', 'search',   'live grep', [[Pick grep_live]]),
         H.item('Browse', 'r', 'recent',   'recent',    [[Pick oldfiles]]),
-        H.item('Browse', 'n', 'folder',   'ninja',     H.browse("~/build/ninja")),
+        H.item('Browse', 'n', 'ninja',    'ninja',     H.browse("~/build/ninja")),
         H.item('Browse', 'd', 'dotfiles', 'dotfiles',  H.browse("~/build/dotfiles")),
         H.item('Browse', 'v', 'vim',      'vim',       H.browse("~/build/nvim/lua/aw"))
     }
