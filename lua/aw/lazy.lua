@@ -37,7 +37,11 @@ require('lazy').setup('aw.plugins', {
     },
     ui = {
         custom_keys = {
-            ["<localleader>l"] = false
+            ["<localleader>l"] = false,
+            T = {
+                function() vim.cmd('TSUpdate') end,
+                desc = 'TSUpdate',
+            },
         },
     },
 })
