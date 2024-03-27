@@ -10,6 +10,7 @@ local parsers = AW.is_root() and {} or {
     'ruby',
     'rust',
     'scss',
+    'tmux',
     'v',
     'yaml'
 }
