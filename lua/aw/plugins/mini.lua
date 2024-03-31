@@ -39,6 +39,9 @@ return {
             -- Completion
             require('mini.completion').setup {}
 
+            -- Diff
+            require('aw/plugins/spec/minidiff')
+
             -- Load extra pickers, etc.
             require('mini.extra').setup {}
 
