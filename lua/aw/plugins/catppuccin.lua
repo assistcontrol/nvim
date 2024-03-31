@@ -18,7 +18,6 @@ return {
                 booleans = {'bold'},
             },
             integrations = {
-                gitsigns = true,
                 mini = true,
                 rainbow_delimiters = true,
                 treesitter = true,
