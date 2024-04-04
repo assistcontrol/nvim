@@ -16,4 +16,8 @@ require('mini.diff').setup {
         goto_next  = ']c',
         goto_last  = ']C',
     },
+
+    options = {
+        wrap_goto = true,
+    },
 }
