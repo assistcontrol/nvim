@@ -1,4 +1,5 @@
 if not AW.has('mini.files') then return end
+if vim.g.vscode then return end
 
 require('mini.files').setup {
     windows = {

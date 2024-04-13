@@ -1,7 +1,7 @@
 -- Go
 return {
     'ray-x/go.nvim',
-    enabled = not AW.is_root(),
+    enabled = not AW.is_root() and not vim.g.vscode,
     ft = {'go', 'gohtmltmpl', 'gomod'},
     cmd = {'GoInstallBinaries', 'GoUpdateBinaries'},
     config = function()

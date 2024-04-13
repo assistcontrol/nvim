@@ -1,4 +1,5 @@
 if not AW.has('mini.pick') then return end
+if vim.g.vscode then return end
 
 local pick = require('mini.pick')
 

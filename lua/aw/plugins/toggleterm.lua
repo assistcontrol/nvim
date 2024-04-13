@@ -3,6 +3,7 @@ local trigger = [[<C-t>]]
 
 return {
     'akinsho/toggleterm.nvim',
+    enabled = not vim.g.vscode,
     keys = trigger,
     opts = {
         open_mapping     = trigger,

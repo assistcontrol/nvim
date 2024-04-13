@@ -1,4 +1,5 @@
 if not AW.has('mini.statusline') then return end
+if vim.g.vscode then return end
 
 local SL = require('mini.statusline')
 local P  = require('aw/plugins/spec/statuslineparts')

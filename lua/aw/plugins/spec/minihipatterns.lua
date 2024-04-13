@@ -1,4 +1,5 @@
 if not AW.has('mini.hipatterns') then return end
+if vim.g.vscode then return end
 
 -- Matches FOO: at the beginning of a word and highights the
 -- rest of the line.

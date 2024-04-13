@@ -18,8 +18,29 @@ return {
 
         -- Not needed until later
         AW.autocmd('User', 'VeryLazy', function()
-            -- Animation
-            -- require('mini.animate').setup {}
+            if not vim.g.vscode then
+                -- Animation
+                -- require('mini.animate').setup {}
+
+                -- Completion
+                require('mini.completion').setup {}
+
+                -- Diff
+                require('aw/plugins/spec/minidiff')
+
+                -- String highlighting
+                require('aw/plugins/spec/minihipatterns')
+
+                -- Notifications
+                require('aw/plugins/spec/mininotify')
+
+                -- Picker
+                require('aw/plugins/spec/minipick')
+
+                -- Tab line
+                require('mini.tabline').setup {}
+
+            end
 
             -- a/i surrounders (a", i[, etc.)
             require('aw/plugins/spec/miniai')
@@ -36,35 +57,17 @@ return {
             -- Comments (gc[c])
             require('aw/plugins/spec/minicomment')
 
-            -- Completion
-            require('mini.completion').setup {}
-
-            -- Diff
-            require('aw/plugins/spec/minidiff')
-
             -- Load extra pickers, etc.
             require('mini.extra').setup {}
 
-            -- String highlighting
-            require('aw/plugins/spec/minihipatterns')
-
             -- Bubble blocks
             require('aw/plugins/spec/minimove')
-
-            -- Notifications
-            require('aw/plugins/spec/mininotify')
-
-            -- Picker
-            require('aw/plugins/spec/minipick')
 
             -- Split/join vectors
             require('mini.splitjoin').setup {}
 
             -- Surrounders (cs, ysW, etc.)
             require('aw/plugins/spec/minisurround')
-
-            -- Tab line
-            require('mini.tabline').setup {}
 
             -- Whitespace at EOL
             require('mini.trailspace').setup {}

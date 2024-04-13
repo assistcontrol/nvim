@@ -1,6 +1,7 @@
 -- Keybinding window
 return {
     'folke/which-key.nvim',
+    enabled = not vim.g.vscode,
     lazy = true,
     keys = vim.g.mapleader,
     config = function()

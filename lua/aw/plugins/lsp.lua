@@ -2,7 +2,7 @@
 return {
     'neovim/nvim-lspconfig',
     dependencies = {AW.deps.mini},
-    enabled = not AW.is_root(),
+    enabled = not AW.is_root() and not vim.g.vscode,
     event = {'BufReadPre', 'BufNewFile'},
 
     config = function()

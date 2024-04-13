@@ -1,4 +1,5 @@
 if not AW.has('mini.map') then return end
+if vim.g.vscode then return end
 
 local mmap = require('mini.map')
 

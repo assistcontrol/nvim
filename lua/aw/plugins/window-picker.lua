@@ -8,6 +8,7 @@ local hintcolors = {
 
 return {
     's1n7ax/nvim-window-picker',
+    enabled = not vim.g.vscode,
     lazy = true,
     opts = {
         include_current_win = true,
