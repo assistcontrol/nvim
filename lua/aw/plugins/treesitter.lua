@@ -4,6 +4,7 @@ local parsers = AW.is_root() and {} or {
     'gitignore',
     'go',
     'html',
+    'hurl',
     'javascript',
     'json',
     'perl',
