@@ -1,4 +1,4 @@
-local devicons = require('nvim-web-devicons')
+local miniicons = require('mini.icons')
 
 local M = {}  -- Statusbar functions
 local H = {}  -- Helper functions
@@ -40,7 +40,7 @@ M.filefmt  = function()
 end
 
 M.fileicon = function()
-    return devicons.get_icon(vim.fn.expand('%')) or AW.icon('generic')
+    return miniicons.get('file', vim.fn.expand('%'))
 end
 
 M.filename = function()

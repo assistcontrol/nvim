@@ -10,7 +10,6 @@ end
 vim.opt.rtp:prepend(lazy)
 
 AW.deps = {
-    devicons   = 'nvim-tree/nvim-web-devicons',
     lspconfig  = 'neovim/nvim-lspconfig',
     mini       = 'echasnovski/mini.nvim',
     nui        = 'muniftanjim/nui.nvim',

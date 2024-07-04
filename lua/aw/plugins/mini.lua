@@ -60,6 +60,9 @@ return {
             -- Load extra pickers, etc.
             require('mini.extra').setup {}
 
+            -- Fancy icons
+            require('mini.icons').setup {}
+
             -- Bubble blocks
             require('aw/plugins/spec/minimove')
 

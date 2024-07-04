@@ -1,4 +1,4 @@
-local has_devicons, devicons = pcall(require, 'nvim-web-devicons')
+local has_miniicons, miniicons = pcall(require, 'mini.icons')
 
 local H = {
     ignore = {'Starter'},
@@ -11,7 +11,7 @@ H.ignore = {
 }
 
 H.fileicon = function()
-    return has_devicons and devicons.get_icon(vim.fn.expand('%')) or AW.icon('generic')
+    return has_miniicons and miniicons.get('file', vim.fn.expand('%'))
 end
 
 H.filename = function()
