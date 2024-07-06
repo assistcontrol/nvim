@@ -56,11 +56,6 @@ map('i', '<Tab>',   [[pumvisible() ? '<C-n>' : '<Tab>']],   {expr = true})
 map('i', '<S-Tab>', [[pumvisible() ? '<C-p>' : '<S-Tab>']], {expr = true})
 map('i', '<CR>',    [[v:lua.AW.cr_action()]],               {expr = true})
 
-H.pick_window = function()
-    local winid = require('window-picker').pick_window() or vim.api.nvim_get_current_win()
-    vim.api.nvim_set_current_win(winid)
-end
-
 AW.maps.leader = {
     n = {
         -- In which-key.nvim format
@@ -76,7 +71,6 @@ AW.maps.leader = {
         e = {cmd[[lua AW.filebrowser()]],            'browse'},
         q = {cmd[[lua MiniFiles.open()]],            'explorer'},
         Q = {cmd[[lua AW.toggle_quickfix()]],        'toggle quickfix'},
-        w = {H.pick_window,                          'pick window'},
         x = {cmd[[lua MiniFiles.open()]],            'explorer'},
         z = {cmd[[lua require('mini.misc').zoom()]], 'zoom'},
 

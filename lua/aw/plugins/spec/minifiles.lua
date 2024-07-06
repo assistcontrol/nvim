@@ -26,13 +26,6 @@ local map_split = function(buf_id, lhs, direction)
     vim.keymap.set('n', lhs, rhs, {buffer = buf_id, desc = desc})
 end
 
--- Pick a window and open the selected file in it
-local pick_win = function()
-    local winid = require('window-picker').pick_window() or vim.api.nvim_get_current_win()
-    MiniFiles.set_target_window(winid)
-    MiniFiles.go_in()
-end
-
 -- Called when file window is spawned
 vim.api.nvim_create_autocmd('User', {
     pattern = 'MiniFilesBufferCreate',
@@ -40,7 +33,6 @@ vim.api.nvim_create_autocmd('User', {
         local buf_id = args.data.buf_id
         map_split(buf_id, 'gs', 'belowright horizontal')
         map_split(buf_id, 'gv', 'belowright vertical')
-        vim.keymap.set('n', 'gw', pick_win, {buffer = buf_id, desc = 'Pick target'})
     end
 })
 
