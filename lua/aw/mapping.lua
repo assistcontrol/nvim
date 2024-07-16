@@ -2,10 +2,12 @@
 AW.maps = {}
 
 -- Helper functions
-local H = {}
-
 local cmd = function(command)
     return table.concat({'<Cmd>', command, '<CR>'})
+end
+
+local wkmap = function(lhs, rhs, desc)
+    return { "<leader>" .. lhs, cmd(rhs), desc = desc }
 end
 
 local map = vim.keymap.set
@@ -57,81 +59,65 @@ map('i', '<S-Tab>', [[pumvisible() ? '<C-p>' : '<S-Tab>']], {expr = true})
 map('i', '<CR>',    [[v:lua.AW.cr_action()]],               {expr = true})
 
 AW.maps.leader = {
-    n = {
-        -- In which-key.nvim format
-        k = {cmd[[wincmd k]], 'window up'},
-        j = {cmd[[wincmd j]], 'window down'},
-        h = {cmd[[wincmd h]], 'window left'},
-        l = {cmd[[wincmd l]], 'window right'},
+    -- In which-key.nvim format
+    wkmap('k', [[wincmd k]], 'window up'),
+    wkmap('j', [[wincmd j]], 'window down'),
+    wkmap('h', [[wincmd h]], 'window left'),
+    wkmap('l', [[wincmd l]], 'window right'),
 
-        ['<leader>'] = {cmd[[b#]],                   'alternate'},
-        ['<cr>']     = {cmd[[lua AW.next_pane()]],   'next window'},
-        A = {'ggVG',                                 'select all'},
-        D = {cmd[[lua MiniBufremove.delete()]],      'close buffer'},
-        e = {cmd[[lua AW.filebrowser()]],            'browse'},
-        q = {cmd[[lua MiniFiles.open()]],            'explorer'},
-        Q = {cmd[[lua AW.toggle_quickfix()]],        'toggle quickfix'},
-        x = {cmd[[lua MiniFiles.open()]],            'explorer'},
-        z = {cmd[[lua require('mini.misc').zoom()]], 'zoom'},
+    wkmap('<leader>', [[b#]],                       'alternate'),
+    wkmap('<cr>', [[lua AW.next_pane()]],           'next window'),
+    wkmap('A', 'ggVG',                              'select all'),
+    wkmap('D', [[lua MiniBufremove.delete()]],      'close buffer'),
+    wkmap('e', [[lua AW.filebrowser()]],            'browse'),
+    wkmap('q', [[lua MiniFiles.open()]],            'explorer'),
+    wkmap('Q', [[lua AW.toggle_quickfix()]],        'toggle quickfix'),
+    wkmap('x', [[lua MiniFiles.open()]],            'explorer'),
+    wkmap('z', [[lua require('mini.misc').zoom()]], 'zoom'),
 
-        b = {
-            name = 'buffer',
-            b = {cmd[[Pick buffers]],                'list'},
-            d = {cmd[[lua MiniBufremove.wipeout()]], 'delete'},
-            n = {cmd[[bnext]],                       'next'},
-            p = {cmd[[bprevious]],                   'previous'},
-            ['<leader>'] = {cmd[[bnext]],            'next'},
-        },
+    {'b', group = 'buffer'},
+    wkmap('bb', [[Pick buffers]],                'list'),
+    wkmap('bd', [[lua MiniBufremove.wipeout()]], 'delete'),
+    wkmap('bn', [[bnext]],                       'next'),
+    wkmap('bp', [[bprevious]],                   'previous'),
+    wkmap('b<leader>', [[bnext]],                 'next'),
 
-        d = {
-            name = 'code dx',
-            n = {cmd[[lua vim.diagnostic.goto_next({float = true})]], 'next'},
-            p = {cmd[[lua vim.diagnostic.goto_prev({float = true})]], 'previous'},
-        },
+    {'d', group = 'code dx'},
+    wkmap('dn', [[lua vim.diagnostic.goto_next({float = true})]], 'next'),
+    wkmap('dp', [[lua vim.diagnostic.goto_prev({float = true})]], 'previous'),
 
-        f = {
-            name = 'find',
-            G = {
-                name = 'git',
-                b = {cmd[[Pick git_branches]], 'branches'},
-                c = {cmd[[Pick git_commits]],  'commits'},
-                f = {cmd[[Pick git_files]],    'files'},
-            },
-            b = {cmd[[Pick buffers]],                   'buffers'},
-            c = {cmd[[Pick commands]],                  'commands'},
-            d = {cmd[[Pick diagnostic]],                'diagnostic'},
-            e = {cmd[[Pick explorer]],                  'explorer'},
-            g = {cmd[[Pick grep_live]],                 'grep'},
-            h = {cmd[[Pick help]],                      'help'},
-            k = {cmd[[Pick keymaps]],                   'keymaps'},
-            f = {cmd[[lua AW.filebrowser()]],           'files'},
-            l = {cmd[[Pick buf_lines scope="current"]], 'local buffer'},
-            m = {cmd[[Pick marks]],                     'marks'},
-            o = {cmd[[Pick options]],                   'options'},
-            s = {cmd[[Pick spellsuggest]],              'spelling'},
-            r = {cmd[[Pick registers]],                 'registers'},
-            x = {cmd[[Pick history]],                   'history'},
-        },
+    {'f',  group = 'find'},
+    wkmap('fb', [[Pick buffers]],                   'buffers'),
+    wkmap('fc', [[Pick commands]],                  'commands'),
+    wkmap('fd', [[Pick diagnostic]],                'diagnostic'),
+    wkmap('fe', [[Pick explorer]],                  'explorer'),
+    wkmap('fg', [[Pick grep_live]],                 'grep'),
+    wkmap('fh', [[Pick help]],                      'help'),
+    wkmap('fk', [[Pick keymaps]],                   'keymaps'),
+    wkmap('ff', [[lua AW.filebrowser()]],           'files'),
+    wkmap('fl', [[Pick buf_lines scope="current"]], 'local buffer'),
+    wkmap('fm', [[Pick marks]],                     'marks'),
+    wkmap('fo', [[Pick options]],                   'options'),
+    wkmap('fs', [[Pick spellsuggest]],              'spelling'),
+    wkmap('fr', [[Pick registers]],                 'registers'),
+    wkmap('fx', [[Pick history]],                   'history'),
 
-        K = {
-            -- alias mm='make -j$(sysctl -n hw.ncpu)'
-            name = 'make',
-            m = {cmd[[TermExec cmd="mm"]],      'all'},
-            t = {cmd[[TermExec cmd="mm test"]], 'test'}
-        },
+    {'fG', group = 'git'},
+    wkmap('fGb', [[Pick git_branches]], 'branches'),
+    wkmap('fGc', [[Pick git_commits]],  'commits'),
+    wkmap('fGf', [[Pick git_files]],    'files'),
 
-        o = {
-            name = 'fold',
-            c = {'zc', 'close'},
-            C = {'zM', 'close all'},
-            o = {'zo', 'open'},
-            O = {'zR', 'open all'},
-            ['<leader>'] = {'za', 'toggle'}
-        },
 
-    },
+    {'K', group = 'make'},
+    wkmap('Km', [[TermExec cmd="mm"]],      'all'),
+    wkmap('Kt', [[TermExec cmd="mm test"]], 'test'),
 
-    v = {}
+    {'o', group = 'fold'},
+    wkmap('oc', 'zc', 'close'),
+    wkmap('oC', 'zM', 'close all'),
+    wkmap('oo', 'zo', 'open'),
+    wkmap('oO', 'zR', 'open all'),
+    wkmap('o<leader>', 'za', 'toggle'),
 }
 
 -- Gitsigns sets keymaps via a callback
