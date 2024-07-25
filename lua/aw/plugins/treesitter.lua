@@ -1,5 +1,6 @@
 -- Tree-sitter
 local parsers = AW.is_root() and {} or {
+    'bash',
     'git_config',
     'gitignore',
     'go',
@@ -8,6 +9,7 @@ local parsers = AW.is_root() and {} or {
     'javascript',
     'json',
     'perl',
+    'python',
     'robots',
     'ruby',
     'rust',
