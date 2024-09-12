@@ -1,3 +1,5 @@
+if vim.g.vscode then return end
+
 local has_miniicons, miniicons = pcall(require, 'mini.icons')
 
 local H = {
