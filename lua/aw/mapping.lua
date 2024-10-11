@@ -82,6 +82,8 @@ AW.maps.leader = {
     wkmap('bp', [[bprevious]],                   'previous'),
     wkmap('b<leader>', [[bnext]],                 'next'),
 
+    wkmap('c', [[lua require('CopilotChat').open({selection = require('CopilotChat.select').buffer})]], 'copilot chat'),
+
     {'d', group = 'code dx'},
     wkmap('dn', [[lua vim.diagnostic.goto_next({float = true})]], 'next'),
     wkmap('dp', [[lua vim.diagnostic.goto_prev({float = true})]], 'previous'),
