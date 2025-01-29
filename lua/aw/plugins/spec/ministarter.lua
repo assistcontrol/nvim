@@ -43,7 +43,7 @@ local config = {
         H.item('Update', 'G', 'go',     'Update go binaries', 'GoUpdateBinaries'),
         H.item('Update', 'T', 'tree',   'Update parsers',     'TSUpdate'),
 
-        H.item('Browse', 'b', 'folder',   AW.pwd(),    H.browse(AW.pwd())),
+        H.item('Browse', 'b', 'folder',   AW.pwd(),    H.browse('')),
         H.item('Browse', 'x', 'filetree', 'tree',      'lua MiniFiles.open()'),
         H.item('Browse', 'l', 'search',   'live grep', [[Pick grep_live]]),
         H.item('Browse', 'r', 'recent',   'recent',    [[Pick oldfiles]]),

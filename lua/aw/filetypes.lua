@@ -6,7 +6,7 @@ vim.filetype.add {
         t  = 'perl',
         tt = 'tt2html',
         v  = 'v',
-    }
+    },
 }
 
 -- Four-space expansion
