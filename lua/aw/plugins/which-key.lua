@@ -2,6 +2,7 @@
 return {
     'folke/which-key.nvim',
     enabled = not vim.g.vscode,
+    event = {'BufReadPre', 'BufNewFile'},
     lazy = true,
     keys = AW.maps.leader,
     opts = {
