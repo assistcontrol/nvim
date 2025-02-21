@@ -4,6 +4,7 @@ local parsers = AW.is_root() and {} or {
     'comment',  -- NOTE: INFO: WARN: ERROR: etc
     'css',
     'diff',
+    'editorconfig',
     'gitcommit',
     'go',
     'html',
@@ -23,7 +24,6 @@ local parsers = AW.is_root() and {} or {
     'awk',
     'cpp',
     'c_sharp',
-    'editorconfig',
     'git_config',
     'git_rebase',
     'gitignore',
@@ -35,6 +35,7 @@ local parsers = AW.is_root() and {} or {
     'regex',
     'robots',
     'sql',
+    'swift',
     'toml',
     'typescript',
     'typst',
