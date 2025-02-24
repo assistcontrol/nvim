@@ -14,14 +14,9 @@ return {
         -- Cool stuff like auto-root, cursor restore, etc.
         require('aw/plugins/spec/minimisc')
 
-        require('aw/plugins/spec/minifiles')
-
         -- Not needed until later
         AW.autocmd('User', 'VeryLazy', function()
             if not vim.g.vscode then
-                -- Animation
-                -- require('mini.animate').setup {}
-
                 -- Completion
                 require('mini.completion').setup {}
 
@@ -30,12 +25,6 @@ return {
 
                 -- String highlighting
                 require('aw/plugins/spec/minihipatterns')
-
-                -- Notifications
-                -- require('aw/plugins/spec/mininotify')
-
-                -- Picker
-                require('aw/plugins/spec/minipick')
 
                 -- Tab line
                 require('mini.tabline').setup {}

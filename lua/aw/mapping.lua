@@ -49,9 +49,9 @@ map('x', 'S', cmd[[lua MiniSurround.add('visual')]])
 map({'i', 'n'}, '<C-\\>', cmd[[write]])
 
 -- \\ shows buffers in picker
-map('n', '\\\\',  cmd[[Pick buffers]], {desc = 'buffers (Picker)'})
+map('n', '\\\\',  cmd[[lua Snacks.picker.buffers()]], {desc = 'buffers'})
 -- \[ opens picker
-map('n', '\\[',  cmd[[Pick files]], {desc = 'Picker'})
+map('n', '\\[',  cmd[[lua AW.filebrowser()]], {desc = 'files'})
 
 -- mini.completion
 map('i', '<Tab>',   [[pumvisible() ? '<C-n>' : '<Tab>']],   {expr = true})
@@ -70,45 +70,54 @@ AW.maps.leader = {
     wkmap('A', 'ggVG',                              'select all'),
     wkmap('D', [[lua MiniBufremove.delete()]],      'close buffer'),
     wkmap('e', [[lua AW.filebrowser()]],            'browse'),
-    wkmap('q', [[lua MiniFiles.open()]],            'explorer'),
+    wkmap('q', [[lua Snacks.picker.lsp_symbols()]], 'LSP symbols'),
     wkmap('Q', [[lua AW.toggle_quickfix()]],        'toggle quickfix'),
-    wkmap('x', [[lua MiniFiles.open()]],            'explorer'),
+    wkmap('s', [[lua Snacks.picker.git_status()]],  'git status'),
+    wkmap('x', [[lua Snacks.picker.explorer({layout = {preset = 'default'}})]],  'explorer'),
     wkmap('z', [[lua require('mini.misc').zoom()]], 'zoom'),
 
     {'b', group = 'buffer'},
-    wkmap('bb', [[Pick buffers]],                'list'),
+    wkmap('bb', [[lua Snacks.picker.buffers()]], 'list'),
     wkmap('bd', [[lua MiniBufremove.wipeout()]], 'delete'),
     wkmap('bn', [[bnext]],                       'next'),
     wkmap('bp', [[bprevious]],                   'previous'),
-    wkmap('b<leader>', [[bnext]],                 'next'),
+    wkmap('b<leader>', [[bnext]],                'next'),
 
     wkmap('c', [[lua require('CopilotChat').open({selection = require('CopilotChat.select').buffer})]], 'copilot chat'),
 
     {'d', group = 'code dx'},
+    wkmap('dd', [[lua Snacks.picker.diagnostics()]],              'browse'),
     wkmap('dn', [[lua vim.diagnostic.goto_next({float = true})]], 'next'),
     wkmap('dp', [[lua vim.diagnostic.goto_prev({float = true})]], 'previous'),
 
     {'f',  group = 'find'},
-    wkmap('fb', [[Pick buffers]],                   'buffers'),
-    wkmap('fc', [[Pick commands]],                  'commands'),
-    wkmap('fd', [[Pick diagnostic]],                'diagnostic'),
-    wkmap('fe', [[Pick explorer]],                  'explorer'),
-    wkmap('fg', [[Pick grep_live]],                 'grep'),
-    wkmap('fh', [[Pick help]],                      'help'),
-    wkmap('fk', [[Pick keymaps]],                   'keymaps'),
-    wkmap('ff', [[lua AW.filebrowser()]],           'files'),
-    wkmap('fl', [[Pick buf_lines scope="current"]], 'local buffer'),
-    wkmap('fm', [[Pick marks]],                     'marks'),
-    wkmap('fo', [[Pick options]],                   'options'),
-    wkmap('fs', [[Pick spellsuggest]],              'spelling'),
-    wkmap('fr', [[Pick registers]],                 'registers'),
-    wkmap('fx', [[Pick history]],                   'history'),
+    wkmap('fb', [[lua Snacks.picker.buffers()]],         'buffers'),
+    wkmap('fB', [[lua Snacks.picker.grep_buffers()]],    'grep open buffers'),
+    wkmap('fc', [[lua Snacks.picker.commands()]],        'commands'),
+    wkmap('fd', [[lua Snacks.picker.diagnostics()]],     'diagnostic'),
+    wkmap('fe', [[lua Snacks.explorer()]],               'explorer'),
+    wkmap('ff', [[lua Snacks.picker.smart()]],           'files (smart)'),
+    wkmap('fg', [[lua Snacks.picker.grep()]],            'grep'),
+    wkmap('fh', [[lua Snacks.picker.help()]],            'help'),
+    wkmap('fi', [[lua Snacks.picker.icons()]],           'icons'),
+    wkmap('fk', [[lua Snacks.picker.keymaps()]],         'keymaps'),
+    wkmap('ff', [[lua AW.filebrowser()]],                'files'),
+    wkmap('fl', [[lua Snacks.picker.lines()]],           'local buffer'),
+    wkmap('fm', [[lua Snacks.picker.marks()]],           'marks'),
+    wkmap('fn', [[lua Snacks.picker.man()]],             'manpages'),
+    wkmap('fs', [[lua Snacks.picker.spelling()]],        'spelling'),
+    wkmap('fx', [[lua Snacks.picker.command_history()]], 'command history'),
+    wkmap('fy', [[lua Snacks.picker.search_history()]],  'search history'),
 
-    {'fG', group = 'git'},
-    wkmap('fGb', [[Pick git_branches]], 'branches'),
-    wkmap('fGc', [[Pick git_commits]],  'commits'),
-    wkmap('fGf', [[Pick git_files]],    'files'),
+    {'fi', group = 'git'},
+    wkmap('fib', [[lua Snacks.picker.git_branches()]], 'branches'),
+    wkmap('fic', [[lua Snacks.picker.git_log()]],      'commits'),
+    wkmap('fis', [[lua Snacks.picker.git_status()]],   'status'),
 
+    {'g', group = 'goto (LSP)'},
+    wkmap('gd', [[lua Snacks.picker.lsp_definitions()]], 'definition'),
+    wkmap('gr', [[lua Snacks.picker.lsp_references()]],  'references'),
+    wkmap('gs', [[lua Snacks.picker.lsp_symbols()]],     'symbols'),
 
     {'K', group = 'make'},
     wkmap('Km', [[TermExec cmd="mm"]],      'all'),
@@ -120,6 +129,8 @@ AW.maps.leader = {
     wkmap('oo', 'zo', 'open'),
     wkmap('oO', 'zR', 'open all'),
     wkmap('o<leader>', 'za', 'toggle'),
+
+    {'p', group = 'settings'},
 }
 
 -- Gitsigns sets keymaps via a callback

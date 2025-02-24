@@ -24,6 +24,11 @@ autocmd({'BufRead', 'BufNewFile'}, {'*/ports/*', '/etc/*', '/usr/local/etc/*'},
 -- Git
 autocmd('BufRead', 'COMMIT_EDITMSG', {spell=true})
 
+-- Picker
+autocmd('Filetype', {'snacks_picker_input'}, function(args)
+    vim.b[args.buf].minicompletion_disable = true
+end)
+
 -- Filetype-specific settings
 vim.g.is_bash = 1  -- BSD sh isn't pure POSIX
 vim.g.perl_sub_signatures = 1

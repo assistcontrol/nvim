@@ -56,8 +56,7 @@ end
 -- AW.filebrowser spawns a file finder, and changes to a specified dir
 -- for future searches
 function AW.filebrowser(dir)
-    dir = dir or '.'
-    require('mini.pick').builtin.files(nil, {source = {cwd = dir}})
+    Snacks.picker.files({cwd = dir or '.'})
 end
 
 -- AW.has tests whether a certain plugin is installed

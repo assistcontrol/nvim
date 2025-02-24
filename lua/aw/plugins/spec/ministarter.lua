@@ -5,10 +5,6 @@ local starter = require('mini.starter')
 
 local H = {}
 
-H.browse = function(dir)
-    return string.format([[lua AW.filebrowser("%s")]], dir)
-end
-
 H.item = function(section, key, ico, title, action)
     return {
         action  = action,
@@ -43,13 +39,14 @@ local config = {
         H.item('Update', 'G', 'go',     'Update go binaries', 'GoUpdateBinaries'),
         H.item('Update', 'T', 'tree',   'Update parsers',     'TSUpdate'),
 
-        H.item('Browse', 'b', 'folder',   AW.pwd(),    H.browse('')),
-        H.item('Browse', 'x', 'filetree', 'tree',      'lua MiniFiles.open()'),
-        H.item('Browse', 'l', 'search',   'live grep', [[Pick grep_live]]),
-        H.item('Browse', 'r', 'recent',   'recent',    [[Pick oldfiles]]),
-        H.item('Browse', 'n', 'ninja',    'ninja',     H.browse("~/build/ninja")),
-        H.item('Browse', 'd', 'dotfiles', 'dotfiles',  H.browse("~/build/dotfiles")),
-        H.item('Browse', 'v', 'vim',      'vim',       H.browse("~/build/nvim/lua/aw"))
+        H.item('Browse', 'b', 'folder',   AW.pwd(),    [[lua AW.filebrowser()]]),
+        H.item('Browse', 'x', 'filetree', 'tree',      [[lua Snacks.picker.explorer({layout = {preset = 'default', preview = true}})]]),
+        H.item('Browse', 'l', 'search',   'live grep', [[lua Snacks.picker.grep()]]),
+        H.item('Browse', 'r', 'recent',   'recent',    [[lua Snacks.picker.recent()]]),
+        H.item('Browse', 'p', 'recent',   'projects',  [[lua Snacks.picker.projects()]]),
+        H.item('Browse', 'n', 'ninja',    'ninja',     [[lua AW.filebrowser('~/build/ninja')]]),
+        H.item('Browse', 'd', 'dotfiles', 'dotfiles',  [[lua AW.filebrowser('~/build/dotfiles')]]),
+        H.item('Browse', 'v', 'vim',      'vim',       [[lua AW.filebrowser('~/build/nvim/lua/aw')]]),
     }
 }
 

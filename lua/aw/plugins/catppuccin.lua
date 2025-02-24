@@ -42,6 +42,7 @@ return {
                     MiniPickBorder = {bg=colors.crust},
                     MiniPickNormal = {bg=colors.crust},
                     MiniPickPrompt = {bg=colors.crust},
+                    SnacksPickerBorder = {fg=colors.crust, bg=colors.crust},
 
                     WinBar   = {fg='white', style={'bold'}},
                     WinBarNC = {fg='white'},
