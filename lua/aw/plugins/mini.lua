@@ -5,9 +5,6 @@ return {
     config = function()
         -- Load this stuff right away; needed for startup.
 
-        -- Start screen
-        require('aw/plugins/spec/ministarter')
-
         -- Status line
         require('aw/plugins/spec/ministatusline')
 

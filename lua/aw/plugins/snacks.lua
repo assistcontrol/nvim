@@ -17,6 +17,11 @@ local opts = {
     debug    = {},
     dim      = {},
     explorer = {},
+    input = {},
+    quickfile = {},
+
+    dashboard = require('aw/plugins/spec/snacksdashboard'),
+
     indent   = {
         enabled = true,
         only_current = true,
@@ -29,11 +34,12 @@ local opts = {
             },
         },
     },
-    input = {},
+
     notifier = {
         timeout  = 3000,
         top_down = false,
     },
+
     picker = {
         matcher = {
             frecency = true,
@@ -50,12 +56,13 @@ local opts = {
             },
         },
     },
-    quickfile = {},
+
     scroll = {
         animate = {
             easing = 'inOutQuart',
         },
     },
+
     toggle = {
         color = {
             disabled = 'red',
