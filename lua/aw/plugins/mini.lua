@@ -32,7 +32,7 @@ return {
                 require('aw/plugins/spec/minihipatterns')
 
                 -- Notifications
-                require('aw/plugins/spec/mininotify')
+                -- require('aw/plugins/spec/mininotify')
 
                 -- Picker
                 require('aw/plugins/spec/minipick')
