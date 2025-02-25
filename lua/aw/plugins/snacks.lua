@@ -12,26 +12,28 @@ local toggle = function(opt, lhs)
 end
 
 local opts = {
-    animate  = {},
-    bigfile  = {},
-    debug    = {},
-    dim      = {},
-    explorer = {},
-    input = {},
+    animate   = {},
+    bigfile   = {},
+    debug     = {},
+    dim       = {},
+    explorer  = {},
+    input     = {},
     quickfile = {},
 
     dashboard = require('aw/plugins/spec/snacksdashboard'),
 
-    indent   = {
-        enabled = true,
-        only_current = true,
-        animate = {
-            style  = 'out',
-            easing = 'linear',
-            duration = {
-                step  = 20,
-                total = 500,
+    indent = {
+        indent = {
+            hl = {
+                "SnacksIndent1", "SnacksIndent2", "SnacksIndent3", "SnacksIndent4",
+                "SnacksIndent5", "SnacksIndent6", "SnacksIndent7", "SnacksIndent8",
             },
+            only_current = true,
+        },
+        scope = {
+            char = '┃',
+            hl = 'NeoTreeFilterTerm',
+            only_current = true,
         },
     },
 
