@@ -19,17 +19,11 @@ return {
                 booleans = {'bold'},
             },
             integrations = {
-                mini = true,
-                rainbow_delimiters = true,
-                treesitter = true,
+                fidget = true,
+                snacks = {
+                    enabled = true,
+                },
                 which_key = true,
-
-                indent_blankline = {
-                    enabled = true
-                },
-                native_lsp = {
-                    enabled = true
-                },
             },
             custom_highlights = function(colors)
                 return {
@@ -42,6 +36,7 @@ return {
                     MiniPickBorder = {bg=colors.crust},
                     MiniPickNormal = {bg=colors.crust},
                     MiniPickPrompt = {bg=colors.crust},
+
                     SnacksPickerBorder = {fg=colors.crust, bg=colors.crust},
 
                     WinBar   = {fg='white', style={'bold'}},
