@@ -6,12 +6,12 @@ return {
     cmd = {'GoInstallBinaries', 'GoUpdateBinaries'},
     config = function()
         require('go').setup {
-            lsp_gofumpt = true
+            lsp_gofumpt = true,
         }
 
         -- Run gofumpt + goimports on write
         AW.autocmd('BufWritePre', '*.go', function()
-            require('go.format').goimport()
+            require('go.format').goimports()
         end)
     end
 }
