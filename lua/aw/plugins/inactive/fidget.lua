@@ -4,6 +4,11 @@ return {
     enabled = not AW.is_root(),
     event = 'LspAttach',
     opts = {
-        text = {spinner = 'dots_negative'}
+        progress = {
+            display = {
+                done_ttl = 6,
+                progress_icon = {'dots_negative'},
+            },
+        },
     }
 }
