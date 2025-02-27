@@ -21,6 +21,10 @@ local version = function()
     return string.format('nvim v%d.%d.%d', version.major, version.minor, version.patch)
 end
 
+local GIT = {
+    status = [[git status --short --branch --renames --untracked-files=normal]],
+    log    = [[git --no-pager log --color=always --format="%C(red)🔹 %h %C(brightblue)%ad %C(reset)%s" --date=format:"%y/%m/%d"]],
+}
 
 return {
     preset = {
@@ -58,9 +62,16 @@ return {
         { pane = 2, title = 'Projects', section = 'projects', icon = AW.icon('recent'), indent = 2 },
 
         { pane = 2, title = '', padding = 0 },
-        { pane = 2, section = 'terminal', icon = AW.icon('git'), title = 'Git Status', indent = 2, ttl = 60,
+        { pane = 2, section = 'terminal', icon = AW.icon('git'), title = 'Git Log', indent = 2, height = 7,
             enabled = function() return Snacks.git.get_root() ~= nil end,
-            cmd = [[git status --short --branch --renames --untracked-files=normal]],
-        }
+            cmd = GIT.log,
+        },
+
+        { pane = 2, title = '', padding = 0 },
+        { pane = 2, section = 'terminal', icon = '', title = 'Git Status', indent = 5, ttl = 30,
+            enabled = function() return Snacks.git.get_root() ~= nil end,
+            cmd = GIT.status,
+        },
+
     },
 }
