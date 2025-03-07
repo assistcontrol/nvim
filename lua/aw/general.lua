@@ -24,6 +24,7 @@ vim.opt.termguicolors = true     -- Truecolor in terminal
 vim.opt.virtualedit   = 'block'  -- Able to select nonexistent chars in v-block mode
 vim.opt.visualbell    = true     -- Do not *beep*ing beep
 vim.opt.winblend      = AW.ui.winblend
+vim.opt.listchars:append({tab = '» ', space = '◦', trail = '·', eol = '↲'})
 vim.opt.fillchars:append({eob = ' ',
     horiz = ' ', horizup = ' ', horizdown = ' ',
     vert = ' ', vertleft = ' ', vertright = ' ', verthoriz = ' '})
