@@ -39,8 +39,14 @@ map('c', '<C-e>', '<End>')
 -- This is a fallback. CR does node_incremental in treesitter.
 map('n', '<CR>', 'viw')
 
--- Override ^W^W to skip nvim-tree
+-- Override ^W^W to skip (FS) tree windows
 map('n', '<C-w><C-w>', AW.next_window)
+
+-- ZS saves everything and quits
+map('n', 'ZS', cmd[[wall | qa]])
+
+-- ZX bails out of everything
+map('n', 'ZX', cmd[[qa!]])
 
 -- S surrounds visual region
 map('x', 'S', cmd[[lua MiniSurround.add('visual')]])
