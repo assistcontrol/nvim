@@ -14,6 +14,9 @@ return {
         -- Not needed until later
         AW.autocmd('User', 'VeryLazy', function()
             if not vim.g.vscode then
+                -- Cursor animations
+                require('aw/plugins/spec/minianimate')
+
                 -- Completion
                 require('mini.completion').setup {}
 
