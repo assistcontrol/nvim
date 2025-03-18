@@ -75,6 +75,7 @@ local opts = {
 return {
     'folke/snacks.nvim',
     enabled = not vim.g.vscode,
+    priority = 1000,
 
     config = function()
         local snacks = require('snacks').setup(opts)
@@ -83,9 +84,8 @@ return {
         end
         vim.print = _G.dd
 
-        -- toggle('number', 'n')
-        toggle('spell',  's')
-        toggle('wrap',   'w')
+        toggle('spell', 's')
+        toggle('wrap',  'w')
         Snacks.toggle.line_number():map(leader('n'))
         Snacks.toggle.dim():map(leader('d'))
     end,
