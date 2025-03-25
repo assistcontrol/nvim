@@ -29,6 +29,14 @@ autocmd('Filetype', {'snacks_picker_input'}, function(args)
     vim.b[args.buf].minicompletion_disable = true
 end)
 
+-- Relative line numbers in visual mode
+autocmd('ModeChanged', '*:[V\x16]*', function()
+    vim.wo.relativenumber = vim.wo.number
+end)
+autocmd('ModeChanged', '[V\x16]*:*', function()
+    vim.wo.relativenumber = string.find(vim.fn.mode(), '^[V\22]') ~= nil
+end)
+
 -- Filetype-specific settings
 vim.g.is_bash = 1  -- BSD sh isn't pure POSIX
 vim.g.perl_sub_signatures = 1

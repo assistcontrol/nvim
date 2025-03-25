@@ -10,7 +10,7 @@ vim.opt.infercase     = true     -- 'smartcase' for keyword completion
 vim.opt.lazyredraw    = true     -- Don't redraw screen for outputless commands
 vim.opt.joinspaces    = false    -- Don't insert 2 spaces after '.' on join
 vim.opt.modeline      = true     -- First line:  # vim: ft=[...]
-vim.opt.mouse         = ''       -- Disable mouse entirely
+vim.opt.mouse         = 'a'      -- Enable mouse in all modes (set to '' to disable)
 vim.opt.number        = true     -- Show line numbers
 vim.opt.pumblend      = AW.ui.winblend
 vim.opt.report        = 0        -- Report all file changes
@@ -19,12 +19,13 @@ vim.opt.scrolloff     = 2        -- Show this many lines around cursor
 vim.opt.showmatch     = true     -- Briefly flash matching bracket
 vim.opt.sidescroll    = 2        -- Min # of columns to scroll horizontally
 vim.opt.splitbelow    = true     -- Open horizontal splits below
+vim.opt.splitkeep     = 'screen' -- Open splits at the same screen line
 vim.opt.splitright    = true     -- Open vertical splits to the right
 vim.opt.termguicolors = true     -- Truecolor in terminal
 vim.opt.virtualedit   = 'block'  -- Able to select nonexistent chars in v-block mode
 vim.opt.visualbell    = true     -- Do not *beep*ing beep
 vim.opt.winblend      = AW.ui.winblend
-vim.opt.listchars:append({tab = '» ', space = '◦', trail = '·', eol = '↲'})
+vim.opt.listchars:append({tab = '» ', space = '◦', trail = '·', eol = '↲', extends = '…', precedes = '…', nbsp = '␣'})
 vim.opt.fillchars:append({eob = ' ',
     horiz = ' ', horizup = ' ', horizdown = ' ',
     vert = ' ', vertleft = ' ', vertright = ' ', verthoriz = ' '})
@@ -40,12 +41,15 @@ if vim.fn.executable('rg') > 0 then
     vim.opt.grepformat = '%f:%l:%c:%m,%f:%l:%m'
 else
     vim.opt.grepprg=[[grep --line-number --with-filename --recursive --exclude '*.git/*' --exclude '*.svg/*']]
+    vim.opt.grepprg=[[grep --line-number --with-filename --recursive --exclude '*.git/*' --exclude '*.svg/*']] vim.opt.grepprg=[[grep --line-number --with-filename --recursive --exclude '*.git/*' --exclude '*.svg/*']] vim.opt.grepprg=[[grep --line-number --with-filename --recursive --exclude '*.git/*' --exclude '*.svg/*']] vim.opt.grepprg=[[grep --line-number --with-filename --recursive --exclude '*.git/*' --exclude '*.svg/*']]
 end
 
 -- Tabbing/indenting (overridden prn in filetypes.lua)
+vim.opt.breakindent = true     -- Indent wrapped lines
 vim.opt.expandtab   = true
 vim.opt.shiftround  = true     -- Indent to multiple of shiftwidth
 vim.opt.shiftwidth  = 2
+vim.opt.smartindent = true    -- Autoindent new lines
 vim.opt.softtabstop = 2
 vim.opt.tabstop     = 2
 

@@ -19,10 +19,6 @@ map('i', 'kj', '<Esc>')
 map('i', 'jj', '<Esc>')
 map('i', 'kk', '<Esc>')
 
--- Move normally onto wrapped lines
-map('n', 'j', 'gj')
-map('n', 'k', 'gk')
-
 -- ^J/^K jumps buffers
 map('n', '<C-j>', cmd[[bnext]])
 map('n', '<C-k>', cmd[[bprevious]])
@@ -64,6 +60,19 @@ map('i', '<Tab>',   [[pumvisible() ? '<C-n>' : '<Tab>']],   {expr = true})
 map('i', '<S-Tab>', [[pumvisible() ? '<C-p>' : '<S-Tab>']], {expr = true})
 map('i', '<CR>',    [[v:lua.AW.cr_action()]],               {expr = true})
 
+-- Extend g...
+-- Move normally onto wrapped lines
+map('n', 'j', 'gj')
+map('n', 'k', 'gk')
+
+-- Copy/paste with system clipboard
+map({'n', 'x'}, 'gy', '"+y', {desc = 'Copy to system clipboard'})
+map( 'n',       'gp', '"+p', {desc = 'Paste from system clipboard'})
+
+-- Reselect last visual selection
+map('n', 'gV', '"`[" . strpart(getregtype(), 0, 1) . "`]"',
+    {expr = true, replace_keycodes = false, desc = 'Reselect changed text'})
+
 AW.maps.leader = {
     -- In which-key.nvim format
     wkmap('k', [[wincmd k]], 'window up'),
@@ -71,32 +80,30 @@ AW.maps.leader = {
     wkmap('h', [[wincmd h]], 'window left'),
     wkmap('l', [[wincmd l]], 'window right'),
 
-    wkmap('<leader>', [[b#]],                       'alternate'),
-    wkmap('<cr>', [[lua AW.next_pane()]],           'next window'),
-    wkmap('A', 'ggVG',                              'select all'),
-    wkmap('D', [[lua MiniBufremove.delete()]],      'close buffer'),
-    wkmap('e', [[lua AW.filebrowser()]],            'browse'),
-    wkmap('q', [[lua Snacks.picker.lsp_symbols()]], 'LSP symbols'),
-    wkmap('Q', [[lua AW.toggle_quickfix()]],        'toggle quickfix'),
-    wkmap('s', [[lua Snacks.picker.git_status()]],  'git status'),
-    wkmap('x', [[lua Snacks.picker.explorer({layout = {preset = 'default'}})]],  'explorer'),
-    wkmap('z', [[lua require('mini.misc').zoom()]], 'zoom'),
+    wkmap('<leader>', [[b#]],                          'alternate'),
+    wkmap('<cr>', [[lua AW.next_pane()]],              'next window'),
+    wkmap('A',    'ggVG',                              'select all'),
+    wkmap('D',    [[lua MiniBufremove.delete()]],      'close buffer'),
+    wkmap('e',    [[lua AW.filebrowser()]],            'browse'),
+    wkmap('q',    [[lua Snacks.picker.lsp_symbols()]], 'LSP symbols'),
+    wkmap('Q',    [[lua AW.toggle_quickfix()]],        'toggle quickfix'),
+    wkmap('s',    [[lua Snacks.picker.git_status()]],  'git status'),
+    wkmap('x',    [[lua Snacks.picker.explorer({layout = {preset = 'default'}})]],  'explorer'),
+    wkmap('z',    [[lua require('mini.misc').zoom()]], 'zoom'),
 
-    {'b', group = 'buffer'},
+    {'b', group = 'buffer', desc = 'buffer'},
     wkmap('bb', [[lua Snacks.picker.buffers()]], 'list'),
     wkmap('bd', [[lua MiniBufremove.wipeout()]], 'delete'),
     wkmap('bn', [[bnext]],                       'next'),
     wkmap('bp', [[bprevious]],                   'previous'),
     wkmap('b<leader>', [[bnext]],                'next'),
 
-    wkmap('c', [[lua require('CopilotChat').open({selection = require('CopilotChat.select').buffer})]], 'copilot chat'),
-
-    {'d', group = 'code dx'},
+    {'d', group = 'code dx', desc = 'code dx'},
     wkmap('dd', [[lua Snacks.picker.diagnostics()]],              'browse'),
     wkmap('dn', [[lua vim.diagnostic.goto_next({float = true})]], 'next'),
     wkmap('dp', [[lua vim.diagnostic.goto_prev({float = true})]], 'previous'),
 
-    {'f',  group = 'find'},
+    {'f',  group = 'find', desc = 'find'},
     wkmap('fb', [[lua Snacks.picker.buffers()]],         'buffers'),
     wkmap('fB', [[lua Snacks.picker.grep_buffers()]],    'grep open buffers'),
     wkmap('fc', [[lua Snacks.picker.commands()]],        'commands'),
@@ -115,28 +122,28 @@ AW.maps.leader = {
     wkmap('fx', [[lua Snacks.picker.command_history()]], 'command history'),
     wkmap('fy', [[lua Snacks.picker.search_history()]],  'search history'),
 
-    {'fi', group = 'git'},
+    {'fi', group = 'git', desc = 'git'},
     wkmap('fib', [[lua Snacks.picker.git_branches()]], 'branches'),
     wkmap('fic', [[lua Snacks.picker.git_log()]],      'commits'),
     wkmap('fis', [[lua Snacks.picker.git_status()]],   'status'),
 
-    {'g', group = 'goto (LSP)'},
+    {'g', group = 'goto (LSP)', desc = 'goto (LSP)'},
     wkmap('gd', [[lua Snacks.picker.lsp_definitions()]], 'definition'),
     wkmap('gr', [[lua Snacks.picker.lsp_references()]],  'references'),
     wkmap('gs', [[lua Snacks.picker.lsp_symbols()]],     'symbols'),
 
-    {'K', group = 'make'},
+    {'K', group = 'make', desc = 'make'},
     wkmap('Km', [[TermExec cmd="mm"]],      'all'),
     wkmap('Kt', [[TermExec cmd="mm test"]], 'test'),
 
-    {'o', group = 'fold'},
+    {'o', group = 'fold', desc = 'fold'},
     wkmap('oc', 'zc', 'close'),
     wkmap('oC', 'zM', 'close all'),
     wkmap('oo', 'zo', 'open'),
     wkmap('oO', 'zR', 'open all'),
     wkmap('o<leader>', 'za', 'toggle'),
 
-    {'p', group = 'settings'},
+    {'p', group = 'settings', desc = 'settings'},
 }
 
 -- Gitsigns sets keymaps via a callback

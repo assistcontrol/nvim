@@ -7,8 +7,9 @@ end
 
 -- Set up a toggle switch in which-key
 local leader = function(ch) return '<leader>p' .. ch end
-local toggle = function(opt, lhs)
-    Snacks.toggle.option(opt, {name = opt}):map(leader(lhs))
+local toggle = function(opt, lhs, name)
+    name = name or opt
+    Snacks.toggle.option(opt, {name = name}):map(leader(lhs))
 end
 
 local opts = {
@@ -84,8 +85,12 @@ return {
         end
         vim.print = _G.dd
 
-        toggle('spell', 's')
-        toggle('wrap',  'w')
+        toggle('list!',   'l', 'List chars')
+        toggle('number!', 'n', 'Line numbers')
+        toggle('spell',   's', 'Spellchecking')
+        toggle('wrap',    'w', 'Line wrapping')
+        toggle('cursorcolumn!',   'C', 'Cursor column')
+        toggle('relativenumber!', 'r', 'Relative numbers')
         Snacks.toggle.line_number():map(leader('n'))
         Snacks.toggle.dim():map(leader('d'))
     end,
