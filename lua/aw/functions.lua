@@ -103,7 +103,7 @@ end
 vim.api.nvim_create_user_command('WhitespaceTrim', AW.purge_whitespace, {})
 
 -- AW.send_cmdn sends a normal-mode command in every mode I can think of
-function send_cmdn(cmd)
+function AW.send_cmdn(cmd)
     local mode = vim.fn.mode()
     if mode:match('^[nvV\x16]$') then   -- normal, visual, linewise, blockwise
         vim.cmd('normal! ' .. cmd)
