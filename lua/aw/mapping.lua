@@ -87,6 +87,7 @@ AW.maps.leader = {
     wkmap('e',    [[lua AW.filebrowser()]],            'browse'),
     wkmap('q',    [[lua Snacks.picker.lsp_symbols()]], 'LSP symbols'),
     wkmap('Q',    [[lua AW.toggle_quickfix()]],        'toggle quickfix'),
+    wkmap('r',    [[lua AW.toggle('relativenumber')]], 'toggle relnum'),
     wkmap('s',    [[lua Snacks.picker.git_status()]],  'git status'),
     wkmap('x',    [[lua Snacks.picker.explorer({layout = {preset = 'default'}})]],  'explorer'),
     wkmap('z',    [[lua require('mini.misc').zoom()]], 'zoom'),

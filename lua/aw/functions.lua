@@ -102,6 +102,19 @@ function AW.purge_whitespace()
 end
 vim.api.nvim_create_user_command('WhitespaceTrim', AW.purge_whitespace, {})
 
+-- AW.toggle toggles a setting, either a string ('number') or the lua
+-- object (vim.o.number). This allows setting buffer-local scope
+-- easily (vim.bo.number).
+function AW.toggle(setting)
+    if type(setting) == 'string' then
+        vim.o[setting] = not vim.o[setting]
+    elseif type(setting) == 'boolean' then
+        setting = not setting
+    else
+        vim.notify("AW.toggle: Cannot toggle type: " .. type(setting))
+    end
+end
+
 -- AW.toggle_quickfix toggles the quickfix window
 function AW.toggle_quickfix()
     local qf_windows = vim.tbl_filter(
