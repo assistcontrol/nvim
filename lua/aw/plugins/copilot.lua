@@ -1,6 +1,7 @@
 return {
     'zbirenbaum/copilot.lua',
-    enabled = not AW.is_root() and not vim.g.vscode,
+    -- enabled = not AW.is_root() and not vim.g.vscode,
+    enabled = false,  -- Produces endless errors
     event = {'BufReadPre', 'BufNewFile'},
     opts = {
         filetypes = {
