@@ -102,6 +102,31 @@ function AW.purge_whitespace()
 end
 vim.api.nvim_create_user_command('WhitespaceTrim', AW.purge_whitespace, {})
 
+-- AW.send_cmdn sends a normal-mode command in every mode I can think of
+function send_cmdn(cmd)
+    local mode = vim.fn.mode()
+    if mode:match('^[nvV\x16]$') then   -- normal, visual, linewise, blockwise
+        vim.cmd('normal! ' .. cmd)
+    elseif mode:match('^i$') or mode:match('^R') then   -- insert, replace
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-o>' .. cmd, true, false, true), 'n', false)
+    else
+        vim.notify(string.format("Cannot send '%s' in mode '%s'", cmd, mode))
+    end
+end
+
+-- AW.smart_end goes to EOL
+function AW.smart_end()
+    AW.send_cmdn('$')
+end
+
+-- AW.smart_home goes to ^, or 0 if we're already at ^. If at 0, it'll jump
+-- forward to ^.
+function AW.smart_home()
+    local start_of_line = vim.fn.matchstrpos(vim.fn.getline('.'), '\\S')[2] + 1
+
+    AW.send_cmdn(vim.fn.col('.') == start_of_line and '0' or '^')
+end
+
 -- AW.toggle toggles a setting, either a string ('number') or the lua
 -- object (vim.o.number). This allows setting buffer-local scope
 -- easily (vim.bo.number).

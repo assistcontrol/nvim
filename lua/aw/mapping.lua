@@ -31,6 +31,11 @@ map('i', '<C-k>', '<C-o>C')
 map('c', '<C-a>', '<Home>')
 map('c', '<C-e>', '<End>')
 
+-- Better home and end
+map({'n', 'i', 'v', 'x', 's', 'o', 'c'}, '<Home>', AW.smart_home)
+map({'n', 'i', 'v', 'x', 's', 'o', 'c'}, '<End>',  AW.smart_end)
+map('n', '^', AW.smart_home, {noremap = true})
+
 -- CR selects current word
 -- This is a fallback. CR does node_incremental in treesitter.
 map('n', '<CR>', 'viw')
