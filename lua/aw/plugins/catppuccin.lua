@@ -12,14 +12,14 @@ return {
             },
             styles = {
                 conditionals = {'bold'},
-                loops = {'bold'},
-                functions = {'bold'},
-                keywords = {'bold'},
-                variables = {'bold'},
-                booleans = {'bold'},
+                loops        = {'bold'},
+                functions    = {'bold'},
+                keywords     = {'bold'},
+                variables    = {'bold'},
+                booleans     = {'bold'},
             },
             integrations = {
-                fidget = true,
+                fidget = false,
                 snacks = {
                     enabled = true,
                 },
