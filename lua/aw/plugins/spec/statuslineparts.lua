@@ -4,9 +4,10 @@ local M = {}  -- Statusbar functions
 local H = {}  -- Helper functions
 
 H.lsp_enabled = function()
-    local attached_client = next(vim.lsp.buf_get_clients()) ~= nil
-    local normal_buffer   = vim.bo.buftype == ''
-    return attached_client and normal_buffer
+    local clients       = vim.lsp.get_clients({bufnr = vim.api.nvim_get_current_buf()})
+    local attached      = next(clients) ~= nil
+    local normal_buffer = vim.bo.buftype == ''
+    return attached and normal_buffer
 end
 
 H.diagnose = function(severity, ico)
