@@ -1,6 +1,15 @@
 if not AW.has('mini.animate') then return end
 
-require('mini.animate').setup {
+local animate = require('mini.animate')
+
+animate.setup {
+    -- Cursor
+    cursor = {
+        timing = animate.gen_timing.cubic({
+            duration = 50,
+            unit     = 'total'
+        }),
+    },
     -- Scroll
     scroll = { enable = false },
     -- Windows

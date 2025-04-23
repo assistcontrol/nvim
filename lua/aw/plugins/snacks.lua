@@ -13,13 +13,16 @@ local toggle = function(opt, lhs, name)
 end
 
 local opts = {
-    animate   = {},
     bigfile   = {},
     debug     = {},
     dim       = {},
     explorer  = {},
     input     = {},
     quickfile = {},
+
+    animate = {
+        easing = 'inOutQuart',
+    },
 
     dashboard = require('aw/plugins/spec/snacksdashboard'),
 
