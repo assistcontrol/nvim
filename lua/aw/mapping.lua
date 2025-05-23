@@ -13,11 +13,12 @@ end
 local map = vim.keymap.set
 
 -- Mash j and k, or jj/kk in place of ESC
-map('i', 'jk', '<Esc>')
-map('i', 'kj', '<Esc>')
+-- NOTE: Handled by mini.keymap
+-- map('i', 'jk', '<Esc>')
+-- map('i', 'kj', '<Esc>')
 -- Sometimes it comes out as jj or kk
-map('i', 'jj', '<Esc>')
-map('i', 'kk', '<Esc>')
+-- map('i', 'jj', '<Esc>')
+-- map('i', 'kk', '<Esc>')
 
 -- ^J/^K jumps buffers
 map('n', '<C-j>', cmd[[bnext]])
@@ -61,9 +62,10 @@ map('n', '\\\\',  cmd[[lua Snacks.picker.buffers()]], {desc = 'buffers'})
 map('n', '\\[',  cmd[[lua AW.filebrowser()]], {desc = 'files'})
 
 -- mini.completion
-map('i', '<Tab>',   [[pumvisible() ? '<C-n>' : '<Tab>']],   {expr = true})
-map('i', '<S-Tab>', [[pumvisible() ? '<C-p>' : '<S-Tab>']], {expr = true})
-map('i', '<CR>',    [[v:lua.AW.cr_action()]],               {expr = true})
+-- NOTE: Handled by mini.keymap
+-- map('i', '<Tab>',   [[pumvisible() ? '<C-n>' : '<Tab>']],   {expr = true})
+-- map('i', '<S-Tab>', [[pumvisible() ? '<C-p>' : '<S-Tab>']], {expr = true})
+-- map('i', '<CR>',    [[v:lua.AW.cr_action()]],               {expr = true})
 
 -- Extend g...
 -- Move normally onto wrapped lines

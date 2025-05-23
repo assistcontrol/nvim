@@ -10,9 +10,9 @@ end
 
 require('mini.hipatterns').setup {
     highlighters = {
-        -- note     = { pattern = gen_pattern('NOTE'), group = 'MiniHipatternsNote' },
-        -- todo     = { pattern = gen_pattern('TODO'), group = 'MiniHipatternsTodo' },
-        -- xxx      = { pattern = gen_pattern('XXX'),  group = 'MiniHipatternsFixme' },
+        note     = { pattern = gen_pattern('NOTE'), group = 'MiniIconsCyan' },
+        todo     = { pattern = gen_pattern('TODO'), group = 'MiniHipatternsTodo' },
+        xxx      = { pattern = gen_pattern('XXX'),  group = 'MiniHipatternsFixme' },
         hexcolor = require('mini.hipatterns').gen_highlighter.hex_color()
     }
 }

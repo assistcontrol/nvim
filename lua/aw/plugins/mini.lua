@@ -26,6 +26,9 @@ return {
                 -- String highlighting
                 require('aw/plugins/spec/minihipatterns')
 
+                -- Fancy keymappings
+                require('aw/plugins/spec/minikeymap')
+
                 -- Tab line
                 require('mini.tabline').setup {}
 
