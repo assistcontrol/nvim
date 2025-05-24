@@ -16,9 +16,6 @@ local map = vim.keymap.set
 -- NOTE: Handled by mini.keymap
 -- map('i', 'jk', '<Esc>')
 -- map('i', 'kj', '<Esc>')
--- Sometimes it comes out as jj or kk
--- map('i', 'jj', '<Esc>')
--- map('i', 'kk', '<Esc>')
 
 -- ^J/^K jumps buffers
 map('n', '<C-j>', cmd[[bnext]])

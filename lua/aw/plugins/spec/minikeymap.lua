@@ -26,8 +26,6 @@ local mash_map = function(lhs)
 end
 mash_map('jk')
 mash_map('kj')
-mash_map('jj')
-mash_map('kk')
 
 -- Reference:
 --  Mode | Norm | Ins | Cmd | Vis | Sel | Opr | Term | Lang |
