@@ -43,6 +43,7 @@ local parsers = AW.is_root() and {} or {
 
 return {
     'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
     enabled = not vim.g.vscode,
     cmd   = {'TSInstall', 'TSInstallInfo', 'TSUpdate', 'TSUninstall'},
     event = {'BufReadPost', 'BufNewFile'},
