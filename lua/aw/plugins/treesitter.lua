@@ -35,7 +35,7 @@ local parsers = AW.is_root() and {} or {
     'regex',
     'robots',
     'sql',
-    'swift',
+    -- 'swift', -- Disabled until treesitter works with rust 1.87
     'toml',
     'typescript',
     'typst',
