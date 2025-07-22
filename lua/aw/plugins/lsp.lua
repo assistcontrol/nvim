@@ -6,8 +6,6 @@ return {
     event = {'BufReadPre', 'BufNewFile'},
 
     config = function()
-        local lspconfig = require('lspconfig')
-
         -- conf is passed to each language server
         local conf = {}
         if AW.has('mini.completion') then
@@ -51,51 +49,45 @@ return {
         })
 
         -- Language servers
-        -- Go
-        if vim.fn.executable('gopls') > 0 then
-            lspconfig.gopls.setup {
-                conf,
-                settings = {
-                    gopls = {
-                        gofumpt = true
-                    }
+        vim.lsp.config.gopls = {
+            conf,
+            settings = {
+                gopls = {
+                    gofumpt = true
                 }
             }
-        end
+        }
+        vim.lsp.enable('gopls')
 
-        -- Lua
-        if vim.fn.executable('lua-language-server') > 0 then
-            lspconfig.lua_ls.setup {
-                conf,
-                on_init = function(client)
-                    client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
-                        Lua = {
-                            runtime = {
-                                version = 'LuaJit',
+        vim.lsp.config.luals = {
+            conf,
+            on_init = function(client)
+                client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
+                    Lua = {
+                        runtime = {
+                            version = 'LuaJit',
+                        },
+                        diagnostics = {
+                            globals = {'vim'},
+                        },
+                        workspace = {
+                            checkThirdParty = false,
+                            library = {
+                                vim.env.VIMRUNTIME,
                             },
-                            diagnostics = {
-                                globals = {'vim'},
-                            },
-                            workspace = {
-                                checkThirdParty = false,
-                                library = {
-                                    vim.env.VIMRUNTIME,
-                                },
-                            },
-                        }
-                    })
+                        },
+                    }
+                })
 
-                    client.notify('workspace/didChangeConfiguration', {settings = client.config.settings})
-                    return true
-                end
-            }
-        end
+                client.notify('workspace/didChangeConfiguration', {settings = client.config.settings})
+                return true
+            end
+        }
+        vim.lsp.enable('luals')
 
-        -- Rust
-        if vim.fn.executable('rust-analyzer') > 0 then
-            lspconfig.rust_analyzer.setup({
-                conf
-            })
-        end
+        vim.lsp.config.rust_analyzer = {
+            conf
+        }
+        vim.lsp.enable('rust_analyzer')
     end
 }
