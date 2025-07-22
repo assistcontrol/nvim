@@ -89,6 +89,13 @@ function AW.next_window()
     end
 end
 
+-- AW.pretty_print deeply prints its argument using vim.inspect.
+-- Mapped to a global function `pp`.
+function AW.pretty_print(obj)
+    print(vim.inspect(obj))
+end
+_G.pp = AW.pretty_print
+
 -- AW.pwd returns a shortened $PWD
 function AW.pwd()
     local pwd = vim.fn.fnamemodify(vim.fn.getcwd(), ':~:.')
