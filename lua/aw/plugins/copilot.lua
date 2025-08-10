@@ -3,6 +3,7 @@ return {
     enabled = not AW.is_root() and not vim.g.vscode,
     event = {'BufReadPre', 'BufNewFile'},
     opts = {
+        copilot_model = 'gpt-5',
         filetypes = {
             ['*'] = true,
         },
