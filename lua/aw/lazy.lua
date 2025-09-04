@@ -11,7 +11,7 @@ vim.opt.rtp:prepend(lazy)
 
 AW.deps = {
     lspconfig  = 'neovim/nvim-lspconfig',
-    mini       = 'echasnovski/mini.nvim',
+    mini       = 'nvim-mini/mini.nvim',
     nui        = 'muniftanjim/nui.nvim',
     plenary    = 'nvim-lua/plenary.nvim',
     treesitter = 'nvim-treesitter/nvim-treesitter'

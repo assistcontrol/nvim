@@ -1,6 +1,6 @@
 -- mini.nvim package
 return {
-    'echasnovski/mini.nvim',
+    AW.deps.mini,
 
     config = function()
         -- Load this stuff right away; needed for startup.
