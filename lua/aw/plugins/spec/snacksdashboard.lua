@@ -49,6 +49,7 @@ return {
             item('n', 'ninja',     'ninja',    [[:lua AW.filebrowser('~/build/ninja')]]),
             item('d', 'dotfiles',  'dotfiles', [[:lua AW.filebrowser('~/build/dotfiles')]]),
             item('v', 'vim',       'vim',      [[:lua AW.filebrowser('~/build/nvim/lua/aw')]]),
+            item('k', 'backend',   'backend',  [[:lua AW.filebrowser('~/build/backend')]]),
         },
     },
 

@@ -23,6 +23,7 @@ local icons = {
     filetree = '󰙅',  -- UF0645
     tree     = '',  -- uf1bb
     vim      = '',  -- uE62B
+    backend  = '',  -- uf233
 
     -- Diagnostics
     error    = '⨂',  -- u2A02
