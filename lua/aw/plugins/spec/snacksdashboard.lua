@@ -43,7 +43,7 @@ return {
             newSection(),
             title('Browse'),
             item('b', 'Browse',    'folder',   [[:lua AW.filebrowser()]]),
-            item('x', 'tree',      'filetree', [[:lua Snacks.picker.explorer({layout = {preset = 'default', preview = true}})]]),
+            item('x', 'tree',      'filetree', [[:lua Snacks.picker.explorer({auto_close = true, layout = {preset = 'default', preview = true}})]]),
             item('g', 'live grep', 'search',   [[:lua Snacks.picker.grep()]]),
             item('r', 'recent',    'recent',   [[:lua Snacks.picker.recent()]]),
             item('n', 'ninja',     'ninja',    [[:lua AW.filebrowser('~/build/ninja')]]),

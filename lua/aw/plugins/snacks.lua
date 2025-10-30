@@ -16,7 +16,6 @@ local opts = {
     bigfile   = {},
     debug     = {},
     dim       = {},
-    explorer  = {},
     input     = {},
     quickfile = {},
 
@@ -25,6 +24,10 @@ local opts = {
     },
 
     dashboard = require('aw/plugins/spec/snacksdashboard'),
+
+    explorer  = {
+        auto_close = true,
+    },
 
     indent = {
         indent = {

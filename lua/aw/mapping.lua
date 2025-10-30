@@ -93,7 +93,7 @@ AW.maps.leader = {
     wkmap('Q',    [[lua AW.toggle_quickfix()]],        'toggle quickfix'),
     wkmap('r',    [[lua AW.toggle('relativenumber')]], 'toggle relnum'),
     wkmap('s',    [[lua Snacks.picker.git_status()]],  'git status'),
-    wkmap('x',    [[lua Snacks.picker.explorer({layout = {preset = 'default'}})]],  'explorer'),
+    wkmap('x',    [[lua Snacks.picker.explorer({auto_close = true, layout = {preset = 'default'}})]],  'explorer'),
     wkmap('z',    [[lua require('mini.misc').zoom()]], 'zoom'),
 
     {'b', group = 'buffer', desc = 'buffer'},
