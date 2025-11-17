@@ -19,6 +19,7 @@ return {
                 booleans     = {'bold'},
             },
             integrations = {
+                blink_indent = true,
                 fidget = false,
                 snacks = {
                     enabled = true,

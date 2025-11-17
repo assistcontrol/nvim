@@ -29,16 +29,16 @@ local opts = {
         auto_close = true,
     },
 
-    indent = {
-        indent = {
-            only_current = true,
-        },
-        scope = {
-            char = '┃',
-            hl = 'NeoTreeFilterTerm',
-            only_current = true,
-        },
-    },
+    -- indent = {
+    --     indent = {
+    --         only_current = true,
+    --     },
+    --     scope = {
+    --         char = '┃',
+    --         hl = 'NeoTreeFilterTerm',
+    --         only_current = true,
+    --     },
+    -- },
 
     notifier = {
         timeout  = 3000,
