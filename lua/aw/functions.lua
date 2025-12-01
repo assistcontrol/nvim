@@ -75,7 +75,7 @@ function AW.next_pane()
     if #vim.api.nvim_tabpage_list_wins(0) > 1 then
         AW.next_window()
     else
-        vim.cmd [[bnext]]
+        vim.cmd.bnext()
     end
 end
 
@@ -84,7 +84,7 @@ function AW.next_window()
     local skip = {'minimap', 'neo-tree', 'NvimTree'}
 
     for _ = 1,4 do
-        vim.cmd [[wincmd w]]
+        vim.cmd.wincmd('w')
         if not vim.tbl_contains(skip, vim.bo.filetype) then break end
     end
 end
@@ -161,7 +161,7 @@ end
 -- AW.update_plugins updates all the things
 -- Handles plugins and treesitter parsers.
 function AW.update_plugins()
-    vim.cmd(':TSUpdate')
+    vim.cmd.TSUpdate()
     require('lazy').sync()
 end
 
