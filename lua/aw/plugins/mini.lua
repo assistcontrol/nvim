@@ -55,7 +55,7 @@ return {
             -- Fancy icons
             require('mini.icons').setup {}
 
-            -- Bubble blocks
+            -- Bubble-move blocks
             require('aw/plugins/spec/minimove')
 
             -- Split/join vectors

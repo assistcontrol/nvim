@@ -20,7 +20,8 @@ return {
             },
             integrations = {
                 blink_indent = true,
-                fidget = false,
+                blink_pairs  = true,
+                fidget       = false,
                 snacks = {
                     enabled = true,
                 },

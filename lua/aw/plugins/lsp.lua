@@ -37,17 +37,27 @@ return {
         end)
 
         -- Highlight line numbers with LSP messages and set gutter symbols
-        vim.fn.sign_define('DiagnosticSignError', {
-            text = AW.icon('errorSm'), texthl = 'DiagnosticSignError', numhl = 'CustomError'
-        })
-        vim.fn.sign_define('DiagnosticSignWarn', {
-            text = AW.icon('warning'), texthl = 'DiagnosticSignWarn',  numhl = 'CustomWarning'
-        })
-        vim.fn.sign_define('DiagnosticSignInfo', {
-            text = AW.icon('hint'),    texthl = 'DiagnosticSignInfo',  numhl = 'CustomMedium'
-        })
-        vim.fn.sign_define('DiagnosticSignHint', {
-            text = AW.icon('hint'),    texthl = 'DiagnosticSignHint',  numhl = 'CustomMedium'
+        vim.diagnostic.config({
+            signs = {
+                linehl = {
+                    [vim.diagnostic.severity.ERROR] = 'DiagnosticSignError',
+                    [vim.diagnostic.severity.WARN]  = 'DiagnosticSignWarn',
+                    [vim.diagnostic.severity.INFO]  = 'DiagnosticSignInfo',
+                    [vim.diagnostic.severity.HINT]  = 'DiagnosticSignHint',
+                },
+                numhl = {
+                    [vim.diagnostic.severity.ERROR] = 'CustomError',
+                    [vim.diagnostic.severity.WARN]  = 'CustomWarning',
+                    [vim.diagnostic.severity.INFO]  = 'CustomMedium',
+                    [vim.diagnostic.severity.HINT]  = 'CustomMedium',
+                },
+                text = {
+                    [vim.diagnostic.severity.ERROR] = AW.icon('errorSm'),
+                    [vim.diagnostic.severity.WARN]  = AW.icon('warning'),
+                    [vim.diagnostic.severity.INFO]  = AW.icon('hint'),
+                    [vim.diagnostic.severity.HINT]  = AW.icon('hint'),
+                },
+            },
         })
 
         -- Language servers

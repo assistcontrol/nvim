@@ -105,8 +105,8 @@ AW.maps.leader = {
 
     {'d', group = 'code dx', desc = 'code dx'},
     wkmap('dd', [[lua Snacks.picker.diagnostics()]],              'browse'),
-    wkmap('dn', [[lua vim.diagnostic.goto_next({float = true})]], 'next'),
-    wkmap('dp', [[lua vim.diagnostic.goto_prev({float = true})]], 'previous'),
+    wkmap('dn', [[lua vim.diagnostic.jump({count = 1, float = true})]], 'next'),
+    wkmap('dp', [[lua vim.diagnostic.jump({count = -1, float = true})]], 'previous'),
 
     {'f',  group = 'find', desc = 'find'},
     wkmap('fb', [[lua Snacks.picker.buffers()]],         'buffers'),
