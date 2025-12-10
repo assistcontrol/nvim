@@ -3,7 +3,9 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = {AW.deps.mini},
     enabled = not AW.is_root() and not vim.g.vscode,
-    event = {'BufReadPre', 'BufNewFile'},
+    lazy = false,    -- Available immediately
+    priority = 500,  -- Load before most LSP consumers
+    -- event = {'BufReadPre', 'BufNewFile'},
 
     config = function()
         -- conf is passed to each language server
@@ -49,6 +51,8 @@ return {
         })
 
         -- Language servers
+
+        -- Go
         vim.lsp.config.gopls = {
             conf,
             settings = {
@@ -59,26 +63,28 @@ return {
         }
         vim.lsp.enable('gopls')
 
+        -- Lua
         vim.lsp.config.lua_ls = {
             conf,
             filetypes = { 'lua' },
-            root_markers = {
-                '.luarc.json',
-                '.luarc.jsonc',
-                '.luacheckrc',
-                '.styluaa.toml',
-                '.git',
-            },
             on_init = function(client)
-                if client.workspace_folders then
-                    local path = client.workspace_folders[1].name
-                    if path ~= vim.fn.stdpath('config') and
-                      (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc')) then
-                        return
-                    end
+                local root = client.workspace_folders and client.workspace_folders[1].name
+
+                local editing_config =
+                    root == vim.fn.stdpath('config') or
+                    root == vim.fn.expand(AW_MODULE_PATH)
+
+                local has_luarc =
+                    vim.uv.fs_stat(root .. '/.luarc.json') or
+                    vim.uv.fs_stat(root .. '/.luarc.jsonc')
+
+                if has_luarc and not editing_config then
+                    return
                 end
 
-                client.config.settings = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+                local luals_settings = client.config.settings.Lua or {}
+
+                client.config.settings = vim.tbl_deep_extend('force', luals_settings, {
                     runtime = {
                         version = 'LuaJit',
                         path = {
@@ -90,9 +96,13 @@ return {
                         globals = {'vim'},
                     },
                     workspace = {
+                        -- Don't auto-guess things like luarocks, busted, etc.
                         checkThirdParty = false,
+                        -- Make LuaLS aware of nvim runtim and the nvim config
                         library = {
                             vim.env.VIMRUNTIME,
+                            vim.fn.stdpath('config'),
+                            vim.fn.expand(AW_MODULE_PATH),
                         },
                     },
                 })
@@ -103,6 +113,7 @@ return {
         }
         vim.lsp.enable('lua_ls')
 
+        -- Rust
         vim.lsp.config.rust_analyzer = {
             conf
         }
