@@ -19,6 +19,9 @@ AW.deps = {
 
 require('lazy').setup('aw.plugins', {
     colorscheme = colorscheme,
+    git = {
+        timeout = 600,
+    },
     performance = {
         rtp = {
             disabled_plugins = {
