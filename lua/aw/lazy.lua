@@ -18,24 +18,27 @@ AW.deps = {
 }
 
 require('lazy').setup('aw.plugins', {
+    change_detection = {
+        enabled = false,
+    },
     colorscheme = colorscheme,
     git = {
-        timeout = 600,
+        timeout = 300,
+    },
+    install = {
+        colorscheme = {colorscheme},
     },
     performance = {
         rtp = {
             disabled_plugins = {
                 'netrwPlugin',
-                'tutor'
+                'tutor',
             },
-            paths = {AW_MODULE_PATH}
-        }
+            paths = {AW_MODULE_PATH},
+        },
     },
-    change_detection = {
-        enabled = false
-    },
-    install = {
-        colorscheme = {colorscheme}
+    rocks = {
+        enabled = false,
     },
     ui = {
         custom_keys = {
