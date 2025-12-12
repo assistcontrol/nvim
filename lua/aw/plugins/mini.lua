@@ -20,6 +20,9 @@ return {
                 -- Completion
                 require('mini.completion').setup {}
 
+                -- Command line
+                require('mini.cmdline').setup {}
+
                 -- Diff
                 require('aw/plugins/spec/minidiff')
 
