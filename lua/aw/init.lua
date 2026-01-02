@@ -4,7 +4,7 @@ require('aw/icons')
 require('aw/functions')
 require('aw/colors')
 require('aw/general')
-require('aw/mapping')
+require('aw/keymap')
 require('aw/filetypes')
 require('aw/lazy')
 
