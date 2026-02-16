@@ -1,5 +1,3 @@
-local colorscheme = 'catppuccin'
-
 local lazy = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
 if (not vim.loop.fs_stat(lazy)) and vim.fn.input('Download lazy? [Y/n]: ') ~= 'n' then
@@ -21,12 +19,12 @@ require('lazy').setup('aw.plugins', {
     change_detection = {
         enabled = false,
     },
-    colorscheme = colorscheme,
+    colorscheme = AW.colorscheme,
     git = {
         timeout = 300,
     },
     install = {
-        colorscheme = {colorscheme},
+        colorscheme = {AW.colorscheme},
     },
     performance = {
         rtp = {
