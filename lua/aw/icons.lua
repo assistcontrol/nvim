@@ -42,6 +42,5 @@ local icons = {
 -- AW.icon gets an icon, with optional text attached
 function AW.icon(ico, str)
     local icon = icons[ico] and icons[ico] .. ' ' or ''
-    local s    = str and str or ''
-    return icon .. s
+    return icon .. (str or '')
 end
