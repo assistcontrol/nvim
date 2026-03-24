@@ -1,5 +1,5 @@
 _G.AW = {
-    colorscheme = 'catppuccin-mocha'
+    colorscheme = 'catppuccin-nvim'
 }
 
 require('aw/icons')
