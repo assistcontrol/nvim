@@ -18,7 +18,9 @@ return {
                 require('aw/plugins/spec/minianimate')
 
                 -- Completion
-                require('mini.completion').setup {}
+                require('mini.completion').setup {
+                    source_func = 'omnifunc', auto_setup = false
+                }
 
                 -- Diff
                 require('aw/plugins/spec/minidiff')

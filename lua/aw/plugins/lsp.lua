@@ -8,15 +8,11 @@ return {
     -- event = {'BufReadPre', 'BufNewFile'},
 
     config = function()
-        -- conf is passed to each language server
-        local conf = {}
         if AW.has('mini.completion') then
-            conf.attach = function(_, bufnr)  -- (client, bufnr)
-                vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.MiniCompletion.completefunc_lsp')
+            local on_attach = function(args)
+                vim.bo[args.buf].omnifunc = 'v:lua.MiniCompletion.completefunc_lsp'
             end
-        end
-        if AW.has('cmp_nvim_lsp') then
-            conf.capabilities = require('cmp_nvim_lsp').default_capabilities()
+            vim.api.nvim_create_autocmd('LspAttach', {callback = on_attach})
         end
 
         -- General setup
@@ -64,7 +60,6 @@ return {
 
         -- Go
         vim.lsp.config.gopls = {
-            conf,
             settings = {
                 gopls = {
                     gofumpt = true
@@ -75,7 +70,6 @@ return {
 
         -- Lua
         vim.lsp.config.lua_ls = {
-            conf,
             filetypes = { 'lua' },
             on_init = function(client)
                 local root = client.workspace_folders and client.workspace_folders[1].name
@@ -125,7 +119,6 @@ return {
 
         -- Rust
         vim.lsp.config.rust_analyzer = {
-            conf
         }
         vim.lsp.enable('rust_analyzer')
     end
