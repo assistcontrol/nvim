@@ -67,7 +67,7 @@ vim.opt.statusline  = '%F%m%r%h%w %y [%p%%/%L] [%04v @ %04l]%a'
 
 -- Spellchecking
 vim.cmd.syntax('spell toplevel')  -- Only check non-syntax text
-vim.opt.spellfile = '~/build/dotfiles/vim/dictionary/dictionary.utf-8.add'
+vim.opt.spellfile = vim.fn.stdpath('data') .. 'dictionary.utf-8.add'
 
 -- Folding
 vim.opt.foldclose  = 'all'
