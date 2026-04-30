@@ -121,5 +121,11 @@ return {
         vim.lsp.config.rust_analyzer = {
         }
         vim.lsp.enable('rust_analyzer')
+
+        -- Fallback for languages without an installed LSP
+        vim.lsp.config.ctags_lsp = {
+            filetypes = {'bash', 'javascript', 'perl', 'ruby', 'sh', 'zsh'},
+        }
+        vim.lsp.enable('ctags_lsp')
     end
 }
