@@ -124,7 +124,13 @@ return {
 
         -- Fallback for languages without an installed LSP
         vim.lsp.config.ctags_lsp = {
-            filetypes = {'bash', 'javascript', 'perl', 'ruby', 'sh', 'zsh'},
+            filetypes = {
+                'autoconf', 'automake', 'awk', 'bash', 'c', 'cmake', 'cpp',
+                'cs', 'css', 'ctags', 'dtd', 'html', 'javascript', 'json',
+                'make', 'markdown', 'nsis', 'perl', 'php', 'python', 'r',
+                'rspec', 'ruby', 'scdoc', 'scss', 'sh', 'sql', 'tcl',
+                'typescript', 'v', 'vim', 'xml', 'xslt', 'yaml', 'zsh',
+            },
         }
         vim.lsp.enable('ctags_lsp')
     end
