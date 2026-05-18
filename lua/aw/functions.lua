@@ -55,7 +55,7 @@ end
 -- AW.filebrowser spawns a file finder, and changes to a specified dir
 -- for future searches
 function AW.filebrowser(dir)
-    Snacks.picker.files({cwd = dir or '.'})
+    require('snacks').picker.files({cwd = dir or '.'})
 end
 
 -- AW.has tests whether a certain plugin is installed

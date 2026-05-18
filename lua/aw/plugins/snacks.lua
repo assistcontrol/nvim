@@ -9,7 +9,7 @@ end
 local leader = function(ch) return '<leader>p' .. ch end
 local toggle = function(opt, lhs, name)
     name = name or opt
-    Snacks.toggle.option(opt, {name = name}):map(leader(lhs))
+    require('snacks').toggle.option(opt, {name = name}):map(leader(lhs))
 end
 
 local opts = {
@@ -85,9 +85,10 @@ return {
     priority = 1000,
 
     config = function()
-        local snacks = require('snacks').setup(opts)
+        require('snacks').setup(opts)
+        local snacks = require('snacks')
         _G.dd = function(...)
-            Snacks.debug.inspect(...)
+            snacks.debug.inspect(...)
         end
         vim.print = _G.dd
 
@@ -97,7 +98,7 @@ return {
         toggle('wrap',    'w', 'Line wrapping')
         toggle('cursorcolumn!',   'C', 'Cursor column')
         toggle('relativenumber!', 'r', 'Relative numbers')
-        Snacks.toggle.line_number():map(leader('n'))
-        Snacks.toggle.dim():map(leader('d'))
+        snacks.toggle.line_number():map(leader('n'))
+        snacks.toggle.dim():map(leader('d'))
     end,
 }
