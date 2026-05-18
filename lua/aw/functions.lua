@@ -168,9 +168,8 @@ end
 -- This doesn't belong in this file, but it belongs even less in
 -- any other file.
 AW.autocmd('TextYankPost', function()
-    vim.highlight.on_yank {
+    vim.hl.on_yank {
         higroup   = 'IncSearch',
-        on_visual = false,
         timeout   = 150
     }
 end)
