@@ -129,7 +129,9 @@ return {
                 'cs', 'css', 'ctags', 'dtd', 'html', 'javascript', 'json',
                 'make', 'markdown', 'nsis', 'perl', 'php', 'python', 'r',
                 'rspec', 'ruby', 'scdoc', 'scss', 'sh', 'sql', 'tcl',
-                'typescript', 'v', 'vim', 'xml', 'xslt', 'yaml', 'zsh',
+                'typescript', 'v', 'vim', 'xml', 'xslt', 'yaml',
+                -- Potentially problematic:
+                -- 'zsh',
             },
         }
         vim.lsp.enable('ctags_lsp')
