@@ -1,6 +1,6 @@
 {
     "diagnostics": {
-        "globals": ["vim", "lfs"]
+        "globals": ["vim", "lfs", "AW", "AW_MODULE_PATH"]
     },
     "workspace": {
         "checkThirdParty": false,
