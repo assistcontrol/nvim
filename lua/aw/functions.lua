@@ -88,6 +88,17 @@ function AW.next_window()
     end
 end
 
+-- AW.os compares or returns the OS's name
+function AW.os(name)
+    local sysname = vim.uv.os_uname().sysname
+
+    if name then
+        return sysname:lower():find(name:lower()) ~= nil
+    else
+        return sysname
+    end
+end
+
 -- AW.pretty_print deeply prints its argument using vim.inspect.
 -- Mapped to a global function `pp`.
 function AW.pretty_print(obj)
