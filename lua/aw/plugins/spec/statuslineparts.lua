@@ -54,8 +54,8 @@ end
 
 M.filename_simplify = function()
     local filename = vim.fn.expand('%f')
-    if string.find(filename, 'neo.tree', 1) then return 'Neo-Tree' end
-    if string.find(filename, 'NvimTree', 1) then return 'NvimTree' end
+    if filename:find('neo.tree') then return 'Neo-Tree' end
+    if filename:find('NvimTree') then return 'NvimTree' end
 end
 
 M.filesize = function()

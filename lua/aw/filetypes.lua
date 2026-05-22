@@ -34,7 +34,7 @@ autocmd('ModeChanged', '*:[V\x16]*', function()
     vim.wo.relativenumber = vim.wo.number
 end)
 autocmd('ModeChanged', '[V\x16]*:*', function()
-    vim.wo.relativenumber = string.find(vim.fn.mode(), '^[V\22]') ~= nil
+    vim.wo.relativenumber = vim.fn.mode():find('^[V\22]') ~= nil
 end)
 
 -- Filetype-specific settings
