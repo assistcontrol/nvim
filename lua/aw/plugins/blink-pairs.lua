@@ -1,7 +1,9 @@
 return {
     'saghen/blink.pairs',
+    dependencies = 'saghen/blink.lib',
+
     enabled = not AW.is_root() and not vim.g.vscode,
-    build = 'cargo build --release',
+    build = function() require('blink.pairs').build():pwait(60000) end,
     opts = {
         highlights = {
             groups = {
@@ -11,6 +13,10 @@ return {
                 'BlinkPairsOrange',
                 'BlinkPairsBlue',
                 'BlinkPairsYellow',
+            },
+
+            matchparen = {
+                include_surrounding = true,
             },
         },
     },
