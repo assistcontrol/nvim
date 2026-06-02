@@ -90,6 +90,10 @@ end
 
 -- AW.os compares or returns the OS's name
 function AW.os(name)
+    if name and name:lower():match('^mac') then
+        name = 'darwin'
+    end
+
     local sysname = vim.uv.os_uname().sysname
 
     if name then
