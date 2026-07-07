@@ -117,6 +117,14 @@ return {
         }
         vim.lsp.enable('lua_ls')
 
+        -- Perl
+        vim.lsp.config['perl-lsp'] = {
+            cmd = {'perl-lsp'},
+            filetypes = {'perl'},
+            root_markers = {'cpanfile', 'Makefile.PL', 'Build.PL', '.git'},
+        }
+        vim.lsp.enable('perl-lsp')
+
         -- Rust
         vim.lsp.config.rust_analyzer = {
         }
@@ -127,7 +135,7 @@ return {
             filetypes = {
                 'autoconf', 'automake', 'awk', 'bash', 'c', 'cmake', 'cpp',
                 'cs', 'css', 'ctags', 'dtd', 'html', 'javascript', 'json',
-                'make', 'markdown', 'nsis', 'perl', 'php', 'python', 'r',
+                'make', 'markdown', 'nsis', 'php', 'python', 'r',
                 'rspec', 'ruby', 'scdoc', 'scss', 'sh', 'sql', 'tcl',
                 'typescript', 'v', 'vim', 'xml', 'xslt', 'yaml',
                 -- Potentially problematic:
