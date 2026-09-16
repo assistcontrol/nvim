@@ -1,8 +1,8 @@
+local AUGROUP = vim.api.nvim_create_augroup('AW', {})
+
 -- AW.autocmd creates autocmmands
 -- Pass either a function or a table of setlocal options
 -- Can also be called as AW.autocmd(event, cmds)
-local AUGROUP = vim.api.nvim_create_augroup('AW', {})
-
 function AW.autocmd(event, pattern, cmds)
     -- If two args, then drop pattern
     if cmds == nil then
