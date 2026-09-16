@@ -2,10 +2,11 @@ local autocmd = AW.autocmd
 
 vim.filetype.add {
     extension = {
-        pm = 'perl',
-        t  = 'perl',
-        tt = 'tt2html',
-        v  = 'v',
+        pm    = 'perl',
+        t     = 'perl',
+        templ = 'templ',
+        tt    = 'tt2html',
+        v     = 'v',
     },
 }
 

@@ -130,13 +130,18 @@ return {
         }
         vim.lsp.enable('rust_analyzer')
 
+        -- Templ
+        vim.lsp.config['templ'] = {
+        }
+        vim.lsp.enable('templ')
+
         -- Fallback for languages without an installed LSP
         vim.lsp.config.ctags_lsp = {
             filetypes = {
-                'autoconf', 'automake', 'awk', 'bash', 'c', 'cmake', 'cpp',
-                'cs', 'css', 'ctags', 'dtd', 'html', 'javascript', 'json',
+                'automake', 'awk', 'bash', 'c', 'cmake', 'cpp',
+                'cs', 'css', 'dtd', 'html', 'javascript', 'json',
                 'make', 'markdown', 'nsis', 'php', 'python', 'r',
-                'rspec', 'ruby', 'scdoc', 'scss', 'sh', 'sql', 'tcl',
+                'ruby', 'scdoc', 'scss', 'sh', 'sql', 'tcl',
                 'typescript', 'v', 'vim', 'xml', 'xslt', 'yaml',
                 -- Potentially problematic:
                 -- 'zsh',
