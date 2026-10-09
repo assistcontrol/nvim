@@ -31,15 +31,20 @@ vim.api.nvim_set_decoration_provider(C.ns, {
         local tw = vim.bo[buf].textwidth
 
         for row = first, last - 1 do
+            local width = vim.fn.strdisplaywidth(
+                vim.api.nvim_buf_get_lines(buf, row, row + 1, false)[1]
+            )
             -- Fixed column
-            vim.api.nvim_buf_set_extmark(buf, C.ns, row, 0, {
-                virt_text = { {'│', 'RulerFixed'} },
-                virt_text_win_col = C.fixed - 1,
-                ephemeral = true,
-            })
+            if width < C.fixed then
+                vim.api.nvim_buf_set_extmark(buf, C.ns, row, 0, {
+                    virt_text = { { '│', 'RulerFixed' } },
+                    virt_text_win_col = C.fixed - 1,
+                    ephemeral = true,
+                })
+            end
 
             -- textwidth, unless it overlaps fixed or is unset
-            if tw > 0 and tw ~= C.fixed then
+            if tw > 0 and tw ~= C.fixed and width < tw then
                 vim.api.nvim_buf_set_extmark(buf, C.ns, row, 0, {
                     virt_text = { {'│', 'RulerTextWidth'} },
                     virt_text_win_col = tw - 1,
