@@ -18,7 +18,6 @@ local parsers = AW.is_root() and {} or {
     'rust',
     'scss',
     'templ',
-    'tmux',
     'yaml',
 
     -- Infrequent
@@ -34,7 +33,7 @@ local parsers = AW.is_root() and {} or {
     'powershell',
     'printf',
     'regex',
-    'robots',
+    'robots_txt',
     'sql',
     -- 'swift', -- Disabled until treesitter works with rust 1.87
     'toml',
@@ -44,30 +43,49 @@ local parsers = AW.is_root() and {} or {
 
 return {
     'nvim-treesitter/nvim-treesitter',
-    branch = 'master',
     enabled = not vim.g.vscode,
-    cmd   = {'TSInstall', 'TSInstallInfo', 'TSUpdate', 'TSUninstall'},
-    event = {'BufReadPost', 'BufNewFile'},
+    branch = 'main',
+    lazy  = false,
+    build = ':TSUpdate',
     config = function()
-        require('nvim-treesitter.configs').setup {
-            ensure_installed = parsers,
+        local ts = require('nvim-treesitter')
 
-            highlight = {
-                enable = true
-            },
+        -- Install missing parsers asynchronously.
+        ts.install(parsers)
 
-            incremental_selection = {
-                enable = true,
-                keymaps = {
-                    init_selection   = '<Enter>',
-                    node_incremental = '<Enter>',
-                    node_decremental = '<BS>',
-                }
-            },
+        -- Enable tree-sitter for buffers with installed parsers
+        vim.api.nvim_create_autocmd('FileType', {
+            group = vim.api.nvim_create_augroup('AWTreeSitter', {}),
+            callback = function(args)
+                local lang = vim.treesitter.language.get_lang(args.match) or args.match
 
-            indent = {
-                enable = true
-            },
-        }
-    end
+                if not vim.treesitter.language.add(lang) then
+                    return
+                end
+
+                -- Highlighting
+                vim.treesitter.start(args.buf, lang)
+
+                -- Indentation (where a query exists)
+                if vim.treesitter.query.get(lang, 'indents') then
+                    vim.bo[args.buf].indentexpr = "v:lua.require('nvim-treesitter').indentexpr()"
+                end
+
+                -- Incremental selection
+                local opts = { buffer = args.buf }
+
+                vim.keymap.set('n', '<CR>', function()
+                    vim.treesitter.select('parent')
+                end, opts)
+
+                vim.keymap.set('x', '<CR>', function()
+                    vim.treesitter.select('parent')
+                end, opts)
+
+                vim.keymap.set('x', '<BS>', function()
+                    vim.treesitter.select('child')
+                end, opts)
+            end,
+        })
+    end,
 }
