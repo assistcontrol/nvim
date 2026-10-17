@@ -5,7 +5,6 @@ return {
     enabled = not AW.is_root() and not vim.g.vscode,
     lazy = false,    -- Available immediately
     priority = 500,  -- Load before most LSP consumers
-    -- event = {'BufReadPre', 'BufNewFile'},
 
     config = function()
         if AW.has('mini.completion') then
@@ -118,22 +117,17 @@ return {
         vim.lsp.enable('lua_ls')
 
         -- Perl
-        vim.lsp.config['perl-lsp'] = {
-            cmd = {'perl-lsp'},
-            filetypes = {'perl'},
-            root_markers = {'cpanfile', 'Makefile.PL', 'Build.PL', '.git'},
-        }
-        vim.lsp.enable('perl-lsp')
+        vim.lsp.enable('perl_lsp')
 
         -- Rust
-        vim.lsp.config.rust_analyzer = {
-        }
         vim.lsp.enable('rust_analyzer')
 
         -- Templ
-        vim.lsp.config['templ'] = {
-        }
         vim.lsp.enable('templ')
+
+        -- Example
+        -- vim.lsp.config.some_lsp = { ... }
+        -- vim.lsp.enable('some_lsp')
 
         -- Fallback for languages without an installed LSP
         vim.lsp.config.ctags_lsp = {
