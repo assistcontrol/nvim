@@ -67,7 +67,7 @@ return {
             require('aw/plugins/spec/minisurround')
 
             -- Whitespace at EOL
-            require('mini.trailspace').setup {}
+            require('aw/plugins/spec/minitrailspace')
         end)
     end
 }
