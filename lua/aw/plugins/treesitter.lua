@@ -1,6 +1,7 @@
 -- Tree-sitter
 local parsers = AW.is_root() and {} or {
     'bash',
+    'c',
     'comment',  -- NOTE: INFO: WARN: ERROR: etc
     'css',
     'diff',
