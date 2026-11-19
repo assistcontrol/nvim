@@ -92,6 +92,8 @@ end
 function AW.os(name)
     if name and name:lower():match('^mac') then
         name = 'darwin'
+    elseif name and name:lower():match('^win') then
+        name = 'windows_nt'
     end
 
     local sysname = vim.uv.os_uname().sysname

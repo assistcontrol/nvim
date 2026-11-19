@@ -49,6 +49,11 @@ return {
     lazy  = false,
     build = ':TSUpdate',
     config = function()
+        if AW.os('windows') then
+            -- Windows sucks
+            vim.env.CC = 'gcc'
+        end
+
         local ts = require('nvim-treesitter')
 
         -- Install missing parsers asynchronously.
