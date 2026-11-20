@@ -1,4 +1,6 @@
 -- Key mappings
+-- NOTE: Also see spec/minikeymap.lua
+
 AW.maps = {}
 
 -- Helper functions
@@ -66,8 +68,8 @@ map('n', '\\[',  cmd[[lua AW.filebrowser()]], {desc = 'files'})
 
 -- Extend g...
 -- Move normally onto wrapped lines
-map('n', 'j', 'gj')
-map('n', 'k', 'gk')
+map({'n', 'x'}, 'j', 'gj')
+map({'n', 'x'}, 'k', 'gk')
 
 -- Copy/paste with system clipboard
 map({'n', 'x'}, 'gy', '"+y', {desc = 'Copy to system clipboard'})
