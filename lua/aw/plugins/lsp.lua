@@ -23,7 +23,10 @@ return {
                 source = 'if_many'
             },
             virtual_text = {
-                severity = {min = 'ERROR', max = 'ERROR'}
+                severity = {
+                    min = vim.diagnostic.severity.ERROR,
+                    max = vim.diagnostic.severity.ERROR,
+                },
             }
         }
         -- Show diagnostic window automatically on relevant lines
@@ -71,47 +74,47 @@ return {
         vim.lsp.config.lua_ls = {
             filetypes = { 'lua' },
             on_init = function(client)
-                local root = client.workspace_folders and client.workspace_folders[1].name
+                local folders = client.workspace_folders
+                local root = folders and folders[1] and folders[1].name
 
-                local editing_config =
+                local editing_config = root and (
                     root == vim.fn.stdpath('config') or
                     root == vim.fn.expand(AW_MODULE_PATH)
+                )
 
-                local has_luarc =
-                    vim.uv.fs_stat(root .. '/.luarc.json') or
-                    vim.uv.fs_stat(root .. '/.luarc.jsonc')
-
-                if has_luarc and not editing_config then
+                if not editing_config then
                     return
                 end
 
-                local luals_settings = client.config.settings.Lua or {}
+                client.config.settings = vim.tbl_deep_extend('force',
+                    client.config.settings or {},
+                    {
+                        Lua = {
+                            runtime = {
+                                version = 'LuaJIT',
+                                path = {
+                                    'lua/?.lua',
+                                    'lua/?/init.lua',
+                                },
+                            },
+                            diagnostics = {
+                                globals = {'vim'},
+                            },
+                            workspace = {
+                                checkThirdParty = false,
+                                library = {
+                                    vim.env.VIMRUNTIME,
+                                    vim.fn.stdpath('config'),
+                                    vim.fn.expand(AW_MODULE_PATH),
+                                },
+                            },
+                        },
+                    }
+                )
 
-                client.config.settings = vim.tbl_deep_extend('force', luals_settings, {
-                    runtime = {
-                        version = 'LuaJit',
-                        path = {
-                            'lua/?.lua',
-                            'lua/?/init.lua',
-                        },
-                    },
-                    diagnostics = {
-                        globals = {'vim'},
-                    },
-                    workspace = {
-                        -- Don't auto-guess things like luarocks, busted, etc.
-                        checkThirdParty = false,
-                        -- Make LuaLS aware of nvim runtim and the nvim config
-                        library = {
-                            vim.env.VIMRUNTIME,
-                            vim.fn.stdpath('config'),
-                            vim.fn.expand(AW_MODULE_PATH),
-                        },
-                    },
+                client:notify('workspace/didChangeConfiguration', {
+                    settings = client.config.settings,
                 })
-
-                client:notify('workspace/didChangeConfiguration', {settings = client.config.settings})
-                return true
             end,
         }
         vim.lsp.enable('lua_ls')
